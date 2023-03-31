@@ -5,24 +5,25 @@ import apiServices from '../services/RegisterData';
 export const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPass] = useState('');
+    const [message, setmessage] = useState('');
     
     const handleRegister = async(event)=>{
         event.preventDefault();
-      
-        // const regData = new FormData();
         const firmObj={email,password};
-        
-    
         // regData.append('email', email);
-     
         // regData.append('password', password);
-        //  console.log(regData.get('email'));
-      
+        //  console.log(regData.get('email')); 
        const respo = await apiServices.create(firmObj);
-       console.log("hello")
-        console.log(respo);
+       if(respo.data.success === true){
+        setmessage(respo.data.msg);
+        localStorage.setItem("token", respo.data.token);
+        alert(localStorage.getItem("token"));
+       // alert(respo.data.token);
+       }
+       else{
+        setmessage(respo.data.msg);
+       } 
        event.target.reset();
-        
     }
 
   return (
@@ -32,6 +33,7 @@ export const Register = () => {
         <input type="text" placeholder='enter your email' name='email' onChange={event=>setEmail(event.target.value)}/><br/>
         <input type="password" placeholder='enter your password' name='password' onChange={event=>setPass(event.target.value)}/><br/>
         <button type="submit" value="register">register</button>
+        <span>{message}</span>
 
       </form>
     </>
@@ -43,7 +45,7 @@ export const Register = () => {
 // import React from 'react'
 // import { useContext } from 'react';
 // import ProductContex from '../context/products/productContex';
-// import { useEffect } from 'react';
+// impo                                                                                                     rt { useEffect } from 'react';
 // import { useState } from 'react';
 // import { useNavigate } from 'react-router-dom';
 // import adddata from '../services/adddata';
