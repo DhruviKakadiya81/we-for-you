@@ -30,7 +30,7 @@ export const Register = () => {
       <div>Register Form</div>
       <form action="" method="post" onSubmit={handleRegister}>
         <input type="text" placeholder='enter your email' name='email' onChange={event=>setEmail(event.target.value)}/><br/>
-        <input type="text" placeholder='enter your password' name='password' onChange={event=>setPass(event.target.value)}/><br/>
+        <input type="password" placeholder='enter your password' name='password' onChange={event=>setPass(event.target.value)}/><br/>
         <button type="submit" value="register">register</button>
 
       </form>
