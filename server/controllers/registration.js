@@ -18,7 +18,7 @@ const register = async(req,res)=>{
 
             if(checkUser){
                 console.log("sorry a user with this email is already exist");
-               return res.status(400).json({ error: "sorry a user with this email is already exist" });
+               return res.status(400).send({ success : false, msg: "sorry a user with this email is already exist" });
             }
             else{
                 const salt = await bcrypt.genSalt(10);
@@ -32,7 +32,7 @@ const register = async(req,res)=>{
                     });
                     const regResult = await registerData.save();
                     console.log(regResult);
-                    res.status(200).json({data:"inserted successfully"});
+                    res.status(200).send({success : true, msg:"inserted successfully"});
                     
                 } catch (error) {
                     console.log(error);

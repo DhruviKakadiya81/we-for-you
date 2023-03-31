@@ -5,6 +5,7 @@ import apiServices from '../services/RegisterData';
 export const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPass] = useState('');
+    const [message, setmessage] = useState('');
     
     const handleRegister = async(event)=>{
         event.preventDefault();
@@ -17,10 +18,29 @@ export const Register = () => {
      
         // regData.append('password', password);
         //  console.log(regData.get('email'));
-      
+       
        const respo = await apiServices.create(firmObj);
-       console.log("hello")
-        console.log(respo);
+       if(respo.data.success === true){
+        alert("hello");
+       }
+       else{
+        alert("not added");
+       }
+      // console.log("hello")
+      //  console.log(respo);
+     
+      //  if(respo.data.success === true){
+      //   alert("hello");
+      //   setmessage = respo.data.msg;
+      //   console.log(respo.data.msg);
+      //  }
+      //  else{
+      //   alert("hello");
+      //   setmessage = respo.data.msg;
+      //   console.log(respo.data.msg);
+
+      //  }
+       
        event.target.reset();
         
     }
@@ -31,6 +51,7 @@ export const Register = () => {
       <form action="" method="post" onSubmit={handleRegister}>
         <input type="text" placeholder='enter your email' name='email' onChange={event=>setEmail(event.target.value)}/><br/>
         <input type="password" placeholder='enter your password' name='password' onChange={event=>setPass(event.target.value)}/><br/>
+        <span>operation_message  {message}</span>
         <button type="submit" value="register">register</button>
 
       </form>
