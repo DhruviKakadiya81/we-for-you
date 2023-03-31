@@ -1,6 +1,8 @@
 const usertbl = require("../models/userModel");
 const bcrypt = require("bcryptjs");
 const {validationResult} = require("express-validator");
+const jwt = require("jsonwebtoken");
+const JWT_SECRET = "jsonwebtokenforthehumanandhomeservicemanagement";
 
 const register = async(req,res)=>{
     
@@ -9,10 +11,9 @@ const register = async(req,res)=>{
     
     if(!errors.isEmpty()){
         console.log("hello");
-        return res.status(400).json({errors:errors.array()});
+        return res.status(200).send({success: false,msg:"enter valid email or user name"});
     }
     else{
-       
             let checkUser = await usertbl.findOne({email:req.body.email});
             console.log("find User  : " +checkUser );
 
@@ -22,7 +23,6 @@ const register = async(req,res)=>{
             }
             else{
                 const salt = await bcrypt.genSalt(10);
-                const password = req.body.password;
                 const hashPass = await bcrypt.hash(password,salt);
                 const userdata = req.body;
                 try {
@@ -31,20 +31,17 @@ const register = async(req,res)=>{
                         password:hashPass
                     });
                     const regResult = await registerData.save();
-                    console.log(regResult);
-                    res.status(200).send({success : true, msg:"inserted successfully"});
+                    console.log(regResult._id);
+                    const jwtdata = jwt.sign({ id: regResult._id }, JWT_SECRET);
+                    console.log(jwtdata);
+                    res.status(200).send({success : true, msg:"inserted successfully" , token:jwtdata});
                     
                 } catch (error) {
                     console.log(error);
                     return res.status(400).send({ success : false, msg: error });
                 }
-            }
-           
-           
-
-    }
-  
-   
+        }
+    }   
 }
 module.exports ={register};
 
