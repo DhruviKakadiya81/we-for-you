@@ -33,8 +33,8 @@ const login = async (req, res) => {
                 const jwtdata = jwt.sign({ id: login._id }, JWT_SECRET);
                 console.log(jwtdata);
               //  res.send(jwtdata);
-              localStorage.setItem('logintoken','krupa');
-              alert(localStorage.getItem('logintoken'));
+            //   localStorage.setItem('logintoken','krupa');
+            //   alert(localStorage.getItem('logintoken'));
               return res.status(200).send({  success : true , msg :"login success full" ,token :jwtdata });
             }
         } catch (error) {

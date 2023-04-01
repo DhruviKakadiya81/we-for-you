@@ -10,12 +10,27 @@ export const ClientIndex = () => {
         nevigate1(-1);
     }
     
+    const handleauth = (event)=>{
+        //localStorage.clear();
+        let ls = localStorage.getItem("token");
+        alert(ls);
+        if(ls == null){
+            alert("hello");
+            nevigate1("/login");
+            event.preventDefault();
+
+        }
+        else
+        {
+            nevigate1("/cart");
+        }
+    }
   return (
     <>
     
      <a href="/register">register</a>||
      <a href="/login">login</a>||
-     <a href="/cart">cart</a>||
+     <a href="/cart" onClick={handleauth}>cart</a>||
      <button onClick={goBack}>back</button>
     
      <Routes>
@@ -26,7 +41,6 @@ export const ClientIndex = () => {
            <Route path="/cart" element={<Authpage/>}>
               </Route>
      </Routes>
-    
     
     </>
    
