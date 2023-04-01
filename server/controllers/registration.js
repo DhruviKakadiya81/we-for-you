@@ -8,10 +8,10 @@ const register = async(req,res)=>{
     
     const errors = validationResult(req);
     console.log("hello");
-    
+    let password = req.body.password
     if(!errors.isEmpty()){
         console.log("hello");
-        return res.status(200).send({success: false,msg:"enter valid email or user name"});
+        return res.status(200).send({success: false,msg:"enter valid email"});
     }
     else{
             let checkUser = await usertbl.findOne({email:req.body.email});
@@ -34,7 +34,10 @@ const register = async(req,res)=>{
                     console.log(regResult._id);
                     const jwtdata = jwt.sign({ id: regResult._id }, JWT_SECRET);
                     console.log(jwtdata);
+                   
                     res.status(200).send({success : true, msg:"inserted successfully" , token:jwtdata});
+                    sessionStorage.setItem('token',jwtdata);
+                    alert(sessionStorage.getItem('token'));
                     
                 } catch (error) {
                     console.log(error);

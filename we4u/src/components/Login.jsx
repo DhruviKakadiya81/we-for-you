@@ -13,7 +13,8 @@ export const Login = () => {
         // regData.append('email', email);
         // regData.append('password', password);
         //  console.log(regData.get('email')); 
-       const respo = await apiServices.create(firmObj);
+       const respo = await apiServices.getLoginData(firmObj);
+       alert(respo.data.msg);
        if(respo.data.success === true){
         setmessage(respo.data.msg);
         localStorage.setItem("token", respo.data.token);
