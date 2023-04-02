@@ -34,10 +34,7 @@ const register = async(req,res)=>{
                     console.log(regResult._id);
                     const jwtdata = jwt.sign({ id: regResult._id }, JWT_SECRET);
                     console.log(jwtdata);
-                   
                     res.status(200).send({success : true, msg:"inserted successfully" , token:jwtdata});
-                    sessionStorage.setItem('token',jwtdata);
-                    alert(sessionStorage.getItem('token'));
                     
                 } catch (error) {
                     console.log(error);
