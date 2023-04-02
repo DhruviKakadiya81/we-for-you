@@ -3,7 +3,11 @@ const JWT_SECRET = "jsonwebtokenforthehumanandhomeservicemanagement";
 const user = require("../models/userModel");
 
 const auth = async (req, res, next) => {
-    const token = req.header('token');
+    console.log("hello");
+    // id = localStorage.getItem("token");
+    // console.log("----ls----"+id);
+    console.log("id"+req.body.id);
+    const token = req.body.id;
     console.log("token is :" + token);
     if (!token) {
         res.status(401).send(error);
@@ -28,4 +32,4 @@ const auth = async (req, res, next) => {
     }
 
 }
-module.exports = auth;
+module.exports = {auth};
