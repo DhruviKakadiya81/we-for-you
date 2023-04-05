@@ -5,6 +5,7 @@ import { Register } from './Register';
 import { Authpage } from './Authpage';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginData from '../services/GetUser'
+
 export const ClientIndex = () => {
     const nevigate1 = useNavigate();
     const goBack = ()=>{
@@ -14,6 +15,7 @@ export const ClientIndex = () => {
     const handleauth =async(event)=>{
         //localStorage.clear();
         event.preventDefault();
+        
         var id = localStorage.getItem("token");
         alert(id);
         if(id == null){
