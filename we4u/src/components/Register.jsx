@@ -46,7 +46,7 @@ export const Register = () => {
     <>
       <div>Register Form</div>
       <form action="" method="post" onSubmit={handleRegister}>
-        <input type="text" placeholder='enter your email' name='email' onChange={event => setEmail(event.target.value)} /><br />
+        <input type="text" placeholder='ENTER YOUR EMAIL' name='email' onChange={event => setEmail(event.target.value)} /><br />
         <input type="password" name="password" placeholder='Enter the password' onChange={event => setPass(event.target.value)} id = "id_password" />
         <i className={eye} id="togglePassword" style={{ marginLeft: "-25px", cursor: "pointer" }} onClick={handletogglepass}></i>
        
