@@ -53,7 +53,7 @@ export const Register = () => {
         <input
           type="password"
           name="password"
-          placeholder="Enter the password"
+          placeholder="ENTER the password"
           onChange={(event) => setPass(event.target.value)}
           id="id_password"
         />
