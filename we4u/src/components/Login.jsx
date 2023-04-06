@@ -72,6 +72,7 @@ export const Login = () => {
         <button type="submit" value="register" style={{borderRadius:"10px"}}>
           Login
         </button>
+        <p><strong>have you account?</strong><a href="/login">Login here</a></p>
         <span>{message}</span>
       </form>
       </div>
