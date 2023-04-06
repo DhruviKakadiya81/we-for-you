@@ -40,6 +40,8 @@ export const Login = () => {
   return (
     <>
       <div>Login Form</div>
+      <div className=" my-5 d-flex align-items-center justify-content-center">
+      
       <form action="" method="post" onSubmit={handleLogin}>
         <input
           type="text"
@@ -55,19 +57,25 @@ export const Login = () => {
           placeholder="Enter the Password"
           onChange={(event) => setPass(event.target.value)}
           id="id_password"
+          className="my-3"
         />
         <i
           className={eye}
           id="togglePassword"
           style={{ marginLeft: "-25px", cursor: "pointer" }}
           onClick={handletogglepass}
+          
         ></i>
 
-        <button type="submit" value="register">
+        <br></br>
+
+        <button type="submit" value="register" style={{borderRadius:"10px"}}>
           Login
         </button>
         <span>{message}</span>
       </form>
+      </div>
+
     </>
   );
 };
