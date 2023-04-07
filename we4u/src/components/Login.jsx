@@ -55,7 +55,7 @@ export const Login = () => {
               <div className="col-md-6 pt-5 mx-0 pt-lg-0 order-2 order-lg-1" style={{marginLeft:"-10px"}}>
                 <form action="" method="post" onSubmit={handleLogin}>
 
-                  <h2 style={{ fontWeight: "700" }}>LOGIN</h2>
+                  <h2 style={{ fontWeight: "700" }}>SIGN IN</h2>
                   <input
 
                     className="mt-3"
@@ -87,7 +87,7 @@ export const Login = () => {
 
                 
 
-                  <button type="submit" className="p-2 my-3" value="register" style={{ borderRadius: "10px", backgroundColor: "lightblue", border: "none", width: "110px" }}>
+                  <button type="submit" className="p-2 my-3" value="register" style={{fontSize:"20px", borderRadius: "10px", backgroundColor: "rgb(212, 174, 126)", border: "none", width: "110px" }}>
                     Login
                   </button>
                   <br/>
