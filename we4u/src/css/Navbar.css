@@ -3,31 +3,38 @@
     background-color:white !important;
 }
 
-.navbar-brand{
-    font-size: 1.9rem !important;
-    color: red !important;
-}
-
 .navbar a{
     font-size: 1.3rem;
+    color: black !important;
     text-transform: capitalize;
 }
 
 .active{
-    font-size: 50px;
+    font-weight: bold;
     border-bottom: 1px solid #565387;
-}
-
-.navbar a:hover{
-    color:#3498db !important;
+    transition: ease-out .5s;
 }
 
 @media (max-width:991px){
     .navbar-brand{
         font-size: 1.5rem !important;
     }
-    .menu_active{
+    .active{
         font-weight: bold;
         border-bottom: none;
     }
+}
+
+
+@keyframes zoom-in {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.1);
+    }
+  }
+  .navbar a:hover{
+    animation: zoom-in 1s ease-in-out;
+    color:rgb(220, 177, 120) !important;
 }
