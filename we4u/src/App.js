@@ -21,6 +21,13 @@ function App() {
       </Routes>
       </Router>
     </>
+   
+   <Router>
+    
+   /*<ClientIndex/>*/
+   
+   </Router>
+   </>
   );
 }
 
