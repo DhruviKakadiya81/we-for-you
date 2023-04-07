@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import apiServices from "../services/LoginData.jsx";
 
+
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
@@ -39,45 +40,3 @@ export const Login = () => {
 
   return (
     <>
-      <div>Login Form</div>
-      <div className=" my-5 d-flex align-items-center justify-content-center">
-      
-      <form action="" method="post" onSubmit={handleLogin}>
-        <input
-          type="text"
-          placeholder="Enter your email"
-          name="email"
-          onChange={(event) => setEmail(event.target.value)}
-        />
-        <br />
-        {/* <input type="password" placeholder='enter your password' name='password' onChange={event => setPass(event.target.value)} /><br /> */}
-        <input
-          type="password"
-          name="password"
-          placeholder="Enter the Password"
-          onChange={(event) => setPass(event.target.value)}
-          id="id_password"
-          className="my-3"
-        />
-        <i
-          className={eye}
-          id="togglePassword"
-          style={{ marginLeft: "-25px", cursor: "pointer" }}
-          onClick={handletogglepass}
-          
-        ></i>
-
-        <br></br>
-
-        <button type="submit" value="register" style={{borderRadius:"10px"}}>
-          Login
-        </button>
-        <p><strong>Forget password?</strong><a href="/forget">Click here to recover</a></p>
-        <span>{message}</span>
-      </form>
-      </div>
-
-    </>
-  );
-};
-
