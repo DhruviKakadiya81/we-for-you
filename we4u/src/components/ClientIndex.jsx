@@ -5,6 +5,8 @@ import { Register } from './Register';
 import { Authpage } from './Authpage';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginData from '../services/GetUser'
+import { Forget } from './Forget';
+import { Verify } from './Verify';
 
 export const ClientIndex = () => {
     const nevigate1 = useNavigate();
@@ -49,6 +51,10 @@ export const ClientIndex = () => {
            <Route path="/login" element={<Login />}>
               </Route>
            <Route path="/cart" element={<Authpage/>}>
+              </Route>
+           <Route path="/forget" element={<Forget/>}>
+              </Route>
+           <Route path="/verify" element={<Verify/>}>
               </Route>
      </Routes>
     
