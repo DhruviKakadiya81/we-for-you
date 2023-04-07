@@ -6,10 +6,10 @@ export const Navbar = () => {
   return (
     <div className="container-fluid nav_bg">
       <div className='row'>
-        <div className="col-10 mx-auto">
+        <div className="col-12 mx-auto">
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container-fluid">
-      <img src="./" width="100" height="70"/>
+      <img src="Images/Logo.png" width="100" height="70"/>
         <button
           className="navbar-toggler"
           type="button"
@@ -24,13 +24,8 @@ export const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <NavLink activeClassName="menu_active" exact className="nav-link" aria-current="page" to="/">
+              <NavLink exact className="nav-link" aria-current="page" to="/">
                 Home
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/login">
-                Login
               </NavLink>
             </li>
             <li className="nav-item">
@@ -40,7 +35,12 @@ export const Navbar = () => {
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/cart">
-                Cart
+              <i class="fa-sharp fa-solid fa-cart-shopping fa-bounce fa-lg"></i>
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/login">
+              <i class="fa fa-user" aria-hidden="true"></i> Login
               </NavLink>
             </li>
           </ul>
