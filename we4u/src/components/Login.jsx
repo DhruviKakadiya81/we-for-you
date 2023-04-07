@@ -91,7 +91,7 @@ export const Login = () => {
                     Login
                   </button>
                   <br/>
-                  <p><strong>Forget password?</strong><br /><a href="/forget">Recover Password</a></p>
+                  <p><a href="/forget">Forget password?</a></p>
                   <span>{message}</span>
                 </form>
 
