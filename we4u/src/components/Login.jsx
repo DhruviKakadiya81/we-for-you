@@ -60,7 +60,7 @@ export const Login = () => {
 
                     className="mt-3"
                     type="text"
-                    placeholder="Enter your email"
+                    placeholder="Enter your Email"
                     name="email"
                     onChange={(event) => setEmail(event.target.value)}
                     style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width: "280px" }}
