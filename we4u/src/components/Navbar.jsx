@@ -23,24 +23,24 @@ export const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li className="nav-item">
+            <li className="nav-item mx-2">
               <NavLink exact className="nav-link" aria-current="page" to="/">
                 Home
               </NavLink>
             </li>
-            <li className="nav-item">
+            <li className="nav-item mx-2">
               <NavLink className="nav-link" to="/register">
                 Register
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/cart">
-              <i class="fa-sharp fa-solid fa-cart-shopping fa-bounce fa-lg"></i>
-              </NavLink>
-            </li>
-            <li className="nav-item">
+            <li className="nav-item mx-2">
               <NavLink className="nav-link" to="/login">
               <i class="fa fa-user" aria-hidden="true"></i> Login
+              </NavLink>
+            </li>
+            <li className="nav-item mx-2">
+              <NavLink className="nav-link" to="/cart">
+              <i class="fa-sharp fa-solid fa-cart-shopping fa-bounce fa-lg"></i>
               </NavLink>
             </li>
           </ul>

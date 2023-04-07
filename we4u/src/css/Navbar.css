@@ -1,6 +1,6 @@
 .navbar
 {
-    background-color:white !important;
+    background-color:rgb(212, 174, 126) !important;
 }
 
 .navbar a{
@@ -11,7 +11,7 @@
 
 .active{
     font-weight: bold;
-    border-bottom: 1px solid #565387;
+    border-bottom: 1px solid black;
     transition: ease-out .5s;
 }
 
@@ -36,5 +36,5 @@
   }
   .navbar a:hover{
     animation: zoom-in 1s ease-in-out;
-    color:rgb(220, 177, 120) !important;
+    color:white !important;
 }
