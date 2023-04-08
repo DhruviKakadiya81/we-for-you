@@ -6,7 +6,7 @@ const AdminDashboard = () => {
     <>
     <AdminNavbar/>
     <div style={{position:'absolute',top:0}}>
-      Dashboard page
+    this is Dashboard page
     </div>
     </>
   )
