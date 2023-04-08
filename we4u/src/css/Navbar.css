@@ -1,7 +1,13 @@
+html{
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+  }
 .navbar
 {
     background-color:rgb(212, 174, 126) !important;
 }
+
 
 .navbar a{
     font-size: 1.3rem;
@@ -23,6 +29,7 @@
         font-weight: bold;
         border-bottom: none;
     }
+    
 }
 
 
