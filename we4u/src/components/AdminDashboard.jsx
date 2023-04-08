@@ -1,10 +1,14 @@
 import React from 'react'
+import { AdminNavbar } from './AdminNavbar'
 
 const AdminDashboard = () => {
   return (
-    <div>
+    <>
+    <AdminNavbar/>
+    <div style={{position:'absolute',top:0}}>
       Dashboard page
     </div>
+    </>
   )
 }
 
