@@ -9,6 +9,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import { Forget } from './components/Forget';
 import { Verify } from './components/Verify';
+import { AdminNavbar } from "./components/AdminNavbar";
+import AdminDashboard from "./components/AdminDashboard";
 import { Home } from "./components/Home";
 
 function App() {
@@ -16,6 +18,10 @@ function App() {
     <>
       
       <Router>
+      {/* <Navbar /> */}
+      <AdminNavbar/>
+      <Routes>
+        <Route path="/dashboard" element={<AdminDashboard />}></Route>
       {/* <Navbar />  */}
       <Routes>
       <Route path="/" element={<Home/>}></Route>
