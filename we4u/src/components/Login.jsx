@@ -44,6 +44,7 @@ export const Login = () => {
       {/* <div style={{backgroundColor:"#f8f8ff" , borderRadius:"15px" ,  height:"500px", width:"900px" , marginLeft:"300px" , alignContent:"center" , alignItems:"center"}} > */}
       {/* <div style={{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" , marginTop:"135px" }} className=" mx-auto  w-50 p-5 d-flex align-items-center justify-content-center"> */}
       {/* <div style={{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",marginTop:"135px" }} className=" mx-auto  w-50 p-5 d-flex align-items-center justify-content-center"> */}
+    
       <section className="d-flex flex-wrap" id="header">
         <div className="container-fluid p-5" style= {{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",marginTop:"100px",width:"50rem" }} >
           <div className="row">
@@ -56,6 +57,8 @@ export const Login = () => {
                 <form action="" method="post" onSubmit={handleLogin}>
 
                   <h2 style={{ fontWeight: "700" }}>SIGN IN</h2>
+                  <i class="fa-solid fa-envelope fa-flip fa-xl" style={{marginRight:"-18px",position:"relative",left:"-30px",bottom:"-45px"}}></i>
+
                   <input
 
                     className="mt-3"
@@ -68,6 +71,8 @@ export const Login = () => {
                   />
                   <br />
                   {/* <input type="password" placeholder='enter your password' name='password' onChange={event => setPass(event.target.value)} /><br /> */}
+                  <i class="fa-solid fa-lock fa-flip fa-xl" style={{marginRight:"-18px",position:"relative",left:"-30px",bottom:"-45px"}}></i>
+
                   <input
                     type="password"
                     name="password"
