@@ -9,14 +9,18 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import { Forget } from './components/Forget';
 import { Verify } from './components/Verify';
+import { AdminNavbar } from "./components/AdminNavbar";
+import AdminDashboard from "./components/AdminDashboard";
 
 function App() {
   return (
     <>
       
       <Router>
-      <Navbar />
+      {/* <Navbar /> */}
+      <AdminNavbar/>
       <Routes>
+        <Route path="/dashboard" element={<AdminDashboard />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/cart" element={<Authpage />}></Route>

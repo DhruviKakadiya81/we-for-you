@@ -63,7 +63,7 @@ export const Login = () => {
                     placeholder="Enter your Email"
                     name="email"
                     onChange={(event) => setEmail(event.target.value)}
-                    style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width:"90%" }}
+                    style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width:"100%" }}
 
                   />
                   <br />
@@ -75,7 +75,7 @@ export const Login = () => {
                     onChange={(event) => setPass(event.target.value)}
                     id="id_password"
                     className="my-4"
-                    style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width: "90%" }}
+                    style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width: "100%" }}
                   />
                   <i
                     className={eye}
