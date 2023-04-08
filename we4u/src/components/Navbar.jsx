@@ -1,8 +1,43 @@
 import React from "react";
 import "../css/Navbar.css";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import LoginData from "../services/LoginData";
 
 export const Navbar = () => {
+  const nevigate = useNavigate();
+  const handlelogout = () =>{
+    var id = localStorage.getItem("token");
+    if(id == null){
+      alert("Login first");
+        nevigate("/login");
+    }
+    else{
+      localStorage.clear();
+      alert("logged out");
+      nevigate("/login");
+    }
+      
+  }
+
+  const handlecart =async(event)=>{
+    event.preventDefault();
+    var id = localStorage.getItem("token");
+    if(id == null){
+        alert("Login first");
+        nevigate("/login");
+        event.preventDefault();
+    }
+    else
+    {
+        nevigate("/cart");
+        event.preventDefault();
+        const data = {id};
+        alert("id-----"+ id);
+        const respo = await LoginData.sendauth(data);
+         alert(respo.data.data.email);
+    }
+}
   return (
     <div className="container-fluid nav_bg">
       <div className='row'>
@@ -11,7 +46,7 @@ export const Navbar = () => {
       <div className="container-fluid">
       <img src="Images/Logo.png" width="100" height="70"/>
         <button
-          className="navbar-toggler"
+          className="navbar-toggler ml-auto"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
@@ -35,12 +70,17 @@ export const Navbar = () => {
             </li>
             <li className="nav-item mx-2">
               <NavLink className="nav-link" to="/login">
-              <i class="fa fa-user" aria-hidden="true"></i> Login
+              <i className="fa fa-user" aria-hidden="true"></i>
               </NavLink>
             </li>
             <li className="nav-item mx-2">
-              <NavLink className="nav-link" to="/cart">
-              <i class="fa-sharp fa-solid fa-cart-shopping fa-bounce fa-lg"></i>
+              <NavLink className="nav-link" to="/cart" onClick={handlecart}>
+              <i className="fa-sharp fa-solid fa-cart-shopping fa-bounce fa-lg"></i>
+              </NavLink>
+            </li>
+            <li className="nav-item mx-2">
+              <NavLink className="nav-link" to="/logout">
+              <i className="fa-solid fa-right-from-bracket fa-lg" onClick={handlelogout}></i>
               </NavLink>
             </li>
           </ul>

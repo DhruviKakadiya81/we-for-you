@@ -11,6 +11,7 @@ import { Forget } from './components/Forget';
 import { Verify } from './components/Verify';
 import { AdminNavbar } from "./components/AdminNavbar";
 import AdminDashboard from "./components/AdminDashboard";
+import { Home } from "./components/Home";
 
 function App() {
   return (
@@ -21,14 +22,15 @@ function App() {
       <AdminNavbar/>
       <Routes>
         <Route path="/dashboard" element={<AdminDashboard />}></Route>
+      {/* <Navbar />  */}
+      <Routes>
+      <Route path="/" element={<Home/>}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/cart" element={<Authpage />}></Route>
-        <Route path="/forget" element={<Forget/>}>
-              </Route>
-           <Route path="/verify" element={<Verify/>}>
-              </Route>
-   
+        <Route path="/forget" element={<Forget/>}></Route>
+        <Route path="/verify" element={<Verify/>}></Route> 
+        <Route path="/logout" element={<Home/>}></Route>
       </Routes>
       </Router>
     </>

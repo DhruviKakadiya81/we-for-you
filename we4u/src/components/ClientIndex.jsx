@@ -14,34 +14,12 @@ export const ClientIndex = () => {
         nevigate1(-1);
     }
     
-    const handleauth =async(event)=>{
-        event.preventDefault();
-        var id = localStorage.getItem("token");
-        alert(id);
-        if(id == null){
-            alert("hello");
-            nevigate1("/login");
-            event.preventDefault();
-        }
-        else
-        {
-            nevigate1("/cart");
-            event.preventDefault();
-            // alert("hello");
-            // console.log("ls" +id);
-            // alert(ls);
-            const data = {id};
-            alert("id-----"+ id);
-           //const token = {id};
-            const respo = await LoginData.sendauth(data);
-             alert(respo.data.data.email);
-        }
-    }
+   
   return (
     <>
      <a href="./register">Register</a>||
      <a href="/login">Login</a>|| 
-     <a href="/cart" onClick={handleauth}>cart</a>||
+     {/* <a href="/cart" onClick={handleauth}>cart</a>|| */}
     
      <button onClick={goBack}>back</button>
     
