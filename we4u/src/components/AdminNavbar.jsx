@@ -10,6 +10,7 @@ import {
   } from 'cdbreact';
 import { FaCommentAlt, FaRegChartBar, FaTh,FaUserAlt,FaBars, FaCartPlus, FaCartArrowDown, FaRegistered }from "react-icons/fa";
 import { NavLink,Link } from 'react-router-dom';
+import AdminDashboard from './AdminDashboard';
 
 export const AdminNavbar = ({Children}) => {
 //     const{isOpen,setIsOpen}=useState(false);
@@ -216,6 +217,7 @@ return(
       
       </div>
       </div>
+      
     </>
 )
 };
