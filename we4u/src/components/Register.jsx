@@ -48,7 +48,7 @@ export const Register = () => {
             <div className="col-8">
               <div className="row">
               <div className="col-md-6 pt-5 p-5 pt-lg-0 order-1 order-lg-2 header-image" >
-                <img src="Images/login1.png" width={270} height={300} className="login-image" alt=""/>
+                <img src="Images/register1.png" width={270} height={300} className="login-image" alt=""/>
               </div>
               <div className="col-md-6 pt-5 m-2 mx-0 pt-lg-0 order-2 order-lg-1" style={{marginLeft:"-10px"}}>
                 <form action="" method="post" onSubmit={handleRegister}>
