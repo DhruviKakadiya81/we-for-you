@@ -43,7 +43,7 @@ export const Register = () => {
     <>
 
 <section className="d-flex flex-wrap" id="header">
-        <div className="container-fluid p-5" style= {{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",marginTop:"100px",width:"50rem" }} >
+        <div className="container-fluid p-5" style= {{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",marginTop:"100px",width:"50rem",overflowX:"hidden" }} >
           <div className="row">
             <div className="col-8">
               <div className="row">
