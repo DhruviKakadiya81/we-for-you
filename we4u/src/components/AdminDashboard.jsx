@@ -15,8 +15,7 @@ const AdminDashboard = () => {
     </div>
     
     </AdminNavbar>
-    
-   
+
   )
 }
 
