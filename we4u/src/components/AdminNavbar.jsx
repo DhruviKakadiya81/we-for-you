@@ -9,6 +9,7 @@ export const AdminNavbar = ({children}) => {
   const toggle = () => setIsOpen (!isOpen);
   const[isDrop,setIsDrop]=useState(true);
   const drop=()=>setIsDrop(!isDrop);
+   
   return (
     <div className="container">
       <div style={{width: isOpen ? "200px" : "50px",height:"100vh"}} className="sidebar">
@@ -43,11 +44,19 @@ export const AdminNavbar = ({children}) => {
             <FaTh/>
           </div>
           <div style={{display: isOpen ? "block" : "none"}} className="text">Show
+
           <i className="fas fa-angle-right dropdown1"></i>  
           <div className="sub_menu"  style={{display:isDrop?"block":"none"}}>
             <ul>
               <li className='sub_list'><Link to="/adminmanageservice" className={location.pathname==='/adminmanageservice'?"active1 sub_items":"sub_items"}>first</Link></li>
               <li className='sub_list'><Link to="/adminmanagecustomer" className={location.pathname==='/adminmanagecustomer'?"active1 sub_items":"sub_items"}>second</Link></li>
+
+          <i className="fas fa-angle-right dropdown1" onClick={drop}></i>  
+          <div className="sub_menu"  style={{display:isDrop?"block":"none"}}>
+            <ul>
+              <li className='sub_list'><Link to="/adminmanageservice" className={location.pathname==='/adminmanageservice'?"active1 sub_items":"sub_items"} >first</Link></li>
+              <li className='sub_list'><Link to="/adminmanagecustomer" className={location.pathname==='/adminmanagecustomer'?"active1 sub_items":"sub_items"} >second</Link></li>
+
             </ul>
           </div>
           </div>
@@ -62,5 +71,8 @@ export const AdminNavbar = ({children}) => {
       <main>{children}</main>
     </div>
   )
+
+}
+
 }
 
