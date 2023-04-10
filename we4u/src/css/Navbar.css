@@ -3,7 +3,7 @@ html{
     padding: 0px;
     overflow-x: hidden;
   }
-.navbar
+#main_div_nav
 {
     background-color:rgb(212, 174, 126) !important;
 }
