@@ -1,15 +1,21 @@
 import React from 'react'
-import { AdminNavbar } from './AdminNavbar'
+import { AdminNavbar } from './AdminNavbar';
+import "../css/AdminNavbar.css";
 
 const AdminDashboard = () => {
   return (
-    <>
+    
     <AdminNavbar>
     <div>
-      hellodrtfghjklxcgvhbjnkmlvbjnk this is Dashboard page
+    
+    Dashboard page
+    Dashboard page
+    Dashboard page
+    Dashboard page
     </div>
+    
     </AdminNavbar>
-    </>
+
   )
 }
 

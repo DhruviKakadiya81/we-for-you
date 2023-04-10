@@ -1,10 +1,11 @@
 import React from "react";
 import "../css/Navbar.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import LoginData from "../services/LoginData";
 
 export const Navbar = () => {
+  const location=useLocation();
   const nevigate = useNavigate();
   const handlelogout = () =>{
     var id = localStorage.getItem("token");
@@ -39,10 +40,10 @@ export const Navbar = () => {
     }
 }
   return (
-    <div className="container-fluid nav_bg">
+    <div className="container-fluid nav_bg" id="main_div_nav">
       <div className='row'>
         <div className="col-12 mx-auto">
-    <nav className="navbar navbar-expand-lg navbar-light">
+        <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container-fluid">
       <img src="Images/Logo.png" width="100" height="70"/>
         <button
@@ -74,7 +75,7 @@ export const Navbar = () => {
               </NavLink>
             </li>
             <li className="nav-item mx-2">
-              <NavLink className="nav-link" to="/cart" onClick={handlecart}>
+              <NavLink className="nav-link" id="nav_r1" to="/cart" onClick={handlecart}>
               <i className="fa-sharp fa-solid fa-cart-shopping fa-bounce fa-lg"></i>
               </NavLink>
             </li>
