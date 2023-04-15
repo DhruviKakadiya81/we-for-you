@@ -12,7 +12,7 @@ export const AdminNavbar = ({children}) => {
    
   return (
     <div className="container">
-      <div style={{width: isOpen ? "200px" : "50px",height:"100vh"}} className="sidebar">
+      <div style={{width: isOpen ? "200px" : "50px",height:"100vh",position:"fixed",position:"relative"}} className="sidebar">
         <div className="top_section">
           <h1 style={{display: isOpen ? "block" : "none"}} className="logo">Logo</h1>
           <div style={{marginLeft: isOpen ? "50px" : "0px"}} className="bars">
