@@ -6,7 +6,7 @@ const AdminDashboard = () => {
   return (
     
     <AdminNavbar>
-    <div style={{height:"1500vh",backgroundColor:"black",position:"relative"}}>
+   <div style={{backgroundColor:"red",height:"1500px"}}>
     
     Dashboard page
     Dashboard page

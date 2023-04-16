@@ -21,13 +21,6 @@ function App() {
       
       <Router>
       {/* <Navbar /> */}
-      
-      
-
-      {/* <AdminNavbar/> */}
-    
-        
-      {/* <Navbar />  */}
       <Routes>
        
         <Route path="/dashboard" element={<AdminDashboard />}></Route>
