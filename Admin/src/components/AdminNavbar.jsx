@@ -1,21 +1,20 @@
 import {React,useState} from 'react';
-import "../css/AdminNavbar.css"
-import {FaBars,FaTh} from "react-icons/fa";
+import "../../src/css/AdminNavbar.css";
+//import {FaBars,FaTh} from "react-icons/fa";
 import {NavLink,Link, useLocation} from "react-router-dom";
 
 export const AdminNavbar = ({children}) => {
   const location=useLocation();
   const[isOpen ,setIsOpen] = useState(true);
   const toggle = () => setIsOpen (!isOpen);
-  const[isDrop,setIsDrop]=useState(true);
+  const[isDrop,setIsDrop]=useState(false);
   const drop=()=>setIsDrop(!isDrop);
-  const[isDrop1,setIsDrop1]=useState(true);
+  const[isDrop1,setIsDrop1]=useState(false);
   const drop1=()=>setIsDrop1(!isDrop1);
   return (
     <div className="container">
-
-
-
+ 
+      
       <div style={{width: isOpen ? "230px" : "50px",height:"100vh"}} className="sidebar">
 
         <div className="top_section">
