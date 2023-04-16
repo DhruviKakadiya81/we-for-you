@@ -7,14 +7,15 @@ export const AdminNavbar = ({children}) => {
   const location=useLocation();
   const[isOpen ,setIsOpen] = useState(true);
   const toggle = () => setIsOpen (!isOpen);
-  const[isDrop,setIsDrop]=useState(false);
+  const[isDrop,setIsDrop]=useState(true);
   const drop=()=>setIsDrop(!isDrop);
-  const[isDrop1,setIsDrop1]=useState(false);
+  const[isDrop1,setIsDrop1]=useState(true);
   const drop1=()=>setIsDrop1(!isDrop1);
   return (
     <div className="container">
- 
-      
+
+
+
       <div style={{width: isOpen ? "230px" : "50px",height:"100vh"}} className="sidebar">
 
         <div className="top_section">
