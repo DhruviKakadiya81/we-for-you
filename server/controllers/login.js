@@ -10,8 +10,7 @@ const login = async (req, res) => {
     const r = req.body;
     let email = req.body.email;
     let password = req.body.password;
-    console.log(r);
-    //res.send(req.body);
+    console.log( "all data ----",r);
     const errors = validationResult(req.body);
     if (!errors.isEmpty()) {
         return res.status(200).send({success : false , msg: "there are some error in your input"});

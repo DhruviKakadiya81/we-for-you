@@ -13,7 +13,9 @@ export const AdminNavbar = ({children}) => {
   const drop1=()=>setIsDrop1(!isDrop1);
   return (
     <div className="container">
+
       <div style={{width: isOpen ? "230px" : "50px",height:"100vh"}} className="sidebar">
+
         <div className="top_section">
           <h1 style={{display: isOpen ? "block" : "none"}} className="logo">We4U</h1>
           <div style={{marginLeft: isOpen ? "90px" : "0px"}} className="bars">
