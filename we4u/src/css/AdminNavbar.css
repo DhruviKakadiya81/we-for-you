@@ -6,19 +6,27 @@
 
 .container{
     display: flex;
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 100vh;
 }
 
 main{
     width: 100%;
     padding: 20px;
+    height: 100%;
+    background-color: gray;
+    overflow-y: scroll;
+}
+
+main::-webkit-scrollbar{
+    display: none;
 }
 
 .sidebar{
     background-color: burlywood;
     color: black;
     height: 100vh;
-    width: 250px;
-    margin-left: -120px;
 }
 
 .top_section{
@@ -32,7 +40,6 @@ main{
 }
 
 .bars{
-    margin-left: 60px;
     font-size: 25px;
     display: flex;
 }
@@ -40,7 +47,6 @@ main{
 .link{
     display: flex;
     text-decoration: none;
-    font-size: 20px;
     padding: 10px 15px;
     gap: 15px;
     color:black;
@@ -63,15 +69,22 @@ main{
 .dropdown
 {
     position: absolute;
-    margin-left: 43px;
+    margin-left: 73px;
     margin-top: 6px;
     transition: 0.3s ease;   
 }
 
 .dropdown1{
     position: absolute;
-    margin-left: 53px;
-    margin-top: 6px;
+    margin-left: 138px;
+    margin-top: -22px;
+    transition: 0.3s ease;   
+}
+
+.dropdownopen1{
+    position: absolute;
+    margin-left: 144px;
+    margin-top: -22px;
     transition: 0.3s ease;   
 }
 
