@@ -1,0 +1,104 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+.container{
+    display: flex;
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 100vh;
+}
+
+main{
+    width: 100%;
+    padding: 20px;
+    height: 100%;
+    background-color: gray;
+    overflow-y: scroll;
+}
+
+main::-webkit-scrollbar{
+    display: none;
+}
+
+.sidebar{
+    background-color: burlywood;
+    color: black;
+    height: 100vh;
+}
+
+.top_section{
+    display: flex;
+    align-items: center;
+    padding: 20px 15px;
+}
+
+.logo{
+    font-size: 30px;
+}
+
+.bars{
+    font-size: 25px;
+    display: flex;
+}
+
+.link{
+    display: flex;
+    text-decoration: none;
+    padding: 10px 15px;
+    gap: 15px;
+    color:black;
+}
+
+.link:hover{
+    animation: zoom-in 1s ease-in-out;
+    color:white !important;
+}
+
+.active1{
+    font-weight: bold;
+    border-bottom: 1px solid black;
+}
+
+.icon,.text{
+    font-size: 20px;
+}
+
+.dropdown
+{
+    position: absolute;
+    margin-left: 73px;
+    margin-top: 6px;
+    transition: 0.3s ease;   
+}
+
+.dropdown1{
+    position: absolute;
+    margin-left: 138px;
+    margin-top: -22px;
+    transition: 0.3s ease;   
+}
+
+.dropdownopen1{
+    position: absolute;
+    margin-left: 144px;
+    margin-top: -22px;
+    transition: 0.3s ease;   
+}
+
+.sub_items{
+    text-decoration: none;
+    color: black;
+}
+
+.sub_list{
+    list-style: none;
+    padding: 5px;
+    margin-left: -30px;
+}
+
+.sub_menu{
+    margin-bottom: -30px;
+}

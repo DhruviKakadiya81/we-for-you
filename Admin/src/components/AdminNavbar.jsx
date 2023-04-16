@@ -1,6 +1,6 @@
 import {React,useState} from 'react';
-import "../css/AdminNavbar.css"
-import {FaBars,FaTh} from "react-icons/fa";
+import "../../src/css/AdminNavbar.css";
+//import {FaBars,FaTh} from "react-icons/fa";
 import {NavLink,Link, useLocation} from "react-router-dom";
 
 export const AdminNavbar = ({children}) => {
