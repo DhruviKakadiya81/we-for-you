@@ -48,7 +48,7 @@ export const Login = () => {
       <section className="d-flex flex-wrap" id="header">
         <div className="container-fluid p-5" style= {{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",marginTop:"100px",width:"50rem" }} >
           <div className="row">
-            <div className="col-8 mx-3">
+            <div className="col-8 mx-5">
               <div className="row">
               <div className="col-md-6 pt-5 p-5 pt-lg-0 order-1 order-lg-2 header-image" >
                 <img src="Images/login1.png" width={270} height={300} className="login-image" alt="" />
@@ -57,11 +57,11 @@ export const Login = () => {
                 <form action="" method="post" onSubmit={handleLogin}>
 
                   <h2 style={{ fontWeight: "700" }}>SIGN IN</h2>
-                  <i class="fa-solid fa-envelope fa-flip fa-xl" style={{marginRight:"-18px",position:"relative",left:"-30px",bottom:"-45px"}}></i>
+                  <i class="fa-solid fa-envelope fa-flip fa-xs" style={{marginRight:"-18px",position:"relative",left:"-30px",bottom:"0px" , color : "gray"}}></i>
 
                   <input
 
-                    className="mt-3"
+                    className="my-3 mt-5"
                     type="text"
                     placeholder="Enter your Email"
                     name="email"
@@ -71,7 +71,7 @@ export const Login = () => {
                   />
                   <br />
                   {/* <input type="password" placeholder='enter your password' name='password' onChange={event => setPass(event.target.value)} /><br /> */}
-                  <i class="fa-solid fa-lock fa-flip fa-xl" style={{marginRight:"-18px",position:"relative",left:"-30px",bottom:"-45px"}}></i>
+                  <i class="fa-solid fa-lock fa-flip fa-xs " style={{marginRight:"-18px",position:"relative",left:"-30px",bottom:"0px",  color : "gray"}}></i>
 
                   <input
                     type="password"
@@ -85,17 +85,21 @@ export const Login = () => {
                   <i
                     className={eye}
                     id="togglePassword"
-                    style={{ marginLeft: "-25px", cursor: "pointer" }}
+                    style={{ marginLeft: "-25px", cursor: "pointer"}}
                     onClick={handletogglepass}
 
                   ></i>
+                  <p><a href="/forget"  style={{textDecoration:"none"}}>Forget password?</a></p>
+
 
 
                   <button type="submit" className="p-2 my-3" value="register" style={{fontSize:"20px", borderRadius: "10px", backgroundColor: "rgb(212, 174, 126)", border: "none", width: "110px" }}>
                     Login
                   </button>
                   <br/>
-                  <p><a href="/forget">Forget password?</a></p>
+
+                  <p><a href="/register" style={{textDecoration:"none"}}>Don't Have An Account ?? </a></p>
+
                   <span>{message}</span>
                 </form>
 
