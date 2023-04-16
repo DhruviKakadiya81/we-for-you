@@ -8,6 +8,15 @@ const userSchema = new mongoose.Schema({
     password:{
         type:String,
         required:true
+    },
+    otp:{
+        type:Number,
+    },
+    time:{
+        type:Date,
+    },
+    forget_token:{
+        type:String,
     }
 });
 const userModel = new mongoose.model("User",userSchema);

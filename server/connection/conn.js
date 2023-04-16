@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
 mongoose.set('strictQuery', true);
-mongoose.connect("mongodb://127.0.0.1:27017/weForYou", {
+mongoose.connect("mongodb+srv://krupa_mavani:krupa_mavani@cluster0.2nt11bc.mongodb.net/we4u", {
         useNewUrlParser: true,
         useUnifiedTopology: true
-    }).then(() => { console.log("success"); })
-    .catch((err) => { console.log(err+"failure") });
+    }).then(() => { console.log("connection is successful"); })
+    .catch((err) => { console.log(err+" connection is failure") });
