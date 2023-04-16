@@ -45,7 +45,7 @@ export const Register = () => {
 <section className="d-flex flex-wrap" id="header">
         <div className="container-fluid p-5" style= {{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",marginTop:"100px",width:"50rem",overflowX:"hidden" }} >
           <div className="row">
-            <div className="col-8">
+            <div className="col-8 mx-5">
               <div className="row">
               <div className="col-md-6 pt-5 p-5 pt-lg-0 order-1 order-lg-2 header-image" >
                 <img src="Images/register1.png" width={270} height={300} className="login-image" alt=""/>
@@ -54,10 +54,10 @@ export const Register = () => {
                 <form action="" method="post" onSubmit={handleRegister}>
 
                   <h2 style={{ fontWeight: "700" }}>SIGN UP</h2>
-                  <i class="fa-solid fa-envelope fa-flip fa-xl" style={{marginRight:"-18px",position:"relative",left:"-30px",bottom:"-45px"}}></i>
+                  <i class="fa-solid fa-envelope fa-flip fa-xs" style={{marginRight:"-18px",position:"relative",left:"-30px",bottom:"0px" , color:"gray"}}></i>
 
                   <input
-           className="my-2 pt-3"
+           className="my-4 pt-3"
           type="text"
           placeholder="Enter Your Email"
           name="email"
@@ -70,7 +70,7 @@ export const Register = () => {
 
         
         <br />
-        <i class="fa-solid fa-lock fa-flip fa-xl" style={{marginRight:"-18px",position:"relative",left:"-30px",bottom:"-45px"}}></i>
+        <i class="fa-solid fa-lock fa-flip fa-xs" style={{marginRight:"-18px",position:"relative",left:"-30px",bottom:"0px" , color:"gray"}}></i>
 
         <input
           type="password"
@@ -78,7 +78,7 @@ export const Register = () => {
           placeholder="ENTER the password"
           onChange={(event) => setPass(event.target.value)}
           id="id_password"
-          className="my-2 pt-3"
+          className="my-0 pt-3"
 
           style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width:"100%"  }}
 
@@ -88,7 +88,9 @@ export const Register = () => {
         <i
           className={eye}
           id="togglePassword"
-          style={{ marginRight: "-50px",position:"relative",top:"-10px", cursor: "pointer" }}
+          // style={{ marginRight: "-13px",position:"relative",top:"-5px", cursor: "pointer" }}
+          style={{ marginLeft: "-25px", cursor: "pointer" , position:"relative"}}
+
           onClick={handletogglepass}
         ></i>
 
