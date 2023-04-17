@@ -7,16 +7,17 @@ export const AdminNavbar = ({children}) => {
   const location=useLocation();
   const[isOpen ,setIsOpen] = useState(true);
   const toggle = () => setIsOpen (!isOpen);
-  const[isDrop,setIsDrop]=useState();
-  const drop=()=>setIsDrop(true);
-  const[isDrop1,setIsDrop1]=useState();
-  const drop1=()=>setIsDrop1(true);
+  const[isDrop,setIsDrop]=useState(true);
+  const drop=()=>setIsDrop(!isDrop);
+  const[isDrop1,setIsDrop1]=useState(true);
+  const drop1=()=>setIsDrop1(!isDrop1);
   return (
-    <div className="container">
+  
 
-
-
-      <div style={{width: isOpen ? "230px" : "50px",height:"100vh"}} className="sidebar">
+      <>
+    
+      <div className="container-fluid">
+       <div style={{width: isOpen ? "230px" : "50px",height:"100vh"}} className="sidebar">
 
         <div className="top_section">
           <h1 style={{display: isOpen ? "block" : "none"}} className="logo">We4U</h1>
@@ -24,7 +25,7 @@ export const AdminNavbar = ({children}) => {
             <FaBars onClick={toggle} className="toggle-side"/>
           </div>
         </div>
-        <NavLink Link to="/dashboard" className={location.pathname==="/dashboard"?'active1 link':'link'}>
+        <NavLink  to="/" className={location.pathname==="/"?'active1 link':'link'}>
           <div className="icon">
           <i className="fa-solid fa-chart-line"></i>
           </div>
@@ -62,6 +63,7 @@ export const AdminNavbar = ({children}) => {
         </div>
       </div>
       <main>{children}</main>
-    </div>
+      </div>
+      </>
   )
 }
