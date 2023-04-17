@@ -23,8 +23,8 @@ export const Home = () => {
     <>
       <Navbar />
       <div className="home">
-        <div className="">
-          <div id="carouselExampleCaptions" className="carousel carousel-dark carousel-fade  slide" data-bs-ride="carousel">
+        <div className=""  >
+          <div id="carouselExampleCaptions" style={{ backgroundImage:"Images/homeimg1.jpg"}} className="carousel carousel-dark carousel-fade  slide" data-bs-ride="carousel">
             <div className="carousel-indicators">
               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -48,8 +48,8 @@ export const Home = () => {
                 </div>
               </div>
             </div>
-            <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <button className="carousel-control-prev" style={{backgroundColor:"burlywood" , width:"50px" , height:"50px" , borderRadius:"50%" , marginTop:"280px" , marginLeft:"75px"}} type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+              <span  style={{   color:"pink",  width:"30px"}} className="carousel-control-prev-icon"  aria-hidden="true"></span>
               <span className="visually-hidden">Previous</span>
             </button>
             <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
