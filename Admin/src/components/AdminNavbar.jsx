@@ -42,6 +42,8 @@ export const AdminNavbar = ({children}) => {
               <li className='sub_list'><NavLink to="#" className={location.pathname==='#'?"active1 sub_items":"sub_items"}>Manage ServiceProvider</NavLink></li>
               <li className='sub_list'><NavLink to="#" className={location.pathname==='#'?"active1 sub_items":"sub_items"}>Manage City</NavLink></li>
               <li className='sub_list'><NavLink to="#" className={location.pathname==='#'?"active1 sub_items":"sub_items"}>Manage Area</NavLink></li>
+              <li className='sub_list'><NavLink to="#" className={location.pathname==='#'?"active1 sub_items":"sub_items"}>Manage Area</NavLink></li>
+              <li className='sub_list'><NavLink to="#" className={location.pathname==='#'?"active1 sub_items":"sub_items"}>Manage Area</NavLink></li>
             </ul>
           </div>
           </div>

@@ -5,7 +5,7 @@ const AdminManageService = () => {
   return (
     <AdminNavbar>
           <div>
-      this is AdminManageService  this is AdminManageService  this is AdminManageService  this is AdminManageService this is AdminManageService  this is AdminManageService this is AdminManageService this is AdminManageService
+      this is AdminManageService
     </div>
     </AdminNavbar>
   
