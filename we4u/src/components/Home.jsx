@@ -4,12 +4,14 @@ import '../css/Home.css';
 import showservice from '../services/Services';
 import { useState } from 'react';
 import { useEffect } from 'react';
+
 export const Home = () => {
   const [service, setService] = useState([]);
   var ser;
   const fetchSer = async (event) => {
     // event.prventDefault();
     ser = await showservice.getservice();
+    console.log("services : ",ser);
     console.log("data :", ser.data.data[0].s_name);
     setService(ser);
     // console.log("data2 :", service.data.data.length);
@@ -70,7 +72,7 @@ export const Home = () => {
               {service.data.data.map(product => (
                
                   <div className="card mx-2" style={{ width: "10rem" }} >
-                  <img src="..." className="card-img-top" alt="..." />
+                  <img src={'http://localhost:4000/image/'+ product.s_icon} className="card-img-top" alt="..." />
                   <div className="card-body">
                     <h6 className="card-title"> {product.s_name}</h6>
                   </div>

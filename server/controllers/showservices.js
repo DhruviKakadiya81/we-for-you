@@ -15,13 +15,16 @@ const getservices = async(req,res)=>{
 
 const addservices = async(req,res)=>{
     try {
+        console.log("data :== ",req.body);
         const serviceData = new service({
             s_name : req.body.s_name,
-            s_icon : req.body.s_icon
+            s_icon : req.file.filename
         });
         const ser_result = await serviceData.save();
+        res.send({success:true,msg:"data"});
         console.log(ser_result);
     } catch (error) {
+        res.send({success:false,msg:"data"});
         console.log(error);
     }
 
