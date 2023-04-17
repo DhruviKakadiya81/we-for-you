@@ -60,20 +60,22 @@ export const Home = () => {
         </div>
         <section className="services1">
           
-          <h1>Our Services</h1>
+          <h1 className='serviceh1'> # Our Services #</h1>
        
           
            
           {service.data != undefined && service.data.data.length > 0 && (
             <section className="services">
-                 <div class="d-flex flex-wrap justify-content-center">
+                 <div class="d-flex flex-wrap justify-content-center ">
               {service.data.data.map(product => (
                
-                  <div className="card mx-2" style={{ width: "10rem" }} >
+               <div className='row p-3 '>
+                  <div className="card  " style={{ width: "10rem" , boxShadow:"rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset"}} >
                   <img src="..." className="card-img-top" alt="..." />
                   <div className="card-body">
                     <h6 className="card-title"> {product.s_name}</h6>
                   </div>
+                </div>
                 </div>
                 
               ))}

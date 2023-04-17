@@ -18,7 +18,12 @@
 
 .services{
  padding: 2rem;
- background-color: #cbbaa0;
+ /* background-color: #cbbaa0; */
 
+}
+
+.serviceh1{
+   text-align: center;
+   margin-top: 10px;
 }
 
