@@ -1,11 +1,35 @@
 import React from 'react'
 import { AdminNavbar } from './AdminNavbar'
+import "../../src/css/AddServices.css"
+import { useState } from 'react'
 
 const AdminManageService = () => {
+  const [s_name, setsname] = useState('');
+  const [s_icon, sets_icon] = useState('');
+
+  const handleAddServices = (event)=>{
+    event.preventDefault();
+    const addser = { s_name , s_icon };
+    alert(addser);
+    
+    
+
+  }
   return (
     <AdminNavbar>
-          <div>
-      this is AdminManageService
+    <div>
+     <h1>
+      add services
+     </h1>
+     <div className="container add_services">
+     <form action="" method="post" onSubmit={handleAddServices} >
+      <input type="text" name="s_name" placeholder='Enter the service name' onChange={(event)=>setsname(event.target.value)}/><br />
+      <input type="file" name="s_icon" id="" placeholder='choose the image' onChange={(event)=>sets_icon(event.target.value)}/><br/>
+      <button type='submit'>add</button>
+     </form>
+
+     </div>
+     
     </div>
     </AdminNavbar>
   

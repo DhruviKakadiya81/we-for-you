@@ -12,6 +12,14 @@ const AdminDashboard = () => {
     Dashboard page
     Dashboard page
     Dashboard page
+    Dashboard page
+    Dashboard page
+    Dashboard page
+    Dashboard page
+    Dashboard page
+    Dashboard page
+    Dashboard page
+    Dashboard page
     </div>
  </AdminNavbar>
 
