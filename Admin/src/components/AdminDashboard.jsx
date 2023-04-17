@@ -6,12 +6,8 @@ const AdminDashboard = () => {
   return (
     
    <AdminNavbar>
-   <div style={{backgroundColor:"red",height:"1500px"}}>
-    hello
-    Dashboard page
-    Dashboard page
-    Dashboard page
-    Dashboard page
+   <div style={{height:"1500px",backgroundColor:"red"}}>
+    hello Dashboard pageDashboard pageDashboard pageDashboard pageDashboard pageDashboard pageDashboard pageDashboard page   Dashboard page Dashboard page Dashboard page Dashboard page Dashboard page Dashboard page Dashboard page Dashboard page Dashboard page
     </div>
  </AdminNavbar>
 

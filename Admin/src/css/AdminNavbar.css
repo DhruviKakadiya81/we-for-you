@@ -4,11 +4,12 @@
     text-decoration: none;
 }
 
-.container{
+.container-fluid{
     display: flex;
     padding: 0 !important;
     margin: 0 !important;
     height: 100vh;
+    width:100%;
 }
 
 main{
@@ -72,28 +73,22 @@ main::-webkit-scrollbar{
 .dropdown
 {
     position: absolute;
-    margin-left: 138px;
+    margin-left: 145px;
     margin-top: -22px;
     transition: 0.3s ease;   
 }
 
 .dropdown1{
     position: absolute;
-    margin-left: 138px;
+    margin-left: 152px;
     margin-top: -22px;
     transition: 0.3s ease;   
-}
-
-.dropdownopen1{
-    position: absolute;
-    margin-left: 144px;
-    margin-top: -22px;
-    transition:  0.3s ease;   
 }
 
 .sub_items{
     text-decoration: none;
     color: black;
+    font-size: 15px;
 }
 
 .sub_list{
@@ -104,4 +99,8 @@ main::-webkit-scrollbar{
 
 .sub_menu{
     margin-bottom: -30px;
+}
+
+@media (max-width:677px) {
+    
 }
