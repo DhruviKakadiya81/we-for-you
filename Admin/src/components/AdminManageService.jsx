@@ -16,14 +16,14 @@ const AdminManageService = () => {
   return (
     <AdminNavbar>
     <div className='add_service_container px-5'>
-     <p className="add_services_Heading mt-5">
+     <p className="add_services_Heading pt-5">
       Add services
      </p>
      <div className="add_services mx-5 px-5">
      <form action="" method="post" onSubmit={handleAddServices} >
-      <input type="text" name="s_name" placeholder='Enter the service name' onChange={(event)=>setsname(event.target.value)} className='Ser_name mx-5 my-3 mt-5'/><br />
-      <input type="file" name="s_icon" placeholder='choose the image' onChange={(event)=>sets_icon(event.target.value)} className='Ser_image mx-5 my-3'/><br/>
-      <button type='submit' className='add_btn mx-5 px-5 my-5'>Add Service</button>
+      <input type="text" name="s_name" placeholder='Enter the service name' onChange={(event)=>setsname(event.target.value)} className='Ser_name my-4 mt-4'/><br />
+      <input type="file" name="s_icon" placeholder='choose the image' onChange={(event)=>sets_icon(event.target.value)} className='Ser_image my-4'/><br/>
+      <button type='submit' className='add_btn mx-5 px-5 my-3'>Add Service</button>
      </form>
      </div>     
     </div>
