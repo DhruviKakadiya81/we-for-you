@@ -1,4 +1,45 @@
-.add_services{
+
+/* .add_services{
     margin: auto;
-    background-color: antiquewhite;
+} */
+
+.add_services_Heading{
+    font-size: 35px;
+    text-align: center;
+    font-weight: 500;
+    color: white;
 }
+
+.add_service_container{
+    text-align: center;
+    background-color: rgb(83, 81, 81);
+    height: 94vh;
+}
+
+.Ser_name{
+    text-align: center;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid white;
+    color: white;
+}
+
+.Ser_name::placeholder{
+    color: white    ;
+}
+
+.Ser_image{
+    color: white;
+    text-align: center;
+}
+
+.add_btn{
+   text-align: center;
+   background-color: white;
+   color: rgb(50, 50, 50);
+   height: 57px;
+   width: 210px;
+   font-size: 20px;
+}
+

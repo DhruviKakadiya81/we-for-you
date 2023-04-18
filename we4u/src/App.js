@@ -9,12 +9,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import { Forget } from './components/Forget';
 import { Verify } from './components/Verify';
-import { AdminNavbar } from "./components/AdminNavbar";
-import AdminDashboard from "./components/AdminDashboard";
 import { Home } from "./components/Home";
-import AdminManageService from "./components/AdminManageService";
-import AdminManageCustomers from "./components/AdminManageCustomers";
+
+
 import About from "./components/About";
+
 
 function App() {
   return (
@@ -24,7 +23,7 @@ function App() {
       {/* <Navbar /> */}
       <Routes>
        
-        <Route path="/dashboard" element={<AdminDashboard />}></Route>
+        
         <Route path="/" element={<Home/>}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/login" element={<Login />}></Route>
@@ -32,11 +31,12 @@ function App() {
         <Route path="/forget" element={<Forget/>}></Route>
         {/* <Route path="/about" element={<about/>}></Route>  */}
         <Route path="/logout" element={<Home/>}></Route>
+
         <Route path="/about" element={<About/>}></Route>
 
-        <Route path="/adminmanageservice" element={<AdminManageService/>}></Route>
-        <Route path="/adminmanagecustomer" element={<AdminManageCustomers/>}></Route>
+       
         
+
       </Routes>
       </Router>
     </>

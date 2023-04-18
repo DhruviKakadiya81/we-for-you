@@ -1,7 +1,7 @@
-.container{
+form{
+    /* height: 500px; */
+    /* width: 500px; */
     margin: auto;
-    width: calc(100%-30px);
-    background-color: aqua;
-    position: relative;
-    right: 0 !important;
+    margin-top: 100px;
+    /* background-color: aqua; */
 }
