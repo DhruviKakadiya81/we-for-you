@@ -1,6 +1,6 @@
 import React from 'react'
-import { AdminNavbar } from '../../../we4u/src/components/AdminNavbar'
-import '../../../Admin/src/css/ShowServices.css'
+import { AdminNavbar } from '../../../Admin/src/components/AdminNavbar'
+// import '../../../Admin/src/css/ShowServices.css'
 export const ShowServices = () => {
   return (
     <AdminNavbar>
