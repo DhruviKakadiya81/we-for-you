@@ -29,9 +29,7 @@ const AdminManageService = () => {
       <input type="file" name="s_icon" id="" placeholder='choose the image' onChange={(event)=>sets_icon(event.target.files[0])}/><br/>
       <button type='submit'>add</button>
      </form>
-
-     </div>
-     
+     </div>   
     </div>
     </AdminNavbar>
   
