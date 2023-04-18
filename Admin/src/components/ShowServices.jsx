@@ -1,10 +1,15 @@
 import React from 'react'
+
 import { AdminNavbar } from '../components/AdminNavbar';
 import '../../../Admin/src/css/ShowServices.css'
 import showservice from '../../../we4u/src/services/Services';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import delser from '../services/addservice';
+
+import { AdminNavbar } from '../../../Admin/src/components/AdminNavbar'
+// import '../../../Admin/src/css/ShowServices.css'
+
 export const ShowServices = () => {
   const [service, setService] = useState([]);
   
