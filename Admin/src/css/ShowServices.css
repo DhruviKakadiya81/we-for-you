@@ -1,0 +1,7 @@
+.container{
+    margin: auto;
+    width: calc(100%-30px);
+    background-color: aqua;
+    position: relative;
+    right: 0 !important;
+}
