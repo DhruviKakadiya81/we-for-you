@@ -19,11 +19,13 @@ const AdminManageService = () => {
   }
   return (
     <AdminNavbar>
-    <div>
-     <h1>
-      add services
-     </h1>
-     <div className="container-fluid add_services">
+
+
+    <div className='add_service_container px-5'>
+     <p className="add_services_Heading pt-5">
+      Add services
+     </p>
+     <div className="add_services mx-5 px-5">
      <form action="" method="post" onSubmit={handleAddServices} >
       <input type="text" name="s_name" placeholder='Enter the service name' onChange={(event)=>setsname(event.target.value)}/><br />
       <input type="file" name="s_icon" id="" placeholder='choose the image' onChange={(event)=>sets_icon(event.target.files[0])}/><br/>
