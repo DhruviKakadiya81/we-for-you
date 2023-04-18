@@ -1,6 +1,7 @@
 import React from 'react'
 import { AdminNavbar } from './AdminNavbar'
 import "../../src/css/AddServices.css"
+import { FormControl, FormGroup, Input, InputLabel, Typography, Button } from '@mui/material';
 import { useState } from 'react'
 import addserv from '../services/addservice';
 
@@ -23,15 +24,15 @@ const AdminManageService = () => {
                     <Typography variant="h4" className='add_ser_heading'>Add Service</Typography>
                     {/* <Stack direction="horizontal" gap={2}> */}
                     <div className='mt-5 mx-auto'>
-                                <FormControl className='mb-3 detail_container'>
+                                <FormControl className='mb-3 detail_container'  >
                                     <InputLabel className='mx-3' >Enter Service Name</InputLabel>
-                                    <Input type="text" name="name" className='mx-3 my-3'  />
+                                    <Input type="text" name="name" onChange={(event)=>setsname(event.target.value)} className='mx-3 my-3'  />
                                     </FormControl><br/>
                                     <FormControl className='mb-3 detail_container'>
-                                    <Input type='file' name='image' className='mx-3 my-3 ser_image' style={{borderBottom:"none"}}/>
+                                    <Input type='file' name='image' onChange={(event)=>sets_icon(event.target.files[0])} className='mx-3 my-3 ser_image' style={{borderBottom:"none"}}/>
                                     </FormControl><br/>
                                     <FormControl className='mb-3 mx-auto'>
-                                    <Button className='add_btn my-3 px-5 py-3' style={{backgroundColor:"rgb(50,50,50)",color:"white",marginLeft:"150px"}}>Add Agent</Button>
+                                    <Button type='submit' className='add_btn my-3 px-5 py-3 ' onClick={handleAddServices} style={{backgroundColor:"rgb(50,50,50)",color:"white",marginLeft:"150px"}}>Add Agent</Button>
                                 </FormControl>
                     </div>
                     {/* </Stack> */}
@@ -40,7 +41,7 @@ const AdminManageService = () => {
 
 
 
-     <p className="add_services_Heading pt-5">
+     {/* <p className="add_services_Heading pt-5">
       Add services
      </p>
      <div className="add_services mx-5 px-5">
@@ -52,7 +53,7 @@ const AdminManageService = () => {
       <button type='submit' className='add_btn mx-5 px-5 my-3'>Add Service</button>
      </form>
      </div>     
-    </div> */}
+    </div> */} 
 
     </AdminNavbar>
   
