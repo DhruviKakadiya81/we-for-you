@@ -3,15 +3,18 @@ import { AdminNavbar } from './AdminNavbar'
 import "../../src/css/AddServices.css"
 import { useState } from 'react';
 import { FormControl, FormGroup, Input, InputLabel, Typography, Button } from '@mui/material';
+import addserv from '../services/addservice';
 
 const AdminManageService = () => {
   const [s_name, setsname] = useState('');
   const [s_icon, sets_icon] = useState('');
 
-  const handleAddServices = (event)=>{
+  const handleAddServices = async(event)=>{
     event.preventDefault();
     const addser = { s_name , s_icon };
     alert(addser);
+    const respo = await addserv.create(addser);
+    alert(respo);
   }
   return (
     <AdminNavbar>

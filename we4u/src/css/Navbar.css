@@ -6,8 +6,12 @@ html{
 #main_div_nav
 {
     background-color:rgb(212, 174, 126) !important;
+    height: 70px;
 }
 
+.nav-item {
+  margin-bottom:15px;
+}
 
 .navbar a{
     font-size: 1.3rem;

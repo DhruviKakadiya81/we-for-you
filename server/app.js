@@ -7,6 +7,7 @@ const route = require("./routes/routes");
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
+app.use(express.static('./public'));
 app.use("/",route);
 app.get("/",(req,res)=>{
     res.send("hello this is me");
