@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import delser from '../services/addservice';
 
-import { AdminNavbar } from '../../../Admin/src/components/AdminNavbar'
+// import { AdminNavbar } from '../../../Admin/src/components/AdminNavbar'
 // import '../../../Admin/src/css/ShowServices.css'
 
 export const ShowServices = () => {
