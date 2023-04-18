@@ -18,6 +18,7 @@ const AdminManageService = () => {
   }
   return (
     <AdminNavbar>
+
     <div className='add_service_container px-5'>
      <p className="add_services_Heading pt-5">
       Add services
