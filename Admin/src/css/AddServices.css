@@ -1,43 +1,24 @@
-/* .add_services{
-    margin: auto;
-} */
-
-.add_services_Heading{
-    font-size: 35px;
+.add_ser_heading{
     text-align: center;
+    font-size: 20px;
     font-weight: 500;
-    color: white;
+    padding-top: 60px;
 }
 
-.add_service_container{
-    text-align: center;
-    background-color: rgb(83, 81, 81);
-    height: 94vh;
+.detail_container{
+   width: 500px;
 }
 
-.Ser_name{
-    text-align: center;
+.ser_image{
     outline: none;
-    border: none;
-    background-color: transparent;
-    border-bottom: 1px solid white;
-    color: white;
+    border-bottom: none;
 }
 
-.Ser_name::placeholder{
-    color: white    ;
-}
-
-.Ser_image{
-    color: white;
-    text-align: center;
-}
-
-.add_btn{
-   text-align: center;
-   background-color: white;
-   color: rgb(50, 50, 50);
-   height: 57px;
-   width: 210px;
-   font-size: 20px;
+.main_container{
+    background-color: white;
+    border-radius: 18px;
+    box-shadow:rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+    height: 450px;
+    width: 700px;
+    margin-top: 80px;
 }

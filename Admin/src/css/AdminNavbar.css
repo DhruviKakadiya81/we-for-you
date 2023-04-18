@@ -147,6 +147,8 @@ main {
     color: #fff;
     height: 100vh;
     transition: all 0.5s; 
+    border-top-right-radius: 15px;
+    /* border-bottom-right-radius:10px; */
 }
 
 .top_section {
