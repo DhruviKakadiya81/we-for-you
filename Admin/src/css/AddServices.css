@@ -1,0 +1,30 @@
+/* .add_services{
+    margin: auto;
+} */
+
+.add_services_Heading{
+    font-size: 35px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.add_service_container{
+    text-align: center;
+    background-color: rgb(153, 164, 181);
+}
+
+.Ser_name{
+    outline: none;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid black;
+}
+
+.add_btn{
+   text-align: center;
+   background-color: rgb(50, 50, 50);
+   color: white;
+   height: 57px;
+   width: 210px;
+   font-size: 20px;
+}

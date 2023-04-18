@@ -7,7 +7,7 @@ const AdminDashboard = () => {
     
    <AdminNavbar>
    <div style={{height:"1500px",backgroundColor:"red"}}>
-    hello Dashboard pageDashboard pageDashboard pageDashboard pageDashboard pageDashboard pageDashboard pageDashboard page   Dashboard page Dashboard page Dashboard page Dashboard page Dashboard page Dashboard page Dashboard page Dashboard page Dashboard page
+    hello Dashboard pageDashboard pageDashboard pageDashboard pageDashboard page
     </div>
  </AdminNavbar>
 
