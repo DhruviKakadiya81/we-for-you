@@ -11,6 +11,10 @@ import { Forget } from './components/Forget';
 import { Verify } from './components/Verify';
 import { Home } from "./components/Home";
 
+
+import About from "./components/About";
+
+
 function App() {
   return (
     <>
@@ -25,8 +29,14 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/cart" element={<Authpage />}></Route>
         <Route path="/forget" element={<Forget/>}></Route>
-        <Route path="/verify" element={<Verify/>}></Route> 
+        {/* <Route path="/about" element={<about/>}></Route>  */}
         <Route path="/logout" element={<Home/>}></Route>
+
+        <Route path="/about" element={<About/>}></Route>
+
+       
+        
+
       </Routes>
       </Router>
     </>

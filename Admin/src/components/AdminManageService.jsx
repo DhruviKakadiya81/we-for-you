@@ -18,7 +18,6 @@ const AdminManageService = () => {
   }
   return (
     <AdminNavbar>
-
     <FormGroup className='main_container mx-auto'>
                     <Typography variant="h4" className='add_ser_heading'>Add Service</Typography>
                     {/* <Stack direction="horizontal" gap={2}> */}
