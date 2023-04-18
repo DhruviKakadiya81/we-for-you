@@ -48,14 +48,14 @@ export const AdminNavbar = ({children}) => {
         </div>
         <div className="link">
           <div className="icon">
-          <i class="fa-solid fa-list-check"></i>
+          <i className="fa-solid fa-list-check"></i>
           </div>
           <div style={{display: isOpen ? "block" : "none"}} className="text">Show<br/>
           <i className="fas fa-angle-right dropdownopen1" onClick={drop1} style={{display:isDrop1?"none":"block"}}></i>
           <i className="fa-solid fa-chevron-down dropdown1" onClick={drop1} style={{display:isDrop1?"block":"none"}}></i>  
           <div className="sub_menu" style={{display:isDrop1?"block":"none"}}>
             <ul>
-              <li className='sub_list'><NavLink to="/adminmanageservice" className={location.pathname==='/adminmanageservice'?"active1 sub_items":"sub_items"}>first</NavLink></li>
+              <li className='sub_list'><NavLink to="/showservice" className={location.pathname==='/showservice'?"active1 sub_items":"sub_items"}>first</NavLink></li>
               <li className='sub_list'><NavLink to="/adminmanagecustomer" className={location.pathname==='/adminmanagecustomer'?"active1 sub_items":"sub_items"}>second</NavLink></li>
             </ul>
           </div>
