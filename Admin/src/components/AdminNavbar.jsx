@@ -2,22 +2,11 @@ import React, { useState } from 'react';
 import {
     FaTh,
     FaBars,
-    FaPlusSquare,
-    FaListAlt,
-    FaUsers,
-    FaMailchimp,
-    FaUserPlus,
-    FaMailBulk,
-    FaMale,
     FaTable,
-    FaAngleRight,
-    FaChevronRight,
-    FaChevronDown,
     FaCaretDown,
     FaCaretRight,
-    FaServicestack,
 } from "react-icons/fa";
-import "../css/AdminNavbar.css"
+// import "../../../Admin/src/css/AdminNavbar.css"
 import { NavLink,Link, useLocation } from 'react-router-dom';
 
 export const AdminNavbar = ({ children }) => {
@@ -80,6 +69,3 @@ export const AdminNavbar = ({ children }) => {
         </>
     );
 };
-
-
-
