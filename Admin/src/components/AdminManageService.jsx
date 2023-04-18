@@ -23,7 +23,7 @@ const AdminManageService = () => {
      <form action="" method="post" onSubmit={handleAddServices} >
       <input type="text" name="s_name" placeholder='Enter the service name' onChange={(event)=>setsname(event.target.value)} className='Ser_name mx-5 my-3 mt-5'/><br />
       <input type="file" name="s_icon" placeholder='choose the image' onChange={(event)=>sets_icon(event.target.value)} className='Ser_image mx-5 my-3'/><br/>
-      <button type='submit' className='add_btn mx-5 px-5 my-5'>Add</button>
+      <button type='submit' className='add_btn mx-5 px-5 my-5'>Add Your Service</button>
      </form>
      </div>     
     </div>
