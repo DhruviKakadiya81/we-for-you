@@ -1,4 +1,4 @@
-/* *{
+ /* *{
     margin: 0;
     padding: 0;
     text-decoration: none;
@@ -16,9 +16,9 @@ main{
     width: 100%;
     padding: 20px;
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: scroll; */
     /* display: flex; */
-}
+/* }
 
 main::-webkit-scrollbar{
     display: none;
@@ -108,6 +108,9 @@ main::-webkit-scrollbar{
 } */
 
 
+
+
+
 * {
     margin: 0;
     padding: 0;
@@ -130,13 +133,6 @@ main {
     overflow-x: hidden;
 }
 
-/* .main_container{
-    width: 100%;
-    padding: 20px;
-    background-color: pink;
-    overflow-y: scroll;
-} */
-
 .main::-webkit-scrollbar{
     display: none;
 }
@@ -148,7 +144,6 @@ main {
     height: 100vh;
     transition: all 0.5s; 
     border-top-right-radius: 15px;
-    /* border-bottom-right-radius:10px; */
 }
 
 .top_section {
@@ -197,4 +192,5 @@ main {
 .sub_items{
     font-size: 17px;
     color: white;
+    text-decoration: none;
 }
