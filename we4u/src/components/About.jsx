@@ -98,7 +98,7 @@ We4U has revolutionized the home services industry by providing a convenient and
 </div>
 
 <br /><br />
-<h2>How we do it</h2>
+<h2>How we Do it</h2>
 <br />
 <p>We4U provide customer-centric approach, where it ensures a seamless experience for customers. Customers can also rate and review the service providers, which helps maintain service quality and build trust among customers.
 <br /><br />
