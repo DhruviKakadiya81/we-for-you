@@ -19,7 +19,7 @@ export const Home = () => {
   useEffect((event) => {
     
     fetchSer();
-  },[]);
+  },[service]);
   return (
     <>
       <Navbar />
@@ -32,23 +32,23 @@ export const Home = () => {
               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
             <div className="carousel-inner">
-              <div className="carousel-item active outer-slider" data-bs-interval="2000">
+              <div className="carousel-item active outer-slider" data-bs-interval="2000" style={{height:"80vh"}}>
                 {/* <img src="Images/homeimg1.jpg" className="d-block mainpost img-fluid" alt="..." /> */}
-                <video src="images/v1.mp4" width="1500" height="700" muted autoPlay  controls={false} alt="hello"></video>
+                <video src="images/v2.mp4" id="myVideo" muted autoPlay  controls={false}  alt="hello"></video>
    
                 <div className="carousel-caption d-none d-md-block">
                 </div>
               </div>
-              <div className="carousel-item  outer-slider" style={{width:"100vw" , height:"80vh" , objectFit:"contain"}}>
+              <div className="carousel-item  outer-slider" style={{height:"80vh"}}>
                 {/* <img src="Images/homeimg1.jpg" className="d-block mainpost img-fluid" alt="..." /> */}
-                <video src="images/v2.mp4"  style={{background:"center"}} muted autoPlay  controls={false} alt="hello"></video>
+                <video src="images/v2.mp4"  style={{objectFit:"cover",width:"100%"}} muted autoPlay  controls={false} alt="hello"></video>
 
                 <div className="carousel-caption d-none d-md-block">
                 </div>
               </div>
-              <div className="carousel-item  outer-slider">
+              <div className="carousel-item  outer-slider" style={{height:"80vh"}}>
                 {/* <img src="Images/electrician.jpg" className="d-block mainpost img-fluid" alt="..." /> */}
-                <video src="images/v1.mp4"  muted autoPlay   controls={false} alt="hello"></video>
+                <video src="images/v2.mp4"  style={{objectFit:"cover",width:"100%"}} muted autoPlay   controls={false} alt="hello"></video>
 
                 <div className="carousel-caption d-none d-md-block">
 
@@ -76,7 +76,7 @@ export const Home = () => {
            
           {service.data != undefined && service.data.data.length > 0 && (
             <section className="services">
-                 <div class="d-flex flex-wrap justify-content-center ">
+                 <div class="d-flex flex-wrap justify-content-center">
               {service.data.data.map(product => (
                
                <div className='row p-3 '>
