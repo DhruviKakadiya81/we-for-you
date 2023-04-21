@@ -39,7 +39,7 @@ export const Home = () => {
                 <div className="carousel-caption d-none d-md-block">
                 </div>
               </div>
-              <div className="carousel-item  outer-slider" style={{width:"1000px" , height:"80vh"}}>
+              <div className="carousel-item  outer-slider" style={{width:"100vw" , height:"80vh" , objectFit:"contain"}}>
                 {/* <img src="Images/homeimg1.jpg" className="d-block mainpost img-fluid" alt="..." /> */}
                 <video src="images/v2.mp4"  style={{background:"center"}} muted autoPlay  controls={false} alt="hello"></video>
 
@@ -81,7 +81,7 @@ export const Home = () => {
                
                <div className='row p-3 '>
                   <div className="card  " style={{ width: "10rem" , boxShadow:"rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset"}} >
-                  <img src="..." className="card-img-top" alt="..." />
+                  <img src={'http://localhost:4000/image/' + product.s_icon} className="card-img-top" alt="..." />
                   <div className="card-body">
                     <h6  className="card-title"> {product.s_name}</h6>
                   </div>

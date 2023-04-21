@@ -1,69 +1,71 @@
-import {React,useState} from 'react';
-import "../css/AdminNavbar.css"
-import {FaBars,FaTh} from "react-icons/fa";
-import {NavLink,Link, useLocation} from "react-router-dom";
+import React, { useState } from 'react';
+import {
+    FaTh,
+    FaBars,
+    FaTable,
+    FaCaretDown,
+    FaCaretRight,
+} from "react-icons/fa";
+// import "../../../Admin/src/css/AdminNavbar.css"
+import { NavLink,Link, useLocation } from 'react-router-dom';
 
-export const AdminNavbar = ({children}) => {
+export const AdminNavbar = ({ children }) => {
   const location=useLocation();
-  const[isOpen ,setIsOpen] = useState(true);
-  const toggle = () => setIsOpen (!isOpen);
-  const[isDrop,setIsDrop]=useState(true);
+  const[isDrop,setIsDrop]=useState(false);
   const drop=()=>setIsDrop(!isDrop);
-  const[isDrop1,setIsDrop1]=useState(true);
+  const[isDrop1,setIsDrop1]=useState(false);
   const drop1=()=>setIsDrop1(!isDrop1);
-  return (
-  
-
+    const [isOpen, setIsOpen] = useState(true);
+    const toggle = () => setIsOpen(!isOpen);
+    return (
       <>
-    
-      <div className="container-fluid">
-       <div style={{width: isOpen ? "230px" : "50px",height:"100vh"}} className="sidebar">
-
-        <div className="top_section">
-          <h1 style={{display: isOpen ? "block" : "none"}} className="logo">We4U</h1>
-          <div style={{marginLeft: isOpen ? "90px" : "0px"}} className="bars">
-            <FaBars onClick={toggle} className="toggle-side"/>
-          </div>
+        <div className="container-fluid">
+            <div style={{ width: isOpen ? "235px" : "65px",height:"100vh"}} className="sidebar">
+                <div className="top_section">
+                    <h1 style={{ display: isOpen ? "block" : "none" }} className="logo">We4U</h1>
+                    <div style={{ marginLeft: isOpen ? "98px" : "7px" }} className="bars">
+                        <FaBars onClick={toggle} />
+                    </div>
+                </div>
+                  <NavLink to="/" className="link">
+                    <div className="icon"><FaTh/></div>
+                    <div style={{ display: isOpen ? "block" : "none" }} className="link_text">Dashboard</div>
+                  </NavLink>
+                  <div className="link">
+                    <div className="icon">
+                      <FaTable/>
+                    </div>
+                    <div className="link_text" style={{ display: isOpen ? "block" : "none" }}>Manage 
+                    <FaCaretDown onClick={drop} style={{display:isDrop?"block":"none"}} className='dropdownclose'/>
+                    <FaCaretRight onClick={drop} style={{display:isDrop?"none":"block"}} className='dropdown'/>
+                    <div className="sub_menu mt-3" style={{display:isDrop?"block":"none"}}>
+                      <div className="sub_list px-1 py-2"><NavLink to="/adminmanageservice" className="sub_items">Manage Services</NavLink></div>
+                      <div className="sub_list px-1 py-2"><NavLink to="/adminmanagecustomer" className="sub_items">Manage Customers</NavLink></div>
+                      <div className="sub_list px-1 py-2"><NavLink to="#" className="sub_items">Manage ServiceProvider</NavLink></div>
+                    </div>
+                    </div>
+                  </div>
+                  <div className="link">
+                    <div className="icon">
+                      <FaTable/>
+                    </div>
+                    <div className="link_text" style={{ display: isOpen ? "block" : "none" }}>Show 
+                    <FaCaretDown onClick={drop1} style={{display:isDrop1?"block":"none"}} className='dropdown1close'/>
+                    <FaCaretRight onClick={drop1} style={{display:isDrop1?"none":"block"}} className='dropdown1'/>
+                    <div className="sub_menu mt-3" style={{display:isDrop1?"block":"none"}}>
+                      <div className="sub_list px-1 py-2"><NavLink to="/showservice" className="sub_items">Show Services</NavLink></div>
+                      <div className="sub_list px-1 py-2"><NavLink to="#" className="sub_items">Show Customers</NavLink></div>
+                      <div className="sub_list px-1 py-2"><NavLink to="#" className="sub_items">Show ServiceProvider</NavLink></div>
+                    </div>
+                    </div>
+                  </div>
+            </div>
+            <main>{children}</main>
+            {/* <div className='main_container' style={{ width: isOpen ? "calc(1570px - 270px)" : "calc(1535px - 65px)",height:"100vh"}}>
+            <div className='main_container'>
+            {children}
+            </div> */}
         </div>
-        <NavLink  to="/" className={location.pathname==="/"?'active1 link':'link'}>
-          <div className="icon">
-          <i className="fa-solid fa-chart-line"></i>
-          </div>
-          <div style={{display: isOpen ? "block" : "none"}} className="text">Dashboard</div>
-        </NavLink>
-        <div className="link">
-          <div className="icon">
-          <i class="fa-solid fa-list-check"></i>
-          </div>
-          <div style={{display: isOpen ? "block" : "none"}} className="text">Manage
-          <i className="fas fa-angle-right dropdown" onClick={drop}style={{display:isDrop?"none":"block"}}></i>  
-          <i className="fa-solid fa-chevron-down dropdown" onClick={drop} style={{display:isDrop?"block":"none"}}></i>  
-          <div className="sub_menu"  style={{display:isDrop?"block":"none"}}>
-            <ul>
-              <li className='sub_list'><NavLink to="/adminmanageservice" className={location.pathname==='/adminmanageservice'?"active1 sub_items":"sub_items"}>first</NavLink></li>
-              <li className='sub_list'><NavLink to="/adminmanagecustomer" className={location.pathname==='/adminmanagecustomer'?"active1 sub_items":"sub_items"}>second</NavLink></li>
-            </ul>
-          </div>
-          </div>
-        </div>
-        <div className="link">
-          <div className="icon">
-          <i className="fa-solid fa-list-check"></i>
-          </div>
-          <div style={{display: isOpen ? "block" : "none"}} className="text">Show<br/>
-          <i className="fas fa-angle-right dropdownopen1" onClick={drop1} style={{display:isDrop1?"none":"block"}}></i>
-          <i className="fa-solid fa-chevron-down dropdown1" onClick={drop1} style={{display:isDrop1?"block":"none"}}></i>  
-          <div className="sub_menu" style={{display:isDrop1?"block":"none"}}>
-            <ul>
-              <li className='sub_list'><NavLink to="/showservice" className={location.pathname==='/showservice'?"active1 sub_items":"sub_items"}>first</NavLink></li>
-              <li className='sub_list'><NavLink to="/adminmanagecustomer" className={location.pathname==='/adminmanagecustomer'?"active1 sub_items":"sub_items"}>second</NavLink></li>
-            </ul>
-          </div>
-          </div>
-        </div>
-      </div>
-      <main>{children}</main>
-      </div>
-      </>
-  )
-}
+        </>
+    );
+};

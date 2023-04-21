@@ -5,7 +5,7 @@ const AdminManageCustomers = () => {
   return (
     <AdminNavbar>
      <div>
-      this is AdminManageCustomers
+     <input type="text" placeholder='Enter Name'/>
     </div>
     </AdminNavbar>
   )

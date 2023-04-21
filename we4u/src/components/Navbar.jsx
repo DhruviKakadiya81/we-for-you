@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "../css/Navbar.css";
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import LoginData from "../services/LoginData";
+
 
 export const Navbar = () => {
   const location=useLocation();
   const nevigate = useNavigate();
+  const [navCollapse,setNavCollapse]=useState(true);
+
+  const handleNav=()=>{
+    setNavCollapse(!navCollapse);
+  }
+
   const handlelogout = () =>{
     var id = localStorage.getItem("token");
     if(id == null){
@@ -40,53 +47,37 @@ export const Navbar = () => {
     }
 }
   return (
-    <div className="container-fluid nav_bg" id="main_div_nav">
-      <div className='row'>
-        <div className="col-12 mx-auto">
-        <nav className="navbar navbar-expand-lg navbar-light">
-      <div className="container-fluid">
-      <img src="Images/Logo.png" width="100" height="70"/>
-      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="nav_toggle">
-            <span className="navbar-toggler-icon"></span>
-            </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0" >
-            <li className="nav-item mx-2">
-              <NavLink exact="true" className="nav-link" aria-current="page" to="/">
-                Home
-              </NavLink>
+    <>
+
+<nav class="navbar navbar-expand-md navbar-dark">
+      <div class="container-fluid">
+        <img src="/images/Logo.png" width="100" height="70" class="c_nav_image"/>
+        <button class="navbar-toggler" type="button" onClick={handleNav}>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class={navCollapse?"collapse navbar-collapse justify-content-end":"navbar-collapse justify-content-end"} id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <Link class="nav-link" aria-current="page" to="/">Home</Link>
             </li>
-            <li className="nav-item mx-2">
-              <NavLink exact="true" className="nav-link" aria-current="page" to="/about">
-                About Us
-              </NavLink>
+            <li class="nav-item">
+              <Link class="nav-link" to="/about">About</Link>
             </li>
-            <li className="nav-item mx-2">
-              <NavLink className="nav-link" to="/register">
-                Register
-              </NavLink>
+            <li class="nav-item">
+              <Link class="nav-link" to="/register">Register</Link>
             </li>
-            <li className="nav-item mx-2">
-              <NavLink className="nav-link" to="/login">
-              <i className="fa fa-user" aria-hidden="true"></i>
-              </NavLink>
+            <li class="nav-item">
+              <Link class="nav-link" to="/contact">Contact Us</Link>
             </li>
-            <li className="nav-item mx-2">
-              <NavLink className="nav-link" id="nav_r1" to="/cart" onClick={handlecart}>
-              <i className="fa-sharp fa-solid fa-cart-shopping fa-bounce fa-lg"></i>
-              </NavLink>
-            </li>
-            <li className="nav-item mx-2">
-              <NavLink className="nav-link" to="/logout">
-              <i className="fa-solid fa-right-from-bracket fa-lg" onClick={handlelogout}></i>
-              </NavLink>
-            </li>
+          </ul>
+          <ul class="navbar-nav sm-icons">
+            <li><Link class="nav-link" to="/login"><i className="fa fa-user" aria-hidden="true"></i></Link></li>
+            <li><Link class="nav-link" to="/cart" onClick={handlecart}><i className="fa-sharp fa-solid fa-cart-shopping fa-bounce fa-lg"></i></Link></li>
+            <li><Link class="nav-link" to="/logout" onClick={handlelogout}><i className="fa-solid fa-right-from-bracket fa-lg"></i></Link></li>
           </ul>
         </div>
       </div>
     </nav>
-    </div>
-      </div>
-    </div>
+    </>
   );
 };
