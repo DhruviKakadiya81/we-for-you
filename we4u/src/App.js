@@ -10,6 +10,7 @@ import { Navbar } from "./components/Navbar";
 import { Forget } from './components/Forget';
 import { Verify } from './components/Verify';
 import { Home } from "./components/Home";
+import {Contact} from "./components/Contact";
 
 
 import About from "./components/About";
@@ -21,9 +22,7 @@ function App() {
       
       <Router>
       {/* <Navbar /> */}
-      <Routes>
-       
-        
+      <Routes> 
         <Route path="/" element={<Home/>}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/login" element={<Login />}></Route>
@@ -31,12 +30,8 @@ function App() {
         <Route path="/forget" element={<Forget/>}></Route>
         {/* <Route path="/about" element={<about/>}></Route>  */}
         <Route path="/logout" element={<Home/>}></Route>
-
+        <Route path="/contact" element={<Contact/>}></Route>
         <Route path="/about" element={<About/>}></Route>
-
-       
-        
-
       </Routes>
       </Router>
     </>
