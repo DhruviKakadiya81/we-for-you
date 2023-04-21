@@ -1,18 +1,21 @@
 import React from 'react'
-
 import { AdminNavbar } from '../components/AdminNavbar';
 import '../../../Admin/src/css/ShowServices.css'
 import showservice from '../../../we4u/src/services/Services';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { Modal } from 'react-bootstrap';
 import delser from '../services/addservice';
-
+import { useNavigate } from 'react-router-dom'
+import { UpdateService } from './UpdateService';
+import { FormControl, FormGroup, Input, InputLabel, Typography, Button } from '@mui/material';
 // import { AdminNavbar } from '../../../Admin/src/components/AdminNavbar'
 // import '../../../Admin/src/css/ShowServices.css'
 
 export const ShowServices = () => {
   const [service, setService] = useState([]);
-  
+  const navigate = useNavigate();
+
    let counter = 1;
   var ser;
   const fetchSer = async (event) => {
@@ -25,12 +28,13 @@ export const ShowServices = () => {
   }
   const handledelete = async(id,e) =>{
    alert(id);
-    var ser_id = {id};
+   var ser_id = {id};
    const respo = await delser.deleteData(ser_id);
    alert("respo : " , respo);
 
 
   }
+  
   
   useEffect((event) => {
     fetchSer();
@@ -41,7 +45,8 @@ export const ShowServices = () => {
       All main Services
     </h1>
     {service.data != undefined && service.data.data.length > 0 && (
-                    <table className="table table-striped">
+      <div className="tablemain" style={{overflowX:"scroll",backgroundColor:"white",padding:"20px"}} id='abc'>
+          <table className="table">
                         <thead>
                             <tr>
                             <th>Index</th>
@@ -63,23 +68,69 @@ export const ShowServices = () => {
                                         <img src={'http://localhost:4000/image/' + product.s_icon} alt="not" style={{ "width": "100px", "height": "100px" }} />
                                     </td>
                                     <td>
-                                        <button id={product._id} onClick={(e)=>handledelete(product._id,e)}>delete</button>
+                                      <DeleteService id = {product._id}/>
+                                      
                                     </td>
                                     <td>
-                                      hello
-                                        {/* <Updateproduct pid={product._id} pname={product.pname} prize={product.prize} qty={product.qty} desc={product.desc} image={product.image} /> */}
-
+                                        <UpdateService s_icon={product.s_icon} s_name={product.s_name} s_id ={product._id}/>
                                     </td>
                                 </tr>
                           
                             ))}
-                      
                         </tbody>
                     </table>
+      </div>              
                 )}
             
     
     </AdminNavbar>
   
+  )
+}
+
+const DeleteService = (props)=>{
+  const [isshow, invokemodel] = useState(false);
+  
+  const initmodel = () => {
+    return invokemodel(!isshow);
+  }
+  const handledelete = async(id,e) =>{
+    alert(id);
+    var ser_id = {id};
+    const respo = await delser.deleteData(ser_id);
+    alert("respo : " , respo);
+ 
+ 
+   }
+  return(
+    <>
+     <Button variant="contained" style={{backgroundColor:"black"}} onClick={initmodel}>
+       Delete
+      </Button>
+      <Modal show={isshow} style={{overflowX:"scroll",width:"100%",marginTop:"400px"}} >
+        <Modal.Header closeButton onClick={initmodel}>
+          <Modal.Title className='' > 
+            Delete product
+          </Modal.Title>
+        </Modal.Header>
+      
+          <Modal.Body>
+              <div className="dlt">
+                Are You Sure to Delete Service?
+              </div>
+             
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="" className="mx-3" onClick={initmodel} style={{backgroundColor:"red"}}>
+              CLOSE
+            </Button>
+            <Button variant=""  className="mx-3" type='submit' style={{backgroundColor:"red"}} onClick={(e)=>handledelete(props.id,e)}>
+              Delete
+            </Button>
+          </Modal.Footer>
+      
+      </Modal>
+     
+    </>
   )
 }

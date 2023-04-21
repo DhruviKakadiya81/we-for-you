@@ -41,6 +41,7 @@ router1.post("/getotp",sendotp.getotp);
 router1.post("/delser",mainservice.deleteservice);
 router1.post("/addser",upload.single('s_icon'),mainservice.addservices);
 router1.get("/getser",mainservice.getservices);
+router1.post("/update",upload.single('s_icon'),mainservice.updateservice);
 // router1.post("/getuser",logcontroller.getuserlogin);
 // router1.post("/getuser",logcontroller.getuserlogin);
 
