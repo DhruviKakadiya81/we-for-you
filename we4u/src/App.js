@@ -15,6 +15,8 @@ import { Home } from "./components/Home";
 import AdminManageService from "./components/AdminManageService";
 import AdminManageCustomers from "./components/AdminManageCustomers";
 import About from "./components/About";
+import TestiMonials from './components/TestiMonials/TestiMonials';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
@@ -32,6 +34,7 @@ function App() {
         <Route path="/forget" element={<Forget/>}></Route>
         {/* <Route path="/about" element={<about/>}></Route>  */}
         <Route path="/logout" element={<Home/>}></Route>
+        {/* <Route path="/about" element={<TestiMonials/>}></Route> */}
         <Route path="/about" element={<About/>}></Route>
 
         <Route path="/adminmanageservice" element={<AdminManageService/>}></Route>
