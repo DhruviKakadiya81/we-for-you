@@ -5,3 +5,15 @@ form{
     margin-top: 100px;
     /* background-color: aqua; */
 }
+.tablemain{
+    
+    overflow-x: scroll;
+    padding: 20px;
+}
+@media (min-width:700px) {
+    .tablemain{
+       
+        overflow-x: hidden;
+        padding: 20px;
+    }
+}
