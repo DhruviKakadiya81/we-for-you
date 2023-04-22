@@ -45,7 +45,7 @@ export const ShowServices = () => {
       All main Services
     </h1>
     {service.data != undefined && service.data.data.length > 0 && (
-      <div className="tablemain" style={{overflowX:"scroll",backgroundColor:"white",padding:"20px"}} id='abc'>
+      <div className="tablemain" id='abc'>
           <table className="table">
                         <thead>
                             <tr>
