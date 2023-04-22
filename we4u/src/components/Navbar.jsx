@@ -9,7 +9,6 @@ export const Navbar = () => {
   const location=useLocation();
   const nevigate = useNavigate();
   const [navCollapse,setNavCollapse]=useState(true);
-
   const handleNav=()=>{
     setNavCollapse(!navCollapse);
   }
@@ -51,7 +50,7 @@ export const Navbar = () => {
 
 <nav class="navbar navbar-expand-md navbar-dark">
       <div class="container-fluid">
-        <img src="/images/Logo.png" width="100" height="70" class="c_nav_image"/>
+        <img src="/images/Logo.png" width="100" height="50" class="c_nav_image"/>
         <button class="navbar-toggler" type="button" onClick={handleNav}>
           <span class="navbar-toggler-icon"></span>
         </button>

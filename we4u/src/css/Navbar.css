@@ -7,9 +7,6 @@
 .sm-icons .nav-link {
   padding-right: 1em;
 }
-.c_nav_image{
-  margin-left: 80px;
-}
 .navbar{
   background-color: #151c25;
 }
@@ -26,7 +23,6 @@ font-size: 20px;
 line-height: 23px;
 letter-spacing: 0.035em;
 text-transform: uppercase;
-
 color: #FFFFFF;  
 }
 
@@ -35,8 +31,4 @@ color: #FFFFFF;
   margin-left: 15px;
 }
 
-}
-
-a:hover {
-color: #ba2323; 
 }
