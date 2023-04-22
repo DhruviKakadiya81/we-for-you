@@ -1,6 +1,44 @@
+h2{
+    text-align: center;
+}
+
+.page1{
+    text-align: left;
+     justify-content: center;
+
+}
 .div1{
 
-    width:100px;
-    height: 70px;
-    background-color: black
+    
+    text-align: left;
+    border-radius: 20px;
+    box-shadow:  rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset
+}
+
+
+#grid1{
+   
+    margin-top: 100px;
+}
+
+#grid1 .col {
+    /* width: 280px;
+    height: 100px; */
+    width: 280px;
+
+    border-radius:20px ;
+     height :150px; 
+     padding-left:20px;
+     background-image:linear-gradient(to right, rgb(105,105,105) , rgb(216,216,216));
+    /* box-shadow:  rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset */
+
+}
+
+#grid1 .center_text{
+    text-align: center;
+    margin-top: 40px;
+}
+
+#grid1 .col p{
+    text-align: center;
 }

@@ -14,6 +14,8 @@ import {Contact} from "./components/Contact";
 
 
 import About from "./components/About";
+import TestiMonials from './components/TestiMonials/TestiMonials';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
@@ -30,6 +32,7 @@ function App() {
         <Route path="/forget" element={<Forget/>}></Route>
         {/* <Route path="/about" element={<about/>}></Route>  */}
         <Route path="/logout" element={<Home/>}></Route>
+        {/* <Route path="/about" element={<TestiMonials/>}></Route> */}
         <Route path="/contact" element={<Contact/>}></Route>
         <Route path="/about" element={<About/>}></Route>
       </Routes>
