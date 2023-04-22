@@ -1,6 +1,8 @@
 
 import React from 'react'
 import { Navbar } from './Navbar'
+import { Footer } from './Footer'
+
 import '../css/About.css';
 import '../css/exa.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -150,6 +152,8 @@ We4U has a rigorous vetting process for its service providers to ensure that the
       
     </section>
     
+    <Footer/>
+   
     
 
 
