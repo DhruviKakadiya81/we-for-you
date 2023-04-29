@@ -11,12 +11,15 @@ import { Forget } from './components/Forget';
 import { Verify } from './components/Verify';
 import { Home } from "./components/Home";
 import {Contact} from "./components/Contact";
-
-
 import About from "./components/About";
 import TestiMonials from './components/TestiMonials/TestiMonials';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import { useState } from "react";
+
+import Profile from "./components/Profile";
+
+
 
 function App() {
 const [register, setregister] = useState(0);
@@ -39,6 +42,7 @@ const [register, setregister] = useState(0);
         {/* <Route path="/about" element={<TestiMonials/>}></Route> */}
         <Route path="/contact" element={<Contact/>}></Route>
         <Route path="/about" element={<About/>}></Route>
+        <Route path="/profile" element={<Profile/>}></Route>
       </Routes>
       </Router>
     </>

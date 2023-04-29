@@ -73,8 +73,9 @@ export const Navbar = () => {
             </li>
           </ul>
           <ul class="navbar-nav sm-icons">
-            <li><Link class="nav-link" to="/login"><i className="fa fa-user" aria-hidden="true"></i></Link></li>
-            <li><Link class="nav-link" to="/cart" onClick={handlecart}><i className="fa-sharp fa-solid fa-cart-shopping fa-bounce fa-lg"></i></Link></li>
+            <li><Link class="nav-link" to="/login"><i className="fa fa-user fa-lg" aria-hidden="true"></i></Link></li>
+            <li><Link class="nav-link" to="/cart" onClick={handlecart}><i className="fa-sharp fa-solid fa-cart-shopping fa-lg"></i></Link></li>
+            <li><Link class="nav-link" to="/profile"><i class="fa-solid fa-user-gear fa-lg"></i></Link></li>
             <li><Link class="nav-link" to="/logout" onClick={handlelogout}><i className="fa-solid fa-right-from-bracket fa-lg"></i></Link></li>
           </ul>
         </div>
