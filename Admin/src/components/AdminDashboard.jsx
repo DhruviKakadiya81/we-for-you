@@ -5,8 +5,7 @@ import "../css/AdminDashboard.css";
 
 const AdminDashboard = () => {
   return (
-    
-   <AdminNavbar>
+ <AdminNavbar>
    <div class="row">
   <div class="col-sm-3">
     <div class="card">
@@ -60,7 +59,6 @@ const AdminDashboard = () => {
   </div>
 </div>
  </AdminNavbar>
-
   )
 }
 
