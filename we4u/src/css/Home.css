@@ -15,7 +15,13 @@
   /* border-radius:100px; */
   /* box-shadow:rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset; */
 }
-
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
 .services{
  padding: 2rem;
  /* background-color: #cbbaa0; */
@@ -28,6 +34,8 @@
 }
 
 .card:hover{
-  animation: zoom-in 1s ease-in-out;
+  /* animation: zoom-in 2s ease-in-out; */
+  transform: scale(1.02);
+  /* background-color: aqua; */
   /* color:white !important; */
 }
