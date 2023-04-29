@@ -11,11 +11,10 @@ import { Forget } from './components/Forget';
 import { Verify } from './components/Verify';
 import { Home } from "./components/Home";
 import {Contact} from "./components/Contact";
-
-
 import About from "./components/About";
 import TestiMonials from './components/TestiMonials/TestiMonials';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Profile from "./components/Profile";
 
 
 function App() {
@@ -35,6 +34,7 @@ function App() {
         {/* <Route path="/about" element={<TestiMonials/>}></Route> */}
         <Route path="/contact" element={<Contact/>}></Route>
         <Route path="/about" element={<About/>}></Route>
+        <Route path="/profile" element={<Profile/>}></Route>
       </Routes>
       </Router>
     </>
