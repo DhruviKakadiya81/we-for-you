@@ -31,43 +31,34 @@ export const AdminNavbar = ({ children }) => {
   const[isDrop1,setIsDrop1]=useState(false);
   const drop1=()=>setIsDrop1(!isDrop1);
   const [isOpen, setIsOpen] = useState(false);
-  const [isWidth,setWidth]=useState("235px");
-  const [counter,setCounter]=useState(true);
-  const onhover=()=>{
-    setCounter(!counter);
-    // alert(counter);
-  }
+  // const [isWidth,setWidth]=useState("235px");
+  // const [counter,setCounter]=useState(true);
+  // const onhover=()=>{
+  //   setCounter(!counter);
+  //   // alert(counter);
+  // }
  
-  const toggle = () => {
-    if(isOpen){
-      setWidth("235px");
-    }
-    else{
-      setWidth("65px");
-    }
+  const toggle = () =>
    setIsOpen(!isOpen);
-  }
+  
     return (
       <>
         <div className="container-fluid">
-            <div style={{ width: isOpen ? "235px" : "65px",height:"100vh"}} className="sidebar">
+            <div style={{ width: isOpen ? "235px" : "65px",height:"100vh"}} className={isOpen?"sidebar active1" : "sidebar"}>
                 <div className="top_section">
                     <h1 style={{ display: isOpen ? "block" : "none" }} className="logo">We4U</h1>
                     <div style={{ marginLeft: isOpen ? "98px" : "7px" }} className="bars">
                         <FaBars onClick={toggle} />
                     </div>
                 </div>
-                  <NavLink to="/" className="link">
-                  <div className="icon"><FaTh onMouseEnter={onhover} /></div>
-                  <span className='span_class' style={{display :(isWidth === '235px' && counter)?"block":"none"}}>Dashboard</span>
+                  <NavLink to="/" className="link">                  
+                  <div className="icon"><FaTh/><span className='span_class'>Dashboard</span></div>
                   <div style={{ display: isOpen ? "block" : "none" }} className="link_text">Dashboard</div>
                   </NavLink>
                   <div className="link">
-                  <BlackTooltip title="Manage">
-                  <div className="icon" onMouseEnter={onhover} >
-                      <FaTable/>
+                  <div className="icon">
+                      <FaTable/><span className='span_class'>Manage</span>
                     </div>
-                  </BlackTooltip>
                     <div className="link_text" style={{ display: isOpen ? "block" : "none" }}>Manage 
                     <FaCaretDown onClick={drop} style={{display:isDrop?"block":"none"}} className='dropdownclose'/>
                     <FaCaretRight onClick={drop} style={{display:isDrop?"none":"block"}} className='dropdown'/>
@@ -79,11 +70,9 @@ export const AdminNavbar = ({ children }) => {
                     </div>
                   </div>
                   <div className="link">
-                  <BlackTooltip title="Show">
                   <div className="icon">
-                      <FaTable/>
+                      <FaTable/><span className='span_class'>Show</span>
                     </div>
-                  </BlackTooltip>
                     <div className="link_text" style={{ display: isOpen ? "block" : "none" }}>Show 
                     <FaCaretDown onClick={drop1} style={{display:isDrop1?"block":"none"}} className='dropdown1close'/>
                     <FaCaretRight onClick={drop1} style={{display:isDrop1?"none":"block"}} className='dropdown1'/>

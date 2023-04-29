@@ -8,7 +8,7 @@ import {Navigate } from 'react-router-dom';
 
 export const Forget = () => {
     const [email, setEmail] = useState('');
-    const [state, setState] = useState(1);
+    const [state, setState] = useState(2);
     const [otp, setotp] = useState('');
     const [pwdError, setPwdError] = useState(false);
     const [token,setToken] = useState('');
