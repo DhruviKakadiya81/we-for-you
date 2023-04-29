@@ -56,8 +56,11 @@ export const Navbar = () => {
         </button>
         <div class={navCollapse?"collapse navbar-collapse justify-content-end":"navbar-collapse justify-content-end"} id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+              <Link class="nav-link" to="/regprof">Register As Professional</Link>
+            </li>
             <li class="nav-item">
-              <Link class="nav-link" aria-current="page" to="/">Home</Link>
+              <Link class="nav-link" exact = {"true"}aria-current="page" to="/">Home</Link>
             </li>
             <li class="nav-item">
               <Link class="nav-link" to="/about">About</Link>

@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
 const sp_Schema = new mongoose.Schema({
-    s_email:{
+    email:{
         type:String,
         required:true
     },
-    s_password:{
+    password:{
         type:String,
         required:true
     },
