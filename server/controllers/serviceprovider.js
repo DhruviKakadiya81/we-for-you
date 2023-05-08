@@ -60,7 +60,7 @@ const updateservice = async (req, res) => {
         else {
 
             const { _id,s_name} = req.body;
-            // const id = req.params.id;
+           
             console.log(req.body);
             const updata = await service.findByIdAndUpdate({ _id }, {
                 $set: {s_name}
