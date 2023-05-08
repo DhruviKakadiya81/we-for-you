@@ -210,6 +210,10 @@ if(props.state === 0){
           </div>
         </div>
       </section>
+
+
+
+      
       {/* <div>Register Form</div> */}
       {/* <form action="" method="post" onSubmit={handleRegister}>
         <input
