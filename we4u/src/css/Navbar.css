@@ -15,7 +15,7 @@
 margin-right: 20px;
 }
 
-a{
+Link{
 font-family: 'Work Sans';
 font-style: normal;
 font-weight: 600;
@@ -30,5 +30,12 @@ color: #FFFFFF;
 .c_nav_image{
   margin-left: 15px;
 }
+}
 
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+
+.dropdown>.dropdown-toggle:active {
+    pointer-events: none;
 }

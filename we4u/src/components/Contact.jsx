@@ -57,11 +57,11 @@ export const Contact = () => {
                 </div>
             </div>
 
-            <div className="contact-form order-1 order-lg-2">
-            <form action="#" autoComplete='off' className='main_form'>
+            <div className="contact-form order-1 order-lg-2 p-2">
+            <form action="#" autoComplete='off'>
             <h3 className="title">Contact Us</h3>
             <div className="input-container">
-            <TextField id="outlined-basic" label="UserName"  className='input' style={{width:"90%",border:"2px solid black",outline:"none"}}/>
+            <TextField id="outlined-basic" label="UserName" variant="outlined" className='input' style={{width:"90%"}}/>
             </div>
             <div className="input-container">
             <TextField id="outlined-basic" label="Email" variant="outlined" className='input' style={{width:"90%"}}/>
