@@ -7,7 +7,7 @@ const getuser = require("../controllers/getuser");
 const {auth} = require("../middleware/auth");
 const sendotp = require("../controllers/sendotp");
 const mainservice = require("../controllers/showservices");
-
+const spapi = require("../controllers/serviceprovider");
 const path = require("path");
 var multer = require("multer");
 const router1 = express.Router();
@@ -42,6 +42,7 @@ router1.post("/delser",mainservice.deleteservice);
 router1.post("/addser",upload.single('s_icon'),mainservice.addservices);
 router1.get("/getser",mainservice.getservices);
 router1.post("/update",upload.single('s_icon'),mainservice.updateservice);
+router1.post("/addsp",upload.single('s_icon'),mainservice.updateservice)
 // router1.post("/getuser",logcontroller.getuserlogin);
 // router1.post("/getuser",logcontroller.getuserlogin);
 

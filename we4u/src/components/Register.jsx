@@ -45,14 +45,14 @@ if(props.state === 1){
     <>
 
 <section className="d-flex flex-wrap" id="header">
-        <div className="container-fluid p-5" style= {{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",marginTop:"100px",width:"50rem",overflowX:"hidden" }} >
+        <div className="container-fluid pt-5 pb-5" style= {{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",marginTop:"100px",width:"50rem",overflowX:"hidden" }} >
           <div className="row">
-            <div className="col-8 mx-5">
+            <div className="col-lg-12">
               <div className="row">
-              <div className="col-md-6 pt-5 p-5 pt-lg-0 order-1 order-lg-2 header-image" >
+              <div className="col-md-6 pt-5 mx-auto pt-lg-0 order-1 order-lg-2 header-image" >
                 <img src="Images/register1.png" width={270} height={300} className="login-image" alt=""/>
               </div>
-              <div className="col-md-6 pt-5 m-2 mx-0 pt-lg-0 order-2 order-lg-1" style={{marginLeft:"-10px"}}>
+              <div className="col-md-6 pt-5 m-2 mx-auto p-5 pt-lg-0 order-2 order-lg-1" style={{marginLeft:"-10px"}}>
                 <form action="" method="post" onSubmit={handleRegister}>
 
                   <h2 style={{ fontWeight: "700" }}>SIGN UP</h2>
@@ -77,7 +77,7 @@ if(props.state === 1){
         <input
           type="password"
           name="password"
-          placeholder="ENTER the password"
+          placeholder="Enter the password"
           onChange={(event) => setPass(event.target.value)}
           id="id_password"
           className="my-0 pt-3"
@@ -148,19 +148,17 @@ if(props.state === 0){
     <>
 
 <section className="d-flex flex-wrap" id="header">
-                <h1 className="mx-auto">Register As a Professional</h1>
-
-        <div className="container-fluid p-5" style= {{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",marginTop:"100px",width:"50rem",overflowX:"hidden" }} >
+        <div className="container-fluid pt-5 pb-5" style= {{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",marginTop:"100px",width:"50rem",overflowX:"hidden" }} >
           <div className="row">
-            <div className="col-8 mx-5">
+            <div className="col-lg-12">
               <div className="row">
-              <div className="col-md-6 pt-5 p-5 pt-lg-0 order-1 order-lg-2 header-image" >
+              <div className="col-md-6 pt-5 mx-auto pt-lg-0 order-1 order-lg-2 header-image" >
                 <img src="Images/register1.png" width={270} height={300} className="login-image" alt=""/>
               </div>
-              <div className="col-md-6 pt-5 m-2 mx-0 pt-lg-0 order-2 order-lg-1" style={{marginLeft:"-10px"}}>
+              <div className="col-md-6 pt-5 m-2 mx-auto p-5 pt-lg-0 order-2 order-lg-1" style={{marginLeft:"-10px"}}>
                 <form action="" method="post" onSubmit={handleRegister}>
 
-                  <h2 style={{ fontWeight: "700" }}>SIGN UP</h2>
+                  <h2 style={{fontWeight: "700" }}>SIGN UP</h2>
                   <i class="fa-solid fa-envelope fa-flip fa-xs" style={{marginRight:"-18px",position:"relative",left:"-30px",bottom:"0px" , color:"gray"}}></i>
 
                   <input
@@ -170,7 +168,7 @@ if(props.state === 0){
           name="email"
           onChange={(event) => setEmail(event.target.value)}
           style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width:"100%"}}
-
+          required
         />
                   {/* <i class="fa-solid fa-envelope" style={{marginLeft:"-240px"}}></i> */}
 
@@ -182,13 +180,13 @@ if(props.state === 0){
         <input
           type="password"
           name="password"
-          placeholder="ENTER the password"
+          placeholder="Enter the password"
           onChange={(event) => setPass(event.target.value)}
           id="id_password"
           className="my-0 pt-3"
 
           style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width:"100%"  }}
-
+          required
         />
                   {/* <i class="fa-solid fa-envelope fa-flip" style={{marginLeft:"-240px"}}></i> */}
         {/* <i class="fa-duotone fa-lock fa-flip" style={{marginLeft:"-240px"}}></i> */}
