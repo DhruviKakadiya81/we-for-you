@@ -35,6 +35,18 @@ const Profile = () => {
           <Input type='text'/>
         </FormControl>
         <FormControl>
+          <InputLabel>Enter Second Name</InputLabel>
+          <Input type='text'/>
+        </FormControl>
+        <FormControl>
+          <InputLabel>Enter Second Name</InputLabel>
+          <Input type='text'/>
+        </FormControl>
+        <FormControl>
+          <InputLabel>Enter Second Name</InputLabel>
+          <Input type='text'/>
+        </FormControl>
+        <FormControl>
           <TextField 
             id='date'
             label='Birthday'
