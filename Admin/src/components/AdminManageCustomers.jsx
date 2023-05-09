@@ -6,7 +6,6 @@ const AdminManageCustomers = () => {
     <AdminNavbar>
     <FormGroup className='main_container mx-auto'>
                     <Typography variant="h4" className='add_ser_heading'>Add Service</Typography>
-                 
                     <div className='mt-5 mx-auto'>
                                 <FormControl className='mb-3 detail_container'  >
                                     <InputLabel className='mx-3' >Enter Service Name</InputLabel>

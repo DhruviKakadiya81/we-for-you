@@ -8,6 +8,10 @@ const {auth} = require("../middleware/auth");
 const sendotp = require("../controllers/sendotp");
 const mainservice = require("../controllers/showservices");
 const spapi = require("../controllers/serviceprovider");
+const managearea = require("../controllers/managearea");
+const managecity = require("../controllers/managecity");
+
+
 const path = require("path");
 var multer = require("multer");
 const router1 = express.Router();
@@ -42,7 +46,22 @@ router1.post("/delser",mainservice.deleteservice);
 router1.post("/addser",upload.single('s_icon'),mainservice.addservices);
 router1.get("/getser",mainservice.getservices);
 router1.post("/update",upload.single('s_icon'),mainservice.updateservice);
-router1.post("/addsp",upload.single('s_icon'),mainservice.updateservice)
+// router1.post("/addsp",upload.single('s_icon'),mainservice.updateservice);
+router1.post("/addarea",managearea.addarea);
+
+
+router1.post("/addcity",managecity.addcity);
+router1.get("/getcity",managecity.getcity);
+router1.put("/updatecity",managecity.updatecity);
+router1.delete("/deletecity/:id",managecity.deletecity);
+
+
+router1.post("/addarea",managearea.addarea);
+router1.get("/getarea",managearea.getarea);
+router1.put("/updatearea",managearea.updatearea);
+router1.delete("/deletearea/:id",managearea.deletearea);
+
+
 // router1.post("/getuser",logcontroller.getuserlogin);
 // router1.post("/getuser",logcontroller.getuserlogin);
 
