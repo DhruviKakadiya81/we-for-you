@@ -47,7 +47,7 @@ const updatearea = async (req, res) => {
     try {
             const { id, areaname , cityid } = req.body;
             console.log(req.body);
-            const updatecity = await city.findByIdAndUpdate({_id: id }, {
+            const updatecity = await area.findByIdAndUpdate({_id: id }, {
                 $set: {areaname,cityid}
             });
              res.status(200).send({ success: true, msg: 'area is updated', data: updatecity });

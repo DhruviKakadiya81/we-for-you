@@ -15,7 +15,7 @@ const getcity = async(req,res)=>{
 
 const addcity = async(req,res)=>{
     try {
-        // console.log("data :== ",req.body);
+        console.log("data :== ",req.body);
         const {cityname} = req.body
         const cityData = new city({
             cityname
