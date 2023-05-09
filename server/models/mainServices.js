@@ -10,5 +10,6 @@ const serviceSchema = new mongoose.Schema({
         required:true
     }
 });
+
 const mainService = new mongoose.model("Service",serviceSchema);
 module.exports = mainService;

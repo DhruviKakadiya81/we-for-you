@@ -3,14 +3,6 @@ const user = require("../models/userModel");
 const bcrypt = require("bcryptjs");
 const crypto = require('crypto');
 
-// const generateotp = () => {
-//    var x = Math.floor(100000 + Math.random() * 900000);
-//     setInterval(generateotp, 60000);
-//     return x;
-// }
-
-
-
 const sendotp = async (req, res) => {
     const { email } = req.body;
     console.log('kavita jane', email);

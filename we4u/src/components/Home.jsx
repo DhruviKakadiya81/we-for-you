@@ -18,8 +18,8 @@ export const Home = () => {
   
   useEffect((event) => {
     
-    fetchSer();
-  },[service]);
+   service && fetchSer();
+  },[]);
   return (
     <>
       <Navbar />
@@ -28,21 +28,21 @@ export const Home = () => {
            <div id="carouselExampleCaptions" style={{ backgroundImage:"Images/homeimg1.jpg"}} className="carousel carousel-dark carousel-fade  slide" data-bs-ride="carousel">
            
             <div className="carousel-inner">
-            <div className="carousel-item active  outer-slider"  data-bs-interval="2000" style={{height:"auto"}}>
+            <div className="carousel-item active  outer-slider"  data-bs-interval="2000" style={{height:"90%"}}>
                 {/* <img src="Images/homeimg1.jpg" className="d-block mainpost img-fluid" alt="..." /> */}
                 <video src="images/v2.mp4"  style={{objectFit:"cover",width:"100%"}} muted autoPlay  controls={false} alt="hello"></video>
 
                 <div className="carousel-caption d-none d-md-block">
                 </div>
               </div>
-              <div className="carousel-item  outer-slider"  style={{height:"auto"}}>
+              <div className="carousel-item  outer-slider"  style={{height:"90%"}}>
                 {/* <img src="Images/homeimg1.jpg" className="d-block mainpost img-fluid" alt="..." /> */}
                 <video src="images/v2.mp4"  style={{objectFit:"cover",width:"100%"}} muted autoPlay  controls={false} alt="hello"></video>
 
                 <div className="carousel-caption d-none d-md-block">
                 </div>
               </div>
-              <div className="carousel-item  outer-slider" style={{height:"auto"}}>
+              <div className="carousel-item  outer-slider" style={{height:"90%"}}>
                 {/* <img src="Images/electrician.jpg" className="d-block mainpost img-fluid" alt="..." /> */}
                 <video src="images/v2.mp4"  style={{objectFit:"cover",width:"100%"}} muted autoPlay   controls={false} alt="hello"></video>
 

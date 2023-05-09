@@ -1,10 +1,19 @@
 import React from 'react'
 import { Navbar } from './Navbar'
-import { FormControl, FormGroup, Input, InputLabel, Typography, Button,FormLabel,RadioGroup,FormControlLabel,Radio} from '@mui/material';
+import { FormControl, FormGroup, Input, InputLabel,Button,FormLabel,RadioGroup,FormControlLabel,Radio} from '@mui/material';
 import "../css/Profile.css";
 import { makeStyles,TextField } from '@material-ui/core';
 import {Modal} from 'react-bootstrap';
+import {
+  FaEnvelope,
+  FaPhoneAlt,
+  FaFacebook,
+  FaTwitter,
+  FaInstagram,
+  FaLinkedin,
+} from "react-icons/fa";
 import { useState } from 'react';
+import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -23,37 +32,55 @@ const Profile = () => {
   return (
     <>
     <Navbar/>
-    <FormGroup>
-      <Typography>Profile</Typography>
-       <div>
-        <FormControl>
-          <InputLabel>Enter First Name</InputLabel>
-          <Input type='text'/>
-        </FormControl>
-        <FormControl>
-          <InputLabel>Enter Second Name</InputLabel>
-          <Input type='text'/>
-        </FormControl>
-        <FormControl>
-          <InputLabel>Enter Second Name</InputLabel>
-          <Input type='text'/>
-        </FormControl>
-        <FormControl>
-          <InputLabel>Enter Second Name</InputLabel>
-          <Input type='text'/>
-        </FormControl>
-        <FormControl>
-          <InputLabel>Enter Second Name</InputLabel>
-          <Input type='text'/>
-        </FormControl>
-        <FormControl>
-          <TextField 
-            id='date'
-            label='Birthday'
-          />
-        </FormControl>
-       </div>
-    </FormGroup>
+      <div className="pro_div_container">
+        <div className="pro_whole_div">
+          <div className="pro_img_container col-9">
+          <h5>We4U</h5>
+           <img src="Images/test.jpg" alt="" width="100" height="100"/>
+          </div>
+
+          <div className="pro_form col-6">
+            <form action="">
+              <h3 className="pro_title">Profile</h3>
+              <div className="pro_input">
+              <input type="text" placeholder='Enter First Name'/><br/>
+              <input type="text" placeholder='Enter Second Name'/><br/>
+              <FormControl className='{classes.container} mb-4 detail_container'>
+                                    <TextField
+                                        id="date"
+                                        label="Birthday"
+                                        type="date"
+                                        defaultValue="2023-01-01"
+                                        className={classes.textField}
+                                        InputLabelProps={{
+                                          shrink: true,
+                                        }}
+                                      />
+              </FormControl><br/>
+              <FormControl className='mb-3 detail_container'>
+                  <FormLabel id="demo-row-radio-buttons-group-label">Gender</FormLabel>
+                        <RadioGroup
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            name="row-radio-buttons-group"
+                            defaultValue="female"
+                        >
+                        <FormControlLabel value="female" control={<Radio />} label="Female" />
+                        <FormControlLabel value="male" control={<Radio />} label="Male" />
+                        <FormControlLabel value="other" control={<Radio />} label="Other" />
+                        </RadioGroup>
+              </FormControl><br/>
+              <FormControl className='mb-3 mx-auto'>
+                                  <Button type='submit' variant='contained' className='my-3 px-5 py-3' style={{backgroundColor:"rgb(50,50,50)",color:"white",marginLeft:"160px"}}>Add Agent</Button>
+                                </FormControl><br/>
+                                <FormControl>
+                                  <ChangePass/>
+                                </FormControl>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </>
   )
 }
