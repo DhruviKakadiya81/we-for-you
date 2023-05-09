@@ -3,7 +3,7 @@ import { Modal } from 'react-bootstrap';
 import { FormControl, FormGroup, Input, InputLabel, Typography, Button } from '@mui/material';
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import addservice from '../services/addservice';
+import addservice from '../services/manageservice';
 
 export const UpdateService = (props) => {
     const navigate = useNavigate();

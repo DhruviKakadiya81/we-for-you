@@ -3,7 +3,7 @@ import { AdminNavbar } from './AdminNavbar'
 import "../../src/css/AddServices.css"
 import { FormControl, FormGroup, Input, InputLabel, Typography, Button } from '@mui/material';
 import { useState } from 'react'
-import addserv from '../services/addservice';
+import addserv from '../services/manageservice';
 
 const AdminManageService = () => {
   const [s_name, setsname] = useState('');
