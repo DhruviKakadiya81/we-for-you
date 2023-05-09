@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 const getarea = async(req,res)=>{
     try {
-       var data = await area.find();
+       var data = await area.find().populate('cityid');
        console.log(data);
         res.send({success:true,msg:"area data",data:data});
     } catch (error) {
@@ -45,11 +45,12 @@ const deletearea = async (req, res) => {
 
 const updatearea = async (req, res) => {
     try {
-            const { id, areaname , cityid } = req.body;
-            console.log(req.body);
+            const { id,areaname,cityid } = req.body;
+            console.log(".body----req",req.body);
             const updatecity = await area.findByIdAndUpdate({_id: id }, {
                 $set: {areaname,cityid}
             });
+            console.log("updated",updatecity);
              res.status(200).send({ success: true, msg: 'area is updated', data: updatecity });
 
     } catch (error) {
