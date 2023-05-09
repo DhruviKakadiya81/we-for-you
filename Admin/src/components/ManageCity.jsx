@@ -160,10 +160,8 @@ const Update = (props) => {
         const respo = await managecity.updateData(data);
         props.handleIsEdit();
         if (respo.data.success === true) {
-            alert("updated")
+            alert("updated successfully")
           initmodel();
-        //   window.location.reload();
-          //alert("successful");
         }
         else{
           alert("enter another city");
