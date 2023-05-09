@@ -1,27 +1,27 @@
 import axios from "axios";
 
 class Post{
-    addcity(data) {
+    addarea(data) {
         // console.log("formdata : ",data);
-        const url = "http://localhost:4000/addcity";
+        const url = "http://localhost:4000/addarea";
         return axios.post(url,data);
 
     }
 
-    getcity(){
-        const url = "http://localhost:4000/getcity";
+    getarea(){
+        const url = "http://localhost:4000/getarea";
         return axios.get(url);
     }
    
     deleteData(id) {
         console.log("formdata : ",id);
-        const url = "http://localhost:4000/deletecity/"+id;
+        const url = "http://localhost:4000/deletearea/"+id;
         return axios.delete(url);
     }
 
     updateData(data) {
         console.log("formdata : ",data);
-        const url = "http://localhost:4000/updatecity";
+        const url = "http://localhost:4000/updatearea";
         return axios.put(url,data);
     }
    

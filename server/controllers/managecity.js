@@ -55,7 +55,7 @@ const updatecity = async (req, res) => {
 
     } catch (error) {
         console.log(error)
-        res.status(400).send({ success: false, msg: 'not updated' });
+        res.status(200).send({ success: false, msg: 'not updated' });
     }
    }
 

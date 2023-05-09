@@ -6,6 +6,7 @@ import AdminManageCustomers from "./components/AdminManageCustomers";
 import { AdminNavbar } from "./components/AdminNavbar";
 import { ShowServices } from "./components/ShowServices";
 import { ManageCity } from "./components/ManageCity";
+import { ManageArea } from "./components/ManageArea";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/adminmanagecustomer" element={<AdminManageCustomers/>}></Route>
         <Route path="/showservice" element={<ShowServices/>}></Route>
         <Route path="/managecity" element={<ManageCity/>}></Route>
+        <Route path="/managearea" element={<ManageArea/>}></Route>
         
       </Routes>
       </Router>

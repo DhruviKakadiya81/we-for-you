@@ -80,8 +80,8 @@ export const AdminNavbar = ({ children }) => {
                       <div className="sub_list px-1 py-2"><NavLink to="/showservice" className="sub_items">Show Services</NavLink></div>
                       <div className="sub_list px-1 py-2"><NavLink to="#" className="sub_items">Show Customers</NavLink></div>
                       <div className="sub_list px-1 py-2"><NavLink to="#" className="sub_items">Show ServiceProvider</NavLink></div>
-                      <div className="sub_list px-1 py-2"><NavLink to="/managecity" className="sub_items">Add City</NavLink></div>
-                      <div className="sub_list px-1 py-2"><NavLink to="/managearea" className="sub_items">Add Area</NavLink></div>
+                      <div className="sub_list px-1 py-2"><NavLink to="/managecity" className="sub_items">Manage City</NavLink></div>
+                      <div className="sub_list px-1 py-2"><NavLink to="/managearea" className="sub_items">Manage Area</NavLink></div>
                     </div>
                     </div>
                   </div>
