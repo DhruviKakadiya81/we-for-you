@@ -5,7 +5,7 @@ import showservice from '../../../we4u/src/services/Services';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
-import delser from '../services/addservice';
+import delser from '../services/manageservice';
 import { useNavigate } from 'react-router-dom'
 import { UpdateService } from './UpdateService';
 import { FormControl, FormGroup, Input, InputLabel, Typography, Button } from '@mui/material';

@@ -16,7 +16,8 @@ const showspdetail = async(req,res)=>{
 const addspdata = async(req,res)=>{
     try {
         console.log("data :== ",req.body);
-        // const {} = req.body
+  
+    const {firstname,lastname,contact,service,city,area,profile_image, spid} = req.body
         // const serviceData = new service({
         //     s_name : req.body.s_name,
         //     s_icon : req.file.filename
