@@ -67,6 +67,9 @@ export const ManageArea = () => {
     return (
         <>
             <AdminNavbar>
+
+            {/* Dhruvi Code */}
+
             <FormGroup className='mx-auto area_container'>
                 <Typography variant='h4' className='add_area_heading'>Add Area</Typography>
                 <div className="mt-5 mx-auto">
@@ -127,9 +130,6 @@ export const ManageArea = () => {
                         <InputLabel className=''>Selected City Name</InputLabel>
                         <Input variant="dark" type="text" name="name" value={cityname} onChange={(event) => setsname(event.target.value)} className='mx-3 my-3' style={{ color: "black" }} readOnly />
                     </FormControl><br />
-
-                    <br />
-
 
                     <input type="button" value="Add Area" className='btn text-center mt-1' style={{ backgroundColor: "grey" }} onClick={handleAddArea} />
 
