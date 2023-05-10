@@ -2,6 +2,7 @@ import { AdminNavbar } from './AdminNavbar';
 import React from 'react'
 import { useState,useEffect } from 'react'
 import managecity from '../services/managecity'
+import "../css/ManageCity.css";
 import { Button,Modal} from 'react-bootstrap';
 import { FormControl, FormGroup, Input, InputLabel, Typography} from '@mui/material';
 export const ManageCity = () => {
@@ -42,14 +43,19 @@ export const ManageCity = () => {
     return (
         <>
             <AdminNavbar>
-                <div className="text-center mt-5">
-                <FormControl className='detail_container w-50 mx-auto'  >
-              <InputLabel className=''>Enter cityName</InputLabel>
-              <Input variant="dark" type="text" name="name" value ={cityname} onChange={(event)=>setsname(event.target.value)} className='mx-3 my-3' style={{color:"black"}} />
-              </FormControl><br/>
-                                  <input type="button" value="Add City" onClick={handleAddCity} />
-                </div>
 
+            <FormGroup className='city_main_container mx-auto'>
+                <Typography variant='h4' className='add_city_heading'>Add City</Typography>
+                <div className="mx-auto mt-5">
+                   <FormControl className='mb-3 city_detail_container'>
+                    <InputLabel className='mx-3'>Enter City Name</InputLabel>
+                    <Input type='text' name='name' value ={cityname} onChange={(event)=>setcityname(event.target.value)} className='mx-3 my-3'/>
+                   </FormControl><br/>
+                   <FormControl>
+                    <Button type='submit' className='my-3 px-5 py-3' onClick={handleAddCity} style={{backgroundColor:"rgb(50,50,50)",border:"none",color:"white"}}>ADD CITY</Button>
+                   </FormControl>
+                </div>
+            </FormGroup>
 
                 {citydata != undefined && citydata.length > 0 && (
                     <div className="tablemain" id='abc'>
@@ -107,7 +113,7 @@ const Delete = (props)=>{
      }
     return(
       <>
-       <Button variant="contained" style={{backgroundColor:"black",color:"white"}} onClick={initmodel}>
+       <Button variant="contained" style={{backgroundColor:"rgb(50,50,50)",color:"white"}} onClick={initmodel}>
          Delete
         </Button>
         <Modal show={isshow} style={{overflowX:"scroll",width:"100%",marginTop:"px"}} >
@@ -175,7 +181,7 @@ const Update = (props) => {
   return ( 
 
      <>
-     <Button variant="contained" style={{backgroundColor:"black",color:"white"}} onClick={initmodel}>
+     <Button variant="contained" style={{backgroundColor:"rgb(50,50,50)",color:"white"}} onClick={initmodel}>
         Edit
       </Button>
       <Modal show={isshow} style={{overflowX:"scroll",width:"80%"}} >

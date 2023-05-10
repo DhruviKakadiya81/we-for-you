@@ -104,7 +104,7 @@ const DeleteService = (props)=>{
    }
   return(
     <>
-     <Button variant="contained" style={{backgroundColor:"black"}} onClick={initmodel}>
+     <Button variant="contained" style={{backgroundColor:"rgb(50,50,50)"}} onClick={initmodel}>
        Delete
       </Button>
       <Modal show={isshow} style={{overflowX:"scroll",width:"100%",marginTop:"400px"}} >
