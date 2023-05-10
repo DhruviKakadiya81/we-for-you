@@ -18,6 +18,7 @@ export const ManageCity = () => {
         setisEdit(false);
         if (response.data.success === true) {
             alert("added successfully");
+            setcityname("");
         }
         else {
             alert("add another city");
@@ -43,7 +44,6 @@ export const ManageCity = () => {
     return (
         <>
             <AdminNavbar>
-
             <FormGroup className='city_main_container mx-auto'>
                 <Typography variant='h4' className='add_city_heading'>Add City</Typography>
                 <div className="mx-auto mt-5">
