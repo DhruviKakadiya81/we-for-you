@@ -5,7 +5,7 @@ import managearea from '../services/managearea'
 import managecity from '../services/managecity'
 import { Button, Modal, DropdownButton, Dropdown } from 'react-bootstrap';
 import { FormControl, FormGroup, Input, InputLabel, Typography } from '@mui/material';
-import { event } from 'jquery';
+
 export const ManageArea = () => {
     const [areaname, setareaname] = useState('');
     const [cityname, setcityname] = useState('');
@@ -16,8 +16,8 @@ export const ManageArea = () => {
     let counter = 1;
     const handleAddArea = async (event) => {
         const data = { areaname, cityid }
-        alert(data);
-        console.log("data----", data);
+        // alert(data);
+        // console.log("data----", data);
         const response = await managearea.addarea(data);
         // console.log("response", response);
         setisEdit(false);
@@ -33,16 +33,16 @@ export const ManageArea = () => {
     const handleCityData = async () => {
 
         const response = await managecity.getcity();
-        console.log("response", response);
+        // console.log("response", response);
         setcitydata(response.data.data);
-        console.log("citydata ---", citydata);
+        // console.log("citydata ---", citydata);
     }
     const handleAreaData = async () => {
 
         const response = await managearea.getarea();
-        console.log("response", response);
+        console.log("responsearea----", response);
         setAreaData(response.data.data);
-        console.log("citydata ---", area);
+        console.log("area ---", area);
     }
     const handleSelect = (eventKey, event) => {
         console.log(eventKey);
@@ -53,9 +53,10 @@ export const ManageArea = () => {
 
     useEffect(() => {
         console.log("isedit", isEdit);
-        area && isEdit && handleAreaData();
+        setAreaData(area);
+        isEdit && handleAreaData();
         setisEdit(true);
-    }, [isEdit])
+    },[isEdit]);
 
     useEffect(() => {
         handleCityData();
@@ -102,11 +103,12 @@ export const ManageArea = () => {
 
                 {area != undefined && area.length > 0 && (
                     <div className="tablemain" id='abc'>
-                        <table className="table">
+                        <table className="table table table-striped table-sm">
                             <thead>
                                 <tr>
                                     <th>Index</th>
                                     <th>Area name</th>
+                                    <th>City name</th>
                                     <th>Delete</th>
                                     <th>Update</th>
                                 </tr>
@@ -119,6 +121,7 @@ export const ManageArea = () => {
                                     <tr key={area._id}>
                                         <td>{counter++}</td>
                                         <td>{area.areaname}</td>
+                                        <td>{area.cityid.cityname}</td>
 
                                         <td>
                                             <Delete id={area._id} handleIsEdit={() => setisEdit(!isEdit)} />

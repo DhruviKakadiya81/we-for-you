@@ -10,6 +10,7 @@ app.use(express.urlencoded({extended:false}));
 app.use(express.static('./public'));
 app.use("/",route);
 app.get("/",(req,res)=>{
+    let = req.body;
     res.send("hello this is me");
 })
 app.listen(port,()=>{

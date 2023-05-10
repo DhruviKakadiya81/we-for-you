@@ -13,15 +13,13 @@ export const Register = (props) => {
     const firmObj = { email, password , state};
     console.log("object----" + password);
     alert(firmObj.state);
-    // regData.append('email', email);
-    // regData.append('password', password);
-    //  console.log(regData.get('email'));
+    
     const respo = await apiServices.create(firmObj);
     if (respo.data.success === true) {
       setmessage(respo.data.msg);
       localStorage.setItem("token", respo.data.token);
       alert(localStorage.getItem("token"));
-      // alert(respo.data.token);
+      
     } else {
       setmessage(respo.data.msg);
     }
@@ -203,7 +201,7 @@ if(props.state === 0){
         <button type="submit" className="p-2 my-4" value="register" style={{fontSize:"20px", borderRadius: "10px", backgroundColor: "rgb(212, 174, 126)", border: "none", width: "110px" }}>
           register
         </button>
-        <p><a href="/login" style={{textDecoration:"none"}}>Already Have An Account??</a></p>
+        <p><a href="/loginasp" style={{textDecoration:"none"}}>Already Have An Account??</a></p>
         <span>{message}</span>
       </form>
       </div>
