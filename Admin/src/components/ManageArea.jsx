@@ -101,6 +101,9 @@ export const ManageArea = () => {
                     <Button type='submit' className='my-3 px-5 py-3' style={{backgroundColor:"rgb(50,50,50)",border:"none",color:"white"}} onClick={handleAddArea}>ADD AREA</Button>
                    </FormControl>
 
+
+                   
+
                 </div>
             </FormGroup>
 
