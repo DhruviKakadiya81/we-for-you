@@ -17,6 +17,7 @@ export const ManageCity = () => {
         setisEdit(false);
         if (response.data.success === true) {
             alert("added successfully");
+            setcityname("");
         }
         else {
             alert("add another city");
@@ -45,7 +46,7 @@ export const ManageCity = () => {
                 <div className="text-center mt-5">
                 <FormControl className='detail_container w-50 mx-auto'  >
               <InputLabel className=''>Enter cityName</InputLabel>
-              <Input variant="dark" type="text" name="name" value ={cityname} onChange={(event)=>setsname(event.target.value)} className='mx-3 my-3' style={{color:"black"}} />
+              <Input variant="dark" type="text" name="name" value ={cityname} onChange={(event)=>setcityname(event.target.value)} className='mx-3 my-3' style={{color:"black"}} />
               </FormControl><br/>
                                   <input type="button" value="Add City" onClick={handleAddCity} />
                 </div>
