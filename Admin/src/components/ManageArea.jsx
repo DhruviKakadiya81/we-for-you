@@ -103,9 +103,6 @@ export const ManageArea = () => {
 
                 </div>
             </FormGroup>
-
-
-
                 {area != undefined && area.length > 0 && (
                     <div className="tablemain" id='abc'>
                         <table className="table">
