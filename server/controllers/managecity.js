@@ -1,4 +1,5 @@
 const city = require("../models/cityModel");
+const area = require("../models/areaModel");
 const mongoose = require("mongoose");
 
 const getcity = async(req,res)=>{
@@ -35,6 +36,7 @@ const deletecity = async (req, res) => {
         const id = req.params.id;
         console.log("id----",id);
         const deldata = await city.deleteOne({ _id: id });
+        const delarea = await area.deleteOne({ cityid: id });
         console.log(deldata);
         res.status(200).send({ success: true, msg: 'city is deleted', data: deldata });
 
