@@ -1,9 +1,11 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import apiServices from "../services/LoginData.jsx";
 import '../css/Login.css';
 
 export const Login = (props) => {
+  const navigate=useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
   const [message, setmessage] = useState("");
@@ -18,7 +20,8 @@ export const Login = (props) => {
     if (respo.data.success === true) {
       setmessage(respo.data.msg);
       localStorage.setItem("token", respo.data.token);
-      // alert(localStorage.getItem("token"));
+      alert(localStorage.getItem("token"));
+      navigate();
     } else {
       setmessage(respo.data.msg);
     }
@@ -104,17 +107,16 @@ export const Login = (props) => {
               </div>
             </div>
           </div>
-        </section>
 
-
-
-
-
-
-      </>
-    );
-  }
-  else if (props.state === 0) {
+        </div>
+      </section>
+    </>
+  );
+}
+else if(props.state === 0){
+  
+  return (
+    <>
 
     return (
       <>

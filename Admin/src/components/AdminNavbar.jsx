@@ -5,6 +5,9 @@ import {
     FaTable,
     FaCaretDown,
     FaCaretRight,
+    FaPlus,
+    FaPlusSquare,
+    FaList,
 } from "react-icons/fa";
 // import "../../../Admin/src/css/AdminNavbar.css"
 import { NavLink,Link, useLocation } from 'react-router-dom';
@@ -57,29 +60,29 @@ export const AdminNavbar = ({ children }) => {
                   </NavLink>
                   <div className="link">
                   <div className="icon">
-                      <FaTable/><span className='span_class'>Manage</span>
+                      <FaPlusSquare/> <span className='span_class'>Add</span>
                     </div>
-                    <div className="link_text" style={{ display: isOpen ? "block" : "none" }}>Manage 
+                    <div className="link_text" style={{ display: isOpen ? "block" : "none" }}>Add 
                     <FaCaretDown onClick={drop} style={{display:isDrop?"block":"none"}} className='dropdownclose'/>
                     <FaCaretRight onClick={drop} style={{display:isDrop?"none":"block"}} className='dropdown'/>
                     <div className="sub_menu mt-3" style={{display:isDrop?"block":"none"}}>
-                      <div className="sub_list px-1 py-2"><NavLink to="/adminmanageservice" className="sub_items">Manage Services</NavLink></div>
-                      <div className="sub_list px-1 py-2"><NavLink to="/adminmanagecustomer" className="sub_items">Manage Customers</NavLink></div>
-                      <div className="sub_list px-1 py-2"><NavLink to="#" className="sub_items">Manage ServiceProvider</NavLink></div>
+                      <div className="sub_list px-1 py-2"><NavLink to="/adminmanageservice" className="sub_items">Add Services</NavLink></div>
+                      <div className="sub_list px-1 py-2"><NavLink to="/adminmanagecustomer" className="sub_items">Add Customers</NavLink></div>
+                      <div className="sub_list px-1 py-2"><NavLink to="#" className="sub_items">Add ServiceProvider</NavLink></div>
                     </div>
                     </div>
                   </div>
                   <div className="link">
                   <div className="icon">
-                      <FaTable/><span className='span_class'>Show</span>
+                      <FaList/><span className='span_class'>Manage</span>
                     </div>
-                    <div className="link_text" style={{ display: isOpen ? "block" : "none" }}>Show 
+                    <div className="link_text" style={{ display: isOpen ? "block" : "none" }}>Manage 
                     <FaCaretDown onClick={drop1} style={{display:isDrop1?"block":"none"}} className='dropdown1close'/>
                     <FaCaretRight onClick={drop1} style={{display:isDrop1?"none":"block"}} className='dropdown1'/>
                     <div className="sub_menu mt-3" style={{display:isDrop1?"block":"none"}}>
-                      <div className="sub_list px-1 py-2"><NavLink to="/showservice" className="sub_items">Show Services</NavLink></div>
-                      <div className="sub_list px-1 py-2"><NavLink to="#" className="sub_items">Show Customers</NavLink></div>
-                      <div className="sub_list px-1 py-2"><NavLink to="#" className="sub_items">Show ServiceProvider</NavLink></div>
+                      <div className="sub_list px-1 py-2"><NavLink to="/showservice" className="sub_items">Manage Services</NavLink></div>
+                      <div className="sub_list px-1 py-2"><NavLink to="#" className="sub_items">Manage Customers</NavLink></div>
+                      <div className="sub_list px-1 py-2"><NavLink to="#" className="sub_items">Manage ServiceProvider</NavLink></div>
                       <div className="sub_list px-1 py-2"><NavLink to="/managecity" className="sub_items">Manage City</NavLink></div>
                       <div className="sub_list px-1 py-2"><NavLink to="/managearea" className="sub_items">Manage Area</NavLink></div>
                     </div>

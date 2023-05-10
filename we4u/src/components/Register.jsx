@@ -169,12 +169,8 @@ if(props.state === 0){
           required
         />
                   {/* <i class="fa-solid fa-envelope" style={{marginLeft:"-240px"}}></i> */}
-
-
-        
         <br />
         <i class="fa-solid fa-lock fa-flip fa-xs" style={{marginRight:"-18px",position:"relative",left:"-30px",bottom:"0px" , color:"gray"}}></i>
-
         <input
           type="password"
           name="password"
@@ -199,7 +195,7 @@ if(props.state === 0){
 
         <br />
         <button type="submit" className="p-2 my-4" value="register" style={{fontSize:"20px", borderRadius: "10px", backgroundColor: "rgb(212, 174, 126)", border: "none", width: "110px" }}>
-          register
+          Register
         </button>
         <p><a href="/loginasp" style={{textDecoration:"none"}}>Already Have An Account??</a></p>
         <span>{message}</span>
@@ -210,6 +206,10 @@ if(props.state === 0){
           </div>
         </div>
       </section>
+
+
+
+      
       {/* <div>Register Form</div> */}
       {/* <form action="" method="post" onSubmit={handleRegister}>
         <input

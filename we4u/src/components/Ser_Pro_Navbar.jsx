@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import LoginData from "../services/LoginData";
 import { Modal } from 'react-bootstrap';
 import { FormControl, FormGroup, Input, InputLabel, Typography, Button } from '@mui/material';
-export const Navbar = () => {
+export const Ser_Pro_Navbar = () => {
   const location=useLocation();
   const nevigate = useNavigate();
   const [navCollapse,setNavCollapse]=useState(true);
