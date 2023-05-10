@@ -13,15 +13,13 @@ export const Register = (props) => {
     const firmObj = { email, password , state};
     console.log("object----" + password);
     alert(firmObj.state);
-    // regData.append('email', email);
-    // regData.append('password', password);
-    //  console.log(regData.get('email'));
+    
     const respo = await apiServices.create(firmObj);
     if (respo.data.success === true) {
       setmessage(respo.data.msg);
       localStorage.setItem("token", respo.data.token);
       alert(localStorage.getItem("token"));
-      // alert(respo.data.token);
+      
     } else {
       setmessage(respo.data.msg);
     }

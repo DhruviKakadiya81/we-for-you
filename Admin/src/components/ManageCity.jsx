@@ -1,6 +1,6 @@
 import { AdminNavbar } from './AdminNavbar';
 import React from 'react'
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import managecity from '../services/managecity'
 import "../css/ManageCity.css";
 import { Button,Modal} from 'react-bootstrap';
@@ -8,7 +8,7 @@ import { FormControl, FormGroup, Input, InputLabel, Typography} from '@mui/mater
 export const ManageCity = () => {
     const [cityname, setcityname] = useState('');
     const [citydata, setcitydata] = useState([]);
-    const [isEdit,setisEdit]=useState(true);
+    const [isEdit, setisEdit] = useState(true);
     let counter = 1;
     const handleAddCity = async () => {
         // alert(cityname);
@@ -26,20 +26,30 @@ export const ManageCity = () => {
     }
 
     const handleCityData = async () => {
-    
+
         const response = await managecity.getcity();
         console.log("response", response);
         setcitydata(response.data.data);
-        console.log("citydata ---",citydata);
+        console.log("citydata ---", citydata);
     }
 
-   useEffect(() => {
-    console.log("isedit",isEdit);
-    isEdit && handleCityData();
-    setisEdit(true);
+    useEffect(() => {
+        console.log("isedit", isEdit);
+        isEdit && handleCityData();
+        setisEdit(true);
     }, [isEdit])
-    
-    
+
+    const columns = [
+        { dataField: 'Index', text: 'Index' },
+        { dataField: 'cityname', text: 'Name' }
+      ];
+      
+    //   const data = [
+    //     { id: 1, name: 'John', age: 25 },
+    //     { id: 2, name: 'Jane', age: 30 },
+    //     { id: 3, name: 'Bob', age: 40 },
+    //   ];
+      
 
     return (
         <>
@@ -58,8 +68,8 @@ export const ManageCity = () => {
             </FormGroup>
 
                 {citydata != undefined && citydata.length > 0 && (
-                    <div className="tablemain" id='abc'>
-                        <table className="table">
+                    <div className="tablemain pagination" id='abc'>
+                        <table id="dtBasicExample" className="table table-striped table-sm" cellSpacing="1" width="100%" >
                             <thead>
                                 <tr>
                                     <th>Index</th>
@@ -76,13 +86,12 @@ export const ManageCity = () => {
                                     <tr key={city._id}>
                                         <td>{counter++}</td>
                                         <td>{city.cityname}</td>
-                                       
                                         <td>
-                                            <Delete id={city._id} handleIsEdit={() => setisEdit(!isEdit)}/>
+                                            <Delete id={city._id} handleIsEdit={() => setisEdit(!isEdit)} />
 
                                         </td>
                                         <td>
-                                            <Update cityname={city.cityname} id={city._id}  handleIsEdit={() => setisEdit(!isEdit)}/>
+                                            <Update cityname={city.cityname} id={city._id} handleIsEdit={() => setisEdit(!isEdit)} />
                                         </td>
                                     </tr>
 
@@ -90,19 +99,20 @@ export const ManageCity = () => {
                             </tbody>
                         </table>
                     </div>
-                )}
-
-
+                )} 
+ 
+  
+              
             </AdminNavbar>
         </>
     )
 }
 
-const Delete = (props)=>{
+const Delete = (props) => {
     const [isshow, invokemodel] = useState(false);
-    
+
     const initmodel = () => {
-      return invokemodel(!isshow);
+        return invokemodel(!isshow);
     }
     const handledelete = async(id,e) =>{
    
@@ -135,47 +145,66 @@ const Delete = (props)=>{
               </Button>
               <Button variant=""  className="mx-3" type='submit' style={{backgroundColor:"red"}} onClick={(e)=>handledelete(props.id,e)}>
                 Delete
-              </Button>
-            </Modal.Footer>
-        
-        </Modal>
-       
-      </>
+            </Button>
+            <Modal show={isshow} style={{ overflowX: "scroll", width: "100%", marginTop: "px" }} >
+                <Modal.Header closeButton onClick={initmodel}>
+                    <Modal.Title className='' >
+                        Delete City
+                    </Modal.Title>
+                </Modal.Header>
+
+                <Modal.Body>
+                    <div className="dlt">
+                        Are You Sure to Delete City?
+                    </div>
+
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="" className="mx-3" onClick={() => { initmodel }} style={{ backgroundColor: "red" }}>
+                        CLOSE
+                    </Button>
+                    <Button variant="" className="mx-3" type='submit' style={{ backgroundColor: "red" }} onClick={(e) => handledelete(props.id, e)}>
+                        Delete
+                    </Button>
+                </Modal.Footer>
+
+            </Modal>
+
+        </>
     )
-  }
+}
 
 const Update = (props) => {
     // const navigate = useNavigate();
-  const [isshow, invokemodel] = useState(false);
-  const initmodel = () => {
-    return invokemodel(!isshow);
-  }
+    const [isshow, invokemodel] = useState(false);
+    const initmodel = () => {
+        return invokemodel(!isshow);
+    }
     const [cityname, setname] = useState(props.cityname);
     const [id, setid] = useState(props.id);
-  
-   useEffect(() => {
-    setid(props.id);
-    setname(props.cityname);
-   }, [props])
-   
-  
+
+    useEffect(() => {
+        setid(props.id);
+        setname(props.cityname);
+    }, [props])
+
+
     const handleupdate = async (event) => {
         alert(id);
-        const data = {cityname,id}
+        const data = { cityname, id }
         alert(data);
         const respo = await managecity.updateData(data);
         props.handleIsEdit();
         if (respo.data.success === true) {
             alert("updated successfully")
-          initmodel();
+            initmodel();
         }
-        else{
-          alert("enter another city");
+        else {
+            alert("enter another city");
         }
-    
+
         // console.log(respo);
-        // event.target.reset();
-    
+        // event.target.reset();    
     
       }
   return ( 
@@ -205,20 +234,20 @@ const Update = (props) => {
                   "margin": "auto",
                   "padding": "10px"
                 }} >send data</button> */}
-             
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="danger" className="mx-3" onClick={initmodel}>
-              CLOSE
-            </Button>
-            <Button variant="dark"  className="mx-3" type='submit' onClick={handleupdate}>
-              Update
-            </Button>
-          </Modal.Footer>
-      
-      </Modal>
-     </>
-  )
+
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="danger" className="mx-3" onClick={initmodel}>
+                        CLOSE
+                    </Button>
+                    <Button variant="dark" className="mx-3" type='submit' onClick={handleupdate}>
+                        Update
+                    </Button>
+                </Modal.Footer>
+
+            </Modal>
+        </>
+    )
 }
 
 

@@ -46,7 +46,7 @@ export const ShowServices = () => {
     </h1>
     {service.data != undefined && service.data.data.length > 0 && (
       <div className="tablemain" id='abc'>
-          <table className="table">
+          <table className="table table table-striped table-sm">
                         <thead>
                             <tr>
                             <th>Index</th>
