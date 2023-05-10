@@ -3,6 +3,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import managearea from '../services/managearea'
 import managecity from '../services/managecity'
+import "../css/ManageArea.css";
 import { Button, Modal, DropdownButton, Dropdown } from 'react-bootstrap';
 import { FormControl, FormGroup, Input, InputLabel, Typography,Select,MenuItem } from '@mui/material';
 import { event } from 'jquery';
@@ -72,7 +73,7 @@ export const ManageArea = () => {
 
 <FormGroup className='mx-auto area_container'>
                 <Typography variant='h4' className='add_area_heading'>Add Area</Typography>
-                <div className="mt-5 mx-auto">
+                <div className="mt-5 mx-auto main_area_container">
                    <FormControl className='area_detail_container'>
                     <InputLabel className='mx-3'>Enter Area Name</InputLabel>
                     <Input variant='dark' type='text' name='name' onChange={(event) => setareaname(event.target.value)} className='mx-3 my-3'/>
@@ -92,7 +93,7 @@ export const ManageArea = () => {
                     </Select>
                    </FormControl><br/>
 
-                   <FormControl className=''  >
+                   <FormControl className='area_detail_container'  >
                         <InputLabel className=''>Selected City Name</InputLabel>
                         <Input variant="dark" type="text" name="name" value={cityname} onChange={(event) => setsname(event.target.value)} className='mx-3 my-3' style={{ color: "black" }} readOnly />
                     </FormControl><br />
@@ -159,7 +160,7 @@ const Delete = (props) => {
     }
     return (
         <>
-            <Button variant="contained" style={{ backgroundColor: "black", color: "white" }} onClick={initmodel}>
+            <Button variant="contained" style={{ backgroundColor: "rgb(50,50,50)", color: "white" }} onClick={initmodel}>
                 Delete
             </Button>
             <Modal show={isshow} style={{ overflowX: "scroll", width: "100%", marginTop: "180px" }} >
@@ -257,7 +258,7 @@ const Update = (props) => {
     return (
 
         <>
-            <Button variant="contained" style={{ backgroundColor: "black", color: "white" }} onClick={initmodel}>
+            <Button variant="contained" style={{ backgroundColor: "rgb(50,50,50)", color: "white" }} onClick={initmodel}>
                 Edit
             </Button>
             <Modal show={isshow} style={{ overflowX: "scroll", width: "80%" }} >
@@ -274,21 +275,17 @@ const Update = (props) => {
                             <InputLabel className=''>Enter Area Name</InputLabel>
                             <Input variant="dark" type="text" value={areaname} name="name" onChange={(event) => setareaname(event.target.value)} className='mx-3 my-3' style={{ color: "black" }} />
                         </FormControl><br />
-                        <br />
-
+                        <br/>
                         <DropdownButton
                             title="Select City"
                             variant='Secondary'
                             onSelect={handleSelect}
-
                         >
                             {citydata.map(city => (
                                 <Dropdown.Item key={city._id} eventKey={city._id} value={city.cityname}>{city.cityname}</Dropdown.Item>
 
                             ))}
                         </DropdownButton>
-
-
                         <FormControl className=''  >
                             <InputLabel className=''>Selected City Name</InputLabel>
                             <Input variant="dark" type="text" name="name" value={cityname} onChange={(event) => setcityname(event.target.value)} className='mx-3 my-3' style={{ color: "black" }} readOnly />

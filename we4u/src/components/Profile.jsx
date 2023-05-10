@@ -32,55 +32,71 @@ const Profile = () => {
   return (
     <>
     <Navbar/>
-      <div className="pro_div_container">
-        <div className="pro_whole_div">
-          <div className="pro_img_container col-9">
-          <h5>We4U</h5>
-           <img src="Images/test.jpg" alt="" width="100" height="100"/>
-          </div>
+     <div className='profile_main_container'>
+      <div className="profile_full_form">
+        <div className="image_container order-2 order-lg-1">
+          <h3 className="title pt-5 mt-5 pb-5">We4U</h3>
+          <img src="Images/avtar.jpg" alt="" width="180" height="180" className='img mt-5'/>
+        </div>
 
-          <div className="pro_form col-6">
-            <form action="">
-              <h3 className="pro_title">Profile</h3>
-              <div className="pro_input">
-              <input type="text" placeholder='Enter First Name'/><br/>
-              <input type="text" placeholder='Enter Second Name'/><br/>
-              <FormControl className='{classes.container} mb-4 detail_container'>
-                                    <TextField
-                                        id="date"
-                                        label="Birthday"
-                                        type="date"
-                                        defaultValue="2023-01-01"
-                                        className={classes.textField}
-                                        InputLabelProps={{
-                                          shrink: true,
-                                        }}
-                                      />
-              </FormControl><br/>
-              <FormControl className='mb-3 detail_container'>
-                  <FormLabel id="demo-row-radio-buttons-group-label">Gender</FormLabel>
-                        <RadioGroup
+        <div className="profile_form_container order-1 order-lg-2 p-5">
+          <form action="">
+            <h3 className='title mb-5'>Profile</h3>
+            <div className="pro_input_container">
+            <FormControl className='mb-3 detail_container'>
+                    <InputLabel className='mx-3'>Enter First Name</InputLabel>
+                    <Input type="text" name="name" className='my-3'  />
+            </FormControl><br/>
+            </div>
+            <div className="pro_input_container">
+            <FormControl className='mb-3 detail_container'>
+                    <InputLabel className='mx-3' >Enter Second Name</InputLabel>
+                    <Input type="text" name="name" className='my-3'  />
+            </FormControl><br/>
+            </div>
+            <div className="pro_input_container">
+            <FormControl className='{classes.container} mb-4 detail_container'>
+                <TextField
+                    id="date"
+                    label="Birthday"
+                    type="date"
+                    defaultValue="2023-01-01"
+                    className={classes.textField}
+                    InputLabelProps={{
+                          shrink: true,
+                        }}
+                  />
+            </FormControl><br/>
+            </div>
+            <div className="pro_input_container">
+            <FormControl className='mb-3 detail_container'>
+                      <FormLabel id="demo-row-radio-buttons-group-label">Gender</FormLabel>
+                      <RadioGroup
                             row
                             aria-labelledby="demo-row-radio-buttons-group-label"
                             name="row-radio-buttons-group"
                             defaultValue="female"
-                        >
-                        <FormControlLabel value="female" control={<Radio />} label="Female" />
-                        <FormControlLabel value="male" control={<Radio />} label="Male" />
-                        <FormControlLabel value="other" control={<Radio />} label="Other" />
-                        </RadioGroup>
-              </FormControl><br/>
-              <FormControl className='mb-3 mx-auto'>
-                                  <Button type='submit' variant='contained' className='my-3 px-5 py-3' style={{backgroundColor:"rgb(50,50,50)",color:"white",marginLeft:"160px"}}>Add Agent</Button>
-                                </FormControl><br/>
-                                <FormControl>
-                                  <ChangePass/>
-                                </FormControl>
-              </div>
-            </form>
-          </div>
+                      >
+                            <FormControlLabel value="female" control={<Radio />} label="Female" />
+                            <FormControlLabel value="male" control={<Radio />} label="Male" />
+                            <FormControlLabel value="other" control={<Radio />} label="Other" />
+                      </RadioGroup>
+            </FormControl><br/>
+            </div>
+            <div className="pro_input_container">
+            <FormControl className='mb-3 mx-auto'>
+                <Button type='submit' variant='contained' className='my-3 px-5 py-3' style={{backgroundColor:"rgb(50,50,50)",color:"white"}}>Add Details</Button>
+            </FormControl><br/>
+            </div>
+            <div className="pro_input_container">
+            <FormControl>
+                <ChangePass/>
+            </FormControl>
+            </div>
+          </form>
         </div>
       </div>
+     </div>
     </>
   )
 }
