@@ -3,9 +3,8 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import managearea from '../services/managearea'
 import managecity from '../services/managecity'
-import "../css/ManageArea.css"
-import { Modal, DropdownButton, Dropdown } from 'react-bootstrap';
-import { FormControl, FormGroup, Input, InputLabel, Typography,Button,Select,MenuItem } from '@mui/material';
+import { Button, Modal, DropdownButton, Dropdown } from 'react-bootstrap';
+import { FormControl, FormGroup, Input, InputLabel, Typography,Select,MenuItem } from '@mui/material';
 import { event } from 'jquery';
 export const ManageArea = () => {
     const [areaname, setareaname] = useState('');
@@ -67,10 +66,11 @@ export const ManageArea = () => {
     return (
         <>
             <AdminNavbar>
+{/* dhruvi code */}
 
-            {/* Dhruvi Code */}
+{/* Dhruvi Code */}
 
-            <FormGroup className='mx-auto area_container'>
+<FormGroup className='mx-auto area_container'>
                 <Typography variant='h4' className='add_area_heading'>Add Area</Typography>
                 <div className="mt-5 mx-auto">
                    <FormControl className='area_detail_container'>
@@ -85,12 +85,10 @@ export const ManageArea = () => {
                     label="Select City"
                     onSelect={handleSelect}
                     >
-                    <MenuItem value="">
-                    <em>None</em>
-                    </MenuItem>
                     {citydata.map(city => (
-                        <MenuItem key={city._id} eventKey={city._id} value={city.cityname}>{city.cityname}</MenuItem>
-                        ))}
+                            <MenuItem key={city._id} eventKey={city._id} value={city.cityname}>{city.cityname}</MenuItem>
+
+                    ))}
                     </Select>
                    </FormControl><br/>
 
@@ -105,35 +103,6 @@ export const ManageArea = () => {
 
                 </div>
             </FormGroup>
-
-
-
-
-           {/* krupa Code */}
-
-                <div className="mt-5 text-center">
-                    <FormControl className=''  >
-                        <InputLabel className=''>Enter Area Name</InputLabel>
-                        <Input variant="dark" type="text" name="name" onChange={(event) => setareaname(event.target.value)} className='mx-3 my-3' style={{ color: "black" }} />
-                    </FormControl><br />
-                    <DropdownButton
-                        title="Select City"
-                        variant='Secondary'
-                        onSelect={handleSelect}
-                    >
-                        {citydata.map(city => (
-                            <Dropdown.Item key={city._id} eventKey={city._id} value={city.cityname}>{city.cityname}</Dropdown.Item>
-
-                        ))}
-                    </DropdownButton>
-                    <FormControl className=''  >
-                        <InputLabel className=''>Selected City Name</InputLabel>
-                        <Input variant="dark" type="text" name="name" value={cityname} onChange={(event) => setsname(event.target.value)} className='mx-3 my-3' style={{ color: "black" }} readOnly />
-                    </FormControl><br />
-
-                    <input type="button" value="Add Area" className='btn text-center mt-1' style={{ backgroundColor: "grey" }} onClick={handleAddArea} />
-
-                </div>
 
 
 
@@ -162,7 +131,7 @@ export const ManageArea = () => {
 
                                         </td>
                                         <td>
-                                            <Update areaname={area.areaname} id={area._id} cityname={area.cityid.cityname} cityid={area.cityid} handleIsEdit={() => setisEdit(!isEdit)} />
+                                            <Update areaname={area.areaname} id={area._id} cityid={area.cityid} handleIsEdit={() => setisEdit(!isEdit)} />
                                         </td>
                                     </tr>
 
@@ -193,7 +162,7 @@ const Delete = (props) => {
     }
     return (
         <>
-            <Button variant="contained" style={{ backgroundColor: "rgb(50,50,50)", color: "white" }} onClick={initmodel}>
+            <Button variant="contained" style={{ backgroundColor: "black", color: "white" }} onClick={initmodel}>
                 Delete
             </Button>
             <Modal show={isshow} style={{ overflowX: "scroll", width: "100%", marginTop: "180px" }} >
@@ -291,7 +260,7 @@ const Update = (props) => {
     return (
 
         <>
-            <Button variant="contained" style={{ backgroundColor: "rgb(50,50,50)", color: "white" }} onClick={initmodel}>
+            <Button variant="contained" style={{ backgroundColor: "black", color: "white" }} onClick={initmodel}>
                 Edit
             </Button>
             <Modal show={isshow} style={{ overflowX: "scroll", width: "80%" }} >
@@ -344,7 +313,3 @@ const Update = (props) => {
         </>
     )
 }
-
-
-
-
