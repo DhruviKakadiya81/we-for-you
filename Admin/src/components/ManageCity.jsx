@@ -2,10 +2,9 @@ import { AdminNavbar } from './AdminNavbar';
 import React from 'react'
 import { useState, useEffect } from 'react'
 import managecity from '../services/managecity'
-import { Button, Modal, Pagination } from 'react-bootstrap';
-import { FormControl, FormGroup, Input, InputLabel, Typography } from '@mui/material';
-
-
+import "../css/ManageCity.css";
+import { Button,Modal} from 'react-bootstrap';
+import { FormControl, FormGroup, Input, InputLabel, Typography} from '@mui/material';
 export const ManageCity = () => {
     const [cityname, setcityname] = useState('');
     const [citydata, setcitydata] = useState([]);
@@ -55,21 +54,19 @@ export const ManageCity = () => {
     return (
         <>
             <AdminNavbar>
-                <div className="text-center mt-5">
-                    <FormControl className='detail_container w-50 mx-auto'  >
-                        <InputLabel className=''>Enter cityName</InputLabel>
-                        <Input variant="dark" type="text" name="name" value={cityname} onChange={(event) => setcityname(event.target.value)} className='mx-3 my-3' style={{ color: "black" }} />
-                    </FormControl><br />
-                    <input type="button" value="Add City" onClick={handleAddCity} />
+            <FormGroup className='city_main_container mx-auto'>
+                <Typography variant='h4' className='add_city_heading'>Add City</Typography>
+                <div className="mx-auto mt-5">
+                   <FormControl className='mb-3 city_detail_container'>
+                    <InputLabel className='mx-3'>Enter City Name</InputLabel>
+                    <Input type='text' name='name' value ={cityname} onChange={(event)=>setcityname(event.target.value)} className='mx-3 my-3'/>
+                   </FormControl><br/>
+                   <FormControl>
+                    <Button type='submit' className='my-3 px-5 py-3' onClick={handleAddCity} style={{backgroundColor:"rgb(50,50,50)",border:"none",color:"white"}}>ADD CITY</Button>
+                   </FormControl>
                 </div>
-                {/* <Pagination>
-      <Pagination.First />
-      <Pagination.Prev />
-      <Pagination.Next />
-      <Pagination.Last />
-    </Pagination> */}
+            </FormGroup>
 
-            
                 {citydata != undefined && citydata.length > 0 && (
                     <div className="tablemain pagination" id='abc'>
                         <table id="dtBasicExample" className="table table-striped table-sm" cellSpacing="1" width="100%" >
@@ -117,16 +114,36 @@ const Delete = (props) => {
     const initmodel = () => {
         return invokemodel(!isshow);
     }
-    const handledelete = async (id, e) => {
-
-        const respo = await managecity.deleteData(id);
-        props.handleIsEdit();
-
-
-    }
-    return (
-        <>
-            <Button variant="contained" style={{ backgroundColor: "black", color: "white" }} onClick={initmodel}>
+    const handledelete = async(id,e) =>{
+   
+      const respo = await managecity.deleteData(id);
+      props.handleIsEdit();
+      
+   
+     }
+    return(
+      <>
+       <Button variant="contained" style={{backgroundColor:"rgb(50,50,50)",color:"white"}} onClick={initmodel}>
+         Delete
+        </Button>
+        <Modal show={isshow} style={{overflowX:"scroll",width:"100%",marginTop:"px"}} >
+          <Modal.Header closeButton onClick={initmodel}>
+            <Modal.Title className='' > 
+              Delete City
+            </Modal.Title>
+          </Modal.Header>
+        
+            <Modal.Body>
+                <div className="dlt">
+                  Are You Sure to Delete City?
+                </div>
+               
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="" className="mx-3"  onClick={() => {initmodel}} style={{backgroundColor:"red"}}>
+                CLOSE
+              </Button>
+              <Button variant=""  className="mx-3" type='submit' style={{backgroundColor:"red"}} onClick={(e)=>handledelete(props.id,e)}>
                 Delete
             </Button>
             <Modal show={isshow} style={{ overflowX: "scroll", width: "100%", marginTop: "px" }} >
@@ -187,33 +204,32 @@ const Update = (props) => {
         }
 
         // console.log(respo);
-        // event.target.reset();
+        // event.target.reset();    
+    
+      }
+  return ( 
 
-
-    }
-    return (
-
-        <>
-            <Button variant="contained" style={{ backgroundColor: "black", color: "white" }} onClick={initmodel}>
-                Edit
-            </Button>
-            <Modal show={isshow} style={{ overflowX: "scroll", width: "80%" }} >
-                <Modal.Header closeButton onClick={initmodel}>
-                    <Modal.Title className='' >
-                        Update Product
-                    </Modal.Title>
-                </Modal.Header>
-
-                <Modal.Body>
-
-                    <FormControl className='detail_container'  >
-                        <InputLabel className=''>Enter cityName</InputLabel>
-                        <Input variant="dark" type="text" name="name" value={cityname} onChange={(event) => setname(event.target.value)} className='mx-3 my-3' style={{ color: "black" }} />
-                    </FormControl><br />
-
-
-                    {/* <img src={'http://localhost:5000/uploads/' + image} alt="not" style={{ "width": "100px", "height": "100px" }} /> */}
-                    {/* <button type='submit' className='justify-content-center' style={{
+     <>
+     <Button variant="contained" style={{backgroundColor:"rgb(50,50,50)",color:"white"}} onClick={initmodel}>
+        Edit
+      </Button>
+      <Modal show={isshow} style={{overflowX:"scroll",width:"80%"}} >
+        <Modal.Header closeButton onClick={initmodel}>
+          <Modal.Title className='' > 
+            Update Product
+          </Modal.Title>
+        </Modal.Header>
+      
+          <Modal.Body>
+       
+              <FormControl className='detail_container'  >
+              <InputLabel className=''>Enter cityName</InputLabel>
+              <Input variant="dark" type="text" name="name" value ={cityname} onChange={(event)=>setname(event.target.value)} className='mx-3 my-3' style={{color:"black"}} />
+              </FormControl><br/>
+  
+                   
+                {/* <img src={'http://localhost:5000/uploads/' + image} alt="not" style={{ "width": "100px", "height": "100px" }} /> */}
+                {/* <button type='submit' className='justify-content-center' style={{
                   "width": "200px",
                   "margin": "auto",
                   "padding": "10px"

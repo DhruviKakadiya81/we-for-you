@@ -12,6 +12,7 @@ import { Verify } from './components/Verify';
 import { Home } from "./components/Home";
 import {Contact} from "./components/Contact";
 import About from "./components/About";
+import {Ser_Pro_Navbar} from "./components/Ser_Pro_Navbar";
 import TestiMonials from './components/TestiMonials/TestiMonials';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -38,7 +39,7 @@ const [register, setregister] = useState(0);
         <Route path="/forget" element={<Forget/>}></Route>
         {/* <Route path="/about" element={<about/>}></Route>  */}
         <Route path="/logout" element={<Home/>}></Route>
-      
+        <Route path="/ser_pro_nav" element={<Ser_Pro_Navbar/>}></Route>
         
         {/* <Route path="/about" element={<TestiMonials/>}></Route> */}
         <Route path="/contact" element={<Contact/>}></Route>
