@@ -5,15 +5,15 @@ import "../css/Footer.css";
 export const Footer = () => {
   return (
     <>
-        <footer class="bd-footer py-5 mt-5 bg-light">
-  <div class="container py-5">
+        {/* <footer class="bd-footer py-1 mt-5 bg-dark text-white">
+  <div class="container py-1 " style={{minHeight:"45vh"}}>
     <div class="row">
-      <div class="col-lg-3 mb-3">
+      <div class="col-lg-3 ">
         <a class="d-inline-flex align-items-center mb-2 link-dark text-decoration-none" href="/" aria-label="Bootstrap">
           {/* <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="d-block me-2" viewBox="0 0 118 94" role="img"><title>Bootstrap</title><path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z" fill="currentColor"></path></svg> */}
           <span class="fs-5">We4U</span>
         </a>
-        <ul class="list-unstyled small text-muted">
+        <ul class="list-unstyled small text-white">
           <li class="mb-2">Designed and built with all the love in the world by the Bootstrap team with the help of our contributors.</li>
           <li class="mb-2">Code licensed ,  docs CC BY 3.0.</li>
           <li class="mb-2">Currently v5.1.3.</li>
@@ -62,7 +62,75 @@ export const Footer = () => {
       </div>
     </div>
   </div>
-</footer>
+</footer> */}
+<footer class="text-center footer-section d-sticky mb-0 mt-4">
+
+        <div class="container py-5 " style={{minHeight:"45vh" , marginTop:"70px"}}>
+
+            <div class="row ">
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-3 ">
+                    <img src="./images/Logo.png" alt="" class="mb-5"/>
+                    <p class="f_desc">Satisfy Your Craving And Indulge in Delicious Flvaors, Join Us For A Meal!</p>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-3">
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-3 row w-100">
+                        <h2 class="text-uppercase f_add_title">address</h2>
+                        <p class="my-2 f_add_detail">58 Ralph Ave New York,New York 1111</p>
+
+                        <p class="my-2 f_add_detail">P:+1 800 000 111 E:Contact@Example.Com</p>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-3 ">
+                    <h5 class="text-uppercase mb-3 f_quick_title">quick links</h5>
+                    <ul class="list-unstyled f_quick_desc">
+                        <li>
+                            <a href="#" class="text-white" style={{}}>Home</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-white">About Us</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-white">Gallery</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-white">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-3 ">
+                    <h5 class="text-uppercase mb-3 f_open_title">open hours</h5>
+
+                    <ul class="list-unstyled f_open_desc">
+                        <li>
+                            Monday-Sunday
+                        </li>
+                        <li>
+                            Lunch:12PM-2PM
+                        </li>
+                        <li>
+                            Dinner:6PM-10PM
+                        </li>
+                        <li class="mt-2">
+                            Happy Hours:4PM-6PM
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr class="hrStyle" />
+        <div class="d-flex justify-content-between footerEnd">
+            <p class="text-muted"> 2023 © Foodie Corner </p>
+            <div>
+                <i class="fa-brands fa-facebook-f mx-2"></i>
+                <i class="fa-brands fa-twitter mx-2"></i>
+                <i class="fa-brands fa-instagram mx-2"></i>
+            </div>
+        </div>
+    </footer>
     </>
   )
 }
