@@ -18,7 +18,7 @@ export const Home = () => {
   
   useEffect((event) => {
     
-    fetchSer();
+   service && fetchSer();
   },[]);
   return (
     <>
@@ -26,43 +26,44 @@ export const Home = () => {
       <div className="home">
         <div className=""  >
            <div id="carouselExampleCaptions" style={{ backgroundImage:"Images/homeimg1.jpg"}} className="carousel carousel-dark carousel-fade  slide" data-bs-ride="carousel">
-            <div className="carousel-indicators">
+           
+            <div className="carousel-inner">
+            <div className="carousel-item active  outer-slider"  data-bs-interval="2000" style={{height:"90%"}}>
+                {/* <img src="Images/homeimg1.jpg" className="d-block mainpost img-fluid" alt="..." /> */}
+                <video src="images/v2.mp4"  style={{objectFit:"cover",width:"100%"}} muted autoPlay  controls={false} alt="hello"></video>
+
+                <div className="carousel-caption d-none d-md-block">
+                </div>
+              </div>
+              <div className="carousel-item  outer-slider"  style={{height:"90%"}}>
+                {/* <img src="Images/homeimg1.jpg" className="d-block mainpost img-fluid" alt="..." /> */}
+                <video src="images/v2.mp4"  style={{objectFit:"cover",width:"100%"}} muted autoPlay  controls={false} alt="hello"></video>
+
+                <div className="carousel-caption d-none d-md-block">
+                </div>
+              </div>
+              <div className="carousel-item  outer-slider" style={{height:"90%"}}>
+                {/* <img src="Images/electrician.jpg" className="d-block mainpost img-fluid" alt="..." /> */}
+                <video src="images/v2.mp4"  style={{objectFit:"cover",width:"100%"}} muted autoPlay   controls={false} alt="hello"></video>
+
+                <div className="carousel-caption d-none d-md-block">
+
+                </div>
+              </div>
+            </div>
+            <button className="carousel-control-prev" style={{backgroundColor:"white" ,opacity: "0.9", width:"50px" , height:"50px" , borderRadius:"50%" ,position:"absolute",top:"45%",left:"5%"}} type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+              <span  style={{   color:"pink",  width:"30px"}} className="carousel-control-prev-icon"  aria-hidden="true"></span>
+              <span className="visually-hidden">Previous</span>
+            </button>
+            <button className="carousel-control-next" style={{backgroundColor:"white" ,opacity: "0.9", width:"50px" , height:"50px" , borderRadius:"50%" ,position:"absolute",top:"45%",right:"5%"}} type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+              <span className="carousel-control-next-icon" aria-hidden="true"></span>
+              <span className="visually-hidden">Next</span>
+            </button>
+            <div className="carousel-indicators" style={{position:"relative"}}>
               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
-            <div className="carousel-inner">
-              <div className="carousel-item active outer-slider" data-bs-interval="2000">
-                {/* <img src="Images/homeimg1.jpg" className="d-block mainpost img-fluid" alt="..." /> */}
-                <video src="images/v1.mp4" width="1500" height="700" muted autoPlay  controls={false} alt="hello"></video>
-   
-                <div className="carousel-caption d-none d-md-block">
-                </div>
-              </div>
-              <div className="carousel-item  outer-slider" style={{width:"100vw" , height:"80vh" , objectFit:"contain"}}>
-                {/* <img src="Images/homeimg1.jpg" className="d-block mainpost img-fluid" alt="..." /> */}
-                <video src="images/v2.mp4"  style={{background:"center"}} muted autoPlay  controls={false} alt="hello"></video>
-
-                <div className="carousel-caption d-none d-md-block">
-                </div>
-              </div>
-              <div className="carousel-item  outer-slider">
-                {/* <img src="Images/electrician.jpg" className="d-block mainpost img-fluid" alt="..." /> */}
-                <video src="images/v1.mp4"  muted autoPlay   controls={false} alt="hello"></video>
-
-                <div className="carousel-caption d-none d-md-block">
-
-                </div>
-              </div>
-            </div>
-            <button className="carousel-control-prev" style={{backgroundColor:"burlywood" , width:"50px" , height:"50px" , borderRadius:"50%" , marginTop:"280px" , marginLeft:"75px"}} type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-              <span  style={{   color:"pink",  width:"30px"}} className="carousel-control-prev-icon"  aria-hidden="true"></span>
-              <span className="visually-hidden">Previous</span>
-            </button>
-            <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-              <span className="carousel-control-next-icon" aria-hidden="true"></span>
-              <span className="visually-hidden">Next</span>
-            </button>
           </div> 
           <div className="overlay">
             {/* <ReactPlayer url={'images/v1.mp4'}  controls={true} /> */}
@@ -76,7 +77,7 @@ export const Home = () => {
            
           {service.data != undefined && service.data.data.length > 0 && (
             <section className="services">
-                 <div class="d-flex flex-wrap justify-content-center ">
+                 <div class="d-flex flex-wrap justify-content-center">
               {service.data.data.map(product => (
                
                <div className='row p-3 '>

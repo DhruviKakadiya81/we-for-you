@@ -7,18 +7,15 @@
 .sm-icons .nav-link {
   padding-right: 1em;
 }
-.c_nav_image{
-  margin-left: 80px;
-}
 .navbar{
-  background-color: #151c25;
+  background-color: rgb(50, 50, 50);
 }
 
 .navbar-collapse{
 margin-right: 20px;
 }
 
-a{
+Link{
 font-family: 'Work Sans';
 font-style: normal;
 font-weight: 600;
@@ -26,7 +23,6 @@ font-size: 20px;
 line-height: 23px;
 letter-spacing: 0.035em;
 text-transform: uppercase;
-
 color: #FFFFFF;  
 }
 
@@ -34,9 +30,12 @@ color: #FFFFFF;
 .c_nav_image{
   margin-left: 15px;
 }
-
 }
 
-a:hover {
-color: #ba2323; 
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+
+.dropdown>.dropdown-toggle:active {
+    pointer-events: none;
 }

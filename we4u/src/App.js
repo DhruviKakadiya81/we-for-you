@@ -11,14 +11,19 @@ import { Forget } from './components/Forget';
 import { Verify } from './components/Verify';
 import { Home } from "./components/Home";
 import {Contact} from "./components/Contact";
-
-
 import About from "./components/About";
+import {Ser_Pro_Navbar} from "./components/Ser_Pro_Navbar";
 import TestiMonials from './components/TestiMonials/TestiMonials';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import { useState } from "react";
+
+import Profile from "./components/Profile";
+
+
 
 function App() {
+const [register, setregister] = useState(0);
   return (
     <>
       
@@ -26,15 +31,20 @@ function App() {
       {/* <Navbar /> */}
       <Routes> 
         <Route path="/" element={<Home/>}></Route>
-        <Route path="/register" element={<Register />}></Route>
-        <Route path="/login" element={<Login />}></Route>
+        <Route path="/register" element={<Register state = {1}/>}></Route>
+        <Route path="/regprof" element={<Register  state = {0}/>}></Route>
+        <Route path="/login" element={<Login state = {1} />}></Route>
+        <Route path="/loginasp" element={<Login state = {0}/>}></Route>
         <Route path="/cart" element={<Authpage />}></Route>
         <Route path="/forget" element={<Forget/>}></Route>
         {/* <Route path="/about" element={<about/>}></Route>  */}
         <Route path="/logout" element={<Home/>}></Route>
+        <Route path="/ser_pro_nav" element={<Ser_Pro_Navbar/>}></Route>
+        
         {/* <Route path="/about" element={<TestiMonials/>}></Route> */}
         <Route path="/contact" element={<Contact/>}></Route>
         <Route path="/about" element={<About/>}></Route>
+        <Route path="/profile" element={<Profile/>}></Route>
       </Routes>
       </Router>
     </>

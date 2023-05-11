@@ -43,4 +43,34 @@ const deleteservice = async (req, res) => {
     }
 }
 
-module.exports = {getservices,addservices,deleteservice}
+const updateservice = async (req, res) => {
+    try {
+
+        if (req.file != undefined) {
+            const { _id,s_name,s_icon} = req.body;
+            //   const id = req.params.id;
+            console.log(req.body);
+            const updata = await service.findByIdAndUpdate({ _id }, {
+                $set: {s_name,s_icon:req.file.filename}
+            });
+            res.status(200).send({ success: true, msg: 'post data updated', data: updata });
+
+        }
+        else {
+
+            const { _id,s_name} = req.body;
+            // const id = req.params.id;
+            console.log(req.body);
+            const updata = await service.findByIdAndUpdate({ _id }, {
+                $set: {s_name}
+            });
+             res.status(200).send({ success: true, msg: 'post data updated', data: updata });
+
+        }
+    } catch (error) {
+        console.log(error)
+        res.status(400).send({ success: false, msg: 'post   failed' });
+    }
+   }
+
+module.exports = {getservices,addservices,deleteservice,updateservice}

@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const {validationResult} = require("express-validator");
 const jwt = require("jsonwebtoken");
 const JWT_SECRET = "jsonwebtokenforthehumanandhomeservicemanagement";
-
+const sptbl = require("../models/serviceprovider");
 
 const login = async (req, res) => {
     // console.log("hello");
@@ -17,24 +17,47 @@ const login = async (req, res) => {
     }
     else {
         try {
-            console.log("email ----" +email);
-            let login = await usertbl.findOne({ email: email });
-            console.log("login ----" +login)
-            if (!login) {
-                return res.status(200).send({ success : false , msg :"there is no registered user on this name" });
-            }
-            const compare = await bcrypt.compare(password, login.password);
-
-            if (!compare) {
-                return res.status(200).send({  success : false , msg :"your password is wrong" });
+            if(req.body.state === 1){
+                console.log("email ----" +email);
+                let login = await usertbl.findOne({ email: email });
+                console.log("login ----" +login)
+                if (!login) {
+                    return res.status(200).send({ success : false , msg :"there is no registered user on this name" });
+                }
+                const compare = await bcrypt.compare(password, login.password);
+    
+                if (!compare) {
+                    return res.status(200).send({  success : false , msg :"your password is wrong" });
+                }
+                else{
+                    const jwtdata = jwt.sign({ id: login._id }, JWT_SECRET);
+                    console.log(jwtdata);
+                  //  res.send(jwtdata);
+                //   localStorage.setItem('logintoken','krupa');
+                //   alert(localStorage.getItem('logintoken'));
+                  return res.status(200).send({  success : true , msg :"login success full" ,token :jwtdata });
+                }
             }
             else{
-                const jwtdata = jwt.sign({ id: login._id }, JWT_SECRET);
-                console.log(jwtdata);
-              //  res.send(jwtdata);
-            //   localStorage.setItem('logintoken','krupa');
-            //   alert(localStorage.getItem('logintoken'));
-              return res.status(200).send({  success : true , msg :"login success full" ,token :jwtdata });
+                console.log("spp======");
+                let login = await sptbl.findOne({ email: email });
+                console.log("login ----" +login)
+                if (!login) {
+                    return res.status(200).send({ success : false , msg :"there is no registered user on this name" });
+                }
+                const compare = await bcrypt.compare(password, login.password);
+    
+                if (!compare) {
+                    return res.status(200).send({  success : false , msg :"your password is wrong" });
+                }
+                else{
+                    const jwtdata = jwt.sign({ id: login._id }, JWT_SECRET);
+                    console.log(jwtdata);
+                  //  res.send(jwtdata);
+                //   localStorage.setItem('logintoken','krupa');
+                //   alert(localStorage.getItem('logintoken'));
+                  return res.status(200).send({  success : true , msg :"login success full" ,token :jwtdata });
+                }
             }
         } catch (error) {
             console.log(error);

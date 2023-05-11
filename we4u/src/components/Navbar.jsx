@@ -3,13 +3,12 @@ import "../css/Navbar.css";
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import LoginData from "../services/LoginData";
-
-
+import { Modal } from 'react-bootstrap';
+import { FormControl, FormGroup, Input, InputLabel, Typography, Button } from '@mui/material';
 export const Navbar = () => {
   const location=useLocation();
   const nevigate = useNavigate();
   const [navCollapse,setNavCollapse]=useState(true);
-
   const handleNav=()=>{
     setNavCollapse(!navCollapse);
   }
@@ -48,36 +47,52 @@ export const Navbar = () => {
 }
   return (
     <>
-
 <nav class="navbar navbar-expand-md navbar-dark">
-      <div class="container-fluid">
-        <img src="/images/Logo.png" width="100" height="70" class="c_nav_image"/>
-        <button class="navbar-toggler" type="button" onClick={handleNav}>
-          <span class="navbar-toggler-icon"></span>
+
+
+
+<div className="container-fluid">
+        <img src="/images/Logo.png" width="100" height="50" className="c_nav_image"/>
+        <button className="navbar-toggler" type="button" onClick={handleNav}>
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class={navCollapse?"collapse navbar-collapse justify-content-end":"navbar-collapse justify-content-end"} id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <Link class="nav-link" aria-current="page" to="/">Home</Link>
+        <div className={navCollapse?"collapse navbar-collapse justify-content-end menu_bar":"navbar-collapse justify-content-end menu_bar"} id="navbarSupportedContent">
+          <ul className="navbar-nav ml-auto mb-2 mb-lg-0 reg_ul">
+            <li className="nav-item">
+              <Link className="nav-link" to="/">Home</Link>
             </li>
-            <li class="nav-item">
-              <Link class="nav-link" to="/about">About</Link>
+            <li className="nav-item">
+              <Link className="nav-link" to="/about">About</Link>
             </li>
-            <li class="nav-item">
-              <Link class="nav-link" to="/register">Register</Link>
-            </li>
-            <li class="nav-item">
-              <Link class="nav-link" to="/contact">Contact Us</Link>
+            <li class="dropdown nav-item">
+            <Link className="nav-link" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false"> Register </Link>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><Link className="dropdown-item" to="/register">Register As Client</Link></li>
+              <li><Link className="dropdown-item" to="/regprof">Register As Professional</Link></li>
+            </ul>
+          </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/contact">Contact Us</Link>
             </li>
           </ul>
-          <ul class="navbar-nav sm-icons">
-            <li><Link class="nav-link" to="/login"><i className="fa fa-user" aria-hidden="true"></i></Link></li>
-            <li><Link class="nav-link" to="/cart" onClick={handlecart}><i className="fa-sharp fa-solid fa-cart-shopping fa-bounce fa-lg"></i></Link></li>
-            <li><Link class="nav-link" to="/logout" onClick={handlelogout}><i className="fa-solid fa-right-from-bracket fa-lg"></i></Link></li>
+          <ul className="navbar-nav sm-icons">
+            <li class="dropdown nav-item">
+            <Link className="nav-link" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-user fa-lg"></i></Link>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><Link className="dropdown-item" to="/login">Login As Client</Link></li>
+              <li><Link className="dropdown-item" to="/regprof">Login As Professional</Link></li>
+            </ul>
+          </li>
+            <li><Link className="nav-link" to="/cart" onClick={handlecart}><i class="fa-solid fa-cart-shopping fa-lg"></i></Link></li>
+            <li><Link className="nav-link" to="/profile"><i className="fa-solid fa-user-gear fa-lg"></i></Link></li>
+            <li><Link className="nav-link" to="/logout" onClick={handlelogout}><i class="fa-solid fa-right-from-bracket fa-lg"></i></Link></li>
           </ul>
         </div>
       </div>
-    </nav>
+    </nav> 
+    
     </>
-  );
-};
+   
+  )
+
+}

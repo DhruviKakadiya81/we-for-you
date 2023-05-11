@@ -13,6 +13,7 @@ import {TextField,Button} from "@mui/material";
 import { Link } from 'react-router-dom';
 
 export const Contact = () => {
+    
   return (
     
     <>
@@ -56,7 +57,7 @@ export const Contact = () => {
                 </div>
             </div>
 
-            <div className="contact-form order-1 order-lg-2">
+            <div className="contact-form order-1 order-lg-2 p-2">
             <form action="#" autoComplete='off'>
             <h3 className="title">Contact Us</h3>
             <div className="input-container">
