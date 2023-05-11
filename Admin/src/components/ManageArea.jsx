@@ -89,7 +89,7 @@ export const ManageArea = () => {
 
                     <FormControl className=''  >
                         <InputLabel className=''>Selected City Name</InputLabel>
-                        <Input variant="dark" type="text" name="name" value={cityname} onChange={(event) => setsname(event.target.value)} className='mx-3 my-3' style={{ color: "black" }} readOnly />
+                        <Input variant="dark" type="text" name="name" value={cityname}  className='mx-3 my-3' style={{ color: "black" }} readOnly />
                     </FormControl><br />
 
                     <br />

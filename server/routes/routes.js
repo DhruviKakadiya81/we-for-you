@@ -10,7 +10,7 @@ const mainservice = require("../controllers/showservices");
 const spapi = require("../controllers/serviceprovider");
 const managearea = require("../controllers/managearea");
 const managecity = require("../controllers/managecity");
-
+const userdetail = require("../controllers/userdetails");
 
 const path = require("path");
 var multer = require("multer");
@@ -61,6 +61,9 @@ router1.get("/getarea",managearea.getarea);
 router1.put("/updatearea",managearea.updatearea);
 router1.delete("/deletearea/:id",managearea.deletearea);
 
+
+router1.post("/profiledetail",upload.single('image'),userdetail.adddetails);
+router1.post("/getuserdetail",userdetail.getdetail);
 
 // router1.post("/getuser",logcontroller.getuserlogin);
 // router1.post("/getuser",logcontroller.getuserlogin);
