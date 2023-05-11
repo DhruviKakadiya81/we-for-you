@@ -136,8 +136,7 @@ const Delete = (props) => {
             <Modal.Body>
                 <div className="dlt">
                   Are You Sure to Delete City?
-                </div>
-               
+                </div> 
             </Modal.Body>
             <Modal.Footer>
               <Button variant="" className="mx-3"  onClick={() => {initmodel}} style={{backgroundColor:"red"}}>
@@ -157,7 +156,6 @@ const Delete = (props) => {
                     <div className="dlt">
                         Are You Sure to Delete City?
                     </div>
-
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="" className="mx-3" onClick={() => { initmodel }} style={{ backgroundColor: "red" }}>
@@ -169,8 +167,9 @@ const Delete = (props) => {
                 </Modal.Footer>
 
             </Modal>
-
-        </>
+            </Modal.Footer>
+        </Modal>
+      </>
     )
 }
 

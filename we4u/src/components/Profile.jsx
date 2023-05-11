@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Profile = () => {
   const classes = useStyles();
+  
   return (
     <>
     <Navbar/>
@@ -43,45 +44,21 @@ const Profile = () => {
           <form action="">
             <h3 className='title mb-5'>Profile</h3>
             <div className="pro_input_container">
-            <FormControl className='mb-3 detail_container'>
-                    <InputLabel className='mx-3'>Enter First Name</InputLabel>
-                    <Input type="text" name="name" className='my-3'  />
-            </FormControl><br/>
+            <input type="text" placeholder='Enter First Name' className='input_field px-5 py-2 my-4'/>
             </div>
             <div className="pro_input_container">
-            <FormControl className='mb-3 detail_container'>
-                    <InputLabel className='mx-3' >Enter Second Name</InputLabel>
-                    <Input type="text" name="name" className='my-3'  />
-            </FormControl><br/>
+            <input type="text" placeholder='Enter Second Name' className='input_field px-5 py-2 my-2 mb-4'/>
             </div>
             <div className="pro_input_container">
-            <FormControl className='{classes.container} mb-4 detail_container'>
-                <TextField
-                    id="date"
-                    label="Birthday"
-                    type="date"
-                    defaultValue="2023-01-01"
-                    className={classes.textField}
-                    InputLabelProps={{
-                          shrink: true,
-                        }}
-                  />
-            </FormControl><br/>
+            <label for="birthday" className='lbl_birthday mx-3'>Birthday : </label>
+            <input type="date" id="birthday" name="birthday" className='input_date_field px-4 py-1 my-2'/>
             </div>
             <div className="pro_input_container">
-            <FormControl className='mb-3 detail_container'>
-                      <FormLabel id="demo-row-radio-buttons-group-label">Gender</FormLabel>
-                      <RadioGroup
-                            row
-                            aria-labelledby="demo-row-radio-buttons-group-label"
-                            name="row-radio-buttons-group"
-                            defaultValue="female"
-                      >
-                            <FormControlLabel value="female" control={<Radio />} label="Female" />
-                            <FormControlLabel value="male" control={<Radio />} label="Male" />
-                            <FormControlLabel value="other" control={<Radio />} label="Other" />
-                      </RadioGroup>
-            </FormControl><br/>
+            <label className='lbl_gender mx-3'>Gender : </label>
+            <input type="radio" value="Female" className='radio_detail'/>
+            <label For="Female" className='me-4 ms-1 radio_detail'> Female </label>
+            <input type="radio" value="Female" className='radio_detail'/>
+            <label For="Female" className='me-2 ms-1 radio_detail'> Male </label>
             </div>
             <div className="pro_input_container">
             <FormControl className='mb-3 mx-auto'>
@@ -105,12 +82,27 @@ export default Profile
 
 const ChangePass = (props)=>{
   const [isshow, invokemodel] = useState(false);
+  const [eye, seteye] = useState("fa-sharp fa-solid fa-eye-slash");
+  const [password, setPass] = useState("");
   
   const initmodel = () => {
     return invokemodel(!isshow);
   }
   const handledelete = async(id,e) =>{
    }
+
+   const handletogglepass = async (event) => {
+    //event.preventDefault();
+    var x = document.getElementById("id_password");
+    if (x.type === "password") {
+      x.type = "text";
+      seteye("fa-solid fa-eye");
+    } else {
+      x.type = "password";
+      seteye("fa-sharp fa-solid fa-eye-slash");
+    }
+  };
+   
   return(
     <>
      <Button variant="contained" style={{backgroundColor:"white",color:"black"}} onClick={initmodel}>
@@ -126,9 +118,17 @@ const ChangePass = (props)=>{
           <Modal.Body>
               <div className="dlt">
               <FormControl className='mb-3 detail_container'>
-                  <InputLabel className='mx-3'>Old Password</InputLabel>
-                  <Input type="text" name="name" className='my-3'  />
-              </FormControl><br/>
+               <InputLabel className='mx-3'>Old Password</InputLabel>
+               <Input type="password" name="password" className='my-3' onChange={(event) => setPass(event.target.value)} id="id_password" />
+              </FormControl>
+              <i
+                        className={eye}
+                        id="togglePassword"
+                        style={{ marginLeft: "-25px", cursor: "pointer" }}
+                        onClick={handletogglepass} by
+
+                      ></i>
+              <br/>
               <FormControl className='mb-3 detail_container'>
                   <InputLabel className='mx-3' >New Password</InputLabel>
                   <Input type="text" name="name" className='my-3'  />
