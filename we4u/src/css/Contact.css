@@ -7,7 +7,7 @@
 .container{
     position:relative;
     width: 100%;
-    min-height: 100vh;
+    min-height: 90vh;
     padding: 2rem;
     overflow: hidden;
     display: flex;
@@ -31,6 +31,7 @@
 .contact-form{
     background-color: white;
     position: relative;
+    padding: 100px;
 }
 
 .contact-form:before{
@@ -62,7 +63,9 @@
 .input-container{
     position: relative;
     margin: 1rem 0;
+    width: 350px;
 }
+
 
 .contact-info{
     padding: 2.3rem 2.2rem;
@@ -101,6 +104,16 @@
     margin: 0.5rem 0;
     align-items: center;
     font-size: 0.95rem;
+}
+
+.cont_form{
+    padding: 30px;
+}
+
+.contact-form .title{
+    text-align: center;
+    font-size: 35px;
+    font-weight: 500;
 }
 
 .icon{

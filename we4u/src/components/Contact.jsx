@@ -57,9 +57,9 @@ export const Contact = () => {
                 </div>
             </div>
 
-            <div className="contact-form order-1 order-lg-2 p-2">
-            <form action="#" autoComplete='off'>
-            <h3 className="title">Contact Us</h3>
+             <div className="contact-form order-1 order-lg-2 p-2">
+            <form action="#" autoComplete='off' className='cont_form'>
+            <h3 className="title mb-5">Contact Us</h3>
             <div className="input-container">
             <TextField id="outlined-basic" label="UserName" variant="outlined" className='input' style={{width:"90%"}}/>
             </div>

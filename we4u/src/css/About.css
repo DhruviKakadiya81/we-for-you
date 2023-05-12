@@ -1,3 +1,5 @@
+
+
 h2{
     text-align: center;
 }
@@ -18,7 +20,7 @@ h2{
 
 #grid1{
    
-    margin-top: 100px;
+    margin-top: 70px;
 }
 
 #grid1 .col {
@@ -27,7 +29,7 @@ h2{
     width: 280px;
 
     border-radius:20px ;
-     height :150px; 
+     height :190px; 
      padding-left:20px;
      background-image:linear-gradient(to right, rgb(105,105,105) , rgb(216,216,216));
     /* box-shadow:  rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset */
@@ -36,9 +38,86 @@ h2{
 
 #grid1 .center_text{
     text-align: center;
-    margin-top: 40px;
+    margin-top: 10px;
+    width: 280px;
+margin-left: 20px;
+    border-radius:20px ;
+     height :190px; 
+     /* padding-left:20px; */
+     background-image:linear-gradient(to right, rgb(105,105,105) , rgb(216,216,216));
+   
 }
 
+#grid1 .cen_text{
+
+    margin-top: 60px;
+}
+
+#grid1 .center_text p{
+    text-align: center;
+
+}
 #grid1 .col p{
     text-align: center;
+}
+
+.img_div1{
+    animation-name: rotate;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@media only screen and (max-width: 400px) {
+    .img_div {
+      width: 380px;
+      height: 400px;
+    
+    }
+    .img_div1 {
+        width: 380px;
+        height: 400px;
+      }
+  
+
+    .txt_div{
+        width: 400px;
+        margin-left: 10px;
+    }
+  }
+
+  @media only screen and (max-width: 530px) and (min-width:415px){
+
+    .img_div {
+        width: 400px;
+        height: 420px;
+      }
+  
+      .txt_div{
+          width: 400px;
+          margin-left: 10px;
+      }
+  }
+
+  @media only screen and (max-width: 780px) and (min-width:531px){
+
+    .img_div {
+        width: 460px;
+        height: 480px;
+      }
+  
+  }
+  
+
+
+  @media only screen and (max-width: 415px){
+    .img_div{
+        width: 360px;
+        height: 380px;
+    }
+  }
+
+  @keyframes rotate{
+    from{ transform: rotate(-360deg); }
+    to{ transform: rotate(360deg); }
 }

@@ -6,7 +6,10 @@ import managecity from '../services/managecity'
 import "../css/ManageArea.css";
 import { Button, Modal, DropdownButton, Dropdown } from 'react-bootstrap';
 import { FormControl, FormGroup, Input, InputLabel, Typography,Select,MenuItem } from '@mui/material';
+<<<<<<< HEAD
 
+=======
+>>>>>>> a39fd2f7eb5b6dafae14db70ce8ff59db39a4946
 
 export const ManageArea = () => {
     const [areaname, setareaname] = useState('');

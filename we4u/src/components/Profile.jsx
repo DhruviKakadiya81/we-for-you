@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Profile = () => {
   const classes = useStyles();
+  
   const [userid, setuserid] = useState('');
   const [firstname, setfirstname] = useState('');
   const [lastname, setlastname] = useState('');
@@ -209,6 +210,8 @@ export default Profile
 
 const ChangePass = (props) => {
   const [isshow, invokemodel] = useState(false);
+  const [eye, seteye] = useState("fa-sharp fa-solid fa-eye-slash");
+  const [password, setPass] = useState("");
   const [userid,setuserid] = useState(props.userid);
   const [oldpassword, setoldpassword] = useState('');
   const [newpassword, setnewpassword] = useState('');
@@ -229,6 +232,19 @@ const ChangePass = (props) => {
         setmsg("your confirm password and new password is not matched");
       }
   }
+
+   const handletogglepass = async (event) => {
+    //event.preventDefault();
+    var x = document.getElementById("id_password");
+    if (x.type === "password") {
+      x.type = "text";
+      seteye("fa-solid fa-eye");
+    } else {
+      x.type = "password";
+      seteye("fa-sharp fa-solid fa-eye-slash");
+    }
+  };
+   
 
   useEffect(() => {
     setuserid(props.userid);
@@ -273,6 +289,40 @@ const ChangePass = (props) => {
           </Button>
         </Modal.Footer>
 
+      
+          <Modal.Body>
+              <div className="dlt">
+              <FormControl className='mb-3 detail_container'>
+               <InputLabel className='mx-3'>Old Password</InputLabel>
+               <Input type="password" name="password" className='my-3' onChange={(event) => setPass(event.target.value)} id="id_password" />
+              </FormControl>
+              <i
+                        className={eye}
+                        id="togglePassword"
+                        style={{ marginLeft: "-25px", cursor: "pointer" }}
+                        onClick={handletogglepass} by
+
+                      ></i>
+              <br/>
+              <FormControl className='mb-3 detail_container'>
+                  <InputLabel className='mx-3' >New Password</InputLabel>
+                  <Input type="text" name="name" className='my-3'  />
+              </FormControl><br/>
+              <FormControl className='mb-3 detail_container'>
+                  <InputLabel className='mx-3' >Confirm New Password</InputLabel>
+                  <Input type="text" name="name" className='my-3'  />
+              </FormControl><br/>
+              </div>             
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="" className="mx-3" onClick={initmodel} style={{backgroundColor:"red"}}>
+              CLOSE
+            </Button>
+            <Button variant=""  className="mx-3" type='submit' style={{backgroundColor:"black",color:"white"}}>
+              Change
+            </Button>
+          </Modal.Footer>
+      
       </Modal>
 
     </>
