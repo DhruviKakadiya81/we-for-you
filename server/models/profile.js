@@ -12,7 +12,7 @@ const profileSchema = new mongoose.Schema({
   gender: {
     type: String,
     required: true,
-    enum: ['male', 'female', 'nonbinary']
+    enum: ['male', 'female', 'Other']
   },
   birthdate: {
     type: Date,
@@ -21,13 +21,14 @@ const profileSchema = new mongoose.Schema({
   userid: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    required: true
+    required: true,
   },
-  profile_image: {
+  image: {
     type: String,
-    required: true
+    
   }
 });
+profileSchema.index({ userid: 1 }, { unique: true });
 
 const Profile = mongoose.model('Profile', profileSchema);
 

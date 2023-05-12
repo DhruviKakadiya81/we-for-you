@@ -6,6 +6,10 @@ import managecity from '../services/managecity'
 import "../css/ManageArea.css";
 import { Button, Modal, DropdownButton, Dropdown } from 'react-bootstrap';
 import { FormControl, FormGroup, Input, InputLabel, Typography,Select,MenuItem } from '@mui/material';
+<<<<<<< HEAD
+
+=======
+>>>>>>> a39fd2f7eb5b6dafae14db70ce8ff59db39a4946
 
 export const ManageArea = () => {
     const [areaname, setareaname] = useState('');
@@ -96,7 +100,7 @@ export const ManageArea = () => {
 
                    <FormControl className='area_detail_container'  >
                         <InputLabel className=''>Selected City Name</InputLabel>
-                        <Input variant="dark" type="text" name="name" value={cityname} onChange={(event) => setsname(event.target.value)} className='mx-3 my-3' style={{ color: "black" }} readOnly />
+                        <Input variant="dark" type="text" name="name" value={cityname}  className='mx-3 my-3' style={{ color: "black" }} readOnly />
                     </FormControl><br />
 
                    <FormControl className='mb-3 mx-auto'>

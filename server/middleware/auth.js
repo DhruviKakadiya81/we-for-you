@@ -10,22 +10,23 @@ const auth = async (req, res, next) => {
     const token = req.body.id;
     console.log("token is :" + token);
     if (!token) {
-        res.status(401).send(error);
+       return  res.status(401).send(error);
     }
 
     try {
         const ver = jwt.verify(token, JWT_SECRET);
-        // res.send(data.user.id);
+    
         console.log("ver-----" + ver)
         const userdata = await user.findOne({ _id: ver.id });
         console.log("userdata : " + userdata);
         //let id = ver.iat;
         req.id = ver.id;
-        console.log(req.id);
-        // req.user = ver.user;
+        // console.log(req.id);
+        req.user = ver.user;
         // console.log(data.user.id)
 
-        //console.log(req.data);
+        // console.log(req.data);
+        // res.send(data.user.id);
         next();
     } catch (error) {
         res.status(401).send(error);
