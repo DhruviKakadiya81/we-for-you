@@ -1,11 +1,11 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import apiServices from "../services/LoginData.js";
 import '../css/Login.css';
-import { useNavigate } from "react-router-dom";
 
 export const Login = (props) => {
-  const navigate = useNavigate();
+  const navigate=useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
   const [message, setmessage] = useState("");
@@ -20,14 +20,8 @@ export const Login = (props) => {
     if (respo.data.success === true) {
       setmessage(respo.data.msg);
       localStorage.setItem("token", respo.data.token);
-      alert(state);
-      if(state===1){
-          navigate("/");
-      }
-      if(state===0){
-        navigate("/sphome");
-      }
-      // alert(localStorage.getItem("token"));
+      alert(localStorage.getItem("token"));
+      navigate("/");
     } else {
       setmessage(respo.data.msg);
     }
@@ -113,20 +107,17 @@ export const Login = (props) => {
               </div>
             </div>
           </div>
-        </section>
 
+        
+      </section>
+    </>
+  );
+}
+else if(props.state === 0){
+  
+  return (
+    <>
 
-
-
-
-
-      </>
-    );
-  }
-  else if (props.state === 0) {
-
-    return (
-      <>
 
         {/* <div style={{backgroundColor:"#f8f8ff" , borderRadius:"15px" ,  height:"500px", width:"900px" , marginLeft:"300px" , alignContent:"center" , alignItems:"center"}} > */}
         {/* <div style={{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" , marginTop:"135px" }} className=" mx-auto  w-50 p-5 d-flex align-items-center justify-content-center"> */}
@@ -208,5 +199,4 @@ export const Login = (props) => {
 
   }
 
-};
-
+}

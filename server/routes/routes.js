@@ -40,6 +40,8 @@ var upload = multer({ storage: storage });
 router1.post("/reguser",[body("email").isEmail()],controller.register);
 router1.post("/loguser",[body("email").isEmail()],logcontroller.login);
 router1.post("/getclient", auth , getuser.getuserlogin );
+
+
 router1.post("/sendmail",sendotp.sendotp);
 router1.post("/getotp",sendotp.getotp);
 router1.post("/delser",mainservice.deleteservice);
@@ -64,6 +66,8 @@ router1.delete("/deletearea/:id",managearea.deletearea);
 
 router1.post("/profiledetail",upload.single('image'),userdetail.adddetails);
 router1.post("/getuserdetail",userdetail.getdetail);
+router1.put("/updateuserdetail",userdetail.updatedetails);
+router1.put("/changepass",userdetail.changepassword);
 
 // router1.post("/getuser",logcontroller.getuserlogin);
 // router1.post("/getuser",logcontroller.getuserlogin);

@@ -41,7 +41,7 @@ export const Navbar = () => {
       const data = { id };
       alert("id-----" + id);
       const respo = await LoginData.sendauth(data);
-      console.log("response====>",respo);
+      console.log("response====>", respo);
     }
   }
 
@@ -49,7 +49,7 @@ export const Navbar = () => {
     event.preventDefault();
     var id = localStorage.getItem("token");
     if (id == null) {
-      
+
       nevigate("/login");
       event.preventDefault();
     }
@@ -65,11 +65,9 @@ export const Navbar = () => {
   return (
     <>
 
-    
+
+
       <nav className="navbar navbar-expand-md navbar-dark">
-
-
-
         <div className="container-fluid">
           <img src="/images/Logo.png" width="100" height="50" className="c_nav_image" />
           <button className="navbar-toggler" type="button" onClick={handleNav}>
@@ -94,9 +92,10 @@ export const Navbar = () => {
                 <Link className="nav-link" to="/contact">Contact Us</Link>
               </li>
             </ul>
+
             <ul className="navbar-nav sm-icons">
               <li className="dropdown nav-item">
-                <Link className="nav-link" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-user fa-lg"></i></Link>
+                <Link className="nav-link" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false"><i className="fa-solid fa-user fa-lg"></i></Link>
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <li><Link className="dropdown-item" to="/login">Login As Client</Link></li>
                   <li><Link className="dropdown-item" to="/loginasp">Login As Professional</Link></li>
@@ -105,9 +104,13 @@ export const Navbar = () => {
               <li><Link className="nav-link" to="/cart" onClick={handlecart}><i className="fa-solid fa-cart-shopping fa-lg"></i></Link></li>
               <li><Link className="nav-link" to="/profile"><i className="fa-solid fa-user-gear fa-lg" onClick={handleprofile}></i></Link></li>
               <li><Link className="nav-link" to="/logout" onClick={handlelogout}><i className="fa-solid fa-right-from-bracket fa-lg"></i></Link></li>
-            </ul>
+
+
+             
+                </ul>
+              </div>
           </div>
-        </div>
+
       </nav>
     </>
   );
@@ -115,45 +118,5 @@ export const Navbar = () => {
 
 };
 
-const LoginButton = () => {
-  const [isshow, invokemodel] = useState(false);
 
-  const initmodel = () => {
-    return invokemodel(!isshow);
-  }
-  return (
-    <>
-
-      <i className="fa fa-user fa-lg log" aria-hidden="true" onClick={initmodel}></i>
-
-      <Modal show={isshow} style={{ overflowX: "scroll", width: "100%", marginTop: "0px" }} >
-        <Modal.Header closeButton onClick={initmodel}>
-          <Modal.Title className='' >
-            Login
-          </Modal.Title>
-        </Modal.Header>
-
-        <Modal.Body>
-
-          <Link className="nav-link" to="/login">Login as Customer</Link>
-          <Link className="nav-link" to="/loginasp">Login as Professional</Link>
-
-
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="" className="mx-3" onClick={initmodel} style={{ backgroundColor: "dark-grey" }}>
-            CLOSE
-          </Button>
-          <Button variant="" className="mx-3" type='submit' style={{ backgroundColor: "red" }} >
-            Delete
-          </Button>
-        </Modal.Footer>
-
-      </Modal>
-
-    </>
-
-  )
-
-}
 
