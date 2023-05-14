@@ -72,6 +72,7 @@ export const ManageArea = () => {
 
 {/* Dhruvi Code */}
 
+
 <FormGroup className='mx-auto area_container'>
                 <Typography variant='h4' className='add_area_heading'>Add Area</Typography>
                 <div className="mt-5 mx-auto main_area_container">
