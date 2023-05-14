@@ -6,6 +6,7 @@ import { Login } from "./components/Login";
 import { ClientIndex } from "./components/ClientIndex";
 import { Authpage } from "./components/Authpage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Redirect} from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import { Forget } from './components/Forget';
 import { Verify } from './components/Verify';
@@ -19,14 +20,28 @@ import { Showprofile } from "./components/Showprofile";
 import TestiMonials from './components/TestiMonials/TestiMonials';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 import Profile from "./components/Profile";
+import { ServiceProvider } from "./components/ServiceProvider";
 
 
 
 function App() {
-const [register, setregister] = useState(0);
+const [isLogin, setisLogin] = useState(true);
+
+const Authentication =() =>{
+        let token = localStorage.getItem("token");
+        if(token === null){
+          setisLogin(false);
+        }
+      console.log("token=====>",token);
+}
+
+useEffect(() => {
+      Authentication();
+}, [isLogin])
+
   return (
     <>
       
@@ -38,18 +53,37 @@ const [register, setregister] = useState(0);
         <Route path="/regprof" element={<Register  state = {0}/>}></Route>
         <Route path="/login" element={<Login state = {1} />}></Route>
         <Route path="/loginasp" element={<Login state = {0}/>}></Route>
-        <Route path="/cart" element={<Authpage />}></Route>
         <Route path="/forget" element={<Forget/>}></Route>
         {/* <Route path="/about" element={<about/>}></Route>  */}
+
+        <Route path="/logout" element={<Home/>}></Route> 
         <Route path="/logout" element={<Home/>}></Route>
         <Route path="/ser_pro_nav" element={<Ser_Pro_Navbar/>}></Route>
+
        
         <Route path="/showprofile" element={<Showprofile/>}></Route>
+
 
         {/* <Route path="/about" element={<TestiMonials/>}></Route> */}
         <Route path="/contact" element={<Contact/>}></Route>
         <Route path="/about" element={<About/>}></Route>
-        <Route path="/profile" element={<Profile/>}></Route>
+        {isLogin ? (
+        <Route path="/cart" element={<Authpage />}></Route>
+      ) : (
+        <Route path="/login" element={<Login />}></Route>
+      )}
+        {isLogin ? (
+         <Route path="/profile" element={<Profile/>}></Route>
+      ) : (
+        <Route path="/login" element={<Login />}></Route>
+      )}
+        
+       
+
+
+        <Route path="/sphome" element={<ServiceProvider/>}></Route>
+
+
       </Routes>
       </Router>
     </>

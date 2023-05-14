@@ -6,7 +6,7 @@ const JWT_SECRET = "jsonwebtokenforthehumanandhomeservicemanagement";
 const getuserlogin = async(req,res)=>{
     try{
         let userId = req.id;
-        console.log(userId);
+        console.log("userID===>",userId);
         const data2 = await usertbl.findById(userId);
         // const data2 = await user.findById(userId).select("-password");
         console.log("hello");

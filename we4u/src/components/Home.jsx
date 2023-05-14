@@ -50,7 +50,7 @@ export const Home = () => {
   
         <section className="services1">
           
-          <h1 className='serviceh1'> # Our Services #</h1>
+          <h1 className='serviceh1'>  Our Services </h1>
        
           
            
@@ -60,10 +60,10 @@ export const Home = () => {
               {service.data.data.map(product => (
                
                <div className='row p-3 '>
-                  <div className="card  " style={{ width: "10rem" , boxShadow:"rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset"}} >
-                  <img src={'http://localhost:4000/image/' + product.s_icon} className="card-img-top" alt="..." />
+                  <div className="card" style={{ width: "10rem" , boxShadow:"rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset"}} >
+                  <img src={'http://localhost:4000/image/' + product.s_icon} className="card-img-top" alt="..." style={{height:"60px",width:"80px",textAlign:"center",marginTop:"5px",margin:"auto"}}/>
                   <div className="card-body">
-                    <h6  className="card-title"> {product.s_name}</h6>
+                    <h6  className="card-title text-center"> {product.s_name}</h6>
                   </div>
                 </div>
                 </div>
