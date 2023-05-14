@@ -256,13 +256,6 @@ We4U has a rigorous vetting process for its service providers to ensure that the
 
 <br /><br />
 
-
-
-
-
-
-      
-
     
     <Footer/>
    
