@@ -1,5 +1,6 @@
 import React from 'react'
 import { Navbar } from './Navbar'
+import { Footer } from './Footer';
 import '../css/Home.css';
 import showservice from '../services/Services';
 import { useState } from 'react';
@@ -74,8 +75,8 @@ export const Home = () => {
           <h1 className='serviceh1'>  Our Services </h1>
        
           
-           
-          {service.data != undefined && service.data.data.length > 0 && (
+           <div className='services_scroll'>
+           {service.data != undefined && service.data.data.length > 0 && (
             <section className="services">
                  <div class="d-flex flex-wrap justify-content-center">
               {service.data.data.map(product => (
@@ -96,11 +97,38 @@ export const Home = () => {
 
           )}
           
-         
-            
-          
+           </div>
+        </section>
+        <section className='beauty_saloon'>
+
+        <h1 className='beauty_saloon_title'>Beauty Saloon</h1>
+        <div className="d-flex flex-wrap justify-content-center">
+        <div className="card mx-4 my-4">
+        <img src="Images/manicure.jpg" class="card-img-top" alt="..."/>
+        <div class="card-body">
+          <h5 class="card-title">Manicure</h5>
+          <p class="card-text">A Manicure usually consists of filing and shaping the free edge of nails, pushing and clipping.</p>
+        </div>
+        </div>
+        <div className="card mx-4 my-4">
+        <img src="Images/keratin.jpg" class="card-img-top" alt="..."/>
+        <div class="card-body">
+          <h5 class="card-title">Keratin</h5>
+          <p class="card-text">A keratin treatment is a process that smooths and often straightens hair.</p>
+        </div>
+        </div>
+        <div className="card mx-4 my-4">
+        <img src="Images/hair_cutting.jpg" class="card-img-top" alt="..."/>
+        <div class="card-body">
+          <h5 class="card-title">Hair Cutting</h5>
+          <p class="card-text">We Are Doing Many Types Of Hair Cutting like layered, one-length, Face-Look.</p>
+        </div>
+        </div>
+        </div>
+        
         </section>
       </div>
+      <Footer/>
     </>
 
   )
