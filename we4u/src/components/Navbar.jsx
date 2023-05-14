@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../css/Navbar.css";
+
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import LoginData from "../services/LoginData";
@@ -47,7 +48,7 @@ export const Navbar = () => {
 }
   return (
     <>
-<nav class="navbar navbar-expand-md navbar-dark">
+<nav class="navbar navbar-expand-md navbar-dark ">
 
 
 
@@ -73,6 +74,10 @@ export const Navbar = () => {
           </li>
             <li className="nav-item">
               <Link className="nav-link" to="/contact">Contact Us</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/showProfile">Show 
+              Profile</Link>
             </li>
           </ul>
           <ul className="navbar-nav sm-icons">
