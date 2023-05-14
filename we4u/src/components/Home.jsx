@@ -24,52 +24,31 @@ export const Home = () => {
   return (
     <>
       <Navbar />
-      <div className="home">
-        <div className=""  >
-           <div id="carouselExampleCaptions" style={{ backgroundImage:"Images/homeimg1.jpg"}} className="carousel carousel-dark carousel-fade  slide" data-bs-ride="carousel">
-           
-            <div className="carousel-inner">
-            <div className="carousel-item active  outer-slider"  data-bs-interval="2000" style={{height:"90%"}}>
-                {/* <img src="Images/homeimg1.jpg" className="d-block mainpost img-fluid" alt="..." /> */}
-                <video src="images/v2.mp4"  style={{objectFit:"cover",width:"100%"}} muted autoPlay  controls={false} alt="hello"></video>
+     
+      {/* <div className="home"> */}
+      
 
-                <div className="carousel-caption d-none d-md-block">
-                </div>
-              </div>
-              <div className="carousel-item  outer-slider"  style={{height:"90%"}}>
-                {/* <img src="Images/homeimg1.jpg" className="d-block mainpost img-fluid" alt="..." /> */}
-                <video src="images/v2.mp4"  style={{objectFit:"cover",width:"100%"}} muted autoPlay  controls={false} alt="hello"></video>
-
-                <div className="carousel-caption d-none d-md-block">
-                </div>
-              </div>
-              <div className="carousel-item  outer-slider" style={{height:"90%"}}>
-                {/* <img src="Images/electrician.jpg" className="d-block mainpost img-fluid" alt="..." /> */}
-                <video src="images/v2.mp4"  style={{objectFit:"cover",width:"100%"}} muted autoPlay   controls={false} alt="hello"></video>
-
-                <div className="carousel-caption d-none d-md-block">
-
-                </div>
-              </div>
-            </div>
-            <button className="carousel-control-prev" style={{backgroundColor:"white" ,opacity: "0.9", width:"50px" , height:"50px" , borderRadius:"50%" ,position:"absolute",top:"45%",left:"5%"}} type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-              <span  style={{   color:"pink",  width:"30px"}} className="carousel-control-prev-icon"  aria-hidden="true"></span>
-              <span className="visually-hidden">Previous</span>
-            </button>
-            <button className="carousel-control-next" style={{backgroundColor:"white" ,opacity: "0.9", width:"50px" , height:"50px" , borderRadius:"50%" ,position:"absolute",top:"45%",right:"5%"}} type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-              <span className="carousel-control-next-icon" aria-hidden="true"></span>
-              <span className="visually-hidden">Next</span>
-            </button>
-            <div className="carousel-indicators" style={{position:"relative"}}>
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-          </div> 
-          <div className="overlay">
-            {/* <ReactPlayer url={'images/v1.mp4'}  controls={true} /> */}
+      {/* <body> */}
+    <div class="s01" style={{background:`url("images/homeimag9.jpg")` , backgroundSize: "cover",
+  backgroundPosition: "center center"}}>
+      <form>
+        <fieldset>
+          <legend>Discover the Amazing City</legend>
+        </fieldset>
+        <div class="inner-form">
+          <div class="input-field first-wrap">
+            <input id="search" type="text" placeholder="What are you looking for?" />
+          </div>
+          <div class="input-field second-wrap">
+            <input id="location" type="text" placeholder="location" />
+          </div>
+          <div class="input-field third-wrap">
+            <button class="btn-search" type="button">Search</button>
           </div>
         </div>
+      </form>
+    </div>
+  
         <section className="services1">
           
           <h1 className='serviceh1'>  Our Services </h1>
@@ -129,6 +108,9 @@ export const Home = () => {
         </section>
       </div>
       <Footer/>
+        {/* </body> */}
+      {/* </div> */}
+     
     </>
 
   )

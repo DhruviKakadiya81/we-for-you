@@ -22,6 +22,8 @@ import './TestiMonials/TestiMonials.css'
 
 
 const About = () => {
+
+
   const testiMonials = [
     {
         name: 'Krupa',
