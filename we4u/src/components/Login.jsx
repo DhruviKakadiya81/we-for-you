@@ -21,7 +21,13 @@ export const Login = (props) => {
       setmessage(respo.data.msg);
       localStorage.setItem("token", respo.data.token);
       alert(localStorage.getItem("token"));
-      navigate("/");
+      if(props.state === 0){
+        navigate("/sphome");
+      }
+      else{
+        navigate("/");
+      }
+      
     } else {
       setmessage(respo.data.msg);
     }
