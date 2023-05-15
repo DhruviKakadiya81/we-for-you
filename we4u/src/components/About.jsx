@@ -22,6 +22,8 @@ import './TestiMonials/TestiMonials.css'
 
 
 const About = () => {
+
+
   const testiMonials = [
     {
         name: 'Krupa',
@@ -253,13 +255,6 @@ We4U has a rigorous vetting process for its service providers to ensure that the
 </div>
 
 <br /><br />
-
-
-
-
-
-
-      
 
     
     <Footer/>
