@@ -21,7 +21,13 @@ export const Login = (props) => {
       setmessage(respo.data.msg);
       localStorage.setItem("token", respo.data.token);
       alert(localStorage.getItem("token"));
-      navigate("/");
+      if(props.state === 0){
+        navigate("/sphome");
+      }
+      else{
+        navigate("/");
+      }
+      
     } else {
       setmessage(respo.data.msg);
     }
@@ -125,7 +131,7 @@ else if(props.state === 0){
         {/* <div style={{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",marginTop:"135px" }} className=" mx-auto  w-50 p-5 d-flex align-items-center justify-content-center"> */}
 
         <section className="d-flex flex-wrap" id="header">
-          <h1>professional</h1>
+        
           <div className="container-fluid p-5" style={{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset", marginTop: "100px", width: "50rem" }} >
             <div className="row">
               <div className="col-8 mx-5">

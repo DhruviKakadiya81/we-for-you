@@ -81,7 +81,7 @@ export const Navbar = () => {
               </li>
               <li className="dropdown nav-item">
                 <Link className="nav-link" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false"> Register </Link>
-                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{zIndex:"0"}}>
                   <li><Link className="dropdown-item" to="/register">Register As Client</Link></li>
                   <li><Link className="dropdown-item" to="/regprof">Register As Professional</Link></li>
                 </ul>

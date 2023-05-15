@@ -32,18 +32,20 @@ export const Home = () => {
     <div class="s01" style={{background:`url("images/homeimag9.jpg")` , backgroundSize: "cover",
   backgroundPosition: "center center"}}>
       <form>
-        <fieldset>
-          <legend>Discover the Amazing City</legend>
+      <fieldset className = "inner-form mb-0 pb-0"style={{fontSize:"30px",width:"90%",margin:"auto"}}>
+          <legend  className = "pb-0 mb-0" style={{fontSize:"40px",width:"90%"}}> Discover the Amazing Services</legend>
         </fieldset>
-        <div class="inner-form">
-          <div class="input-field first-wrap">
+        <div className="inner-form"style={{width:"90%",margin:"auto"}}>
+        
+       
+          <div className="input-field first-wrap">
             <input id="search" type="text" placeholder="What are you looking for?" />
           </div>
-          <div class="input-field second-wrap">
+          <div className="input-field second-wrap">
             <input id="location" type="text" placeholder="location" />
           </div>
-          <div class="input-field third-wrap">
-            <button class="btn-search" type="button">Search</button>
+          <div className="input-field third-wrap">
+            <button className="btn-search" type="button">Search</button>
           </div>
         </div>
       </form>

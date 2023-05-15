@@ -9,6 +9,8 @@ import userprofile from '../services/UserProfile'
 import getLoginUser from '../services/GetUser'
 import { useEffect } from 'react';
 
+import '../css/Showprofile.css';
+
 const useStyles = makeStyles((theme) => ({
   container: {
     display: 'flex',
@@ -106,78 +108,60 @@ const Profile = () => {
           <div className="profile_full_form">
             <div className="image_container order-2 order-lg-1">
               <h3 className="title pt-5 mt-5 pb-5">We4U</h3>
-              <img src="Images/avtar.jpg" alt="" className='img mt-5' />
+              <img src="Images/avtar.jpg" alt="" width="180" height="180" className='img mt-5' />
             </div>
 
             <div className="profile_form_container order-1 order-lg-2 p-5">
               <form action="">
                 <h3 className='title mb-5'>Profile</h3>
                 <div className="pro_input_container">
-                <input type="text" placeholder='Enter First Name' className='input_field px-5 py-2 my-3' onChange={(event) => { setfirstname(event.target.value) }}/>
-                </div>
-                <div className="pro_input_container">
-                <input type="text" placeholder='Enter Second Name' className='input_field px-5 py-2 my-2 mb-3' onChange={(event) => { setlastname(event.target.value) }}/>
-                </div>
-                <div className="pro_input_container">
-                <label for="birthday" className='lbl_birthday mx-3'>Select Your Image : </label>
-                  <FormControl className='mb-3 mt-0 detail_container'>
-                    <Input type="file" name="name" className='mt-3' onChange={(event) => { setimage(event.target.files[0]) }} />
+                  <FormControl className='mb-3 detail_container'>
+                    <InputLabel className='mx-3' >Enter First Name</InputLabel>
+                    <Input type="text" name="name" className='my-3' onChange={(event) => { setfirstname(event.target.value) }} />
                   </FormControl><br />
                 </div>
                 <div className="pro_input_container">
-                <label for="birthday" className='lbl_birthday mx-3'>Birthday : </label>
-                <input type="date" id="birthday" name="birthday" className='input_date_field px-4 py-1 my-2' onChange={(event) => { setbirthdate(event.target.value) }}/>
-                </div>
-                <div className="pro_input_container">
-                <label className='lbl_gender mx-3'>Gender : </label>
-                <input type="radio" value="Female" className='radio_detail'/>
-                <label For="Female" className='me-4 ms-1 radio_detail'> Female </label>
-                <input type="radio" value="Female" className='radio_detail'/>
-                <label For="Female" className='me-2 ms-1 radio_detail'> Male </label>
-                </div>
-                <div className="pro_input_container">
-                  <FormControl className='mb-3 mx-auto'>
-                    <Button type='submit' variant='contained' className='my-3 px-5 py-3' onClick={handleProfile} style={{ backgroundColor: "rgb(50,50,50)", color: "white" }}>Done</Button>
+                  <FormControl className='mb-3 detail_container'>
+                    <InputLabel className='mx-3' >Enter Second Name</InputLabel>
+                    <Input type="text" name="name" className='my-3' onChange={(event) => { setlastname(event.target.value) }} />
                   </FormControl><br />
                 </div>
-              </form>
-            </div>
-          </div>
-        </div>
+                <div className="pro_input_container">
 
-        <div className='pro1_main_container'>
-        <div className='pro1_full_container'>
-        <div className='pro1_image_container'>
-            <div className='pro_sub_image_container'>
-             <h3 className='title pt-5 mt-4 pb-5'>We4U</h3>
-             <img src="Images/avtar.jpg" alt="" className='imag mt-5' />
-            </div>
-          </div>
-          <div className='pro1_form_container'>
-          <form action="">
-                <h3 className='title mb-5 mt-5'>Profile</h3>
-                <div className="pro_input_container">
-                <input type="text" placeholder='Enter First Name' className='input_field px-5 py-2 my-3' onChange={(event) => { setfirstname(event.target.value) }}/>
-                </div>
-                <div className="pro_input_container">
-                <input type="text" placeholder='Enter Second Name' className='input_field px-5 py-2 my-2 mb-3' onChange={(event) => { setlastname(event.target.value) }}/>
-                </div>
-                <div className="pro_input_container">
-                <label for="birthday" className='lbl_birthday mx-3'>Select Your Image : </label>
+                  <p className='' style={{ textAlign: "left", marginLeft: "23%" }}> Select your Image</p>
                   <FormControl className='mb-3 mt-0 detail_container'>
-                    <Input type="file" name="name" className='mt-3' onChange={(event) => { setimage(event.target.files[0]) }} />
+
+                    <Input type="file" name="name" className='my-3' onChange={(event) => { setimage(event.target.files[0]) }} />
                   </FormControl><br />
                 </div>
                 <div className="pro_input_container">
-                <label for="birthday" className='lbl_birthday mx-3'>Birthday : </label>
-                <input type="date" id="birthday" name="birthday" className='input_date_field px-4 py-1 my-2' onChange={(event) => { setbirthdate(event.target.value) }}/>
+                  <FormControl className='{classes.container} mb-4 detail_container'>
+                    <TextField
+                      id="date"
+                      label="Birthday"
+                      type="date"
+                      defaultValue="2023-01-01"
+                      className={classes.textField}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                      onChange={(event) => { setbirthdate(event.target.value) }}
+                    />
+                  </FormControl><br />
                 </div>
                 <div className="pro_input_container">
-                <label className='lbl_gender mx-3'>Gender : </label>
-                <input type="radio" value="Female" className='radio_detail'/>
-                <label For="Female" className='me-4 ms-1 radio_detail'> Female </label>
-                <input type="radio" value="Female" className='radio_detail'/>
-                <label For="Female" className='me-2 ms-1 radio_detail'> Male </label>
+                  <FormControl className='mb-3 detail_container'>
+                    <RadioGroup
+                      row
+                      aria-labelledby="demo-row-radio-buttons-group-label"
+                      name="row-radio-buttons-group"
+
+                    >
+                      <FormControlLabel value="female" control={<Radio />} label="Female" onChange={(event) => { setgender(event.target.value) }} />
+                      <FormControlLabel value="male" control={<Radio />} label="Male" onChange={(event) => { setgender(event.target.value) }} />
+                      <FormControlLabel value="other" control={<Radio />} label="Other" onChange={(event) => { setgender(event.target.value) }} />
+                    </RadioGroup>
+                  </FormControl><br />
                 </div>
                 <div className="pro_input_container">
                   <FormControl className='mb-3 mx-auto'>
@@ -185,8 +169,8 @@ const Profile = () => {
                   </FormControl><br />
                 </div>
               </form>
+            </div>
           </div>
-        </div>
         </div>
       </>
     )
@@ -195,8 +179,59 @@ const Profile = () => {
     return (
       <>
         <Navbar />
+        
+        <div class="page-content page-container" id="page-content">
+                <div class="padding">
+                    <div class="row container d-flex justify-content-center">
+                        <div class="col-xl-7 col-md-12">
+                            <div class="card1 user-card-full">
+                                <div class="row m-l-0 m-r-0">
+                                    <div class="col-sm-4 bg-c-lite-green user-profile">
+                                        <div class="card-block text-center text-white">
+                                            <div class="m-b-25">
+                                                <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image" />
+                                            </div>
+                                            <h6 class="f-w-600">Hembo Tingor</h6>
+                                            <p>Web Designer</p>
+                                            <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="card-block">
+                                            <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-10 f-w-600">Email</p>
+                                                    <h6 class="text-muted f-w-400">rntng@gmail.com</h6>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-10 f-w-600">Phone</p>
+                                                    <h6 class="text-muted f-w-400">98979989898</h6>
+                                                </div>
+                                            </div>
+                                            <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-10 f-w-600">Recent</p>
+                                                    <h6 class="text-muted f-w-400">Sam Disuja</h6>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-10 f-w-600">Most Viewed</p>
+                                                    <h6 class="text-muted f-w-400">Dinoter husainm</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <div className="container-fluid">
+       
+
+        {/* <div className="container-fluid">
           <div>Your Profile</div>
           <div> {userdata.firstname}</div>
           <div> {userdata.lastname}</div>
@@ -214,7 +249,7 @@ const Profile = () => {
               <ChangePass userid = {userdata.userid}/>
             </FormControl>
           </div>
-        </div>
+        </div> */}
 
       </>
 
