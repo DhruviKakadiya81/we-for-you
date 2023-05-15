@@ -1,16 +1,13 @@
-body {
-    background-color: #f9f9fa
-}
-
 .padding {
-    padding: 3rem !important
+   
+    margin: auto;
 }
 
 .user-card-full {
     overflow: hidden;
 }
 
-.card {
+.card1 {
     border-radius: 5px;
     -webkit-box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
     box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
@@ -31,8 +28,8 @@ body {
 }
 
 .bg-c-lite-green {
-        background: -webkit-gradient(linear, left top, right top, from(#f29263), to(#ee5a6f));
-    background: linear-gradient(to right, #ee5a6f, #f29263);
+        background: -webkit-gradient(linear, left top, right top, from(#d4c7c1), to(#302e2e));
+    background: linear-gradient(to bottom,#a19b99, #302e2e);
 }
 
 .user-profile {
@@ -57,7 +54,7 @@ h6 {
     font-size: 14px;
 }
 
-.card .card-block p {
+.card1 .card-block p {
     line-height: 25px;
 }
 
@@ -83,7 +80,7 @@ p {
     padding-bottom: 5px !important;
 }
 
-.card .card-block p {
+.card1 .card-block p {
     line-height: 25px;
 }
 
@@ -133,5 +130,3 @@ p {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
-
-
