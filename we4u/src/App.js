@@ -14,7 +14,6 @@ import { Home } from "./components/Home";
 import {Contact} from "./components/Contact";
 import About from "./components/About";
 import {Ser_Pro_Navbar} from "./components/Ser_Pro_Navbar";
-
 import { Showprofile } from "./components/Showprofile";
 
 import TestiMonials from './components/TestiMonials/TestiMonials';

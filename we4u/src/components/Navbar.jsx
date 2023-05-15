@@ -66,11 +66,11 @@ export const Navbar = () => {
   return (
     <>
 
-<nav class="navbar navbar-expand-md navbar-dark ">
+{/* <nav class="navbar navbar-expand-md navbar-dark "> */}
 
 
 
-<div className="container-fluid">
+{/* <div className="container-fluid">
         <img src="/images/Logo.png" width="100" height="50" className="c_nav_image"/>
         <button className="navbar-toggler" type="button" onClick={handleNav}>
           <span className="navbar-toggler-icon"></span>
@@ -103,7 +103,7 @@ export const Navbar = () => {
             <Link className="nav-link" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-user fa-lg"></i></Link>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <li><Link className="dropdown-item" to="/login">Login As Client</Link></li>
-              <li><Link className="dropdown-item" to="/regprof">Login As Professional</Link></li>
+              <li><Link className="dropdown-item" to="/regprof">Login As Professional</Link></li> */}
 
 
 
@@ -124,7 +124,7 @@ export const Navbar = () => {
               </li>
               <li className="dropdown nav-item">
                 <Link className="nav-link" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false"> Register </Link>
-                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{zIndex:"0"}}>
                   <li><Link className="dropdown-item" to="/register">Register As Client</Link></li>
                   <li><Link className="dropdown-item" to="/regprof">Register As Professional</Link></li>
                 </ul>

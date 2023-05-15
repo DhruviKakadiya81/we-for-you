@@ -149,3 +149,194 @@ const Profile = () => {
   }, [])
 
 
+
+
+import React from 'react'
+import '../css/sp.css';
+import $ from 'jquery';
+import { Ser_Pro_Navbar } from './Ser_Pro_Navbar';
+import { FormControl, FormGroup, Input, InputLabel, Button, FormLabel, RadioGroup, FormControlLabel, Radio } from '@mui/material';
+import { useState } from 'react';
+
+
+export const ServiceProvider = () => {
+  const [firstname, setfirstname] = useState('');
+  const [lastname, setlastname] = useState('');
+  const [gender, setgender] = useState('');
+
+
+
+  
+
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+      var currentGfgStep, nextGfgStep, previousGfgStep;
+      var opacity;
+      var current = 1;
+      var steps = document.querySelectorAll("fieldset").length;
+    
+      document.querySelectorAll(".next-step").forEach(function(element) {
+        element.addEventListener("click", function() {
+          currentGfgStep = this.parentNode;
+          nextGfgStep = this.parentNode.nextElementSibling;
+    
+          if (firstname === '') {
+            console.log("first===>" + firstname);
+            document.querySelector("#progressbar li:nth-child(" + (Array.from(document.querySelectorAll("fieldset")).indexOf(nextGfgStep) + 1) + ")").classList.remove("active");
+    
+            currentGfgStep.animate({
+              opacity: 1
+            }, {
+              step: function() {
+                opacity = 0;
+                currentGfgStep.style.display = 'block';
+                currentGfgStep.style.position = 'relative';
+                nextGfgStep.style.opacity = opacity;
+              },
+            });
+            currentGfgStep.style.display = 'block';
+          } else {
+            console.log("first2===>" + firstname);
+            document.querySelector("#progressbar li:nth-child(" + (Array.from(document.querySelectorAll("fieldset")).indexOf(nextGfgStep) + 1) + ")").classList.add("active");
+            nextGfgStep.style.display = 'block';
+    
+            currentGfgStep.animate({
+              opacity: 0
+            }, {
+              step: function(now) {
+                opacity = 1 - now;
+                currentGfgStep.style.display = 'none';
+                currentGfgStep.style.position = 'relative';
+                nextGfgStep.style.opacity = opacity;
+              },
+            });
+          }
+        });
+      });
+    
+      document.querySelectorAll(".previous-step").forEach(function(element) {
+        element.addEventListener("click", function() {
+          currentGfgStep = this.parentNode;
+          previousGfgStep = this.parentNode.previousElementSibling;
+    
+          if (firstname === '') {
+            document.querySelector("#progressbar li:nth-child(" + (Array.from(document.querySelectorAll("fieldset")).indexOf(currentGfgStep) + 1) + ")").classList.remove("active");
+    
+            previousGfgStep.style.display = 'block';
+    
+            currentGfgStep.animate({
+              opacity: 0
+            }, {
+              step: function(now) {
+                opacity = 1 - now;
+                currentGfgStep.style.display = 'none';
+                currentGfgStep.style.position = 'relative';
+                previousGfgStep.style.opacity = opacity;
+              },
+            });
+          }
+        });
+      });
+    });
+    
+    
+    
+    
+     
+    
+  const handleValidation = () => {
+    alert("firstname==>"+firstname);
+    // alert("hello",firstname);
+
+  }
+
+  return (
+    <>
+      <Ser_Pro_Navbar />
+      <div class="row justify-content-center">
+        <div class="col-11 col-sm-9 col-md-7 
+                col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2">
+          <div class="px-0 pt-4 pb-0 mt-3 mb-3">
+            <form id="form">
+              <ul id="progressbar">
+                <li class="active" id="step1">
+                  <strong>Step 1</strong>
+                </li>
+                <li id="step2"><strong>Step 2</strong></li>
+                <li id="step3"><strong>Step 3</strong></li>
+                <li id="step4"><strong>Step 4</strong></li>
+              </ul>
+
+              <fieldset>
+                <h2>Give your Personal Information</h2>
+                <div className="profile_form_container">
+                  <form action="">
+
+                    <div className="pro_input_container">
+                      <FormControl className='mb-3 '>
+                        <InputLabel className='mx-3 '  >Enter First Name</InputLabel>
+                        <Input type="text" name="firstname" className='' style={{ width: "100%" }} onChange={(event) => { setfirstname(event.target.value) }} />
+                      </FormControl><br />
+                    </div>
+                    <div className="pro_input_container">
+                      <FormControl className='mb-3 '>
+                        <InputLabel className='mx-3' >Enter Second Name</InputLabel>
+                        <Input type="text" name="name" className='my-3' onChange={(event) => { setlastname(event.target.value) }} />
+                      </FormControl><br />
+                    </div>
+                    <div className="pro_input_container">
+                      <FormControl className='mb-3 '>
+                        <RadioGroup
+                          row
+                          aria-labelledby="demo-row-radio-buttons-group-label"
+                          name="row-radio-buttons-group"
+
+                        >
+                          <FormControlLabel value="female" control={<Radio />} label="Female" onChange={(event) => { setgender(event.target.value) }} />
+                          <FormControlLabel value="male" control={<Radio />} label="Male" onChange={(event) => { setgender(event.target.value) }} />
+                          <FormControlLabel value="other" control={<Radio />} label="Other" onChange={(event) => { setgender(event.target.value) }} />
+                        </RadioGroup>
+                      </FormControl><br />
+                    </div>
+
+                  </form>
+                </div>
+                <input type="button" name="next-step"
+                  class="next-step" value="Next Step" onClick={handleValidation} />
+              </fieldset>
+              <fieldset>
+                <h2>Welcome To GFG Step 2</h2>
+                <input type="button" name="next-step"
+                  class="next-step" value="Next Step" />
+                <input type="button" name="previous-step"
+                  class="previous-step"
+                  value="Previous Step" />
+              </fieldset>
+              <fieldset>
+                <h2>Welcome To GFG Step 3</h2>
+                <input type="button" name="next-step"
+                  class="next-step" value="Final Step" />
+                <input type="button" name="previous-step"
+                  class="previous-step"
+                  value="Previous Step" />
+              </fieldset>
+              <fieldset>
+                <div class="finish">
+                  <h2 class="text text-center">
+                    <strong>FINISHED</strong>
+                  </h2>
+                </div>
+                <input type="button" name="previous-step"
+                  class="previous-step"
+                  value="Previous Step" />
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </>
+
+  )
+}
