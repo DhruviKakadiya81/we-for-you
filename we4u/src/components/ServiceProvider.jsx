@@ -23,22 +23,25 @@ export const ServiceProvider = () => {
           name="Basic Information"
           handleClick={() => handleNextPrevClick(1)}
           active={active}
+          className="steps_res"
           component={<Step1 handleNextPrevClick={handleNextPrevClick} />}
         />
         <CDBStep
           id={2}
           icon="info-circle"
-          name="Personal Data"
+          name="Professional Information"
           handleClick={() => handleNextPrevClick(2)}
           active={active}
+          className="steps_res2"
           component={<Step2 handleNextPrevClick={handleNextPrevClick} />}
         />
         <CDBStep
           id={3}
           icon="book-reader"
-          name="Terms and Conditions"
+          name="Selection"
           handleClick={() => handleNextPrevClick(3)}
           active={active}
+          className="steps_res3"
           component={<Step3 handleNextPrevClick={handleNextPrevClick} />}
         />
         <CDBStep
@@ -47,6 +50,7 @@ export const ServiceProvider = () => {
           name="Finish"
           handleClick={() => handleNextPrevClick(4)}
           active={active}
+          className="steps_res4"
           component={<Step4 handleNextPrevClick={handleNextPrevClick} />}
         />
       </CDBStepper>
@@ -58,26 +62,12 @@ export const ServiceProvider = () => {
 const Step4 = ({ handleNextPrevClick }) => {
   return (
     <StepContainer md="12">
-      <div style={{ width: '100%', background: '#f9f9f9', padding: '30px 10px', height: '100%' }}>
+      <div className="outer_container">
         <div
-          style={{
-            margin: '0 auto',
-            maxWidth: '500px',
-            borderRadius: '10px',
-            background: '#f5f5f5',
-            boxShadow: '0px 4px 10px 0 rgba(0, 0, 0, 0.05)',
-          }}
-        >
+        className="inner_container">
           <FlexColumnContainer>
             <div
-              style={{
-                textAlign: 'center',
-                padding: '20px 0 10px 0',
-                color: '#939393',
-                fontSize: '30px',
-                fontWeight: 'bold',
-              }}
-            >
+            className="step_heading_container">
               Step 4
             </div>
             <FlexColumnContainer width="100%">
@@ -87,8 +77,9 @@ const Step4 = ({ handleNextPrevClick }) => {
                   🎉
                 </span>
               </div>
-              <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'space-around' }}>
-                <CDBBtn
+              <div className="step_button_container">
+              <input type="button" value="Previous" className="step_btn px-3 py-2 my-2 mx-2" onClick={()=>handleNextPrevClick(3)}/>
+                {/* <CDBBtn
                   flat
                   outline
                   circle={false}
@@ -96,7 +87,7 @@ const Step4 = ({ handleNextPrevClick }) => {
                   onClick={() => handleNextPrevClick(3)}
                 >
                   Previous
-                </CDBBtn>
+                </CDBBtn> */}
               </div>
             </FlexColumnContainer>
           </FlexColumnContainer>
@@ -109,30 +100,15 @@ const Step4 = ({ handleNextPrevClick }) => {
 const Step3 = ({ handleNextPrevClick }) => {
   return (
     <StepContainer>
-    <div style={{ width: '100%', background: '#f9f9f9', padding: '30px 10px', height: '100%' }}>
-      <div
-        style={{
-          margin: '0 auto',
-          maxWidth: '500px',
-          borderRadius: '10px',
-          background: '#f5f5f5',
-          boxShadow: '0px 4px 10px 0 rgba(0, 0, 0, 0.05)',
-        }}
-      >
+    <div className="outer_container">
+      <div className="inner_container">
         <FlexColumnContainer>
-          <div
-            style={{
-              textAlign: 'center',
-              padding: '20px 0 10px 0',
-              color: 'rgb(50,50,50)',
-              fontSize: '30px',
-              fontWeight: 'bold',
-            }}
-          >
+          <div className="step_heading_container">
             Step 3
           </div>
           <FlexColumnContainer width="100%">
-                 <FormControl variant="standard" sx={{ m: 1, minWidth: 180 }} className=''>
+          <div className="step_form_container">
+          <FormControl variant="standard" sx={{ m: 1, minWidth: 180 }} className='drop_input my-3'>
                     <InputLabel id="demo-simple-select-standard-label">Select City</InputLabel>
                     <Select
                     labelId="demo-simple-select-standard-label"
@@ -144,7 +120,7 @@ const Step3 = ({ handleNextPrevClick }) => {
                     <MenuItem value={30}>Thirty</MenuItem>
                     </Select>
                    </FormControl><br/>
-                   <FormControl variant="standard" sx={{ m: 1, minWidth: 180 }} className=''>
+                   <FormControl variant="standard" sx={{ m: 1, minWidth: 180 }} className='drop_input my-3'>
                     <InputLabel id="demo-simple-select-standard-label">Select Area</InputLabel>
                     <Select
                     labelId="demo-simple-select-standard-label"
@@ -156,7 +132,7 @@ const Step3 = ({ handleNextPrevClick }) => {
                     <MenuItem value={30}>Thirty</MenuItem>
                     </Select>
                    </FormControl><br/>
-                   <FormControl variant="standard" sx={{ m: 1, minWidth: 180 }} className=''>
+                   <FormControl variant="standard" sx={{ m: 1, minWidth: 180 }} className='drop_input my-3'>
                     <InputLabel id="demo-simple-select-standard-label">Select Main Services</InputLabel>
                     <Select
                     labelId="demo-simple-select-standard-label"
@@ -168,9 +144,11 @@ const Step3 = ({ handleNextPrevClick }) => {
                     <MenuItem value={30}>Thirty</MenuItem>
                     </Select>
                    </FormControl><br/>
-
-                   <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'space-around' }}>
-                <CDBBtn
+          </div>
+            <div className="step_button_container">
+            <input type="button" value="Previous" className="step_btn px-3 py-2 my-2 mx-2" onClick={()=>handleNextPrevClick(2)}/>
+              <input type="button" value="Next" className="step_btn px-3 py-2 my-2 mx-2" onClick={()=>handleNextPrevClick(4)}/>
+                {/* <CDBBtn
                   color="secondary"
                   flat
                   className="float-start"
@@ -188,7 +166,7 @@ const Step3 = ({ handleNextPrevClick }) => {
                   onClick={() => handleNextPrevClick(4)}
                 >
                   Next
-                </CDBBtn>
+                </CDBBtn> */}
               </div>
           </FlexColumnContainer>
         </FlexColumnContainer>
@@ -201,39 +179,26 @@ const Step3 = ({ handleNextPrevClick }) => {
 const Step2 = ({ handleNextPrevClick }) => {
   return (
     <StepContainer md="12">
-      <div style={{ width: '100%', background: '#f9f9f9', padding: '30px 10px', height: '100%' }}>
-        <div
-          style={{
-            margin: '0 auto',
-            maxWidth: '500px',
-            borderRadius: '10px',
-            background: '#f5f5f5',
-            boxShadow: '0px 4px 10px 0 rgba(0, 0, 0, 0.05)',
-          }}
-        >
+      <div className="outer_container">
+        <div className="inner_container">
           <FlexColumnContainer>
-            <div
-              style={{
-                textAlign: 'center',
-                padding: '20px 0 10px 0',
-                color: '#939393',
-                fontSize: '30px',
-                fontWeight: 'bold',
-              }}
-            >
+            <div className="step_heading_container">
               Step 2
             </div>
             <FlexColumnContainer width="100%">
-            <label>Shop Name</label>
-              <input type="text" className="px-3 py-1 mb-3"/>
-              <label>Address</label>
-              <textarea type="text" className="px-3 py-1 mb-3"/>
-              <label>Professional Email</label>
-              <input type="text" className="px-3 py-1 mb-3"/>
-              <label>Deascription</label>
-              <textarea type="number" className="px-3 py-1 mb-3"/>
-              <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'space-around' }}>
-                <CDBBtn
+            <div className="step_form_container">
+             <label>Shop Name</label><br/>
+              <input type="text" className="step_input px-2 py-1 mb-3"/><br/>
+              <label>Address</label><br/>
+              <textarea type="text" className="step_input px-2 py-1 mb-3"/><br/>
+              <label>Professional Email</label><br/>
+              <input type="text" className="step_input px-2 py-1 mb-3"/><br/>
+              <label>Deascription</label><br/>
+              <textarea type="number" className="step_input px-2 py-1 mb-3"/><br/>
+              <div className="step_button_container">
+              <input type="button" value="Previous" className="step_btn px-3 py-2 my-2 mx-2" onClick={()=>handleNextPrevClick(1)}/>
+              <input type="button" value="Next" className="step_btn px-3 py-2 my-2 mx-2" onClick={()=>handleNextPrevClick(3)}/>
+                {/* <CDBBtn
                   color="secondary"
                   flat
                   className="float-start"
@@ -251,8 +216,9 @@ const Step2 = ({ handleNextPrevClick }) => {
                   onClick={() => handleNextPrevClick(3)}
                 >
                   Next
-                </CDBBtn>
+                </CDBBtn> */}
               </div>
+            </div>
             </FlexColumnContainer>
           </FlexColumnContainer>
         </div>
@@ -264,46 +230,34 @@ const Step2 = ({ handleNextPrevClick }) => {
 const Step1 = ({ handleNextPrevClick }) => {
   return (
     <StepContainer>
-      <div style={{ width: '100%', background: '#f9f9f9', padding: '30px 10px', height: '100%' }}>
+      <div className="outer_container">
         <div
-          style={{
-            margin: '0 auto',
-            maxWidth: '500px',
-            borderRadius: '10px',
-            background: '#f5f5f5',
-            boxShadow: '0px 4px 10px 0 rgba(0, 0, 0, 0.05)',
-          }}
+          className="inner_container"
         >
           <FlexColumnContainer>
-            <div
-              style={{
-                textAlign: 'center',
-                padding: '20px 0 10px 0',
-                color: 'rgb(50,50,50)',
-                fontSize: '30px',
-                fontWeight: 'bold',
-              }}
-            >
+            <div className="step_heading_container">
               Step 1
             </div>
             <FlexColumnContainer width="100%">
-              <label>First Name</label>
-              <input type="text" className="px-3 py-1 mb-3"/>
-              <label>Last Name</label>
-              <input type="text" className="px-3 py-1 mb-3"/>
-              <label>Email</label>
-              <input type="text" className="px-3 py-1 mb-3"/>
-              <label>Mobile Number</label>
-              <input type="number" className="px-3 py-1 mb-3"/>
+            <div className="step_form_container">
+              <label>First Name</label><br/>
+              <input type="text" className="px-2 py-1 mb-3 step_input"/><br/>
+              <label>Last Name</label><br/>
+              <input type="text" className="px-2 py-1 mb-3 step_input"/><br/>
+              <label>Email</label><br/>
+              <input type="text" className="px-2 py-1 mb-3 step_input"/><br/>
+              <label>Mobile Number</label><br/>
+              <input type="number" className="px-2 py-1 mb-3 step_input"/><br/>
               <div className="pro_input_container">
-                <label className='lbl_gender mx-3'>Gender : </label>
+                <label className='mx-3'>Gender : </label>
                 <input type="radio" value="Female" className='radio_detail'/>
                 <label For="Female" className='me-4 ms-1 radio_detail'> Female </label>
                 <input type="radio" value="Female" className='radio_detail'/>
                 <label For="Female" className='me-2 ms-1 radio_detail'> Male </label>
                 </div>
-              <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'space-around' }}>
-                <CDBBtn
+                <div className="step_button_container">
+                 <input type="button" value="Next" className="step_btn px-3 py-2 my-2" onClick={()=>handleNextPrevClick(2)}/>
+                {/* <CDBBtn
                   color="secondary"
                   flat
                   circle={false}
@@ -311,8 +265,9 @@ const Step1 = ({ handleNextPrevClick }) => {
                   onClick={() => handleNextPrevClick(2)}
                 >
                   Next
-                </CDBBtn>
+                </CDBBtn> */}
               </div>
+            </div>
             </FlexColumnContainer>
           </FlexColumnContainer>
         </div>
