@@ -108,7 +108,7 @@ export const Home = () => {
         </div>
         
         </section>
-     
+      {/* </div> */}
       <Footer/>
         {/* </body> */}
       {/* </div> */}
