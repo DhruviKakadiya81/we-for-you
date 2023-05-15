@@ -5,6 +5,8 @@ import showservice from '../services/Services';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import ReactPlayer from 'react-player'
+import { Footer } from './Footer';
+import { Contact } from './Contact';
 export const Home = () => {
   const [service, setService] = useState([]);
   var ser;
@@ -81,8 +83,12 @@ export const Home = () => {
         </section>
         {/* </body> */}
       {/* </div> */}
+
+      <Footer/>
      
     </>
+
+   
 
   )
 }
