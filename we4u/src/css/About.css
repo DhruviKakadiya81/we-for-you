@@ -16,16 +16,19 @@ h2{
     border-radius: 20px;
     /* box-shadow:  rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset; */
 }
-
+.imgdiv{
+    
+}
 .img_div{
-     height: auto;
+    height: auto;
     width: 100%;
     animation:fadeInLeft 1s ease-in-out; 
-    /* margin:0 20px; */
-    border-radius: 50%;
     border: 4px solid gray;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
-}
+    border-radius: 50%; 
+    /* margin:0 20px; */
+    
+   }
 
 
 

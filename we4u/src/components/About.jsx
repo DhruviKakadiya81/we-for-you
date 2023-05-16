@@ -139,13 +139,13 @@ We4U has a rigorous vetting process for its service providers to ensure that the
 
       <div class="container">
        <div className="row justify-content-center align-items-center mt-5">
-        <div className="col-lg-5  col-md-12  col-sm-12 d-flex align-items-center">
+        <div className="col-lg-5  col-md-8  col-sm-12 d-flex align-items-center imgdivorig">
         <img className='img_div' src="images/electrician.jpg" alt="" srcset=""  />
         </div>
        <div class=" col-lg-7 col-md-12 col-sm-12 txt_div" style={{ textAlign: "justify" }}>
           <h2 className='text-center mt-5'>WE4U</h2>
-          <p className='p-1 text-left mx-5' style={{ fontSize: "22px" }}>We4U is a platform that provides a range of home services, including beauty and wellness services, cleaning services, pest control, plumbing, carpentry, electrical, appliance repair, and more. It connects customers with local service providers who are vetted and trained to provide high-quality services at affordable prices.
-            We4U has revolutionized the home services industry by providing a convenient and reliable platform for booking and managing home services. It offers transparent pricing, easy online booking, and a hassle-free experience for both customers and service providers.
+          <p className='p-1 text-left mx-lg-5 mx-md-0 mx-sm-0' style={{ fontSize: "22px" }}>We4U is a platform that provides a range of home services, including beauty and wellness services, cleaning services, pest control, plumbing, carpentry, electrical, appliance repair, and more. It connects customers with local service providers who are vetted and trained to provide high-quality services at affordable prices.
+            We4U has revolutionized the home services industry by providing a convenient and reliable platform for booking and managing home services.
           </p>
         </div>
        </div>
