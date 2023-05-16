@@ -136,7 +136,8 @@ const Delete = (props) => {
             <Modal.Body>
                 <div className="dlt">
                   Are You Sure to Delete City?
-                </div> 
+                </div>
+               
             </Modal.Body>
             <Modal.Footer>
               <Button variant="" className="mx-3"  onClick={() => {initmodel}} style={{backgroundColor:"red"}}>
@@ -145,31 +146,11 @@ const Delete = (props) => {
               <Button variant=""  className="mx-3" type='submit' style={{backgroundColor:"red"}} onClick={(e)=>handledelete(props.id,e)}>
                 Delete
             </Button>
-            <Modal show={isshow} style={{ overflowX: "scroll", width: "100%", marginTop: "px" }} >
-                <Modal.Header closeButton onClick={initmodel}>
-                    <Modal.Title className='' >
-                        Delete City
-                    </Modal.Title>
-                </Modal.Header>
-
-                <Modal.Body>
-                    <div className="dlt">
-                        Are You Sure to Delete City?
-                    </div>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="" className="mx-3" onClick={() => { initmodel }} style={{ backgroundColor: "red" }}>
-                        CLOSE
-                    </Button>
-                    <Button variant="" className="mx-3" type='submit' style={{ backgroundColor: "red" }} onClick={(e) => handledelete(props.id, e)}>
-                        Delete
-                    </Button>
                 </Modal.Footer>
 
             </Modal>
-            </Modal.Footer>
-        </Modal>
-      </>
+
+        </>
     )
 }
 

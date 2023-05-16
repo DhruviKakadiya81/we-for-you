@@ -650,3 +650,65 @@ legend {
   /* color:white !important; */
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Beauty Saloon Css */
+
+
+.beauty_saloon_title{
+  text-align: center;
+  font-weight: 600;
+}
+
+.card-img-top{
+  width: 279px;
+  height: 180px;
+}
+
+.card-title{
+  text-align: center;
+}
+
+.card{
+  width: 280px;
+  box-shadow:rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+}
+
+@media (max-width:331px){
+  .card{
+    width: 250px;
+  }
+  .card-img-top{
+    width: 249px;
+  }
+}
+
+
+
+@media (min-width: 300px) {
+  .card-group.card-group-scroll {
+      overflow-x: scroll;
+      flex-wrap: nowrap;
+  }
+}
+
+.card-group.card-group-scroll > .card {
+  flex-basis: 26%;
+}
+

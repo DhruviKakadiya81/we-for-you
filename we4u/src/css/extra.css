@@ -1,13 +1,16 @@
+body {
+    background-color: #f9f9fa
+}
+
 .padding {
-   
-    margin: auto;
+    padding: 3rem !important
 }
 
 .user-card-full {
     overflow: hidden;
 }
 
-.card1 {
+.card {
     border-radius: 5px;
     -webkit-box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
     box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
@@ -28,8 +31,8 @@
 }
 
 .bg-c-lite-green {
-        background: -webkit-gradient(linear, left top, right top, from(#d4c7c1), to(#302e2e));
-    background: linear-gradient(to bottom,#a19b99, #302e2e);
+        background: -webkit-gradient(linear, left top, right top, from(#f29263), to(#ee5a6f));
+    background: linear-gradient(to right, #ee5a6f, #f29263);
 }
 
 .user-profile {
@@ -54,7 +57,7 @@ h6 {
     font-size: 14px;
 }
 
-.card1 .card-block p {
+.card .card-block p {
     line-height: 25px;
 }
 
@@ -80,7 +83,7 @@ p {
     padding-bottom: 5px !important;
 }
 
-.card1 .card-block p {
+.card .card-block p {
     line-height: 25px;
 }
 

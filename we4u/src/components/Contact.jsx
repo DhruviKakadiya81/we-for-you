@@ -19,7 +19,7 @@ export const Contact = () => {
     <>
     <Navbar/>
  
-     <div className="container">
+     <div className="container" style={{zIndex:"-1"}}>
         <div className="form">
             <div className="contact-info order-2 order-lg-1">
                 <h3 className="title">Let's Contact With Us</h3>
