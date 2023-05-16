@@ -60,3 +60,4 @@ const updatearea = async (req, res) => {
    }
 
 module.exports = {getarea,addarea,updatearea,deletearea}
+   
