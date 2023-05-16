@@ -144,7 +144,7 @@ export const Home = () => {
 <div className="card mx-4 my-4">
 <img src="Images/hair_cutting.jpg" class="card-img-top" alt="..."/>
 <div class="card-body">
-  <h5 class="card-title">Hair Cutting</h5>
+  <h5 class="card-title">Hair Cut</h5>
   <p class="card-text">We Are Doing Many Types Of Hair Cutting like layered, one-length, Face-Look.</p>
 </div>
 </div>
