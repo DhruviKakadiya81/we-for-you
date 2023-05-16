@@ -18,17 +18,17 @@ export const Home = () => {
     setService(ser);
     // console.log("data2 :", service.data.data.length);
   }
-  
+
   useEffect((event) => {
-    
-   service && fetchSer();
-  },[]);
+
+    service && fetchSer();
+  }, []);
   return (
     <>
       <Navbar />
-     
+
       {/* <div className="home"> */}
-      
+
 
       {/* <body> */}
     <div class="s01" style={{background:`url("images/homeimag9.jpg")` , backgroundSize: "cover",
@@ -52,13 +52,8 @@ export const Home = () => {
         </div>
       </form>
     </div>
-
-    
-
-
-
   
-        <section className="services1">
+    <section className="services1">
           
           <h1 className='serviceh1'>  Our Services </h1>
        
@@ -109,7 +104,6 @@ export const Home = () => {
           
          
         </section>
-
         <div class="parallax mb-0" style={ {
   /* The image used */
   backgroundImage: ` linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/homeimag9.jpg")`,
@@ -154,13 +148,10 @@ export const Home = () => {
 </div>
 
 
-     
       {/* </div> */}
-      
+      <Footer/>
         {/* </body> */}
       {/* </div> */}
-
-      <Footer/>
      
     </>
 

@@ -52,7 +52,8 @@ useEffect(() => {
         <Route path="/regprof" element={<Register  state = {0}/>}></Route>
         <Route path="/login" element={<Login state = {1} />}></Route>
         <Route path="/loginasp" element={<Login state = {0}/>}></Route>
-        <Route path="/forget" element={<Forget/>}></Route>
+        <Route path="/forget" element={<Forget state ={1}/>}></Route>
+        <Route path="/forgetasp" element={<Forget state ={0}/>}></Route>
         {/* <Route path="/about" element={<about/>}></Route>  */}
 
         <Route path="/logout" element={<Home/>}></Route> 

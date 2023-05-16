@@ -76,9 +76,9 @@ export const ManageArea = () => {
 <FormGroup className='mx-auto area_container'>
                 <Typography variant='h4' className='add_area_heading'>Add Area</Typography>
                 <div className="mt-5 mx-auto main_area_container">
-                   <FormControl className='area_detail_container'>
-                    <InputLabel className='mx-3'>Enter Area Name</InputLabel>
-                    <Input variant='dark' type='text' name='name' onChange={(event) => setareaname(event.target.value)} className='mx-3 my-3'/>
+                   <FormControl className='area_detail_container' sx={{ m: 1, minWidth: 120 }}>
+                    <InputLabel className=''>Enter Area Name</InputLabel>
+                    <Input variant='dark' type='text' name='name' onChange={(event) => setareaname(event.target.value)} className='my-3'/>
                    </FormControl><br/>
                     <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }} className='mb-3 area_detail_container'>
                     <InputLabel id="demo-simple-select-standard-label">Select City</InputLabel>

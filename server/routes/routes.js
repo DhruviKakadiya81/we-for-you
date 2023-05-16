@@ -68,6 +68,7 @@ router1.post("/profiledetail",upload.single('image'),userdetail.adddetails);
 router1.post("/getuserdetail",userdetail.getdetail);
 router1.put("/updateuserdetail",userdetail.updatedetails);
 router1.put("/changepass",userdetail.changepassword);
+router1.get("/getuser",userdetail.getuser);
 
 // router1.post("/getuser",logcontroller.getuserlogin);
 // router1.post("/getuser",logcontroller.getuserlogin);

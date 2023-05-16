@@ -93,4 +93,14 @@ const changepassword = async(req, res) =>{
     }
 }
 
-module.exports = {getdetail,adddetails,updatedetails,changepassword}
+const getuser = async(req,res) =>{
+    try {
+        console.log("get user===>");
+        const customer = await profile.find();
+        return res.status(200).send({ success: true, msg: 'user found',data:customer});   
+    } catch (error) {
+        return res.status(200).send({ success: false, msg: 'user is not found'});   
+    }
+}
+
+module.exports = {getdetail,adddetails,updatedetails,changepassword,getuser}

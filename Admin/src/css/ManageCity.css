@@ -18,3 +18,12 @@
     width: 500px;
     margin-top: 40px;
 }
+
+@media (max-width: 600px) {
+    .city_main_container{
+       /* background-color: aqua; */
+        height: auto;
+        width: auto;
+       
+    }
+  }
