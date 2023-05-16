@@ -175,7 +175,7 @@ else if(props.state === 0){
                         onClick={handletogglepass} by
 
                       ></i>
-                      <p><a href="/forget" style={{ textDecoration: "none" }}>Forget password?</a></p>
+                      <p><a href="/forgetasp" style={{ textDecoration: "none" }}>Forget password?</a></p>
 
 
 

@@ -91,6 +91,7 @@ main {
     padding: 5px;
     display: block;
     opacity: 0;
+    z-index: 1;
 }
 
 .span_class:before{
