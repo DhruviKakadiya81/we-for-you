@@ -80,7 +80,7 @@ export const Home = () => {
          <div className='services_scroll'>
           {service.data != undefined && service.data.data.length > 0 && (
             <section className="services">
-              <div class="d-flex flex-wrap justify-content-center">
+              <div className="d-flex flex-wrap justify-content-center">
                 {service.data.data.map(product => (
                   <div className='row m-2'>
                     <div className="card" style={{ width: "10rem", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset" }} >
@@ -100,54 +100,47 @@ export const Home = () => {
 
 
 
-      <section class="progress-section">
-        <div class="container">
-            <div class="row mb-4 justify-content-center">
-                <div class="col-lg-7 col-md-12 col-sm-12">
-                    <div class="process-heading text-center mb-5 ">
-                        <span class="gradient-text">How to Get Started</span>
-                        <h2 class="mb-3 mt-3">Fast & Easy Application Process.</h2>
+      <section className="progress-section mt-5 pb-3" style={{backgroundImage:`url(Images/get_start.jpg)`,backgroundSize:"cover"}}>
+        <div className="container">
+            <div className="row mb-4 justify-content-center">
+                <div className="col-lg-7 col-md-12 col-sm-12">
+                    <div className="process-heading text-center pt-5"  style={{color:"white"}}>
+                        <span className="gradient-text">How to Get Started</span>
+                        <h2 className="mb-3 mt-3">Get Services By Easy Process</h2>
                         <p>Transparent and fair costs, with no hidden fees</p>
                     </div>
                 </div>
             </div>
-            <div class="row justify-content-center">
-                <div class="progress-img">
-                    <img className="w-100" src="images/get-started.png"  alt="progress"/>
+            <div className="row justify-content-center  reveal fade-In">
+                <div className="progress-img">
+                    <img className="w-100 line_img" src="images/get-started.png"  alt="progress"/>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-10">
-                    <div class="progress-card">
-                        <div class="progress-card-body text-center">
-                            <img src="/images/apply.png" alt="apply" width="80px"/>
-                            <h5 class="card-title mt-3 mb-3">Apply In 10 Minutes</h5>
-                            <p class="p mt-2 mb-5">Submission of Online document with Basic details Docs can be
-                                submitted via
-                                Email or Whatsapp as well</p>
+                <div className="col-lg-3 col-md-4 col-sm-10">
+                    <div className="progress-card">
+                        <div className="progress-card-body text-center" style={{color:"white"}}>
+                            <img src="/images/search_service.png" alt="apply" width="80px" style={{borderRadius:"100%"}}/>
+                            <h5 className="card-title mt-3 mb-3">Search Service</h5>
+                            <p className="p mt-2 mb-5">Search Service Which You Want and As Per Your Need</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-10">
-                    <div class="progress-card">
-                        <div class="progress-card-body text-center">
-                            <img src="images/disition.png" alt="disition" width="80px"/>
-                            <h5 class="card-title mt-3 mb-3">A Decision In 24 Hours</h5>
-                            <p class="p mt-2 mb-5">Get a call and Instant quotes(Rate / Loan amount ) with options of
-                                banks</p>
+                <div className="col-lg-3 col-md-4 col-sm-10">
+                    <div className="progress-card">
+                        <div className="progress-card-body text-center" style={{color:"white"}} >
+                            <img src="images/cart.jpg" alt="disition" width="80px" style={{borderRadius:"100%"}}/>
+                            <h5 className="card-title mt-3 mb-3">Add to Cart</h5>
+                            <p className="p mt-2 mb-5">After Finding Service Add Your Service Into Cart</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-10">
-                    <div class="progress-card">
-                        <div class="progress-card-body text-center">
+                <div className="col-lg-3 col-md-4 col-sm-10">
+                    <div className="progress-card">
+                        <div className="progress-card-body text-center" style={{color:"white"}}>
                             <img src="images/funded.png" alt="funded" width="80px"/>
-                            <h5 class="card-title mt-3 mb-3">Your Loan Is Funded</h5>
-                            <p class="p mt-2 mb-5">Submission of docs with bank or Finance company for further process
-                            </p>
+                            <h5 className="card-title mt-3 mb-3">Get Services</h5>
+                            <p className="p mt-2 mb-5">Get Services On Time</p>
                         </div>
                     </div>
-                </div>
-                <div class="text-center mt-3">
-                    <button class="btn btn-primary">Apply Now</button>
                 </div>
             </div>
         </div>
@@ -160,28 +153,28 @@ export const Home = () => {
 
 
 
-      <section className='beauty_saloon pt-3 pb-3'>
+      <section className='beauty_saloon pt-5 pb-3'>
         <h1 className='beauty_saloon_title'>Beauty Saloon</h1>
         <div className="d-flex flex-wrap justify-content-center">
           <div className="card mx-4 my-4">
-            <img src="Images/manicure.jpg" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Manicure</h5>
-              <p class="card-text">A Manicure usually consists of filing and shaping the free edge of nails, pushing and clipping.</p>
+            <img src="Images/manicure.jpg" className="card-img-top" alt="..." />
+            <div className="card-body">
+              <h5 className="card-title">Manicure</h5>
+              <p className="card-text">A Manicure usually consists of filing and shaping the free edge of nails, pushing and clipping.</p>
             </div>
           </div>
           <div className="card mx-4 my-4">
-            <img src="Images/keratin.jpg" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Keratin</h5>
-              <p class="card-text">A keratin treatment is a process that smooths and often straightens hair.</p>
+            <img src="Images/keratin.jpg" className="card-img-top" alt="..." />
+            <div className="card-body">
+              <h5 className="card-title">Keratin</h5>
+              <p className="card-text">A keratin treatment is a process that smooths and often straightens hair.</p>
             </div>
           </div>
           <div className="card mx-4 my-4">
-            <img src="Images/hair_cutting.jpg" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Hair Cutting</h5>
-              <p class="card-text">We Are Doing Many Types Of Hair Cutting like layered, one-length, Face-Look.</p>
+            <img src="Images/hair_cutting.jpg" className="card-img-top" alt="..." />
+            <div className="card-body">
+              <h5 className="card-title">Hair Cutting</h5>
+              <p className="card-text">We Are Doing Many Types Of Hair Cutting like layered, one-length, Face-Look.</p>
             </div>
           </div>
         </div>
