@@ -67,7 +67,7 @@ export const Navbar = () => {
     <>
       <nav className="navbar navbar-expand-md navbar-dark">
         <div className="container-fluid">
-          <img src="/images/Logo.png" width="100" height="50" className="c_nav_image" />
+          <img src="/images/we4U.png" width="100" height="50" className="c_nav_image" />
           <button className="navbar-toggler" type="button" onClick={handleNav}>
             <span className="navbar-toggler-icon"></span>
           </button>

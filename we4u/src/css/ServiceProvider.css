@@ -43,6 +43,92 @@
         color: white;
         font-size: 15px;
 }
+<<<<<<< HEAD
 .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed {
     color: #151617;
 }
+=======
+
+/* @media (max-width:525px)
+{
+    .steps_res{
+    width: 400px;
+    }
+    .steps_res2{
+   width: 500px;
+    }
+    .steps_res3{
+        width:500px;
+    }
+    
+    .steps_res4{
+        width: 500px;
+    }
+}
+
+@media (max-width:480px)
+{
+    .steps_res{
+    width: 500px;
+    }
+    .steps_res2{
+   width: 700px;
+    }
+    .steps_res3{
+        width:500px;
+    }
+    .steps_res4{
+        width: 900px;
+    }
+}
+
+@media (max-width:470px)
+{
+    .btGazx{
+        margin-left: 0px;
+    }
+    .steps_res{
+    width: 1500px;
+    }
+    .steps_res2{
+   width: 400px;
+    }
+    .steps_res3{
+        width:150px;
+    }
+    .steps_res4{
+        width: 1500px;
+    }
+} */
+
+
+/* @media (max-width:525px){
+    .hhaztc .default-node{
+        width: 30px !important;
+        height: 30px !important;
+    }
+    .chEZoq .default-node{
+        width: 30px !important;
+        height: 30px !important;   
+    }
+    .btGazx {
+        margin-left: 0px !important;
+    }
+    .jDrFpp{
+        margin-left: 0px !important;
+    }
+    .chEZoq{
+        font-size: 20px !important;
+    }
+    .chEZoq .step-title .step-number,
+    .jYFQJH .step-title .step-number,
+    .hhaztc .step-title .step-number{
+        font-size: 20px !important;
+    }
+    .jYFQJH .default-node{
+        width: 30px !important;
+        height: 30px !important;
+    }
+}
+ */
+>>>>>>> cc2f64ec8456d91efd3e23c23d3815e5376f9e58
