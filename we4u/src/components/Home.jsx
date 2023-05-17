@@ -125,9 +125,9 @@ export const Home = () => {
                         <div class="progress-card-body text-center">
                             <img src="/images/apply.png" alt="apply" width="80px"/>
                             <h5 class="card-title mt-3 mb-3">Apply In 10 Minutes</h5>
-                            <p class="p mt-2 mb-5">Submission of Online document with Basic details (Docs can be
+                            <p class="p mt-2 mb-5">Submission of Online document with Basic details Docs can be
                                 submitted via
-                                Email or Whatsapp as well)</p>
+                                Email or Whatsapp as well</p>
                         </div>
 
                     </div>
