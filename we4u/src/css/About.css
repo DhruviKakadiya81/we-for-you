@@ -89,14 +89,14 @@ h2{
 .ourmembers{
     background: url('../../public/Images/contact_back_2.jpg');
     background-size: contain;
-    margin-top: 20px;
+    margin-top: 150px;
 }
 .ourmembers .head{
      background-color: rgba(76, 75, 75, 0.9);
      width: 250px;
      font-size: 30px;
      border-radius: 5%;
-     padding: 10;
+   
      padding: 10px;
      transform: translateY(-30px);
      color: white;

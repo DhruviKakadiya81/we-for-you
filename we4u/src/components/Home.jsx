@@ -5,6 +5,7 @@ import '../css/Home.css';
 import showservice from '../services/Services';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import '../css/About.css'
 import ReactPlayer from 'react-player'
 export const Home = () => {
   const [service, setService] = useState([]);
@@ -16,6 +17,23 @@ export const Home = () => {
     setService(ser);
     // console.log("data2 :", service.data.data.length);
   }
+  function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+
+    for (var i = 0; i < reveals.length; i++) {
+      var windowHeight = window.innerHeight;
+      var elementTop = reveals[i].getBoundingClientRect().top;
+      var elementVisible = 150;
+
+      if (elementTop < windowHeight - elementVisible) {
+        reveals[i].classList.add("active");
+      } else {
+        reveals[i].classList.remove("active");
+      }
+    }
+  }
+
+  window.addEventListener("scroll", reveal);
 
   useEffect((event) => {
 
@@ -33,7 +51,7 @@ export const Home = () => {
         background: `url("images/homeimag9.jpg")`, backgroundSize: "cover",
         backgroundPosition: "center center"
       }}>
-        <form>
+        <form className=" reveal fade-In">
           <fieldset className="inner-form mb-0 pb-0" style={{ fontSize: "30px", width: "90%", margin: "auto" }}>
             <legend className="pb-0 mb-0" style={{ fontSize: "40px", width: "90%" }}> Discover the Amazing Services</legend>
           </fieldset>
