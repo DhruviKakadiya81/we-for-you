@@ -23,6 +23,7 @@ import { useState,useEffect } from "react";
 
 import Profile from "./components/Profile";
 import { ServiceProvider } from "./components/ServiceProvider";
+import { MyStepper } from "./components/Stepper";
 
 
 
@@ -84,6 +85,7 @@ useEffect(() => {
 
 
         <Route path="/sphome" element={<ServiceProvider/>}></Route>
+        <Route path="/step" element={<MyStepper/>}></Route>
 
 
       </Routes>

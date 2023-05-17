@@ -1,105 +1,105 @@
-import React, { useState } from "react";
-import styled from '@emotion/styled'
+// import React, { useState } from "react";
+ import styled from '@emotion/styled'
 import "../css/ServiceProvider.css"
-import {Navbar} from "./Navbar"
-import { CDBStepper, CDBStep, CDBInput, CDBBtn, CDBContainer } from "cdbreact";
+ import {Navbar} from "./Navbar"
+ import { CDBStepper, CDBStep, CDBInput, CDBBtn, CDBContainer } from "cdbreact";
 import { FormControl, FormGroup, Input, InputLabel, Typography,Select,MenuItem } from '@mui/material'
+import React, { useState } from 'react';
+import { Stepper, Step, StepLabel, Button } from '@mui/material';
+import { withStyles } from '@material-ui/core/styles';
 
 
+// export const ServiceProvider = () => {
+//   const [active, setActive] = useState(1);
 
-export const ServiceProvider = () => {
-  const [active, setActive] = useState(1);
-
-  const handleNextPrevClick = a => {
-    setActive(a);
-  };
-  return (
-    <>
-    <Navbar/>
-      <CDBStepper direction="horizontal" className="">
-      {/* <div className="steps"> */}
-      <CDBStep
-          id={1}
-          icon="pencil-alt"
-          name="Basic Information"
-          handleClick={() => handleNextPrevClick(1)}
-          active={active}
-          className="steps_res"
-          component={<Step1 handleNextPrevClick={handleNextPrevClick} />}
-        />
-        <CDBStep
-          id={2}
-          icon="info-circle"
-          name="Professional Information"
-          handleClick={() => handleNextPrevClick(2)}
-          active={active}
-          className="steps_res2"
-          component={<Step2 handleNextPrevClick={handleNextPrevClick} />}
-        />
-        <CDBStep
-          id={3}
-          icon="book-reader"
-          name="Selection"
-          handleClick={() => handleNextPrevClick(3)}
-          active={active}
-          className="steps_res3"
-          component={<Step3 handleNextPrevClick={handleNextPrevClick} />}
-        />
-        <CDBStep
-          id={4}
-          icon="check"
-          name="Finish"
-          handleClick={() => handleNextPrevClick(4)}
-          active={active}
-          className="steps_res4"
-          component={<Step4 handleNextPrevClick={handleNextPrevClick} />}
-        />
-      {/* </div> */}
-      </CDBStepper>
-      </>
-  );
-};
+//   const handleNextPrevClick = a => {
+//     setActive(a);
+//   };
+//   return (
+//     <>
+//     
+//       <CDBStepper direction="horizontal" className="steppp">
+//         <CDBStep
+//           id={1}
+//           icon="pencil-alt"
+//           name="Basic Information"
+//           handleClick={() => handleNextPrevClick(1)}
+//           active={active}
+//           className="steps_res"
+//           component={<Step1 handleNextPrevClick={handleNextPrevClick} />}
+//         />
+//         <CDBStep
+//           id={2}
+//           icon="info-circle"
+//           name="Professional Information"
+//           handleClick={() => handleNextPrevClick(2)}
+//           active={active}
+//           className="steps_res2"
+//           component={<Step2 handleNextPrevClick={handleNextPrevClick} />}
+//         />
+//         <CDBStep
+//           id={3}
+//           icon="book-reader"
+//           name="Selection"
+//           handleClick={() => handleNextPrevClick(3)}
+//           active={active}
+//           className="steps_res3"
+//           component={<Step3 handleNextPrevClick={handleNextPrevClick} />}
+//         />
+//         <CDBStep
+//           id={4}
+//           icon="check"
+//           name="Finish"
+//           handleClick={() => handleNextPrevClick(4)}
+//           active={active}
+//           className="steps_res4"
+//           component={<Step4 handleNextPrevClick={handleNextPrevClick} />}
+//         />
+//       </CDBStepper>
+//       </>
+//   );
+// };
 
 
-const Step4 = ({ handleNextPrevClick }) => {
-  return (
-    <StepContainer md="12">
-      <div className="outer_container">
-        <div
-        className="inner_container">
-          <FlexColumnContainer>
-            <div
-            className="step_heading_container">
-              Step 4
-            </div>
-            <FlexColumnContainer width="100%">
-              <div style={{ fontSize: '25px', textAlign: 'center' }}>
-                Congratulations! You have added Your Details.
-                <span style={{ fontSize: '50px', display: 'block' }} role="img" aria-label="image">
-                  🎉
-                </span>
-              </div>
-              <div className="step_button_container">
-              <input type="button" value="Previous" className="step_btn px-3 py-2 my-2 mx-2" onClick={()=>handleNextPrevClick(3)}/>
-                {/* <CDBBtn
-                  flat
-                  outline
-                  circle={false}
-                  color="secondary"
-                  onClick={() => handleNextPrevClick(3)}
-                >
-                  Previous
-                </CDBBtn> */}
-              </div>
-            </FlexColumnContainer>
-          </FlexColumnContainer>
-        </div>
-      </div>
-    </StepContainer>
-  );
-};
+// const Step4 = ({ handleNextPrevClick }) => {
+//   return (
+//     <StepContainer md="12">
+//       <div className="outer_container">
+//         <div
+//         className="inner_container">
+//           <FlexColumnContainer>
+//             <div
+//             className="step_heading_container">
+//               Step 4
+//             </div>
+//             <FlexColumnContainer width="100%">
+//               <div style={{ fontSize: '25px', textAlign: 'center' }}>
+//                 Congratulations! You have added Your Details.
+//                 <span style={{ fontSize: '50px', display: 'block' }} role="img" aria-label="image">
+//                   🎉
+//                 </span>
+//               </div>
+//               <div className="step_button_container">
+//               <input type="button" value="Previous" className="step_btn px-3 py-2 my-2 mx-2" onClick={()=>handleNextPrevClick(3)}/>
+//                 {/* <CDBBtn
+//                   flat
+//                   outline
+//                   circle={false}
+//                   color="secondary"
+//                   onClick={() => handleNextPrevClick(3)}
+//                 >
+//                   Previous
+//                 </CDBBtn> */}
+//               </div>
+//             </FlexColumnContainer>
+//           </FlexColumnContainer>
+//         </div>
+//       </div>
+//     </StepContainer>
+//   );
+// };
 
-const Step3 = ({ handleNextPrevClick }) => {
+const Step3 = () => {
   return (
     <StepContainer>
     <div className="outer_container">
@@ -147,9 +147,9 @@ const Step3 = ({ handleNextPrevClick }) => {
                     </Select>
                    </FormControl><br/>
           </div>
-            <div className="step_button_container">
+            {/* <div className="step_button_container">
             <input type="button" value="Previous" className="step_btn px-3 py-2 my-2 mx-2" onClick={()=>handleNextPrevClick(2)}/>
-              <input type="button" value="Next" className="step_btn px-3 py-2 my-2 mx-2" onClick={()=>handleNextPrevClick(4)}/>
+              <input type="button" value="Next" className="step_btn px-3 py-2 my-2 mx-2" onClick={()=>handleNextPrevClick(4)}/> */}
                 {/* <CDBBtn
                   color="secondary"
                   flat
@@ -169,7 +169,7 @@ const Step3 = ({ handleNextPrevClick }) => {
                 >
                   Next
                 </CDBBtn> */}
-              </div>
+              {/* </div> */}
           </FlexColumnContainer>
         </FlexColumnContainer>
       </div>
@@ -178,7 +178,7 @@ const Step3 = ({ handleNextPrevClick }) => {
   );
 };
 
-const Step2 = ({ handleNextPrevClick }) => {
+const Step2 = () => {
   return (
     <StepContainer md="12">
       <div className="outer_container">
@@ -197,9 +197,9 @@ const Step2 = ({ handleNextPrevClick }) => {
               <input type="text" className="step_input px-2 py-1 mb-3"/><br/>
               <label>Deascription</label><br/>
               <textarea type="number" className="step_input px-2 py-1 mb-3"/><br/>
-              <div className="step_button_container">
+              {/* <div className="step_button_container">
               <input type="button" value="Previous" className="step_btn px-3 py-2 my-2 mx-2" onClick={()=>handleNextPrevClick(1)}/>
-              <input type="button" value="Next" className="step_btn px-3 py-2 my-2 mx-2" onClick={()=>handleNextPrevClick(3)}/>
+              <input type="button" value="Next" className="step_btn px-3 py-2 my-2 mx-2" onClick={()=>handleNextPrevClick(3)}/> */}
                 {/* <CDBBtn
                   color="secondary"
                   flat
@@ -219,7 +219,7 @@ const Step2 = ({ handleNextPrevClick }) => {
                 >
                   Next
                 </CDBBtn> */}
-              </div>
+              {/* </div> */}
             </div>
             </FlexColumnContainer>
           </FlexColumnContainer>
@@ -229,7 +229,7 @@ const Step2 = ({ handleNextPrevClick }) => {
   );
 };
 
-const Step1 = ({ handleNextPrevClick }) => {
+const Step1 = () => {
   return (
     <StepContainer>
       <div className="outer_container">
@@ -257,8 +257,8 @@ const Step1 = ({ handleNextPrevClick }) => {
                 <input type="radio" value="Female" className='radio_detail'/>
                 <label For="Female" className='me-2 ms-1 radio_detail'> Male </label>
                 </div>
-                <div className="step_button_container">
-                 <input type="button" value="Next" className="step_btn px-3 py-2 my-2" onClick={()=>handleNextPrevClick(2)}/>
+                {/* <div className="step_button_container">
+                 <input type="button" value="Next" className="step_btn px-3 py-2 my-2" onClick={()=>handleNextPrevClick(2)}/> */}
                 {/* <CDBBtn
                   color="secondary"
                   flat
@@ -268,7 +268,7 @@ const Step1 = ({ handleNextPrevClick }) => {
                 >
                   Next
                 </CDBBtn> */}
-              </div>
+              {/* </div> */}
             </div>
             </FlexColumnContainer>
           </FlexColumnContainer>
@@ -291,3 +291,88 @@ const StepContainer = styled('div')`
   width: 100%;
   height: 100%;
 `;
+
+const styles = {
+  stepper: {
+    backgroundColor: 'black',
+    height: '4px',
+    width: '100%',
+  },
+  stepLabel: {
+    color: 'black',
+  },
+  stepIcon: {
+    color: 'blue',
+  },
+};
+
+
+
+export const ServiceProvider = ({ classes }) => {
+  const [activeStep, setActiveStep] = useState(0);
+
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
+  const renderStepComponent = () => {
+    switch (activeStep) {
+      case 0:
+        return <Step1 />;
+      case 1:
+        return <Step2 />;
+      case 2:
+        return <Step3 />;
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <>
+    <Navbar/>
+     <div>
+      
+      <Stepper activeStep={activeStep} className={classes.stepper} >
+        <Step>
+        <StepLabel
+            className={classes.stepLabel}
+            StepIconProps={{ classes: { root: classes.stepIcon } }}
+          ></StepLabel>
+        </Step>
+        <Step>
+            <StepLabel
+            className={classes.stepLabel}
+            StepIconProps={{ classes: { root: classes.stepIcon } }}
+          ></StepLabel>  <StepLabel></StepLabel>
+        </Step>
+        <Step>
+        <StepLabel
+            className={classes.stepLabel}
+            StepIconProps={{ classes: { root: classes.stepIcon } }}
+          ></StepLabel>
+        </Step>
+      </Stepper>
+      <div>{renderStepComponent()}</div>
+      <div>
+        <Button disabled={activeStep === 0} onClick={handleBack}>
+          Back
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleNext}
+        >
+          {activeStep === 2 ? 'Finish' : 'Next'}
+        </Button>
+      </div>
+    </div>
+    
+    </>
+   
+  );
+};
