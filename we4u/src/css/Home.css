@@ -644,15 +644,15 @@ legend {
 
 
 
-
-
-
-
-
-
-
 .progress-section .progress-card{position: relative;}
 .progress-section .progress-img{position: absolute;text-align: center;width: 50%; margin:25px;}
+
+@media (max-width:768px){
+  .line_img{
+    display: none;
+  }
+}
+
 
 
 
