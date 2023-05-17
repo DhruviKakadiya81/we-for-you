@@ -76,17 +76,13 @@ export const Home = () => {
 
 
       <section className="services1">
-
         <h1 className='serviceh1'>  Our Services </h1>
-
-
-        <div className='services_scroll'>
+         <div className='services_scroll'>
           {service.data != undefined && service.data.data.length > 0 && (
             <section className="services">
               <div class="d-flex flex-wrap justify-content-center">
                 {service.data.data.map(product => (
-
-                  <div className='row p-3 m-2 p-2'>
+                  <div className='row m-2'>
                     <div className="card" style={{ width: "10rem", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset" }} >
                       <img src={'http://localhost:4000/image/' + product.s_icon} className="card-img-top" alt="..." style={{ height: "60px", width: "80px", textAlign: "center", marginTop: "5px", margin: "auto" }} />
                       <div className="card-body">
@@ -94,15 +90,15 @@ export const Home = () => {
                       </div>
                     </div>
                   </div>
-
                 ))}
               </div>
-
             </section>
-
           )}
         </div>
       </section>
+
+
+
 
       <section class="progress-section">
         <div class="container">
@@ -115,7 +111,6 @@ export const Home = () => {
                     </div>
                 </div>
             </div>
-
             <div class="row justify-content-center">
                 <div class="progress-img">
                     <img className="w-100" src="images/get-started.png"  alt="progress"/>
@@ -129,7 +124,6 @@ export const Home = () => {
                                 submitted via
                                 Email or Whatsapp as well</p>
                         </div>
-
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-10">
@@ -140,7 +134,6 @@ export const Home = () => {
                             <p class="p mt-2 mb-5">Get a call and Instant quotes(Rate / Loan amount ) with options of
                                 banks</p>
                         </div>
-
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-10">
@@ -151,10 +144,8 @@ export const Home = () => {
                             <p class="p mt-2 mb-5">Submission of docs with bank or Finance company for further process
                             </p>
                         </div>
-
                     </div>
                 </div>
-
                 <div class="text-center mt-3">
                     <button class="btn btn-primary">Apply Now</button>
                 </div>
