@@ -1,0 +1,669 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Edu+TAS+Beginner:wght@500&family=Josefin+Slab:wght@100&family=Koulen&family=Oswald:wght@200&family=Patua+One&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Rubik+Moonrocks&family=Slabo+27px&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Edu+TAS+Beginner:wght@500&family=Josefin+Slab:wght@100&family=Koulen&family=Oswald:wght@200&family=Patua+One&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Rubik+Moonrocks&family=Slabo+27px&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Edu+TAS+Beginner:wght@500&family=Josefin+Slab:wght@100&family=Koulen&family=Oswald:wght@200&family=Patua+One&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Rubik+Moonrocks&family=Slabo+27px&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Edu+TAS+Beginner:wght@500&family=Josefin+Slab:wght@100&family=Koulen&family=Oswald:wght@200&family=Patua+One&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Rubik+Moonrocks&family=Slabo+27px&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Lobster&display=swap'); */
+
+html,body{
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+}
+
+.c_container2{
+width: 100%;
+height: 447px;
+color: white;
+}
+
+.c_p_container{
+    margin-left: 246px;
+    padding-top: 100px;
+}
+ @keyframes fadeInUp{
+    from{
+        opacity: 0;
+        transform: translateY(300px);
+    }
+    to{
+        opacity: 1;
+
+    }
+} 
+
+
+
+.c_par1{     
+    font-family: 'Crimson Text';
+font-style: normal;
+font-weight: 700;
+font-size: 72px;
+line-height: 94px;
+text-transform: capitalize;
+color: #FFFFFF;
+}
+
+.c_par2{
+    font-family: 'Montserrat';
+font-style: normal;
+font-weight: 600;
+font-size: 28px;
+line-height: 34px;
+color: #FFFFFF;
+}
+
+.c_container3{
+background-color: #1D232A;
+height: 80px;
+}
+
+.c_container4{
+    background-color: #111518;
+    height: 500px;
+    color: white;
+    padding: 70px;
+}
+
+.c_details{
+    font-family: 'Montserrat';
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 22px;
+text-transform: capitalize;
+color: #FFFFFF;
+}
+
+
+.c_detail_container{
+    text-align: left;
+    margin-top: 100px;
+    margin-left: 80px;
+}
+
+hr{
+    background-color: #FECC07;
+    color: #FECC07;
+    width: 300px;
+    height: 2px;
+}
+
+.main_head{
+    font-family: 'Crimson Text';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 52px;
+    text-transform: capitalize;  
+    color: #FFFFFF;
+}
+
+.c_add_detail1{
+font-weight: 400;
+font-size: 16px;
+}
+
+.c_add_detail2{
+    margin-top: -18px;
+font-weight: 400;
+font-size: 16px;
+}
+
+
+.c_phone_head{
+line-height: 142.4%;
+}
+
+.c_phone_detail{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 142.4%;
+}
+
+.c_email_head{
+line-height: 142.4%;
+margin-top: -20px;
+}
+
+.c_email_detail{
+font-weight: 400;
+font-size: 16px;
+line-height: 142.4%;
+margin-top: -20px;
+}
+
+.c_form_container{
+    margin-top: 70px;
+    margin-left: -400px;
+}
+
+.c_form_container input,
+.c_form_container textarea{
+    background-color: #3e3e3e;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+/* text-align: center; */
+letter-spacing: 0.02em;
+text-transform: capitalize;
+color: #AAA9A9;
+}
+
+.c_form_container input{
+    text-align: center;
+    width: 280px;
+    height: 54px;
+    text-decoration: none;
+    outline: none;
+}
+
+.c_form_container textarea{
+    width: 572px;
+    height:170px;
+    padding: 18px;
+    padding-left: 25px;
+    outline: none;
+}
+
+.c_send_btn{
+background-color: #FFBA2A;
+width: 275px;
+height: 48px;
+left: 825px;
+top: 1080px;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 132.4%;
+text-align: center;
+text-transform: capitalize;
+color: #FFFFFF;
+}
+
+
+.c_container5{
+    background-color: #1D232A;
+    height: 1000px;
+    color: #FFFFFF;
+}
+
+.c_loc_header{
+    text-align: center;
+padding-top: 40px;
+font-family: 'Crimson Text';
+font-style: normal;
+font-weight: 600;
+font-size: 40px;
+line-height: 52px;
+text-transform: capitalize;
+}
+
+.c_hr_c5{
+    margin: auto;
+    font-weight: bold;
+}
+
+.c_loc_title{
+font-weight: 700;
+font-size: 20px;
+margin-top: 10px;
+}
+
+.c_loc_desc{
+font-weight: 300;
+font-size: 18px;
+}
+
+.c_loc_inner{
+    background-color: #10151c;
+    padding: 20px 30px;
+    width: 220px;
+}
+
+.c_loc_outer{
+    flex-wrap: wrap;
+    margin-top: 50px;
+    font-family: 'Montserrat';
+font-style: normal;
+line-height: 24px;
+text-align: center;
+text-transform: capitalize;
+color: #FFFFFF;
+}
+
+.c_second_heading{
+    font-family: 'Crimson Text';
+font-style: normal;
+font-weight: 600;
+font-size: 30px;
+line-height: 39px;
+text-align: center;
+text-transform: capitalize;
+color: #FFFFFF;
+margin-top: 30px;
+}
+
+.c_sec_loc_outer{
+    flex-wrap: wrap;
+    font-family: 'Montserrat';
+font-style: normal;
+text-align: center;
+    text-transform: capitalize;
+    color: #FFFFFF;
+}
+
+.c_sec_loc_inner{
+    background-color: #10151c;
+    margin:13px;
+    padding: 13px 33px;
+    max-width: 190px;
+}
+
+.c_loc_sec_title{
+    margin-top: 10px;
+font-weight: 700;
+font-size: 18px;
+line-height: 22px;
+}
+
+.c_loc_sec_desc{   
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;    
+}
+
+.map_container{
+    margin-top: 70px;
+}
+
+
+@media screen and (max-width:1995px){
+    .c_map{
+        width: 2000px;
+    }  
+}
+
+@media screen and (max-width:1200px) {
+    .c_form_container input{
+        width:250px;
+    }
+    .c_form_container{
+        margin-top: 70px;
+        margin-left: -80px;
+    }   
+    .c_detail_container{
+        margin-left: -30px;
+    }
+    .c_form_container textarea{
+        width: 515px;
+    }
+    
+}
+
+@media screen and (max-width:1030px) {
+
+    .c_detail_container{
+        margin-left: 30px;
+    }
+}
+
+@media screen and (max-width:980px) {
+    .c_container4{
+        height: 920px;
+    }
+    .c_detail_container{
+        margin-left: 190px;
+    }
+    .c_form_container{
+        margin-left: 40px;
+    }
+    .c_p_container{
+        margin-left: 210px;
+    }
+}
+
+
+
+
+@media screen and (max-width:767px) {
+    .c_p_container{
+        margin-left: 180px;
+    }
+    .c_detail_container{
+        margin-left: 120px;
+    }
+    .c_form_container{
+        margin-left: 0px;
+    }
+    .c_form_container textarea{
+        width: 500px;
+    }
+    .c_container5{
+        height: 1600px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .c_p_container{
+        position: relative;
+        left: -50px;
+    }
+    .c_container4{
+        height: 950px;
+    }
+    .c_form_container{
+        margin-left: 0px;
+    }
+    .c_form_container textarea{
+        width: 500px;
+        padding: 18px;
+        padding-left: 25px;
+    }
+    .c_container5{
+        height: 1500px;
+    }
+}
+
+@media screen and (max-width:612px) {
+    .c_p_container{
+        margin-left: 160px;
+    }
+}
+
+@media screen and (max-width:551px){
+    .c_p_container{
+        position: relative;
+        left:-70px;
+    }
+    .c_par1{
+        font-size: 60px;
+    }
+    .c_par2{
+        font-size: 25px;
+    }
+    .c_form_container input{
+        width:210px;
+    }
+    .c_form_container textarea{
+        width:435px;
+    }
+}
+
+@media screen and (max-width:461px) {
+    .c_detail_container{
+        margin-left: 80px;
+    }
+    .c_form_container textarea{
+        width: 420px;
+    }
+    .c_container5{
+        height:1700px;
+    }
+}
+
+@media screen and (max-width:481px) {
+    .c_detail_container{
+        margin-left: 85px;
+    }
+    .c_send_btn{
+        width:230px;
+    }
+}
+@media screen and (max-width:470px) {
+    .c_form_container input{
+        width:200px;
+    }
+    .c_form_container textarea{
+        width:415px;
+    }
+    .c_send_btn{
+        width:200px
+    }
+}
+
+@media screen and (max-width:450px) {
+    .c_par1{
+        font-size: 55px;
+    }
+    .c_par2{
+        font-size: 23px;
+    }
+    .c_form_container input{
+        width:195px;
+    }
+    .c_form_container textarea{
+        width:405px;
+    }
+    .c_container5{
+        height: 2300px;
+    }
+    .c_image_class{
+        margin-left: 30px;
+    }   
+    .c_send_btn{
+        width: 230px;
+    } 
+}
+
+@media screen and (max-width:432px) {
+    .c_form_container input{
+        width:183px;
+    }
+    .c_form_container textarea{
+        width:385px;
+    }
+}
+
+@media screen and (max-width:423px) {
+    .c_par1{
+        font-size: 50px;
+    }
+    .c_par2{
+        font-size: 20px;
+    }
+    .c_form_container input{
+        width:173px;
+    }
+    .c_form_container textarea{
+        width:365px;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .c_par1{
+        font-size: 45px;
+    }
+    .c_par2{
+        font-size: 18px;
+    }
+    .c_detail_container{
+        margin-left: 40px;
+    }
+}
+
+
+@media screen and (max-width:391px) {
+    .c_par1{
+        font-size: 40px;
+    }
+    .c_par2{
+        font-size: 16px;
+    }
+    .c_form_container input{
+        width:168px;
+    }
+    .c_form_container textarea{
+        width:350px;
+    }
+}
+
+@media screen and (max-width:375px) {
+    .c_form_container input{
+        width:158px;
+    }
+    .c_form_container textarea{
+        width:332px;
+    }
+    .c_send_btn{
+        width: 180px;
+    }
+}
+
+@media screen and (max-width:360px) {
+    .c_form_container input{
+        width:155px;
+    }
+    .c_form_container textarea{
+        width:322px;
+    }
+}
+
+@media screen and (max-width:347px) {
+    .c_p_container{
+        margin-left:150px ;
+    }
+    .c_par1{
+        font-size: 38px;
+    }
+    .c_par2{
+        font-size: 16px;
+    }
+    .c_form_container input{
+        width:150px;
+    }
+    .c_form_container textarea{
+        width:312px;
+    }
+}
+
+
+/* footer */
+
+.footer-section {
+    /* margin-top: 70px; */
+    background-color: #0E1317;
+    color: white;
+    position: sticky;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-transform: capitalize;
+}
+
+.footer-section img {
+    height: 80px;
+    width: 100px;
+}
+
+.footer-section h5 {
+    font-weight: bold;
+}
+
+.list-unstyled li {
+    padding-bottom: 10px;
+}
+
+.list-unstyled li a {
+    text-decoration: none;
+}
+
+.hrStyle {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.footerEnd {
+    width: 90%;
+    margin: 10px auto;
+}
+
+.f_desc{
+    font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 22px;
+text-transform: capitalize;
+
+color: #FFFFFF;
+}
+
+.f_add_title{
+    font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 24px;
+letter-spacing: 0.115em;
+text-transform: uppercase;
+
+color: #FFFFFF;
+}
+
+
+.f_add_detail{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-transform: capitalize;
+    
+    color: #FFFFFF;
+    
+}
+
+
+.f_quick_title{
+    font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 24px;
+letter-spacing: 0.115em;
+text-transform: uppercase;
+
+color: #FFFFFF;
+}
+
+.f_quick_desc{
+    font-family: 'Montserrat';
+font-style: normal;
+font-weight: 300;
+font-size: 18px;
+line-height: 22px;
+text-transform: capitalize;
+
+color: #FFFFFF;
+}
+
+.f_open_title{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.115em;
+    text-transform: uppercase;   
+    color: #FFFFFF;    
+}
+
+.f_open_desc{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-transform: capitalize;
+    
+    color: #FFFFFF;
+}

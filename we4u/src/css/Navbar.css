@@ -1,0 +1,42 @@
+.navbar .navbar-nav .nav-link {
+  color: #ffffff;
+  /* color:black */
+}
+.sm-icons {
+  flex-direction: row;
+}
+.sm-icons .nav-link {
+  padding-right: 1em;
+}
+.navbar{
+  background-color: rgb(50, 50, 50);
+}
+
+.navbar-collapse{
+margin-right: 20px;
+}
+
+Link{
+font-family: 'Work Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 23px;
+letter-spacing: 0.035em;
+text-transform: uppercase;
+color: #FFFFFF;  
+}
+
+@media screen and (max-width:767px) {
+.c_nav_image{
+  margin-left: 15px;
+}
+}
+
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+
+.dropdown>.dropdown-toggle:active {
+    pointer-events: none;
+}

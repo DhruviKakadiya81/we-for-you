@@ -1,0 +1,342 @@
+  {/* <nav className="navbar navbar-expand-md navbar-dark">
+      <div className="container-fluid">
+        <img src="/images/Logo.png" width="100" height="50" class="c_nav_image"/>
+        <button className="navbar-toggler" type="button" onClick={handleNav}>
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className={navCollapse?"collapse navbar-collapse justify-content-end":"navbar-collapse justify-content-end"} id="navbarSupportedContent">
+          <ul className="navbar-nav ml-auto mb-2 mb-lg-0">
+          <li className="nav-item">
+              <Link className="nav-link" to="/regprof">Register As Professional</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" exact = {"true"}aria-current="page" to="/">Home</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/about">About</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/register">Register</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/contact">Contact Us</Link>
+            </li>
+          </ul>
+          <ul className="navbar-nav sm-icons">
+            <li><Link className="nav-link"><LoginButton/></Link></li>
+            <li><Link className="nav-link" to="/cart" onClick={handlecart}><i className="fa-sharp fa-solid fa-cart-shopping fa-lg"></i></Link></li>
+            <li><Link className="nav-link" to="/profile"><i class="fa-solid fa-user-gear fa-lg"></i></Link></li>
+            <li><Link className="nav-link" to="/logout" onClick={handlelogout}><i className="fa-solid fa-right-from-bracket fa-lg"></i></Link></li>
+          </ul>
+        </div>
+      </div>
+    </nav> */}
+
+
+
+
+
+
+
+
+    
+<<<<<<< HEAD
+ <Navbar/>
+ <FormGroup className='mx-auto main_container'>
+                    <Typography variant="h4" className='Pro_heading'>Profile</Typography>
+                 
+                    <div className='mt-5 mx-auto'>
+                                <FormControl className='mb-3'>
+                                    <InputLabel className='mx-3'>Enter First Name</InputLabel>
+                                    <Input type="text" name="name" className='mx-3 my-3' onChange={(event)=>{setfirstname(event.target.value)}} />
+                                    </FormControl><br/>
+                                    <FormControl className='mb-3'>
+                                    <InputLabel className='mx-3' >Enter Last Name</InputLabel>
+                                    <Input type="text" name="name" className='mx-3 my-3' onChange={(event)=>{setlastname(event.target.value)}} />
+                                    </FormControl><br/>
+                                    <FormControl className={classes.container}>
+                                    <TextField
+                                        id="date"
+                                        label="Birthday"
+                                        type="date"
+                                        defaultValue="2023-01-01"
+                                        className={classes.textField}
+                                        InputLabelProps={{
+                                          shrink: true,
+                                        }}
+                                        onChange={(event)=>{setbirthdate(event.target.value)}}
+                                      />
+                                    </FormControl><br/>
+                                    <FormControl>
+                                    <FormLabel id="demo-row-radio-buttons-group-label">Gender</FormLabel>
+                                    <RadioGroup
+                                      row
+                                      aria-labelledby="demo-row-radio-buttons-group-label"
+                                      name="row-radio-buttons-group"
+                                    
+                                    >
+                                      <FormControlLabel value="female" onChange={(event)=>{setgender(event.target.value)}} control={<Radio />} label="Female" />
+                                      <FormControlLabel value="male" onChange={(event)=>{setgender(event.target.value)}} control={<Radio />} label="Male" />
+                                      <FormControlLabel value="other" onChange={(event)=>{setgender(event.target.value)}} control={<Radio />} label="Other" />
+                                    </RadioGroup>
+                                  </FormControl><br/>
+                                  <FormControl className='mb-3 detail_container'>
+                                 <Input type='file' name='image' onChange={(event)=>setimage(event.target.files[0])} className='mx-3 my-3 ser_image' style={{borderBottom:"none"}}/>
+                                    </FormControl><br/>
+                                  <FormControl className='mb-3 mx-auto'>
+                                  <Button type='submit' variant='contained' className='my-3 px-5 py-3' onClick={handleProfile}>Add Details</Button>
+                                </FormControl><br/>
+                                <FormControl>
+                                  <Link to="#">Change Password?</Link>
+                                </FormControl>
+                    </div>
+                  
+      </FormGroup>
+=======
+
+import React from 'react'
+import { Navbar } from './Navbar'
+import { FormControl, FormGroup, Input, InputLabel, Button, FormLabel, RadioGroup, FormControlLabel, Radio, Typography } from '@mui/material';
+import "../css/Profile.css";
+import { makeStyles, TextField } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Modal } from 'bootstrap/dist/js/bootstrap.bundle';
+import userprofile from '../services/UserProfile'
+import getLoginUser from '../services/GetUser'
+import { useEffect } from 'react';
+
+
+const useStyles = makeStyles((theme) => ({
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    width: 200,
+  },
+}));
+
+const Profile = () => {
+  const classes = useStyles();
+  const [userid, setuserid] = useState('');
+  const [firstname, setfirstname] = useState('');
+  const [lastname, setlastname] = useState('');
+  const [birthdate, setbirthdate] = useState('');
+  const [gender, setgender] = useState('');
+  const [image, setimage] = useState('');
+
+  const handleProfile = async () => {
+    alert(firstname + lastname + birthdate + gender + image);
+    const data = { firstname, lastname, birthdate, gender, image, userid };
+    console.log("images===>", image);
+    const respo = await userprofile.create(data);
+    console.log("response---->", respo);
+  }
+
+  const getuser = async () => {
+    console.log("hello");
+    let id = localStorage.getItem("token");
+    const respo = await getLoginUser.sendauth({ id });
+    console.log("response====>", respo.data.data._id);
+    setuserid(respo.data.data._id);
+
+  }
+  useEffect(() => {
+    getuser();
+  }, [])
+
+
+
+
+import React from 'react'
+import '../css/sp.css';
+import $ from 'jquery';
+import { Ser_Pro_Navbar } from './Ser_Pro_Navbar';
+import { FormControl, FormGroup, Input, InputLabel, Button, FormLabel, RadioGroup, FormControlLabel, Radio } from '@mui/material';
+import { useState } from 'react';
+
+
+export const ServiceProvider = () => {
+  const [firstname, setfirstname] = useState('');
+  const [lastname, setlastname] = useState('');
+  const [gender, setgender] = useState('');
+
+
+
+  
+
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+      var currentGfgStep, nextGfgStep, previousGfgStep;
+      var opacity;
+      var current = 1;
+      var steps = document.querySelectorAll("fieldset").length;
+    
+      document.querySelectorAll(".next-step").forEach(function(element) {
+        element.addEventListener("click", function() {
+          currentGfgStep = this.parentNode;
+          nextGfgStep = this.parentNode.nextElementSibling;
+    
+          if (firstname === '') {
+            console.log("first===>" + firstname);
+            document.querySelector("#progressbar li:nth-child(" + (Array.from(document.querySelectorAll("fieldset")).indexOf(nextGfgStep) + 1) + ")").classList.remove("active");
+    
+            currentGfgStep.animate({
+              opacity: 1
+            }, {
+              step: function() {
+                opacity = 0;
+                currentGfgStep.style.display = 'block';
+                currentGfgStep.style.position = 'relative';
+                nextGfgStep.style.opacity = opacity;
+              },
+            });
+            currentGfgStep.style.display = 'block';
+          } else {
+            console.log("first2===>" + firstname);
+            document.querySelector("#progressbar li:nth-child(" + (Array.from(document.querySelectorAll("fieldset")).indexOf(nextGfgStep) + 1) + ")").classList.add("active");
+            nextGfgStep.style.display = 'block';
+    
+            currentGfgStep.animate({
+              opacity: 0
+            }, {
+              step: function(now) {
+                opacity = 1 - now;
+                currentGfgStep.style.display = 'none';
+                currentGfgStep.style.position = 'relative';
+                nextGfgStep.style.opacity = opacity;
+              },
+            });
+          }
+        });
+      });
+    
+      document.querySelectorAll(".previous-step").forEach(function(element) {
+        element.addEventListener("click", function() {
+          currentGfgStep = this.parentNode;
+          previousGfgStep = this.parentNode.previousElementSibling;
+    
+          if (firstname === '') {
+            document.querySelector("#progressbar li:nth-child(" + (Array.from(document.querySelectorAll("fieldset")).indexOf(currentGfgStep) + 1) + ")").classList.remove("active");
+    
+            previousGfgStep.style.display = 'block';
+    
+            currentGfgStep.animate({
+              opacity: 0
+            }, {
+              step: function(now) {
+                opacity = 1 - now;
+                currentGfgStep.style.display = 'none';
+                currentGfgStep.style.position = 'relative';
+                previousGfgStep.style.opacity = opacity;
+              },
+            });
+          }
+        });
+      });
+    });
+    
+    
+    
+    
+     
+    
+  const handleValidation = () => {
+    alert("firstname==>"+firstname);
+    // alert("hello",firstname);
+
+  }
+
+  return (
+    <>
+      <Ser_Pro_Navbar />
+      <div class="row justify-content-center">
+        <div class="col-11 col-sm-9 col-md-7 
+                col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2">
+          <div class="px-0 pt-4 pb-0 mt-3 mb-3">
+            <form id="form">
+              <ul id="progressbar">
+                <li class="active" id="step1">
+                  <strong>Step 1</strong>
+                </li>
+                <li id="step2"><strong>Step 2</strong></li>
+                <li id="step3"><strong>Step 3</strong></li>
+                <li id="step4"><strong>Step 4</strong></li>
+              </ul>
+
+              <fieldset>
+                <h2>Give your Personal Information</h2>
+                <div className="profile_form_container">
+                  <form action="">
+
+                    <div className="pro_input_container">
+                      <FormControl className='mb-3 '>
+                        <InputLabel className='mx-3 '  >Enter First Name</InputLabel>
+                        <Input type="text" name="firstname" className='' style={{ width: "100%" }} onChange={(event) => { setfirstname(event.target.value) }} />
+                      </FormControl><br />
+                    </div>
+                    <div className="pro_input_container">
+                      <FormControl className='mb-3 '>
+                        <InputLabel className='mx-3' >Enter Second Name</InputLabel>
+                        <Input type="text" name="name" className='my-3' onChange={(event) => { setlastname(event.target.value) }} />
+                      </FormControl><br />
+                    </div>
+                    <div className="pro_input_container">
+                      <FormControl className='mb-3 '>
+                        <RadioGroup
+                          row
+                          aria-labelledby="demo-row-radio-buttons-group-label"
+                          name="row-radio-buttons-group"
+
+                        >
+                          <FormControlLabel value="female" control={<Radio />} label="Female" onChange={(event) => { setgender(event.target.value) }} />
+                          <FormControlLabel value="male" control={<Radio />} label="Male" onChange={(event) => { setgender(event.target.value) }} />
+                          <FormControlLabel value="other" control={<Radio />} label="Other" onChange={(event) => { setgender(event.target.value) }} />
+                        </RadioGroup>
+                      </FormControl><br />
+                    </div>
+
+                  </form>
+                </div>
+                <input type="button" name="next-step"
+                  class="next-step" value="Next Step" onClick={handleValidation} />
+              </fieldset>
+              <fieldset>
+                <h2>Welcome To GFG Step 2</h2>
+                <input type="button" name="next-step"
+                  class="next-step" value="Next Step" />
+                <input type="button" name="previous-step"
+                  class="previous-step"
+                  value="Previous Step" />
+              </fieldset>
+              <fieldset>
+                <h2>Welcome To GFG Step 3</h2>
+                <input type="button" name="next-step"
+                  class="next-step" value="Final Step" />
+                <input type="button" name="previous-step"
+                  class="previous-step"
+                  value="Previous Step" />
+              </fieldset>
+              <fieldset>
+                <div class="finish">
+                  <h2 class="text text-center">
+                    <strong>FINISHED</strong>
+                  </h2>
+                </div>
+                <input type="button" name="previous-step"
+                  class="previous-step"
+                  value="Previous Step" />
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </>
+
+  )
+}
