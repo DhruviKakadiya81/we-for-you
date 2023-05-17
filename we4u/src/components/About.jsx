@@ -191,7 +191,7 @@ We4U has a rigorous vetting process for its service providers to ensure that the
       </section>
 
 
-      <h1 className='text-center'>About Us</h1>
+      <h1 className='text-center'>AboutUs</h1>
 
       <div className="d-flex justify-content-center flex-wrap reveal fade-up" id="grid1">
 
