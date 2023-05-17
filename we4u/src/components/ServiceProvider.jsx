@@ -3,8 +3,10 @@ import "../css/ServiceProvider.css"
 import {Navbar} from "./Navbar"
 import { CDBStepper, CDBStep, CDBInput, CDBBtn, CDBContainer } from "cdbreact";
 import { FormControl, FormGroup, Input, InputLabel, Typography,Select,MenuItem } from '@mui/material'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Stepper, Step, StepLabel, Button } from '@mui/material';
+import { data } from 'jquery';
+
 const FlexColumnContainer = styled('div')`
 
   padding: 10px;
@@ -19,16 +21,39 @@ const StepContainer = styled('div')`
   width: 100%;
   height: 100%;
 `;
-
+// const [firstname,setfirstname]=useState('');
 
 export const ServiceProvider = () => {
   const [activeStep, setActiveStep] = useState(0);
+  const [step1, setstep1] = useState({
+    firstname:'',
+    lastname : '',
+    mobileno:'',
+    gender:'',
+  })
+ 
+
+  const handleChildStateChange = (fieldName, value) => {
+    setstep1((prevState) => ({
+      ...prevState,
+      [fieldName]: value,
+    }));
+  };
 
   const handleNext = () => {
     if(activeStep === 0){
-    
+      console.log("data:",step1);
+      if(step1.firstname === '')
+      {
+        alert("hello");
+        setActiveStep((prevActiveStep) => prevActiveStep);
+      }
+      else{
+        alert("hello2");
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      }
     }
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+   
   };
 
   const handleBack = () => {
@@ -38,66 +63,9 @@ export const ServiceProvider = () => {
   const renderStepComponent = () => {
     switch (activeStep) {
       case 0:
-        return (
-          <StepContainer>
-            <div className="outer_container">
-              <div
-                className="inner_container"
-              >
-                <FlexColumnContainer>
-                  <div className="step_heading_container">
-                    Step 1
-                  </div>
-                  <FlexColumnContainer width="100%">
-                  <div className="step_form_container">
-                    <label>First Name</label><br/>
-                    <input type="text" className="px-2 py-1 mb-3 step_input"/><br/>
-                    <label>Last Name</label><br/>
-                    <input type="text" className="px-2 py-1 mb-3 step_input"/><br/>
-                    <label>Email</label><br/>
-                    <input type="text" className="px-2 py-1 mb-3 step_input"/><br/>
-                    <label>Mobile Number</label><br/>
-                    <input type="number" className="px-2 py-1 mb-3 step_input"/><br/>
-                    <div className="pro_input_container">
-                      <label className='mx-3'>Gender : </label>
-                      <input type="radio" value="Female" className='radio_detail'/>
-                      <label For="Female" className='me-4 ms-1 radio_detail'> Female </label>
-                      <input type="radio" value="Female" className='radio_detail'/>
-                      <label For="Female" className='me-2 ms-1 radio_detail'> Male </label>
-                      </div>
-                  </div>
-                  </FlexColumnContainer>
-                </FlexColumnContainer>
-              </div>
-            </div>
-          </StepContainer>
-        );
+        return  <Step1 data ={step1} onChange ={handleChildStateChange}/>;
       case 1:
-        return (
-          <StepContainer md="12">
-            <div className="outer_container">
-              <div className="inner_container">
-                <FlexColumnContainer>
-                  <div className="step_heading_container">
-                    Step 2
-                  </div>
-                  <FlexColumnContainer width="100%">
-                  <div className="step_form_container">
-                   <label>Shop Name</label><br/>
-                    <input type="text" className="step_input px-2 py-1 mb-3"/><br/>
-                    <label>Address</label><br/>
-                    <textarea type="text" className="step_input px-2 py-1 mb-3"/><br/>
-                    <label>Professional Email</label><br/>
-                    <input type="text" className="step_input px-2 py-1 mb-3"/><br/>
-                    <label>Deascription</label><br/>
-                    <textarea type="number" className="step_input px-2 py-1 mb-3"/><br/>
-                  </div>
-                  </FlexColumnContainer>
-                </FlexColumnContainer>
-              </div>
-            </div>
-          </StepContainer>
-        );
+        return <Step2 />;
       case 2:
         return <Step3 />;
       case 3:
@@ -113,8 +81,8 @@ export const ServiceProvider = () => {
      <div className='mt-5 mx-lg-5 mx-md-0 mx-sm-0 '>
       
       <Stepper activeStep={activeStep} >
-        <Step>
-          <StepLabel variant="contained"  color="secondary"></StepLabel>
+        <Step  variant="contained"  color="primary">
+          <StepLabel></StepLabel>
         </Step>
         <Step>
           <StepLabel></StepLabel>
@@ -282,8 +250,45 @@ const Step2 = () => {
   );
 };
 
-const Step1 = () => {
- 
+const Step1 = (props) => {
+  // console.log("props===>",props);
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    props.onChange(name, value);
+  };
+  return (
+    <StepContainer>
+      <div className="outer_container">
+        <div
+          className="inner_container"
+        >
+          <FlexColumnContainer>
+            <div className="step_heading_container">
+              Step 1
+            </div>
+            <FlexColumnContainer width="100%">
+            <div className="step_form_container">
+              <label>First Name</label><br/>
+              <input type="text" className="px-2 py-1 mb-3 step_input" name='firstname' value={props.data.firstname}  onChange={handleChange}/><br/>
+             
+              <label>Last Name</label><br/>
+              <input type="text" className="px-2 py-1 mb-3 step_input" name = 'lastname' value ={props.data.lastname} onChange={handleChange}/><br/>
+              <label>Mobile Number</label><br/>
+              <input type="number" className="px-2 py-1 mb-3 step_input" name ='mobileno' value ={props.data.mobileno} onChange={handleChange}/><br/>
+              <div className="pro_input_container">
+                <label className='mx-3'>Gender : </label>
+                <input type="radio" value={'female'} name='gender' className='radio_detail'onChange={handleChange}/>
+                <label For="Female" className='me-4 ms-1 radio_detail'> Female </label>
+                <input type="radio" value={'male'} name='gender' className='radio_detail' onChange={handleChange}/>
+                <label For="male" className='me-2 ms-1 radio_detail'> Male </label>
+                </div>
+            </div>
+            </FlexColumnContainer>
+          </FlexColumnContainer>
+        </div>
+      </div>
+    </StepContainer>
+  );
 };
 
 
