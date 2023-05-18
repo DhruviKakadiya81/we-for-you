@@ -78,17 +78,17 @@ export const Contact = () => {
             <div class="d-flex justify-content-evenly c_loc_outer">
               <div class="c_loc_inner my-2">
                 <img src="/images/Vector.png" alt="" height="40px"/>
-                <p class="c_loc_title">Surat</p>
+                <p class="c_loc_title">Jarkhand</p>
                 <p class="c_loc_desc">58,Ralph Ave New York,New York 111</p>
               </div>
               <div class="c_loc_inner my-2">
                 <img src="/images/Vector.png" alt="" height="40px"/>
-                <p class="c_loc_title">Amdavad</p>
+                <p class="c_loc_title">Vadodara</p>
                 <p class="c_loc_desc">58,Ralph Ave New York,New York 111</p>
                </div> 
                <div class="c_loc_inner my-2">
                 <img src="/images/Vector.png" alt="" height="40px"/>
-                <p class="c_loc_title">Vadodara</p>
+                <p class="c_loc_title">Bhopal</p>
                 <p class="c_loc_desc">58,Ralph Ave New York,New York 111</p>
               </div>
             </div>
@@ -129,11 +129,12 @@ export const Contact = () => {
                 </div>
               </div>
             </div>
-          </div>   
+          </div>
+          
       </div>
-      
       <div class="map_container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7441.68091850823!2d72.78242768220215!3d21.15874651462442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1675149979922!5m2!1sen!2sin" width="1600" height="460" style={{border:0}} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="c_map"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7441.68091850823!2d72.78242768220215!3d21.15874651462442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1675149979922!5m2!1sen!2sin" width="1600" height="460" style={{bo
+        :"0px"}} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="c_map"></iframe>
       </div>
       </div>
       <Footer/>

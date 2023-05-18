@@ -35,6 +35,7 @@ color: white;
     padding-top: 100px;
 
 }
+
  @keyframes fadeInUp{
     from{
         opacity: 0;
@@ -79,10 +80,10 @@ height: 80px;
 }
 
 .c_container4{
+    padding-top: 40px;
     background-color: #111518;
     height: 500px;
     color: white;
-    padding: 70px;
 }
 
 .c_details{
@@ -542,6 +543,9 @@ line-height: 22px;
     }
     .c_form_container textarea{
         width:322px;
+    }
+    .c_container4{
+        height: 750px;
     }
 }
 

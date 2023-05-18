@@ -3,26 +3,27 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle";
 import { Register } from "./components/Register";
 import { Login } from "./components/Login";
-import { ClientIndex } from "./components/ClientIndex";
+// import { ClientIndex } from "./components/ClientIndex";
 import { Authpage } from "./components/Authpage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Redirect} from "react-router-dom";
-import { Navbar } from "./components/Navbar";
+// import { Redirect} from "react-router-dom";
+// import { Navbar } from "./components/Navbar";
 import { Forget } from './components/Forget';
-import { Verify } from './components/Verify';
+// import { Verify } from './components/Verify';
 import { Home } from "./components/Home";
 import {Contact} from "./components/Contact";
 import About from "./components/About";
 import {Ser_Pro_Navbar} from "./components/Ser_Pro_Navbar";
 import { Myprofile } from "./components/Myprofile";
 
-import TestiMonials from './components/TestiMonials/TestiMonials';
+// import TestiMonials from './components/TestiMonials/TestiMonials';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { useState,useEffect } from "react";
 
 import Profile from "./components/Profile";
 import { ServiceProvider } from "./components/ServiceProvider";
+
 
 
 
@@ -40,6 +41,8 @@ const Authentication =() =>{
 useEffect(() => {
       Authentication();
 }, [isLogin])
+
+
 
   return (
     <>
@@ -77,13 +80,7 @@ useEffect(() => {
       ) : (
         <Route path="/login" element={<Login />}></Route>
       )}
-        
-       
-
-
         <Route path="/sphome" element={<ServiceProvider/>}></Route>
-
-
       </Routes>
       </Router>
     </>

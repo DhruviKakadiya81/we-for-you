@@ -644,12 +644,14 @@ legend {
 
 
 
+.progress-section .progress-card{position: relative;}
+.progress-section .progress-img{position: absolute;text-align: center;width: 50%; margin:25px;}
 
-
-
-
-
-
+@media (max-width:768px){
+  .line_img{
+    display: none;
+  }
+}
 
 
 
@@ -675,6 +677,17 @@ legend {
   width: 280px;
   box-shadow:rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
 }
+
+
+.feedback-section{background-color:var(--bg-color); color: var(--white-color);} 
+ .feedback-section .feedback-card{background-color: #ffff; box-shadow: var(--box-shadow);color: #000000;border-radius:12px ; padding: 30px;}
+.feedback-section .owl-carousel .owl-item img {display: block;width: auto;}
+.feedback-section .owl-carousel .owl-item  p{color: #474F5A;}
+.owl-carousel__nav {display: flex;justify-content: center;margin-top: 60px;}
+.owl-carousel__nav > button { background: #ffffff;color: #000000;padding: 8px 15px;margin-left: 15px;cursor: pointer;border-radius: 10px;}
+.owl-carousel__nav > button:hover{background-color: #2F80ED;color: #ffffff;} 
+
+
 
 @media (max-width:331px){
   .card{
