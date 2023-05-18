@@ -291,6 +291,21 @@ const Step1 = (props) => {
   );
 };
 
+<
+const FlexColumnContainer = styled('div')`
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  width: ${props => props.width};
+  justify-content: ${props => (props.justifyContent ? props.justifyContent : 'center')};
+  align-items: ${props => (props.alignItems ? props.alignItems : 'center')};
+  box-sizing: border-box;
+`;
+const StepContainer = styled('div')`
+  width: 100%;
+  height: 100%;
+`;
+
 
 
 

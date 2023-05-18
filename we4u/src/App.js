@@ -14,7 +14,7 @@ import { Home } from "./components/Home";
 import {Contact} from "./components/Contact";
 import About from "./components/About";
 import {Ser_Pro_Navbar} from "./components/Ser_Pro_Navbar";
-import { Showprofile } from "./components/Showprofile";
+import { Myprofile } from "./components/Myprofile";
 
 // import TestiMonials from './components/TestiMonials/TestiMonials';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -64,7 +64,7 @@ useEffect(() => {
         <Route path="/ser_pro_nav" element={<Ser_Pro_Navbar/>}></Route>
 
        
-        <Route path="/showprofile" element={<Showprofile/>}></Route>
+        <Route path="/showprofile" element={<Myprofile/>}></Route>
 
 
         {/* <Route path="/about" element={<TestiMonials/>}></Route> */}

@@ -17,10 +17,43 @@ height: 447px;
 color: white;
 }
 
+
+.form{
+    width: 100%;
+    max-width: 820px;
+    background-color: rgb(50, 50, 50);
+    border-radius: 10px;
+    box-shadow:rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+    z-index: 1000;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    animation: fadeInUp 1s ease-in-out;
+
 .c_p_container{
     margin-left: 246px;
     padding-top: 100px;
+
 }
+
+ @keyframes fadeInUp{
+    from{
+        opacity: 0;
+        transform: translateY(300px);
+    }
+    to{
+        opacity: 1;
+
+
+    }
+} 
+
+
+
+    }
+
+
+
 
 .c_par1{     
     font-family: 'Crimson Text';
