@@ -208,7 +208,7 @@ h2{
   }
   @keyframes fade-In {
     0% {
-      transform: scale(1.07);
+      transform: scaleX(1.07);
       opacity: 0;
     }
     100% {
