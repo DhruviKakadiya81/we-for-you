@@ -128,59 +128,52 @@ export const Home = () => {
 
 
 
-
-      <section className="progress-section">
+      <section className="progress-section mt-5 pb-3" style={{backgroundImage:`url(Images/get_start.jpg)`,backgroundSize:"cover"}}>
         <div className="container">
-          <div className="row mb-4 justify-content-center">
-            <div className="col-lg-7 col-md-12 col-sm-12">
-              <div className="process-heading text-center mb-5 ">
-                <span className="gradient-text">How to Get Started</span>
-                <h2 className="mb-3 mt-3">Fast & Easy Application Process.</h2>
-                <p>Transparent and fair costs, with no hidden fees</p>
-              </div>
-            </div>
-          </div>
-          <div className="row justify-content-center">
-            <div className="progress-img">
-              <img className="w-100" src="images/get-started.png" alt="progress" />
-            </div>
-            <div className="col-lg-3 col-md-4 col-sm-10">
-              <div className="progress-card">
-                <div className="progress-card-body text-center">
-                  <img src="/images/apply.png" alt="apply" width="80px" />
-                  <h5 className="card-title mt-3 mb-3">Apply In 10 Minutes</h5>
-                  <p className="p mt-2 mb-5">Submission of Online document with Basic details Docs can be
-                    submitted via
-                    Email or Whatsapp as well</p>
+            <div className="row mb-4 justify-content-center">
+                <div className="col-lg-7 col-md-12 col-sm-12">
+                    <div className="process-heading text-center pt-5"  style={{color:"white"}}>
+                        <span className="gradient-text">How to Get Started</span>
+                        <h2 className="mb-3 mt-3">Get Services By Easy Process</h2>
+                        <p>Transparent and fair costs, with no hidden fees</p>
+                    </div>
                 </div>
-              </div>
             </div>
-            <div className="col-lg-3 col-md-4 col-sm-10">
-              <div className="progress-card">
-                <div className="progress-card-body text-center">
-                  <img src="images/disition.png" alt="disition" width="80px" />
-                  <h5 className="card-title mt-3 mb-3">A Decision In 24 Hours</h5>
-                  <p className="p mt-2 mb-5">Get a call and Instant quotes(Rate / Loan amount ) with options of
-                    banks</p>
+            <div className="row justify-content-center  reveal fade-In">
+                <div className="progress-img">
+                    <img className="w-100 line_img" src="images/get-started.png"  alt="progress"/>
                 </div>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-4 col-sm-10">
-              <div className="progress-card">
-                <div className="progress-card-body text-center">
-                  <img src="images/funded.png" alt="funded" width="80px" />
-                  <h5 className="card-title mt-3 mb-3">Your Loan Is Funded</h5>
-                  <p className="p mt-2 mb-5">Submission of docs with bank or Finance company for further process
-                  </p>
+                <div className="col-lg-3 col-md-4 col-sm-10">
+                    <div className="progress-card">
+                        <div className="progress-card-body text-center" style={{color:"white"}}>
+                            <img src="/images/search_service.png" alt="apply" width="80px" style={{borderRadius:"100%"}}/>
+                            <h5 className="card-title mt-3 mb-3">Search Service</h5>
+                            <p className="p mt-2 mb-5">Search Service Which You Want and As Per Your Need</p>
+                        </div>
+                    </div>
                 </div>
-              </div>
+                <div className="col-lg-3 col-md-4 col-sm-10">
+                    <div className="progress-card">
+                        <div className="progress-card-body text-center" style={{color:"white"}} >
+                            <img src="images/cart.jpg" alt="disition" width="80px" style={{borderRadius:"100%"}}/>
+                            <h5 className="card-title mt-3 mb-3">Add to Cart</h5>
+                            <p className="p mt-2 mb-5">After Finding Service Add Your Service Into Cart</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-lg-3 col-md-4 col-sm-10">
+                    <div className="progress-card">
+                        <div className="progress-card-body text-center" style={{color:"white"}}>
+                            <img src="images/funded.png" alt="funded" width="80px"/>
+                            <h5 className="card-title mt-3 mb-3">Get Services</h5>
+                            <p className="p mt-2 mb-5">Get Services On Time</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div className="text-center mt-3">
-              <button className="btn btn-primary">Apply Now</button>
-            </div>
-          </div>
         </div>
-      </section>
+    </section>
+
 
 
 
