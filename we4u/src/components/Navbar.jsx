@@ -48,9 +48,8 @@ export const Navbar = () => {
 }
   return (
     <>
+
 <nav class="navbar navbar-expand-md navbar-dark fixed-top">
-
-
 
 <div className="container-fluid">
         <img src="/images/Logo.png" width="100" height="50" className="c_nav_image"/>

@@ -16,8 +16,9 @@ export const ServiceProvider = () => {
   return (
     <>
     <Navbar/>
-      <CDBStepper direction="horizontal" className="steppp">
-        <CDBStep
+      <CDBStepper direction="horizontal" className="">
+      {/* <div className="steps"> */}
+      <CDBStep
           id={1}
           icon="pencil-alt"
           name="Basic Information"
@@ -53,6 +54,7 @@ export const ServiceProvider = () => {
           className="steps_res4"
           component={<Step4 handleNextPrevClick={handleNextPrevClick} />}
         />
+      {/* </div> */}
       </CDBStepper>
       </>
   );
