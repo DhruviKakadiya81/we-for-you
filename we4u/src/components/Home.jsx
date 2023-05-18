@@ -129,7 +129,7 @@ export const Home = () => {
 
 
 
-      <section className="progress-section">
+      <section className="progress-section mt-5 pb-3" style={{backgroundImage:`url(Images/get_start.jpg)`,backgroundSize:"cover"}}>    
         <div className="container">
           <div className="row mb-4 justify-content-center">
             <div className="col-lg-7 col-md-12 col-sm-12">
@@ -181,6 +181,7 @@ export const Home = () => {
           </div>
         </div>
       </section>
+
 
 
 
