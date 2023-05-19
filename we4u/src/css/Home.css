@@ -697,3 +697,17 @@ legend {
     width: 249px;
   }
 }
+
+
+
+@media (min-width: 300px) {
+  .card-group.card-group-scroll {
+      overflow-x: scroll;
+      flex-wrap: nowrap;
+  }
+}
+
+.card-group.card-group-scroll > .card {
+  flex-basis: 26%;
+}
+

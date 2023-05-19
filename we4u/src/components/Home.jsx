@@ -104,10 +104,19 @@ export const Home = () => {
 
 
 
+      {/* <section className="services1">
+          
+          <h1 className='serviceh1'>  Our Services </h1>
+       
+          
+           <div className='services_scroll'>
+           {service.data != undefined && service.data.data.length > 0 && (
+
       <section className="services1">
         <h1 className='serviceh1'>  Our Services </h1>
         <div className='services_scroll'>
           {service.data != undefined && service.data.data.length > 0 && (
+
             <section className="services">
               <div className="d-flex flex-wrap justify-content-center">
                 {service.data.data.map(product => (
@@ -178,6 +187,95 @@ export const Home = () => {
 
 
 
+          )}
+          </div>
+        </section> */}
+
+
+        <section className="services1" style={{minHeight:"600px"}}>
+          
+          <h1 className='serviceh1 mt-5'>  Our Servicess </h1>
+       
+          
+          
+           {service.data != undefined && service.data.data.length > 0 && (
+            
+              
+            <div className="d-flex flex-wrap justify-content-center w-75 mx-auto mt-2">
+        
+              {service.data.data.map(product => (
+              
+                  
+                     <div className="card mx-3 my-4" style={{width:"12rem", height:"11rem" ,   boxShadow:"rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset"}} >
+                  {/* <img src={'http://localhost:4000/image/' + product.s_icon} className="card-img-top" alt="..." style={{height:"60px",width:"80px",textAlign:"center",marginTop:"5px",margin:"auto"}}/> */}
+                  <div className='text-center mt-2' >
+        <img src={'http://localhost:4000/image/' + product.s_icon} width="100" height="100"  alt="..."/>
+        </div>
+                  <div className="card-body">
+                   
+                   
+          
+            <p class="card-text text-center">
+            <h5>{product.s_name} </h5>
+            </p>
+        </div>
+                  
+                </div> 
+             
+             
+              ))}
+                </div>
+            
+
+          )}
+          
+         
+        </section>
+
+
+
+        <div class="parallax mb-0" style={ {
+  /* The image used */
+  backgroundImage: ` linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/homeimag9.jpg")`,
+  
+  /* Set a specific height */
+  minHeight: "600px",
+
+  /* Create the parallax scrolling effect */
+  backgroundAttachment: "fixed",
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "cover",
+}}>
+     <section className='beauty_saloon ' >
+
+<h1 className='beauty_saloon_title text-white'>Beauty Saloon</h1>
+<div className="d-flex flex-wrap justify-content-center" >
+<div className="card mx-4 my-4">
+<img src="Images/manicure.jpg" class="card-img-top" alt="..."/>
+<div class="card-body">
+  <h5 class="card-title">Manicure</h5>
+  <p class="card-text">A Manicure usually consists of filing and shaping the free edge of nails, pushing and clipping.</p>
+</div>
+</div>
+<div className="card mx-4 my-4">
+<img src="Images/keratin.jpg" class="card-img-top" alt="..."/>
+<div class="card-body">
+  <h5 class="card-title">Keratin</h5>
+  <p class="card-text">A keratin treatment is a process that smooths and often straightens hair.</p>
+</div>
+</div>
+<div className="card mx-4 my-4">
+<img src="Images/hair_cutting.jpg" class="card-img-top" alt="..."/>
+<div class="card-body">
+  <h5 class="card-title">Hair Cut</h5>
+  <p class="card-text">We Are Doing Many Types Of Hair Cutting like layered, one-length, Face-Look.</p>
+</div>
+</div>
+</div>
+
+</section>
+</div>
 
 
 
@@ -292,8 +390,12 @@ export const Home = () => {
             </div>
           </div>
 
+
+      </section> 
+
         
-      </section>
+      
+
 
 
 

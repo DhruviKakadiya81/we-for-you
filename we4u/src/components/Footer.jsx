@@ -8,7 +8,7 @@ export const Footer = () => {
   
    
 
-<footer class="text-center footer-section d-sticky mb-0 mt-4">
+<footer class="text-center footer-section d-sticky mb-0 ">
 
         <div class="container py-5 " style={{minHeight:"45vh" , marginTop:"70px"}}>
 

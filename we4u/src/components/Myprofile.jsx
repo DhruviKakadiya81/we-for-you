@@ -2,7 +2,7 @@ import React from "react";
 
 import '../css/Showprofile.css';
 
-export const Showprofile = (props) => {
+export const Myprofile = (props) => {
 
     return (
         <>
