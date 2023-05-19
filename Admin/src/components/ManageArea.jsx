@@ -20,11 +20,11 @@ export const ManageArea = () => {
         // alert(data);
         // console.log("data----", data);
         const response = await managearea.addarea(data);
-        // console.log("response", response);
+        console.log("response", response);
         setisEdit(false);
         if (response.data.success === true) {
             alert("added successfully");
-            event.target.reset();
+            
         }
         else {
             alert("add another city");
@@ -46,8 +46,9 @@ export const ManageArea = () => {
         console.log("area ---", area);
     }
     const handleSelect = (eventKey, event) => {
-        console.log(eventKey);
-        setcityid(eventKey);
+        console.log("hello---",event.target.getAttribute('data-value'));
+        alert(eventKey)
+        setcityid(event.target.getAttribute('data-value'));
         setcityname(event.target.getAttribute('value'));
         alert(cityname);
     }
@@ -86,19 +87,19 @@ export const ManageArea = () => {
                     labelId="demo-simple-select-standard-label"
                     id="demo-simple-select-standard"
                     label="Select City"
-                    onSelect={handleSelect}
+                   onChange={(event)=>{setcityid(event.target.value)}}
                     >
                     {citydata.map(city => (
-                            <MenuItem key={city._id} eventKey={city._id} value={city.cityname}>{city.cityname}</MenuItem>
+                            <MenuItem key={city._id}   onSelect={handleSelect} data-value={city._id} value={city._id}>{city.cityname}</MenuItem>
 
                     ))}
                     </Select>
                    </FormControl><br/>
 
-                   <FormControl className='area_detail_container'  >
+                   {/* <FormControl className='area_detail_container'  >
                         <InputLabel className=''>Selected City Name</InputLabel>
                         <Input variant="dark" type="text" name="name" value={cityname}  className='mx-3 my-3' style={{ color: "black" }} readOnly />
-                    </FormControl><br />
+                    </FormControl><br /> */}
 
                    <FormControl className='mb-3 mx-auto'>
                     <Button type='submit' className='my-3 px-5 py-3' style={{backgroundColor:"rgb(50,50,50)",border:"none",color:"white"}} onClick={handleAddArea}>ADD AREA</Button>
