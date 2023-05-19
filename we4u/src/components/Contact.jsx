@@ -62,15 +62,15 @@ export const Contact = () => {
                 <input type="number" name="phoneNumber" class="c_input_phone_number mx-2 my-2" placeholder="Phone Number"/>
                 <input type="Email" name="Email" class="c_input_email_address mx-2 my-2" placeholder="Email Address"/>
               </div>
-               <textarea name="message" class="c_input_message mx-2 my-2" placeholder="Your Message"></textarea><br/>
-               <button type="submit" class="c_send_btn">Send Message</button>
+               <textarea name="message" class="c_input_message mx-2 my-2" placeholder="Your Valuable FeedBack"></textarea><br/>
+               <button type="submit" class="c_send_btn mb-5">Send FeedBack</button>
             </div>
           </div>
         </div>
       </div>
       <div class="c_container5 hero-text">
         <div class="c_inner_container">
-          <p class="c_loc_header">
+          <p class="c_loc_header px-3">
             Location Of Restaurants All Over The India
           </p>
           <hr class="c_hr_c5"/>
