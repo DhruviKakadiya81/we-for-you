@@ -59,5 +59,16 @@ const updatearea = async (req, res) => {
     }
    }
 
-module.exports = {getarea,addarea,updatearea,deletearea}
+   const getdatabycity = async(req,res) =>{
+    try {
+        const {cityid} = req.body
+        const areadata = await area.find({cityid});
+        console.log("data==>",areadata);
+        res.status(200).send({ success: true, msg: 'area details',data:areadata })
+    } catch (error) {
+        res.status(400).send({ success: false, msg: `${error}` });
+
+    }
+   }
+module.exports = {getarea,addarea,updatearea,deletearea,getdatabycity}
    

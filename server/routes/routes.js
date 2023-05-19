@@ -62,6 +62,7 @@ router1.post("/addarea",managearea.addarea);
 router1.get("/getarea",managearea.getarea);
 router1.put("/updatearea",managearea.updatearea);
 router1.delete("/deletearea/:id",managearea.deletearea);
+router1.post("/areabycity",managearea.getdatabycity);
 
 
 router1.post("/profiledetail",upload.single('image'),userdetail.adddetails);

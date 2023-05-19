@@ -2,7 +2,7 @@ import axios from "axios";
 
 class Post{
     addarea(data) {
-        // console.log("formdata : ",data);
+        console.log("formdata : ",data);
         const url = "http://localhost:4000/addarea";
         return axios.post(url,data);
 
