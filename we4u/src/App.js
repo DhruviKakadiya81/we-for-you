@@ -16,7 +16,7 @@ import About from "./components/About";
 import {Ser_Pro_Navbar} from "./components/Ser_Pro_Navbar";
 import { Myprofile } from "./components/Myprofile";
 
-// import TestiMonials from './components/TestiMonials/TestiMonials';
+import {SpmainHome} from './components/SpmainHome';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { useState,useEffect } from "react";
@@ -80,7 +80,7 @@ useEffect(() => {
       ) : (
         <Route path="/login" element={<Login />}></Route>
       )}
-        <Route path="/sphome" element={<ServiceProvider/>}></Route>
+        <Route path="/sphome" element={<SpmainHome/>}></Route>
       </Routes>
       </Router>
     </>

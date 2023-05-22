@@ -14,15 +14,15 @@ export const Ser_Pro_Navbar = () => {
   }
 
   const handlelogout = () =>{
-    var id = localStorage.getItem("token");
+    var id = localStorage.getItem("sptoken");
     if(id == null){
       alert("Login first");
-        nevigate("/login");
+        nevigate("/loginasp");
     }
     else{
-      localStorage.clear();
+      localStorage.removeItem("sptoken");
       alert("logged out");
-      nevigate("/login");
+      nevigate("/loginsp");
     }
       
   }

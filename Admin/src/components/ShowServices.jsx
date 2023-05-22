@@ -22,29 +22,41 @@ export const ShowServices = () => {
     // event.prventDefault();
     ser = await showservice.getservice();
     console.log("services : ",ser);
-   // console.log("data :", ser.data.data[0].s_name);
+  
     setService(ser);
-    // console.log("data2 :", service.data.data.length);
+   
   }
   const handledelete = async(id,e) =>{
    alert(id);
    var ser_id = {id};
    const respo = await delser.deleteData(ser_id);
    alert("respo : " , respo);
-
-
   }
   
   
   useEffect((event) => {
     fetchSer();
   },[service]);
-  return (
+  console.log("not found",service.data);
+  if(service.data === undefined){
+    return(
+      <AdminNavbar>
+ <div className="d-flex justify-content-center ">
+  <div className="spinner-border d-flex align-items-center" role="status">
+    <span className="visually-hidden">Loading...</span>
+  </div>
+</div>
+      </AdminNavbar>
+     
+    )
+  }
+  else if(service.data !== undefined){
+     return (
     <AdminNavbar>
     <h1>
       All main Services
     </h1>
-    {service.data != undefined && service.data.data.length > 0 && (
+    {service.data !== undefined && service.data.data.length > 0 && (
       <div className="tablemain" id='abc'>
           <table className="table table table-striped table-sm">
                         <thead>
@@ -86,6 +98,8 @@ export const ShowServices = () => {
     </AdminNavbar>
   
   )
+  }
+ 
 }
 
 const DeleteService = (props)=>{

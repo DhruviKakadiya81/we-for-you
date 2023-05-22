@@ -1,8 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import apiServices from "../services/RegisterData";
-import '../css/Login.css';
-
 
 export const Register = (props) => {
   const [email, setEmail] = useState("");
@@ -11,21 +9,20 @@ export const Register = (props) => {
   const [eye, seteye] = useState("fa-sharp fa-solid fa-eye-slash");
   const [state, setstate] = useState(props.state);
   const handleRegister = async (event) => {
-    event.preventDefault();
-    const firmObj = { email, password , state};
+    // event.preventDefault();
+    const firmObj = { email, password, state };
     console.log("object----" + password);
     alert(firmObj.state);
-    
+
     const respo = await apiServices.create(firmObj);
     if (respo.data.success === true) {
       setmessage(respo.data.msg);
       localStorage.setItem("token", respo.data.token);
       alert(localStorage.getItem("token"));
-      
+
     } else {
       setmessage(respo.data.msg);
     }
-    event.target.reset();
   };
 
   const handletogglepass = async (event) => {
@@ -39,220 +36,126 @@ export const Register = (props) => {
       seteye("fa-sharp fa-solid fa-eye-slash");
     }
   };
-if(props.state === 1){
- 
-   return (
-    <>
+  if (props.state === 1) {
 
-   <section class="sign-in" >
-            <div class="container" id="login_contain" style={{boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset"}}>
-                <div class="signin-content">
-                <div class="signin-image">
-                        <figure><img src="Images/login2.png" alt="sing up image"/></figure>
-                       
-                    </div>
+    return (
+      <>
 
-                    <div class="signin-form">
-                        <h2 class="form-title">Sign Up</h2>
-                        <form method="POST" class="register-form" id="login-form" onSubmit={handleRegister}>
-                            <div class="form-group">
-                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <i class="fa-solid fa-envelope"></i>       
-                                <input type="text" name="your_name" id="your_name" placeholder="Enter Your Email"    onChange={(event) => setEmail(event.target.value)}/>
-                            </div>
-                            <div class="form-group">
-                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                <i class="fa-solid fa-lock"></i>
-                                <input  type="password"
-                        name="password"
-                        placeholder="Enter the Password"
-                        onChange={(event) => setPass(event.target.value)}
-                        id="id_password" />
-                                <i
-                        className={eye}
-                        id="togglePassword"
-                        style={{ cursor: "pointer" }}
-                        onClick={handletogglepass} by
-
-                      ></i>
-                               </div>
-                         
-                           
-                            <div class="form-group form-button" >
-                                <input type="submit" name="signin" id="signin" style={{backgroundColor:"black"}} class="form-submit" value="Register"/>
-                            </div>
-                        </form>
-                       
-                       <br />
-
-                      <p><a href="/login" style={{ textDecoration: "none" }}>Already Have An Account ?? </a></p>
-                      
-
-                      <span>{message}</span>
-
-                           
-                    </div>
-
-                   
-                </div>
-            </div>
-        </section> 
-    
-    </>
-  );
-};
-if(props.state === 0){
- 
-   return (
-    <>
-
-{/* <section className="d-flex flex-wrap" id="header">
-        <div className="container-fluid pt-5 pb-5" style= {{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",marginTop:"100px",width:"50rem",overflowX:"hidden" }} >
-          <div className="row">
-            <div className="col-lg-12">
-              <div className="row">
-              <div className="col-md-6 pt-5 mx-auto pt-lg-0 order-1 order-lg-2 header-image" >
-                <img src="Images/register1.png" width={270} height={300} className="login-image" alt=""/>
+        <section className="d-flex mb-5" id="header">
+          <div className="container pt-5 pb-5 mb-5 pb-5" style={{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset", marginTop: "100px", width: "50rem", overflowX: "hidden" }} >
+            <div className="row mx-lg-5 mx-md-2 mx-sm-2">
+              <div className="col-md-6 pt-5 mx-auto pt-lg-0 order-1  d-flex justify-content-center order-lg-2 header-image" >
+                <img src="Images/register1.png" width={270} height={300} className="" alt="" />
               </div>
-              <div className="col-md-6 pt-5 m-2 mx-auto p-5 pt-lg-0 order-2 order-lg-1" style={{marginLeft:"-10px"}}>
-                <form action="" method="post" onSubmit={handleRegister}>
-
-                  <h2 style={{fontWeight: "700" }}>SIGN UP</h2>
-                  <i class="fa-solid fa-envelope fa-flip fa-xs" style={{marginRight:"-18px",position:"relative",left:"-30px",bottom:"0px" , color:"gray"}}></i>
-
-                  <input
-           className="my-4 pt-3"
-          type="text"
-          placeholder="Enter Your Email"
-          name="email"
-          onChange={(event) => setEmail(event.target.value)}
-          style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width:"100%"}}
-          required
-        />
-  <br />
-        <i class="fa-solid fa-lock fa-flip fa-xs" style={{marginRight:"-18px",position:"relative",left:"-30px",bottom:"0px" , color:"gray"}}></i>
-        <input
-          type="password"
-          name="password"
-          placeholder="Enter the password"
-          onChange={(event) => setPass(event.target.value)}
-          id="id_password"
-          className="my-0 pt-3"
-
-          style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width:"100%"  }}
-          required
-        />
-  <i
-          className={eye}
-          id="togglePassword"
-           style={{ marginLeft: "-25px", cursor: "pointer" , position:"relative"}}
-
-          onClick={handletogglepass}
-        ></i>
-
-        <br />
-        <button type="submit" className="p-2 my-4" value="register" style={{fontSize:"20px", borderRadius: "10px", backgroundColor: "rgb(212, 174, 126)", border: "none", width: "110px" }}>
-          Register
-        </button>
-        <p><a href="/loginasp" style={{textDecoration:"none"}}>Already Have An Account??</a></p>
-        <span>{message}</span>
-      </form>
-      </div>
-              </div>
+              <form className="col-lg-6 col-md-6 pt-5 pt-lg-0 order-2 order-lg-1" action="" method="" onSubmit={handleRegister}>
+                <h2 style={{ fontWeight: "700" }}>SIGN UP</h2>
+                <i class="fa-solid fa-envelope  fa-xm" style={{ position: "relative", left: "0px", top: "35px" }}></i>
+                <input
+                  className="pt-3 px-4"
+                  type="text"
+                  placeholder="Enter Your Email"
+                  name="email"
+                  onChange={(event) => setEmail(event.target.value)}
+                  style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width: "100%" }}
+                  required
+                />
+                <br />
+                <i class="fa-solid fa-lock fa-xm" style={{ position: "relative", left: "0px", top: "35px" }}></i>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Enter the password"
+                  onChange={(event) => setPass(event.target.value)}
+                  id="id_password"
+                  className="my-0 pt-3 px-4"
+                  style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width: "100%" }}
+                  required
+                />
+                <i
+                  className={eye}
+                  id="togglePassword"
+                  style={{ marginLeft: "-25px", cursor: "pointer", position: "relative", cursor: "pointer" }}
+                  onClick={handletogglepass}
+                ></i>
+                <br />
+                <br />
+                <button
+                  type="submit"
+                  className="p-2"
+                  value="register"
+                  style={{ fontSize: "20px", borderRadius: "10px", backgroundColor: "rgb(212, 174, 126)", border: "none", width: "110px" }}>
+                  register
+                </button>
+                <br />
+                <br />
+                <p><a href="/login" style={{ textDecoration: "none" }}>Already Have An Account??</a></p>
+                <span>{message}</span>
+              </form>
             </div>
           </div>
-        </div>
-      </section> */}
-
-      <section class="sign-in" >
-            <div class="container" id="login_contain" style={{boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset"}}>
-                <div class="signin-content">
-                <div class="signin-image">
-                        <figure><img src="Images/login2.png" alt="sing up image"/></figure>
-                       
-                    </div>
-
-                    <div class="signin-form">
-                        <h2 class="form-title">Sign Up</h2>
-                        <form method="POST" class="register-form" id="login-form" onSubmit={handleRegister}>
-                            <div class="form-group">
-                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <i class="fa-solid fa-envelope"></i>       
-                                <input type="text" name="your_name" id="your_name" placeholder="Enter Your Email"    onChange={(event) => setEmail(event.target.value)}/>
-                            </div>
-                            <div class="form-group">
-                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                <i class="fa-solid fa-lock"></i>
-                                <input  type="password"
-                        name="password"
-                        placeholder="Enter the Password"
-                        onChange={(event) => setPass(event.target.value)}
-                        id="id_password" />
-                                <i
-                        className={eye}
-                        id="togglePassword"
-                        style={{ cursor: "pointer" }}
-                        onClick={handletogglepass} by
-
-                      ></i>
-                               </div>
-                         
-                           
-                            <div class="form-group form-button" >
-                                <input type="submit" name="signin" id="signin" style={{backgroundColor:"black"}} class="form-submit" value="Register"/>
-                            </div>
-                        </form>
-                       
-                       <br />
-
-                      <p><a href="/login" style={{ textDecoration: "none" }}>Already Have An Account ?? </a></p>
-                      
-
-                      <span>{message}</span>
-
-                           
-                    </div>
-
-                   
-                </div>
-            </div>
         </section>
+      </>
+    );
+  };
 
+  if (props.state === 0) {
+    return (
+      <>
 
-
-      
-      {/* <div>Register Form</div> */}
-      {/* <form action="" method="post" onSubmit={handleRegister}>
-        <input
-          type="text"
-          placeholder="Enter Your Email"
-          name="email"
-          onChange={(event) => setEmail(event.target.value)}
-        />
-        <br />
-        <input
-          type="password"
-          name="password"
-          placeholder="ENTER the Password"
-          onChange={(event) => setPass(event.target.value)}
-          id="id_password"
-        />
-        <i
-          className={eye}
-          id="togglePassword"
-          style={{ marginLeft: "-25px", cursor: "pointer" }}
-          onClick={handletogglepass}
-        ></i>
-
-        <br />
-        <button type="submit" value="register">
-          register
-        </button>
-        <p><strong>have you account?</strong><a href="/login">Login here</a></p>
-        <span>{message}</span>
-      </form> */}
-    </>
-  );
-};
+        <section className="d-flex mb-5" id="header">
+          <div className="container pt-5 pb-5 mb-5 pb-5" style={{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset", marginTop: "100px", width: "50rem", overflowX: "hidden" }} >
+            <div className="row mx-lg-5 mx-md-2 mx-sm-2">
+              <div className="col-md-6 pt-5 mx-auto pt-lg-0 order-1  d-flex justify-content-center order-lg-2 header-image" >
+                <img src="Images/register1.png" width={270} height={300} className="" alt="" />
+              </div>
+              <form className="col-lg-6 col-md-6 pt-5 pt-lg-0 order-2 order-lg-1" action="" method="" onSubmit={handleRegister}>
+                <h2 style={{ fontWeight: "700" }}>SIGN UP</h2>
+                <i class="fa-solid fa-envelope  fa-xm" style={{ position: "relative", left: "0px", top: "35px" }}></i>
+                <input
+                  className="pt-3 px-4"
+                  type="text"
+                  placeholder="Enter Your Email"
+                  name="email"
+                  onChange={(event) => setEmail(event.target.value)}
+                  style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width: "100%" }}
+                  required
+                />
+                <br />
+                <i class="fa-solid fa-lock fa-xm" style={{ position: "relative", left: "0px", top: "35px" }}></i>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Enter the password"
+                  onChange={(event) => setPass(event.target.value)}
+                  id="id_password"
+                  className="my-0 pt-3 px-4"
+                  style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width: "100%" }}
+                  required
+                />
+                <i
+                  className={eye}
+                  id="togglePassword"
+                  style={{ marginLeft: "-25px", cursor: "pointer", position: "relative", cursor: "pointer" }}
+                  onClick={handletogglepass}
+                ></i>
+                <br />
+                <br />
+                <button
+                  type="submit"
+                  className="p-2"
+                  value="register"
+                  style={{ fontSize: "20px", borderRadius: "10px", backgroundColor: "rgb(212, 174, 126)", border: "none", width: "110px" }}>
+                  register
+                </button>
+                <br />
+                <br />
+                <p><a href="/loginasp" style={{ textDecoration: "none" }}>Already Have An Account??</a></p>
+                <span>{message}</span>
+              </form>
+            </div>
+          </div>
+        </section>
+      </>
+    );
+  };
 }
- 
