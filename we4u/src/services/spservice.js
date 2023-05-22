@@ -4,5 +4,10 @@ class Post{
         const url = "http://localhost:4000/getcity";
         return axios.post(url);
     }
+
+    getspid(data){
+        const url = "http://localhost:4000/getsp";
+        return axios.post(url,data);
+    }
 }
 export default new Post();

@@ -231,25 +231,7 @@ const Profile = () => {
 
        
 
-        {/* <div className="container-fluid">
-          <div>Your Profile</div>
-          <div> {userdata.firstname}</div>
-          <div> {userdata.lastname}</div>
-          <div> {userdata.gender}</div>
-          <div> {userdata.image}</div>
-          <div> {userdata.birthdate}</div>
-
-          <div>
-
-            <Update firstname={userdata.firstname} lastname={userdata.lastname} gender={userdata.gender} birthdate={userdata.birthdate} userid={userdata.userid} handleIsEdit={() => setisEdit(!isEdit)} />
-
-          </div>
-          <div className="pro_input_container">
-            <FormControl>
-              <ChangePass userid = {userdata.userid}/>
-            </FormControl>
-          </div>
-        </div> */}
+       
 
       </>
 

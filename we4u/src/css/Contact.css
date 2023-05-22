@@ -317,7 +317,7 @@ line-height: 22px;
 
 @media screen and (max-width:980px) {
     .c_container4{
-        height: 920px;
+        height: auto;
     }
     .c_detail_container{
         margin-left: 190px;
@@ -332,7 +332,7 @@ line-height: 22px;
 
 @media screen and (max-width:888px) {
     .c_container4{
-        height: 830px;
+        height: auto;
     }
 }
 
@@ -361,7 +361,7 @@ line-height: 22px;
         left: -50px;
     }
     .c_container4{
-        height: 950px;
+        height: auto;
     }
     .c_form_container{
         margin-left: 0px;
@@ -378,7 +378,7 @@ line-height: 22px;
 
 @media screen and (max-width:695px) {
     .c_container4{
-        height: 800px;
+        height: auto;
     }
 }
 
@@ -541,7 +541,7 @@ line-height: 22px;
         width:322px;
     }
     .c_container4{
-        height: 750px;
+        height: auto;
     }
 }
 

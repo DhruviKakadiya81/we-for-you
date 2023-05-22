@@ -62,10 +62,7 @@ export const ManageArea = () => {
 
     useEffect(() => {
         handleCityData();
-    }, [])
-
-
-
+    }, []);
     return (
         <>
             <AdminNavbar>
