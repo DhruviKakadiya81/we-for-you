@@ -5,10 +5,10 @@ import { FormControl, InputLabel,Select,MenuItem } from '@mui/material'
 import React, {useState,useEffect } from 'react';
 import { Stepper, Step, StepLabel, Button } from '@mui/material';
 import service from '../services/Services'
-import { event } from 'jquery';
+import { Ser_Pro_Navbar } from './Ser_Pro_Navbar';
+import { useNavigate } from 'react-router-dom';
 
 const FlexColumnContainer = styled('div')`
-
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -25,6 +25,8 @@ const StepContainer = styled('div')`
 
 export const ServiceProvider = () => {
   const [activeStep, setActiveStep] = useState(0);
+  const [spid, setspid] = useState();
+  const [isData, setisData] = useState(false);
   const [step1, setstep1] = useState({
     firstname:'',
     lastname : '',
@@ -35,10 +37,9 @@ export const ServiceProvider = () => {
     pemail:'',
     description:'',
     cityid:'',
-    areaid:''
+    areaid:'',
+    spid:spid
   });
- 
- 
 
   const handleStep1Change = (fieldName, value) => {
     setstep1((prevState) => ({
@@ -54,19 +55,30 @@ export const ServiceProvider = () => {
       console.log("data:",step1);
       if(step1.firstname === '')
       {
-      
         setActiveStep((prevActiveStep) => prevActiveStep);
       }
       else{
-       
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
       }
     }
     else{
       console.log("data:",step1);
       setActiveStep((prevActiveStep) => prevActiveStep+1);
+      if(activeStep === 2){
+        handleaddd();
+      }
     }
   };
+
+
+    const handleaddd = async() =>{
+     console.log("data==>",step1);
+     const response = await service.adddata(step1);
+     if(response.data.success === true){
+      window.location.reload();
+     }
+    console.log(response);
+    }
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
@@ -80,81 +92,92 @@ export const ServiceProvider = () => {
         return <Step2  data = {step1} onChange={handleStep1Change}/>;
       case 2:
         return <Step3  data = {step1} onChange={handleStep1Change}/>;
-      case 3:
-        return <Step4 />;
       default:
         return null;
     }
   };
 
-  return (
-    <>
-    <Navbar/>
-     <div className='mt-5 mx-lg-5 mx-md-0 mx-sm-0 '>
+
+  const getspclient = async()=>{
+    try {
+      const id = localStorage.getItem("sptoken");
+      const response = await service.getspid({id});
+      setspid(response.data.data._id);
+      setstep1({...step1,spid:response.data.data._id});
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  // const handledata = async()=>{
+  //   try {
+  //     console.log("spid====>",spid);
+  //     const response = await service.getdetails({spid});
+  //     if(response.data.data === null)
+  //     {
+  //       setisData(false)
+  //     }
+  //     else{
+  //       setisData(true);
+  //     }
       
-      <Stepper activeStep={activeStep} >
-        <Step  variant="contained"  color="primary">
-          <StepLabel></StepLabel>
-        </Step>
-        <Step>
-          <StepLabel></StepLabel>
-        </Step>
-        <Step>
-          <StepLabel></StepLabel>
-        </Step>
-        <Step>
-          <StepLabel></StepLabel>
-        </Step>
-      </Stepper>
-      <div>{renderStepComponent()}</div>
-      <div className='text-center' >
-        <Button disabled={activeStep === 0} onClick={handleBack}
-        variant="contained"
-        color="primary"
-        className='mx-5'
-        >
-          Back
-        </Button>
-        <Button
+  //     console.log("data of sp===>",isData);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+  useEffect(() => {
+    // handledata();
+    getspclient();
+  }, [isData])
+  // console.log("spid==>",spid);
+  // console.log("spid==>",step1);
+  // console.log("spid==>",isData);
+
+ 
+    return (
+      <>
+      <Navbar/>
+       <div className='mt-5 mx-lg-5 mx-md-0 mx-sm-0 '>
+        
+        <Stepper activeStep={activeStep} >
+          <Step  variant="contained"  color="primary">
+            <StepLabel></StepLabel>
+          </Step>
+          <Step>
+            <StepLabel></StepLabel>
+          </Step>
+          <Step>
+            <StepLabel></StepLabel>
+          </Step>
+        </Stepper>
+        <div>{renderStepComponent()}</div>
+        <div className='text-center' >
+          <Button disabled={activeStep === 0} onClick={handleBack}
           variant="contained"
-          color="secondary"
-          onClick={handleNext}
+          color="primary"
           className='mx-5'
-        >
-          {activeStep === 3 ? 'Finish' : 'Next'}
-        </Button>
-      </div>
-    </div>    
-    </>
-   
-  );
+          >
+            Back
+          </Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={handleNext}
+            className='mx-5'
+          >
+            {activeStep === 3 ? 'Finish' : 'Next'}
+          </Button>
+        </div>
+      </div>    
+      </>
+     
+    );
+  
+ 
 };
 
-const Step4 = () => {
-  return (
-    <StepContainer md="12">
-      <div className="outer_container">
-        <div
-        className="inner_container">
-          <FlexColumnContainer>
-            <div
-            className="step_heading_container">
-              Step 4
-            </div>
-            <FlexColumnContainer width="100%">
-              <div style={{ fontSize: '25px', textAlign: 'center' }}>
-                Now you can add your services...
-                {/* <span style={{ fontSize: '50px', display: 'block' }} role="img" aria-label="image">
-                  🎉
-                </span> */}
-              </div>
-            </FlexColumnContainer>
-          </FlexColumnContainer>
-        </div>
-      </div>
-    </StepContainer>
-  );
-};
+
 
 const Step3 =(props) => {
   

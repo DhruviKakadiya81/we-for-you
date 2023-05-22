@@ -4,13 +4,14 @@ const { body, validationResult } = require('express-validator');
 const controller = require("../controllers/registration");
 const logcontroller = require("../controllers/login");
 const getuser = require("../controllers/getuser");
-const {auth} = require("../middleware/auth");
+const {auth,auth2} = require("../middleware/auth");
 const sendotp = require("../controllers/sendotp");
 const mainservice = require("../controllers/showservices");
 const spapi = require("../controllers/serviceprovider");
 const managearea = require("../controllers/managearea");
 const managecity = require("../controllers/managecity");
 const userdetail = require("../controllers/userdetails");
+const spdetail = require("../controllers/spDetail");
 
 const path = require("path");
 var multer = require("multer");
@@ -71,7 +72,12 @@ router1.put("/updateuserdetail",userdetail.updatedetails);
 router1.put("/changepass",userdetail.changepassword);
 router1.get("/getuser",userdetail.getuser);
 
+
+router1.post("/addaspdet",spdetail.adddetail);
+router1.post("/getsp", auth , getuser.getsplogin);
+router1.post("/getspdetail",  spdetail.getdetail);
+
 // router1.post("/getuser",logcontroller.getuserlogin);
 // router1.post("/getuser",logcontroller.getuserlogin);
 
-module.exports = router1;
+module.exports = router1; 

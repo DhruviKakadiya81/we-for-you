@@ -39,6 +39,13 @@ const SPModelSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Area',
     required: true
+  },
+  spid: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Service_Provider',
+    required: true, 
+    unique: true
+
   }
 });
 

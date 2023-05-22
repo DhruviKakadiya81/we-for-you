@@ -16,6 +16,21 @@ class Post{
         return axios.post(url,cityid);
     }
     
+    getspid(data){
+        const url = "http://localhost:4000/getsp";
+        return axios.post(url,data);
+    }
+
+    adddata(data){
+        const url = "http://localhost:4000/addaspdet";
+        return axios.post(url,data);
+    }
+
+    getdetails(data){
+        console.log("clg-->",data);
+        const url = "http://localhost:4000/getspdetail";
+        return axios.post(url,data);
+    }
    
 }
 export default new Post();

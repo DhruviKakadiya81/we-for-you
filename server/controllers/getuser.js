@@ -1,8 +1,6 @@
 const usertbl = require("../models/userModel");
-const bcrypt = require("bcryptjs");
-const {validationResult} = require("express-validator");
-const jwt = require("jsonwebtoken");
-const JWT_SECRET = "jsonwebtokenforthehumanandhomeservicemanagement";
+const sptable = require("../models/serviceprovider");
+
 const getuserlogin = async(req,res)=>{
     try{
         let userId = req.id;
@@ -16,6 +14,20 @@ const getuserlogin = async(req,res)=>{
         console.log(error);
     }
 }
+
+const getsplogin = async(req,res)=>{
+    try{
+        let spid = req.id;
+        console.log("spid===>",spid);
+        const data = await sptable.findById(spid);
+        console.log("testing-===",data);
+        return res.status(200).send({success : true,data:data});
+        
+    }catch(error){
+        console.log(error);
+    }
+}
 module.exports = {
-    getuserlogin
+    getuserlogin,
+    getsplogin
 }

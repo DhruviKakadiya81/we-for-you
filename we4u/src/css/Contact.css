@@ -305,7 +305,7 @@ line-height: 22px;
 
 @media screen and (max-width:980px) {
     .c_container4{
-        height: 920px;
+        height: auto;
     }
     .c_detail_container{
         margin-left: 190px;
@@ -317,7 +317,6 @@ line-height: 22px;
         margin-left: 210px;
     }
 }
-
 
 
 
@@ -345,7 +344,7 @@ line-height: 22px;
         left: -50px;
     }
     .c_container4{
-        height: 950px;
+        height: auto;
     }
     .c_form_container{
         margin-left: 0px;
@@ -512,7 +511,7 @@ line-height: 22px;
     .c_form_container textarea{
         width:322px;
     }
-}
+
 
 @media screen and (max-width:347px) {
     .c_p_container{
