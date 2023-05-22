@@ -231,50 +231,64 @@ export const Home = () => {
           
          
         </section>
-
-
-
         <div class="parallax mb-0" style={ {
-  /* The image used */
-  backgroundImage: ` linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/homeimag9.jpg")`,
+      /* The image used */
+     backgroundImage: ` linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/homeimag9.jpg")`,
   
-  /* Set a specific height */
-  minHeight: "600px",
+     /* Set a specific height */
+      minHeight: "500px",
 
-  /* Create the parallax scrolling effect */
-  backgroundAttachment: "fixed",
-  backgroundPosition: "center",
-  backgroundRepeat: "no-repeat",
-  backgroundSize: "cover",
-}}>
-     <section className='beauty_saloon ' >
-
-<h1 className='beauty_saloon_title text-white'>Beauty Saloon</h1>
-<div className="d-flex flex-wrap justify-content-center" >
-<div className="card mx-4 my-4">
-<img src="Images/manicure.jpg" class="card-img-top" alt="..."/>
-<div class="card-body">
-  <h5 class="card-title">Manicure</h5>
-  <p class="card-text">A Manicure usually consists of filing and shaping the free edge of nails, pushing and clipping.</p>
-</div>
-</div>
-<div className="card mx-4 my-4">
-<img src="Images/keratin.jpg" class="card-img-top" alt="..."/>
-<div class="card-body">
-  <h5 class="card-title">Keratin</h5>
-  <p class="card-text">A keratin treatment is a process that smooths and often straightens hair.</p>
-</div>
-</div>
-<div className="card mx-4 my-4">
-<img src="Images/hair_cutting.jpg" class="card-img-top" alt="..."/>
-<div class="card-body">
-  <h5 class="card-title">Hair Cut</h5>
-  <p class="card-text">We Are Doing Many Types Of Hair Cutting like layered, one-length, Face-Look.</p>
-</div>
-</div>
-</div>
-
-</section>
+      /* Create the parallax scrolling effect */
+      backgroundAttachment: "fixed",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+    }}>
+    <section className="progress-section mt-5 pb-3">
+        <div className="container">
+            <div className="row mb-4 justify-content-center">
+                <div className="col-lg-7 col-md-12 col-sm-12">
+                    <div className="process-heading text-center pt-5"  style={{color:"white"}}>
+                        <span className="gradient-text mt-5">How to Get Started</span>
+                        <h2 className="mb-3 mt-3">Get Services By Easy Process</h2>
+                        <p>Transparent and fair costs, with no hidden fees</p>
+                    </div>
+                </div>
+            </div>
+            <div className="row justify-content-center  reveal fade-In">
+                <div className="progress-img">
+                    <img className="w-100 line_img" src="images/get-started.png"  alt="progress"/>
+                </div>
+                <div className="col-lg-3 col-md-4 col-sm-10">
+                    <div className="progress-card">
+                        <div className="progress-card-body text-center" style={{color:"white"}}>
+                            <img src="/images/search_service.png" alt="apply" width="80px" style={{borderRadius:"100%"}}/>
+                            <h5 className="card-title mt-3 mb-3">Search Service</h5>
+                            <p className="p mt-2 mb-5">Search Service Which You Want and As Per Your Need</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-lg-3 col-md-4 col-sm-10">
+                    <div className="progress-card">
+                        <div className="progress-card-body text-center" style={{color:"white"}} >
+                            <img src="images/cart.jpg" alt="disition" width="80px" style={{borderRadius:"100%"}}/>
+                            <h5 className="card-title mt-3 mb-3">Add to Cart</h5>
+                            <p className="p mt-2 mb-5">After Finding Service Add Your Service Into Cart</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-lg-3 col-md-4 col-sm-10">
+                    <div className="progress-card">
+                        <div className="progress-card-body text-center" style={{color:"white"}}>
+                            <img src="images/funded.png" alt="funded" width="80px"/>
+                            <h5 className="card-title mt-3 mb-3">Get Services</h5>
+                            <p className="p mt-2">Get Services On Time</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 
 
@@ -313,25 +327,24 @@ export const Home = () => {
 
 
 
-      <section className="feedback-section">
+      <section className="feedback-section pt-4">
         <div className="container">
 
           <div className="row mb-4 justify-content-center">
             <div className="col-lg-7 col-md-12 col-sm-12">
               <div className="process-heading text-center mb-5 ">
-                <span className="gradient-text">Feedback</span>
+                <span className="gradient-text feedback_title">Feedback</span>
                 <h2 className="mb-3 mt-3">What they’re talking about
                   our company</h2>
               </div>
             </div>
           </div>
-
-          
+     
             <div className="row d-flex justify-content-center" id="feedback-carousel">
               
               <OwlCarousel ref={owl} options={options}>
                 <div className="item d-flex justify-content-center">
-                  <div className="card my-4">
+                  <div className="card my-1">
                     <img src="Images/manicure.jpg" className="card-img-top" alt="..." />
                     <div className="card-body">
                       <h5 className="card-title text-center">Manicure</h5>
@@ -349,7 +362,7 @@ export const Home = () => {
 
                 </div>
                 <div className="item d-flex justify-content-center">
-                  <div className="card my-4">
+                  <div className="card my-1">
                     <img src="Images/keratin.jpg" className="card-img-top" alt="..." />
                     <div className="card-body">
                       <h5 className="card-title text-center">Keratin</h5>
@@ -366,7 +379,7 @@ export const Home = () => {
                   </div>
                 </div>
                 <div className="item d-flex justify-content-center">
-                  <div className="card my-4">
+                  <div className="card my-1">
                     <img src="Images/hair_cutting.jpg" className="card-img-top" alt="..." />
                     <div className="card-body">
                       <h5 className="card-title text-center">Hair Cutting</h5>
