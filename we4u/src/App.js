@@ -23,6 +23,7 @@ import { useState,useEffect } from "react";
 
 import Profile from "./components/Profile";
 import { ServiceProvider } from "./components/ServiceProvider";
+import { Ser_pro_contact } from "./components/Ser_pro_contact";
 
 
 
@@ -60,6 +61,7 @@ useEffect(() => {
         {/* <Route path="/about" element={<about/>}></Route>  */}
 
         <Route path="/logout" element={<Home/>}></Route> 
+        <Route path="/ser_contact" element={<Ser_pro_contact/>}></Route> 
         <Route path="/logout" element={<Home/>}></Route>
         <Route path="/ser_pro_nav" element={<Ser_Pro_Navbar/>}></Route>
 
