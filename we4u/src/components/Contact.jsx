@@ -20,7 +20,7 @@ export const Contact = () => {
     <>
     <Navbar/>
     <div className="c_container2 hero-image" style={{background:`url(Images/cont_first.png)`,backgroundSize:"cover"}}>
-        <div className="hero-text c_p_container">
+        <div className="hero-text c_p_container mx-5 px-5">
           <p className="c_par1">Contact Us</p>
           <p className="c_par2">We're easy to get in touch with</p>
         </div>
@@ -55,15 +55,15 @@ export const Contact = () => {
             </div>
             <div className="col c_form_container">
               <div className="d-flex justify-content-center">
-                <input type="text" name="firstName" className="c_input_first_name mx-2 my-2" placeholder="Enter First Name"/>
-                <input type="text" name="Last name" className="c_input_last_name mx-2 my-2" placeholder="Enter Last Name"/>
+                <input type="text" name="firstName" className="c_input_first_name mx-2 my-2 px-4 py-2" placeholder="Enter First Name"/>
+                <input type="text" name="Last name" className="c_input_last_name mx-2 my-2 px-4 py-2" placeholder="Enter Last Name"/>
               </div>
               <div className="d-flex justify-content-center">
-                <input type="number" name="phoneNumber" className="c_input_phone_number mx-2 my-2" placeholder="Phone Number"/>
-                <input type="Email" name="Email" className="c_input_email_address mx-2 my-2" placeholder="Email Address"/>
+                <input type="number" name="phoneNumber" className="c_input_phone_number mx-2 my-2 px-4 py-2" placeholder="Phone Number"/>
+                <input type="Email" name="Email" className="c_input_email_address mx-2 my-2 px-4 py-2" placeholder="Email Address"/>
               </div>
                <textarea name="message" className="c_input_message mx-2 my-2" placeholder="Your Message"></textarea><br/>
-               <button type="submit" className="c_send_btn">Send Message</button>
+               <button type="submit" className="c_send_btn px-5 py-2 mb-5">Send Message</button>
             </div>
           </div>
         </div>
