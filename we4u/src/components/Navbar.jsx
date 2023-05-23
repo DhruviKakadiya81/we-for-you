@@ -21,7 +21,7 @@ export const Navbar = () => {
       nevigate("/login");
     }
     else {
-      localStorage.clear();
+      localStorage.removeItem("token");
       alert("logged out");
       nevigate("/login");
     }

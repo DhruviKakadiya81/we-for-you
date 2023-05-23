@@ -3,27 +3,36 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import apiServices from "../services/LoginData.js";
 import '../css/Login.css';
-
+import service from '../services/Services';
 export const Login = (props) => {
   const navigate=useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
   const [message, setmessage] = useState("");
+  const [spid, setspid] = useState();
   const [eye, seteye] = useState("fa-sharp fa-solid fa-eye-slash");
   const handleLogin = async (event) => {
     event.preventDefault();
     let state = props.state;
     const firmObj = { email, password ,state};
-
     const respo = await apiServices.getLoginData(firmObj);
     alert(respo.data.msg);
     if (respo.data.success === true) {
       setmessage(respo.data.msg);
-      
-
       if(props.state === 0){
         localStorage.setItem("sptoken", respo.data.token);
-        navigate("/sphome");
+        const id = localStorage.getItem("sptoken");
+        const response = await service.getspid({ id });
+        setspid(response.data.data._id);
+        const response2 = await service.getdetails({ spid });
+        console.log("response==>", response2);
+        if(response2.data.success === true){
+          navigate("/sphome2");
+          localStorage.setItem("data",true);
+      }
+      else{
+          navigate("/sphome");
+      }
       }
       else{
         localStorage.setItem("token", respo.data.token);
@@ -46,7 +55,12 @@ export const Login = (props) => {
       seteye("fa-sharp fa-solid fa-eye-slash");
     }
   };
+
+
+  
+ 
   if (props.state === 1) {
+   
     return (
       <>
 
@@ -123,7 +137,7 @@ export const Login = (props) => {
   );
 }
 else if(props.state === 0){
-  
+  // console.log("spid===>",spid);
   return (
     <>
 

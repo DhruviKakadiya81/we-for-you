@@ -24,8 +24,7 @@ import { useState,useEffect } from "react";
 import Profile from "./components/Profile";
 import { ServiceProvider } from "./components/ServiceProvider";
 import { Ser_pro_contact } from "./components/Ser_pro_contact";
-
-
+import { Sp } from "./components/Sp";
 
 
 function App() {
@@ -83,6 +82,9 @@ useEffect(() => {
         <Route path="/login" element={<Login />}></Route>
       )}
         <Route path="/sphome" element={<SpmainHome/>}></Route>
+        <Route path="/sphome2" element={<Sp/>}></Route>
+        <Route path="/contactsp" element={<Ser_pro_contact/>}></Route>
+
       </Routes>
       </Router>
     </>
