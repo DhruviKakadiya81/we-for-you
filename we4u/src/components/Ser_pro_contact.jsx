@@ -1,36 +1,21 @@
 import React from 'react'
 import "../css/Ser_pro_contact.css"
+import {Ser_Pro_Navbar} from "./Ser_Pro_Navbar"; 
 
 export const Ser_pro_contact = () => {
   return (
     <>
-    <section class="contact-main" style={{background: `url("images/homeimag9.jpg")`,backgroundSize:"cover"}}>
-        <div class="container">
-            <div class="col-6">
-                <h2>Get in touch with us</h2>
-                <div class="breadcrumb">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html"><i class="bi bi-house"></i> Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-
-        </div>
-
-    </section>
+    <Ser_Pro_Navbar/>
     <section class="contact-form-sec">
         <div class="container">
             <div class="row justify-content-between">
                 <div class=" col-4 contact-info ">
                     <div class="mb-5">
-                        <h3 class="mb-3">Enter the magical world of nature...</h3>
+                        <h3 class="mb-3">Get Best Services</h3>
                         <p>Call us, Email us or Submit your enquiry below.</p>
                     </div>
                     <div class="contact-info-div">
-                        <span><i class="bi bi-geo-alt-fill bg-warning"></i></span>
+                        <span><i class="fa-sharp fa-solid fa-location-dot bg-dark" style={{color:"white"}}></i></span>
                         <div class="ms-2">
                             <h6>Address</h6>
                             <p>Office - Bhd. Shivalik Complex, Opp. Bharucha Hospital, Ellora Park,Gorwa - Subhanpura
@@ -39,14 +24,14 @@ export const Ser_pro_contact = () => {
                         </div>
                     </div>
                     <div class="contact-info-div">
-                        <span><i class="bi bi-telephone-forward bg-warning"></i></span>
+                        <span><i class="fa-sharp fa-solid fa-phone bg-dark" style={{color:"white"}}></i></span>
                         <div class="ms-2">
                             <h6>Phone</h6>
                             <p>7574003377, 9601277779</p>
                         </div>
                     </div>
                     <div class="contact-info-div">
-                        <span><i class="bi bi-envelope bg-warning"></i></span>
+                        <span><i class="fa-regular fa-envelope bg-dark" style={{color:"white"}}></i></span>
                         <div class="ms-2">
                             <h6>Email</h6>
                             <p>connect@holidaybugs.in</p>
@@ -85,8 +70,7 @@ export const Ser_pro_contact = () => {
                         </div>
 
                         <div class="col-12 text-center">
-                            <button type="submit" class="btn btn-orange text-white">Contact Us <i
-                                    class="bi bi-arrow-right"></i></button>
+                            <button type="submit" class="s_cnt_btn px-5 py-2">Contact Us </button>
                         </div>
                     </form>
                 </div>
