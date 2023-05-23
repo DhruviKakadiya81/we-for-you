@@ -3,32 +3,33 @@ import { Ser_Pro_Navbar } from './Ser_Pro_Navbar'
 import { Sp } from './Sp';
 import service from '../services/Services'
 import { ServiceProvider } from './ServiceProvider';
-
+import { useNavigate } from 'react-router-dom';
 
 export const SpmainHome = () => {
+    const navigate = useNavigate();
     const [spid, setspid] = useState();
     const [isData, setisData] = useState();
-    const [isData1, setisData1] = useState(true);
-    const [step1, setstep1] = useState({
-        firstname: '',
-        lastname: '',
-        mobileno: '',
-        gender: '',
-        shopname: '',
-        address: '',
-        pemail: '',
-        description: '',
-        cityid: '',
-        areaid: '',
-        spid: spid
-    });
+    const [isData1, setisData1] = useState(false);
+    // const [step1, setstep1] = useState({
+    //     firstname: '',
+    //     lastname: '',
+    //     mobileno: '',
+    //     gender: '',
+    //     shopname: '',
+    //     address: '',
+    //     pemail: '',
+    //     description: '',
+    //     cityid: '',
+    //     areaid: '',
+    //     spid: spid
+    // });
 
     const getspclient = async () => {
         try {
             const id = localStorage.getItem("sptoken");
             const response = await service.getspid({ id });
             setspid(response.data.data._id);
-            setstep1({ ...step1, spid: response.data.data._id });
+            // setstep1({ ...step1, spid: response.data.data._id });
         } catch (error) {
             console.log(error);
         }
@@ -37,24 +38,41 @@ export const SpmainHome = () => {
     const handledata = async () => {
         try {
             console.log("spid====>", spid);
-            const response = await service.getdetails({spid});
-            console.log("response==>",response);
-            setisData(response.data.data);
-        
+            const response = await service.getdetails({ spid });
+            console.log("response==>", response);
+            if(response.data.success === true){
+                setisData(response.data.data);
+                setisData1(true);
+                navigate("/sphome2");
+                localStorage.setItem("data",true);
+            }
+            else{
+                setisData(response.data.data);
+                setisData1(false);
+                navigate("/sphome");
+            }
+           
+            console.log("data==>",isData)
         } catch (error) {
             console.log(error);
         }
     }
     useEffect(() => {
-        handledata();
         getspclient();
+    }, []);
+
+    useEffect(() => {
+        if(spid){
+            handledata(); 
+        }
+      
     }, [spid]);
 
-   
-    console.log("spid ==> ", spid);
-    
 
-    if (spid === undefined)  {
+    console.log("spid ==> ", isData);
+
+
+    if (spid === undefined) {
 
         return (
             (
@@ -66,22 +84,15 @@ export const SpmainHome = () => {
                         </div>
                     </div>
                 </>
-
             )
         )
     }
 
     else {
-
+   
         return (
             <>
-                <div style={{ display:(isData === null) ? "block" : "none" }} >
-                    <ServiceProvider />
-                </div>
-                <div style={{ display: (isData !== null) ? "block" : "none" }} >
-                    <Sp />
-                </div>
-
+                    <ServiceProvider/>
             </>
 
         )

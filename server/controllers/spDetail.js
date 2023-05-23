@@ -31,7 +31,13 @@ const getdetail =async(req,res)=>{
     console.log("spid is==>",spid);
     const data = await SPModel.findOne({spid});
     console.log("data is===>",data);
-    res.send({success:true,data:data});
+    if(data === null){
+      return res.send({success:false,data:data});
+    }
+    else{
+      return res.send({success:true,data:data});
+    }
+    
   } catch (error) {
     console.log("error",error);
     res.send({success:false});
