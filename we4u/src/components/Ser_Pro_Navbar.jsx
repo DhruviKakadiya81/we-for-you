@@ -47,7 +47,7 @@ export const Ser_Pro_Navbar = () => {
 }
   return (
     <>
-<nav class="navbar navbar-expand-md navbar-dark">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top">
 
 
 

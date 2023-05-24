@@ -65,7 +65,7 @@ export const Navbar = () => {
   }
   return (
     <>
-      <nav className="navbar navbar-expand-md navbar-dark">
+      <nav className="navbar navbar-expand-md navbar-dark fixed-top">
         <div className="container-fluid">
           <img src="/images/we4U.png" width="100" height="50" className="c_nav_image" />
           <button className="navbar-toggler" type="button" onClick={handleNav}>
