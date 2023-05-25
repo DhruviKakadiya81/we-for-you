@@ -6,12 +6,6 @@
     border: 1px solid #ECECEC;
     box-shadow: 0 19px 38px rgba(0,0,0,0.10), 0 15px 12px rgba(0,0,0,0.02); 
   }
-  #customer-testimonoals .owl-item.active.center .item .shadow-effect {
-   
-    /* background-color: #de795f; */
-    /* transform: scale3d(1.0, 1.0, 1); */
-  }
-  
   #shadow-effect p {
     font-family: inherit;
     font-size: 17px;

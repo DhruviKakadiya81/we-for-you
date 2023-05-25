@@ -2,14 +2,14 @@ import React from 'react'
 import { Navbar } from './Navbar'
 import { Footer } from './Footer'
 import '../css/About.css';
-import '../css/exa.js';
+// import '../css/exa.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import TestiMonials from './TestiMonials/TestiMonials.js';
-import TestiMonialsDetails from './TestiMonialsDetails/TestiMonialsDetails'
+// import TestiMonials from '../../../TestiMonials/TestiMonials.js';
+// import TestiMonialsDetails from './TestiMonialsDetails/TestiMonialsDetails'
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
-import './TestiMonials/TestiMonials.css'
+// import '../../../TestiMonials/TestiMonials.css'
 const About = () => {
   function reveal() {
     var reveals = document.querySelectorAll(".reveal");
@@ -56,7 +56,7 @@ const About = () => {
     items: 3,
     margin: 0,
     autoplay: true,
-    dots: true,
+    dots: false,
     autoplayTimeout: 4000,
     smartSpeed: 250,
     // nav: false,
@@ -251,3 +251,26 @@ We4U has a rigorous vetting process for its service providers to ensure that the
 }
 
 export default About
+
+
+const TestiMonialsDetails = ({ testiMonialDetail }) => {
+  const { name, address, description, img } = testiMonialDetail;
+  console.log("testiMonialDetail" + testiMonialDetail)
+  return (
+      <div className='d-flex justify-content-center flex-wrap'>
+          <div className="row">
+              <div class="item col" style={{ width: "400px" }}>
+                  <div class="shadow-effect">
+                      <img class="img-circle" src={img} />
+                      <p>{description}</p>
+                  </div>
+                  <div class="testimonial-name">
+                      <h5>{name}</h5>
+                      <small>{address}</small>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  );
+};
