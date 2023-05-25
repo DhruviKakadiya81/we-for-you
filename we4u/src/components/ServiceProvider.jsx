@@ -120,7 +120,7 @@ export const ServiceProvider = (props) => {
   return (
     <>
           <Ser_Pro_Navbar />
-          <div className='mt-5 mx-lg-5 mx-md-0 mx-sm-0 '>
+          <div className="mt-5 mx-lg-5 mx-md-0 mx-sm-0">
             <Stepper activeStep={activeStep} >
               <Step variant="contained" color="primary">
                 <StepLabel></StepLabel>
