@@ -161,12 +161,12 @@ main {
 /* service Provider Home */
 
 .ser_home_sec{
-	min-height: 85vh;
+	
 }
 
 .ser_title_cont{
-	padding-top: 150px;
-	padding-left: 100px;
+	/* padding-top: 150px; */
+	/* padding-left: 100px; */
 }
 
 .earn_title{
@@ -182,7 +182,7 @@ main {
 .detail_title{
 	font-size: 25px;
 	font-weight: 500;
-	width: 600px;
+	/* width: 600px; */
 }
 
 .ser_home_card_title{
