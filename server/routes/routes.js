@@ -12,7 +12,6 @@ const managearea = require("../controllers/managearea");
 const managecity = require("../controllers/managecity");
 const userdetail = require("../controllers/userdetails");
 const spdetail = require("../controllers/spDetail");
-
 const path = require("path");
 var multer = require("multer");
 const router1 = express.Router();
@@ -41,7 +40,6 @@ var upload = multer({ storage: storage });
 router1.post("/reguser",[body("email").isEmail()],controller.register);
 router1.post("/loguser",[body("email").isEmail()],logcontroller.login);
 router1.post("/getclient", auth , getuser.getuserlogin );
-
 
 router1.post("/sendmail",sendotp.sendotp);
 router1.post("/getotp",sendotp.getotp);
@@ -76,6 +74,7 @@ router1.get("/getuser",userdetail.getuser);
 router1.post("/addaspdet",spdetail.adddetail);
 router1.post("/getsp", auth , getuser.getsplogin);
 router1.post("/getspdetail",  spdetail.getdetail);
+router1.get("/spdata",spdetail.getalldata);
 
 // router1.post("/getuser",logcontroller.getuserlogin);
 // router1.post("/getuser",logcontroller.getuserlogin);

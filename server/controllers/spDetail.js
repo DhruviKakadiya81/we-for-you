@@ -44,6 +44,23 @@ const getdetail =async(req,res)=>{
   }
 }
 
+const getalldata =async(req,res)=>{
+  try {
+    const data = await SPModel.find();
+    console.log("data is===>",data);
+    if(data === null){
+      return res.send({success:false,data:data});
+    }
+    else{
+      return res.send({success:true,data:data});
+    }
+    
+  } catch (error) {
+    console.log("error",error);
+    res.send({success:false});
+  }
+}
 
 
-module.exports ={adddetail,getdetail}
+
+module.exports ={adddetail,getdetail,getalldata}
