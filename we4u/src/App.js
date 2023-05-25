@@ -25,6 +25,7 @@ import Profile from "./components/Profile";
 import { ServiceProvider } from "./components/ServiceProvider";
 import { Ser_pro_contact } from "./components/Ser_pro_contact";
 import { Sp } from "./components/Sp";
+import { Ser_add_Service } from "./components/Ser_add_Service";
 
 
 function App() {
@@ -63,6 +64,7 @@ useEffect(() => {
         <Route path="/ser_contact" element={<Ser_pro_contact/>}></Route> 
         <Route path="/logout" element={<Home/>}></Route>
         <Route path="/ser_pro_nav" element={<Ser_Pro_Navbar/>}></Route>
+        <Route path="/ser_add_service" element={<Ser_add_Service/>}></Route>
 
        
         <Route path="/showprofile" element={<Myprofile/>}></Route>
