@@ -64,6 +64,9 @@ export const Ser_Pro_Navbar = () => {
             <li className="nav-item">
               <Link className="nav-link" to="/about">About</Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/ser_add_service">Add Service</Link>
+            </li>
             <li class="dropdown nav-item">
             <Link className="nav-link" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false"> Register </Link>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">

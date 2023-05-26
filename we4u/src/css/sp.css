@@ -71,7 +71,7 @@ main {
 	padding: 0.5rem 0;
   }
   
-  input[type="text"] {
+  /* input[type="text"] {
 	padding: 0.8rem;
 	margin: auto;
 	margin-top: 0.5rem;
@@ -80,7 +80,7 @@ main {
 	border-radius: 0.5rem;
 	outline: none;
 	border: 1px solid #bdbdbb;
-  }
+  } */
   
   .form__btn {
 	background: #333;
