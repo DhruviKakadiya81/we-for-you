@@ -2,7 +2,6 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { Ser_Pro_Navbar } from './Ser_Pro_Navbar'
 import { FormControl, FormGroup, Input, InputLabel, Typography,Select,MenuItem } from '@mui/material'
-import "../css/ServiceProvider.css"
 import "../css/Ser_add_service.css"
 const FlexColumnContainer = styled('div')`
   padding: 10px;
@@ -14,9 +13,12 @@ const FlexColumnContainer = styled('div')`
   box-sizing: border-box;
 `;
 const StepContainer = styled('div')`
-  margin-top:150px;
+  background-image: url(Images/homeimg9.jpg);
+  background-size: cover;
+  ${'' /* margin-top:150px; */}
+  padding-top:150px;
   width: 100%;
-  height: 100%;
+  height: 100vh;
 `;
 
 export const Ser_add_Service = () => {
@@ -24,14 +26,14 @@ export const Ser_add_Service = () => {
     <>
   <Ser_Pro_Navbar/>
   <StepContainer md="12">
-      <div className="outer_container">
-        <div className="inner_container">
+      <div className="s_add_outer_container">
+        <div className="s_add_inner_container">
           <FlexColumnContainer>
-            <div className="step_heading_container">
+            <div className="s_add_heading_container">
               Add Your Sub Service
             </div>
             <FlexColumnContainer width="100%">
-              <div className="step_form_container">
+              <div className="s_add__form_container">
                   <FormControl variant="standard" sx={{ minWidth: 260 }} className='mb-4 area_detail_container'>
                     <InputLabel id="demo-simple-select-standard-label" className='sel_ser'>Select Service</InputLabel>
                     <Select
@@ -44,12 +46,12 @@ export const Ser_add_Service = () => {
                     <MenuItem>one</MenuItem>
                     </Select>
                    </FormControl><br/>
-                <label>Enter Your Sub service</label><br />
-                <input type="text" className="step_input px-2 py-1 mb-3" name="Sub_service"/><br />
-                <label>Price</label><br />
-                <input type="Number" className="step_input px-2 py-1 mb-3" name="Price"/><br />
-                <label>Description</label><br />
-                <textarea type="number" className="step_input px-2 py-1 mb-3" name="description"/><br />
+                <label style={{color:"white"}}>Enter Your Sub service</label><br />
+                <input type="text" className="s_add_input px-2 py-1 mb-3" name="Sub_service"/><br />
+                <label style={{color:"white"}}>Price</label><br />
+                <input type="Number" className="s_add_input px-2 py-1 mb-3" name="Price"/><br />
+                <label style={{color:"white"}}>Description</label><br />
+                <textarea type="number" className="s_add_input px-2 py-1 mb-3" name="description"/><br />
                 <button className='px-4 py-2 mx-5 add_s_s'>Add Sub Service</button>
               </div>
             </FlexColumnContainer>
