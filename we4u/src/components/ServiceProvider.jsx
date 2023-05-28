@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import "../css/ServiceProvider.css"
-import { Navbar } from "./Navbar"
+// import { Navbar } from "./Navbar"
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material'
 import React, { useState, useEffect } from 'react';
 import { Stepper, Step, StepLabel, Button } from '@mui/material';
@@ -120,7 +120,7 @@ export const ServiceProvider = (props) => {
   return (
     <>
       <Ser_Pro_Navbar />
-      <div className="mt-5 mx-lg-5 mx-md-0 mx-sm-0">
+      <div className="mt-5 mx-lg-5 mx-md-0 mx-sm-0" style={{ paddingTop: "70px" }}>
         <Stepper activeStep={activeStep} >
           <Step variant="contained" color="primary">
             <StepLabel></StepLabel>

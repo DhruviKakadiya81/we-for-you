@@ -78,6 +78,7 @@ router1.post("/getspdetail", spdetail.getdetail);
 router1.get("/spdata", spdetail.getalldata);
 
 router1.post("/addsubser", upload.single('image'), subser.addservices);
+router1.post("/showsermain", subser.showservicebymain);
 
 // router1.post("/getuser",logcontroller.getuserlogin);
 // router1.post("/getuser",logcontroller.getuserlogin);

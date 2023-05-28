@@ -10,5 +10,11 @@ class Post {
         return axios.post(url, data, config);
     }
 
+    getsubserbymain(data) {
+        const url = "http://localhost:4000/showsermain";
+
+        return axios.post(url, data);
+    }
+
 }
 export default new Post();
