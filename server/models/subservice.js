@@ -1,21 +1,31 @@
 const mongoose = require('mongoose');
 
 const subServiceSchema = new mongoose.Schema({
-  subservicename: {
+  subname: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   image: {
     type: String,
     required: true
   },
-  videos: {
-    type: [String],
-    required: false
+  prize: {
+    type: Number,
+    required: true
+  },
+  discription: {
+    type: String,
+    require: true
   },
   serviceid: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Service',
+    required: true
+  },
+  spid: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Service_Provider',
     required: true
   }
 });
