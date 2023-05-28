@@ -113,45 +113,45 @@ export const ServiceProvider = (props) => {
     getspclient();
   }, [isData]);
 
-  
 
-  
+
+
 
   return (
     <>
-          <Ser_Pro_Navbar />
-          <div className="mt-5 mx-lg-5 mx-md-0 mx-sm-0">
-            <Stepper activeStep={activeStep} >
-              <Step variant="contained" color="primary">
-                <StepLabel></StepLabel>
-              </Step>
-              <Step>
-                <StepLabel></StepLabel>
-              </Step>
-              <Step>
-                <StepLabel></StepLabel>
-              </Step>
-            </Stepper>
-            <div>{renderStepComponent()}</div>
-            <div className='text-center' >
-              <Button disabled={activeStep === 0} onClick={handleBack}
-                variant="contained"
-                color="primary"
-                className='mx-5'
-              >
-                Back
-              </Button>
-              <Button
-                variant="contained"
-                color="secondary"
-                onClick={handleNext}
-                className='mx-5'
-              >
-                {activeStep === 3 ? 'Finish' : 'Next'}
-              </Button>
-            </div>
-          </div>
-        </>
+      <Ser_Pro_Navbar />
+      <div className="mt-5 mx-lg-5 mx-md-0 mx-sm-0">
+        <Stepper activeStep={activeStep} >
+          <Step variant="contained" color="primary">
+            <StepLabel></StepLabel>
+          </Step>
+          <Step>
+            <StepLabel></StepLabel>
+          </Step>
+          <Step>
+            <StepLabel></StepLabel>
+          </Step>
+        </Stepper>
+        <div>{renderStepComponent()}</div>
+        <div className='text-center' >
+          <Button disabled={activeStep === 0} onClick={handleBack}
+            variant="contained"
+            color="primary"
+            className='mx-5'
+          >
+            Back
+          </Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={handleNext}
+            className='mx-5'
+          >
+            {activeStep === 3 ? 'Finish' : 'Next'}
+          </Button>
+        </div>
+      </div>
+    </>
   );
 }
 
