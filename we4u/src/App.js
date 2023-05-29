@@ -98,25 +98,7 @@ function App() {
 
       </Routes>
 
-          {/* <Route path="/about" element={<TestiMonials/>}></Route> */}
-          <Route path="/contact" element={<Contact />}></Route>
-          <Route path="/about" element={<About />}></Route>
-          {isLogin ? (
-            <Route path="/cart" element={<Authpage />}></Route>
-          ) : (
-            <Route path="/login" element={<Login />}></Route>
-          )}
-          {isLogin ? (
-            <Route path="/profile" element={<Profile />}></Route>
-          ) : (
-            <Route path="/login" element={<Login />}></Route>
-          )}
-          <Route path="/sphome" element={<SpmainHome />}></Route>
-          <Route path="/sphome2" element={<Sp />}></Route>
-          <Route path="/contactsp" element={<Ser_pro_contact />}></Route>
 
-
-        </Routes>
 
       </Router>
     </>
