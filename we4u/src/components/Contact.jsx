@@ -9,17 +9,17 @@ import {
   FaInstagram,
   FaLinkedin,
 } from "react-icons/fa";
-import {TextField,Button} from "@mui/material";
+import { TextField, Button } from "@mui/material";
 import { Link } from 'react-router-dom';
-import {Footer} from './Footer'
+import { Footer } from './Footer'
 
 export const Contact = () => {
-    
+
   return (
-    
+
     <>
-    <Navbar/>
-    <div className="c_container2 hero-image" style={{background:`url(Images/cont_first.png)`,backgroundSize:"cover"}}>
+      <Navbar />
+      <div className="c_container2 hero-image" style={{ background: `url(Images/cont_first.png)`, backgroundSize: "cover" }}>
         <div className="hero-text c_p_container mx-5 px-5">
           <p className="c_par1">Contact Us</p>
           <p className="c_par2">We're easy to get in touch with</p>
@@ -34,7 +34,7 @@ export const Contact = () => {
               <p className="main_head">
                 Get Into Touch
               </p>
-              <hr/>
+              <hr />
               <div className="c_details">
                 <p className="c_add_head">
                   Address:
@@ -51,19 +51,19 @@ export const Contact = () => {
                 <p className="c_email_container">
                   <span className="c_email_head">Email:</span><span className="c_email_detail"> Contact@Example.com</span>
                 </p>
-              </div>              
+              </div>
             </div>
             <div className="col c_form_container">
               <div className="d-flex justify-content-center">
-                <input type="text" name="firstName" className="c_input_first_name mx-2 my-2 px-4 py-2" placeholder="Enter First Name"/>
-                <input type="text" name="Last name" className="c_input_last_name mx-2 my-2 px-4 py-2" placeholder="Enter Last Name"/>
+                <input type="text" name="firstName" className="c_input_first_name mx-2 my-2 px-4 py-2" placeholder="Enter First Name" />
+                <input type="text" name="Last name" className="c_input_last_name mx-2 my-2 px-4 py-2" placeholder="Enter Last Name" />
               </div>
               <div className="d-flex justify-content-center">
-                <input type="number" name="phoneNumber" className="c_input_phone_number mx-2 my-2 px-4 py-2" placeholder="Phone Number"/>
-                <input type="Email" name="Email" className="c_input_email_address mx-2 my-2 px-4 py-2" placeholder="Email Address"/>
+                <input type="number" name="phoneNumber" className="c_input_phone_number mx-2 my-2 px-4 py-2" placeholder="Phone Number" />
+                <input type="Email" name="Email" className="c_input_email_address mx-2 my-2 px-4 py-2" placeholder="Email Address" />
               </div>
-               <textarea name="message" className="c_input_message mx-2 my-2" placeholder="Your Message"></textarea><br/>
-               <button type="submit" className="c_send_btn px-5 py-2 mb-5">Send Message</button>
+              <textarea name="message" className="c_input_message mx-2 my-2" placeholder="Your Message"></textarea><br />
+              <button type="submit" className="c_send_btn px-5 py-2 mb-5">Send Message</button>
             </div>
           </div>
         </div>
@@ -73,21 +73,21 @@ export const Contact = () => {
           <p className="c_loc_header px-3">
             Location Of Restaurants All Over The India
           </p>
-          <hr className="c_hr_c5"/>
+          <hr className="c_hr_c5" />
           <div className="container text-center">
             <div className="d-flex justify-content-evenly c_loc_outer">
               <div className="c_loc_inner my-2">
-                <img src="/images/Vector.png" alt="" height="40px"/>
+                <img src="/images/Vector.png" alt="" height="40px" />
                 <p className="c_loc_title">Jarkhand</p>
                 <p className="c_loc_desc">58,Ralph Ave New York,New York 111</p>
               </div>
               <div className="c_loc_inner my-2">
-                <img src="/images/Vector.png" alt="" height="40px"/>
+                <img src="/images/Vector.png" alt="" height="40px" />
                 <p className="c_loc_title">Vadodara</p>
                 <p className="c_loc_desc">58,Ralph Ave New York,New York 111</p>
-               </div> 
-               <div className="c_loc_inner my-2">
-                <img src="/images/Vector.png" alt="" height="40px"/>
+              </div>
+              <div className="c_loc_inner my-2">
+                <img src="/images/Vector.png" alt="" height="40px" />
                 <p className="c_loc_title">Bhopal</p>
                 <p className="c_loc_desc">58,Ralph Ave New York,New York 111</p>
               </div>
@@ -98,45 +98,45 @@ export const Contact = () => {
             <div className="container text-center">
               <div className="d-flex justify-content-evenly c_sec_loc_outer">
                 <div className="c_sec_loc_inner my-2">
-                  <img src="/images/Vector.png" alt="" height="40px"/>
+                  <img src="/images/Vector.png" alt="" height="40px" />
                   <p className="c_loc_sec_title">Indore</p>
                   <p className="c_loc_sec_desc">58,Ralph Ave New York,New York 111</p>
                 </div>
                 <div className="c_sec_loc_inner my-2">
-                  <img src="/images/Vector.png" alt="" height="40px"/>
+                  <img src="/images/Vector.png" alt="" height="40px" />
                   <p className="c_loc_sec_title">Bengaluru</p>
                   <p className="c_loc_sec_desc">58,Ralph Ave New York,New York 111</p>
                 </div>
                 <div className="c_sec_loc_inner my-2">
-                  <img src="/images/Vector.png" alt="" height="40px"/>
+                  <img src="/images/Vector.png" alt="" height="40px" />
                   <p className="c_loc_sec_title">Chennai</p>
                   <p className="c_loc_sec_desc">58,Ralph Ave New York,New York 111</p>
                 </div>
                 <div className="c_sec_loc_inner my-2">
-                  <img src="/images/Vector.png" alt="" height="40px"/>
+                  <img src="/images/Vector.png" alt="" height="40px" />
                   <p className="c_loc_sec_title">Jamshedpur</p>
                   <p className="c_loc_sec_desc">58,Ralph Ave New York,New York 111</p>
                 </div>
                 <div className="c_sec_loc_inner my-2">
-                  <img src="/images/Vector.png" alt="" height="40px"/>
+                  <img src="/images/Vector.png" alt="" height="40px" />
                   <p className="c_loc_sec_title">Patna</p>
                   <p className="c_loc_sec_desc">58,Ralph Ave New York,New York 111</p>
                 </div>
                 <div className="c_sec_loc_inner my-2">
-                  <img src="/images/Vector.png" alt="" height="40px"/>
+                  <img src="/images/Vector.png" alt="" height="40px" />
                   <h5 className="c_loc_sec_title">Patna</h5>
                   <p className="c_loc_sec_desc">58,Ralph Ave New York,New York 111</p>
                 </div>
               </div>
             </div>
-          </div>  
-      </div>
-      <div className="map_container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7441.68091850823!2d72.78242768220215!3d21.15874651462442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1675149979922!5m2!1sen!2sin" width="1600" height="460" style={{border:"0"}} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" className="c_map"></iframe>
-      </div>
+          </div>
+        </div>
+        <div className="map_container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7441.68091850823!2d72.78242768220215!3d21.15874651462442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1675149979922!5m2!1sen!2sin" width="1600" height="460" style={{ border: "0" }} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" className="c_map"></iframe>
+        </div>
       </div>
 
-      <Footer/>
+      <Footer />
     </>
   )
 }

@@ -27,6 +27,7 @@ import { Ser_pro_contact } from "./components/Ser_pro_contact";
 import { Sp } from "./components/Sp";
 import { Ser_add_Service } from "./components/Ser_add_Service";
 import { SubService } from "./components/SubService";
+import { Ser_servicepage } from "./components/Ser_servicepage";
 
 
 function App() {
@@ -87,7 +88,7 @@ function App() {
           <Route path="/sphome" element={<SpmainHome />}></Route>
           <Route path="/sphome2" element={<Sp />}></Route>
           <Route path="/contactsp" element={<Ser_pro_contact />}></Route>
-
+          <Route path="/yourser" element={<Ser_servicepage />}></Route>
 
         </Routes>
       </Router>
