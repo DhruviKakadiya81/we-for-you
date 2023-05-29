@@ -23,16 +23,10 @@ import { useState, useEffect } from "react";
 
 import Profile from "./components/Profile";
 import { ServiceProvider } from "./components/ServiceProvider";
-
-import { Services } from "./components/Services";
-
-
-
 import { Ser_pro_contact } from "./components/Ser_pro_contact";
 import { Sp } from "./components/Sp";
 import { Ser_add_Service } from "./components/Ser_add_Service";
 import { SubService } from "./components/SubService";
-
 
 
 function App() {
@@ -77,29 +71,25 @@ function App() {
           <Route path="/showprofile" element={<Myprofile />}></Route>
 
 
-        {/* <Route path="/about" element={<TestiMonials/>}></Route> */}
-        <Route path="/contact" element={<Contact/>}></Route>
-        <Route path="/about" element={<About/>}></Route>
-        {isLogin ? (
-        <Route path="/cart" element={<Authpage />}></Route>
-      ) : (
-        <Route path="/login" element={<Login />}></Route>
-      )}
-        {isLogin ? (
-         <Route path="/profile" element={<Profile/>}></Route>
-      ) : (
-        <Route path="/login" element={<Login />}></Route>
-      )}
-        <Route path="/sphome" element={<ServiceProvider/>}></Route>
-
-        <Route path="/services" element={<Services/>}></Route>
-
-
-
-      </Routes>
+          {/* <Route path="/about" element={<TestiMonials/>}></Route> */}
+          <Route path="/contact" element={<Contact />}></Route>
+          <Route path="/about" element={<About />}></Route>
+          {isLogin ? (
+            <Route path="/cart" element={<Authpage />}></Route>
+          ) : (
+            <Route path="/login" element={<Login />}></Route>
+          )}
+          {isLogin ? (
+            <Route path="/profile" element={<Profile />}></Route>
+          ) : (
+            <Route path="/login" element={<Login />}></Route>
+          )}
+          <Route path="/sphome" element={<SpmainHome />}></Route>
+          <Route path="/sphome2" element={<Sp />}></Route>
+          <Route path="/contactsp" element={<Ser_pro_contact />}></Route>
 
 
-
+        </Routes>
       </Router>
     </>
   );
