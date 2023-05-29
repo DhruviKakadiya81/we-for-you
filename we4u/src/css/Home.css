@@ -639,9 +639,9 @@ legend {
 }
 
 
-
-
-
+.feedback_title{
+  font-size: 25px;
+}
 
 
 .progress-section .progress-card{position: relative;}

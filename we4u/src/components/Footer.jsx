@@ -10,7 +10,7 @@ export const Footer = () => {
 
 <footer class="text-center footer-section d-sticky mb-0 ">
 
-        <div class="container py-5 " style={{minHeight:"45vh" , marginTop:"70px"}}>
+        <div class="container py-5" style={{marginTop:"70px"}}>
 
             <div class="row ">
                 <div class="col-lg-3 col-md-6 mb-4 mb-md-3 ">

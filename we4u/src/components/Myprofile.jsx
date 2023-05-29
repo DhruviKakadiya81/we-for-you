@@ -27,7 +27,7 @@ export const Myprofile = (props) => {
                                             <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
                                             <div class="row">
                                                 <div class="col-sm-6">
-                                                    <p class="m-b-10 f-w-600">Email</p>                                                                         <h6 class="text-muted f-w-400">rntng@gmail.com</h6>
+                                                    <p class="m-b-10 f-w-600">Email</p>    <h6 class="text-muted f-w-400">rntng@gmail.com</h6>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <p class="m-b-10 f-w-600">Phone</p>

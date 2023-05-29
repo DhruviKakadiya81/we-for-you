@@ -14,15 +14,15 @@ export const Ser_Pro_Navbar = () => {
   }
 
   const handlelogout = () =>{
-    var id = localStorage.getItem("token");
+    var id = localStorage.getItem("sptoken");
     if(id == null){
       alert("Login first");
-        nevigate("/login");
+        nevigate("/loginasp");
     }
     else{
-      localStorage.clear();
+      localStorage.removeItem("sptoken");
       alert("logged out");
-      nevigate("/login");
+      nevigate("/loginsp");
     }
       
   }
@@ -47,22 +47,25 @@ export const Ser_Pro_Navbar = () => {
 }
   return (
     <>
-<nav class="navbar navbar-expand-md navbar-dark">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top">
 
 
 
 <div className="container-fluid">
         <img src="/images/Logo.png" width="100" height="50" className="c_nav_image"/>
-        <button className="navbar-toggler" type="button" onClick={handleNav}>
+        <div className="d-md-none d-lg-none"  onClick={handleNav}>
           <span className="navbar-toggler-icon"></span>
-        </button>
+        </div>
         <div className={navCollapse?"collapse navbar-collapse justify-content-end menu_bar":"navbar-collapse justify-content-end menu_bar"} id="navbarSupportedContent">
           <ul className="navbar-nav ml-auto mb-2 mb-lg-0 reg_ul">
             <li className="nav-item">
-              <Link className="nav-link" to="/">Home</Link>
+              <Link className="nav-link" to="/sphome">Home</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/about">About</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/ser_add_service">Add Service</Link>
             </li>
             <li class="dropdown nav-item">
             <Link className="nav-link" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false"> Register </Link>
@@ -72,7 +75,7 @@ export const Ser_Pro_Navbar = () => {
             </ul>
           </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/contact">Contact Us</Link>
+              <Link className="nav-link" to="/contactsp">Contact Us</Link>
             </li>
           </ul>
           <ul className="navbar-nav sm-icons">
@@ -80,7 +83,7 @@ export const Ser_Pro_Navbar = () => {
             <Link className="nav-link" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-user fa-lg"></i></Link>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <li><Link className="dropdown-item" to="/login">Login As Client</Link></li>
-              <li><Link className="dropdown-item" to="/regprof">Login As Professional</Link></li>
+              <li><Link className="dropdown-item" to="/loginasp">Login As Professional</Link></li>
             </ul>
           </li>
             <li><Link className="nav-link" to="/cart" onClick={handlecart}><i class="fa-solid fa-cart-shopping fa-lg"></i></Link></li>

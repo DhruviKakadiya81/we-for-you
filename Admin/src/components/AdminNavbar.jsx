@@ -51,21 +51,21 @@ export const AdminNavbar = ({ children }) => {
                 <div className="top_section">
                     <h1 style={{ display: isOpen ? "block" : "none" }} className="logo">We4U</h1>
                     <div style={{ marginLeft: isOpen ? "98px" : "7px" }} className="bars">
-                        <FaBars onClick={toggle} />
+                        <FaBars onMouseOver={toggle} />
                     </div>
                 </div>
-                  <NavLink to="/" className="link">                  
-                  <div className="icon"><FaTh/><span className='span_class'>Dashboard</span></div>
-                  <div style={{ display: isOpen ? "block" : "none" }} className="link_text">Dashboard</div>
+                  <NavLink to="/dashboard" className="link">                  
+                  <div className="icon"><FaTh  onClick={toggle} style={{cursor:"pointer"}}/><span className='span_class'>Dashboard</span></div>
+                  <div style={{ display: isOpen ? "block" : "none",cursor:"pointer" }} className="link_text">Dashboard</div>
                   </NavLink>
                   <div className="link">
                   <div className="icon">
-                      <FaPlusSquare/> <span className='span_class'>Add</span>
+                      <FaPlusSquare  onClick={toggle} style={{cursor:"pointer"}}/> <span className='span_class'>Add</span>
                     </div>
-                    <div className="link_text" style={{ display: isOpen ? "block" : "none" }}>Add 
-                    <FaCaretDown onClick={drop} style={{display:isDrop?"block":"none"}} className='dropdownclose'/>
-                    <FaCaretRight onClick={drop} style={{display:isDrop?"none":"block"}} className='dropdown'/>
-                    <div className="sub_menu mt-3" style={{display:isDrop?"block":"none"}}>
+                    <div className="link_text" style={{ display: isOpen ? "block" : "none",cursor:"pointer" }} onClick={drop}>Add 
+                    <FaCaretDown onClick={drop} style={{display:isDrop?"block":"none",cursor:"pointer"}} className='dropdownclose'/>
+                    <FaCaretRight onClick={drop} style={{display:isDrop?"none":"block",cursor:"pointer"}} className='dropdown'/>
+                    <div className="sub_menu mt-3" style={{display:isDrop?"block":"none"}} >
                       <div className="sub_list px-1 py-2"><NavLink to="/adminmanageservice" className="sub_items">Add Services</NavLink></div>
                       <div className="sub_list px-1 py-2"><NavLink to="/adminmanagecustomer" className="sub_items">Add Customers</NavLink></div>
                       <div className="sub_list px-1 py-2"><NavLink to="#" className="sub_items">Add ServiceProvider</NavLink></div>
@@ -74,11 +74,11 @@ export const AdminNavbar = ({ children }) => {
                   </div>
                   <div className="link">
                   <div className="icon">
-                      <FaList/><span className='span_class'>Manage</span>
+                      <FaList  onClick={toggle} style={{cursor:"pointer"}}/><div className='span_class'>Manage</div>
                     </div>
-                    <div className="link_text" style={{ display: isOpen ? "block" : "none" }}>Manage 
-                    <FaCaretDown onClick={drop1} style={{display:isDrop1?"block":"none"}} className='dropdown1close'/>
-                    <FaCaretRight onClick={drop1} style={{display:isDrop1?"none":"block"}} className='dropdown1'/>
+                    <div className="link_text" style={{ display: isOpen ? "block" : "none",cursor:"pointer" }} onMouseEnter={drop1}  >Manage 
+                    <FaCaretDown   onMouseOver={drop1}style={{display:isDrop1?"block":"none" ,cursor:"pointer"}} className='dropdown1close'/>
+                    <FaCaretRight  onMouseOver={drop1} style={{display:isDrop1?"none":"block",cursor:"pointer"}} className='dropdown1'/>
                     <div className="sub_menu mt-3" style={{display:isDrop1?"block":"none"}}>
                       <div className="sub_list px-1 py-2"><NavLink to="/showservice" className="sub_items">Manage Services</NavLink></div>
                       <div className="sub_list px-1 py-2"><NavLink to="/adminmanagecustomer" className="sub_items">Manage Customers</NavLink></div>
