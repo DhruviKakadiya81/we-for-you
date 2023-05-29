@@ -1,5 +1,5 @@
 .padding {
-   
+
     margin: auto;
 }
 
@@ -9,8 +9,8 @@
 
 .card1 {
     border-radius: 5px;
-    -webkit-box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
-    box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
+    -webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+    box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
     border: none;
     margin-bottom: 30px;
 }
@@ -28,8 +28,8 @@
 }
 
 .bg-c-lite-green {
-        background: -webkit-gradient(linear, left top, right top, from(#d4c7c1), to(#302e2e));
-    background: linear-gradient(to bottom,#a19b99, #302e2e);
+    background: -webkit-gradient(linear, left top, right top, from(#d4c7c1), to(#302e2e));
+    background: linear-gradient(to bottom, #a19b99, #302e2e);
 }
 
 .user-profile {
@@ -49,7 +49,7 @@
 }
 
 
- 
+
 h6 {
     font-size: 14px;
 }
@@ -58,10 +58,10 @@ h6 {
     line-height: 25px;
 }
 
-@media only screen and (min-width: 1400px){
-p {
-    font-size: 14px;
-}
+@media only screen and (min-width: 1400px) {
+    p {
+        font-size: 14px;
+    }
 }
 
 .card-block {
