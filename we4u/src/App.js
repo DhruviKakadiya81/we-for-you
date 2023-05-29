@@ -23,6 +23,7 @@ import { useState,useEffect } from "react";
 
 import Profile from "./components/Profile";
 import { ServiceProvider } from "./components/ServiceProvider";
+import { Services } from "./components/Services";
 
 
 
@@ -81,6 +82,11 @@ useEffect(() => {
         <Route path="/login" element={<Login />}></Route>
       )}
         <Route path="/sphome" element={<ServiceProvider/>}></Route>
+
+        <Route path="/services" element={<Services/>}></Route>
+
+
+
       </Routes>
       </Router>
     </>
