@@ -23,16 +23,16 @@ import { useState, useEffect } from "react";
 
 import Profile from "./components/Profile";
 import { ServiceProvider } from "./components/ServiceProvider";
-<<<<<<< HEAD
+
 import { Services } from "./components/Services";
 
 
-=======
+
 import { Ser_pro_contact } from "./components/Ser_pro_contact";
 import { Sp } from "./components/Sp";
 import { Ser_add_Service } from "./components/Ser_add_Service";
 import { SubService } from "./components/SubService";
->>>>>>> 8a58920e34ebeaa05c460bdcef7f739eeeb39f74
+
 
 
 function App() {
@@ -77,7 +77,6 @@ function App() {
           <Route path="/showprofile" element={<Myprofile />}></Route>
 
 
-<<<<<<< HEAD
         {/* <Route path="/about" element={<TestiMonials/>}></Route> */}
         <Route path="/contact" element={<Contact/>}></Route>
         <Route path="/about" element={<About/>}></Route>
@@ -98,7 +97,7 @@ function App() {
 
 
       </Routes>
-=======
+
           {/* <Route path="/about" element={<TestiMonials/>}></Route> */}
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/about" element={<About />}></Route>
@@ -118,7 +117,7 @@ function App() {
 
 
         </Routes>
->>>>>>> 8a58920e34ebeaa05c460bdcef7f739eeeb39f74
+
       </Router>
     </>
   );
