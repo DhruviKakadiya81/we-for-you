@@ -16,6 +16,7 @@
     "bs-stepper": "^1.7.0",
     "carousel": "^0.0.3",
     "cdbreact": "^1.5.11",
+    "formik": "^2.4.0",
     "helmet": "^7.0.0",
     "jquery": "^3.7.0",
     "materialize-css": "^1.0.0-rc.2",
@@ -37,7 +38,8 @@
     "redux": "^4.2.1",
     "styled-components": "^5.3.9",
     "swiper": "^9.2.3",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

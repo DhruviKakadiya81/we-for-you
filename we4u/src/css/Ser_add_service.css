@@ -43,7 +43,8 @@
 
 .s_add_input{
     border: none;
-    background-color: rgba(0,0,0,0.1);
+    background-color: transparent;
+    color: white;
     border-bottom: 1px solid white;
     outline: none;
     width: 100%;
