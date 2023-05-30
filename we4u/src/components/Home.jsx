@@ -88,7 +88,15 @@ export const Home = () => {
               </fieldset>
               <div className="inner-form" style={{ width: "90%", margin: "auto" }}>
                 <div className="input-field first-wrap">
-                  <input id="search" type="text" placeholder="What are you looking for?" />
+                  <datalist id="browsers">
+                    <option value="Google Chrome">Google Chrome</option>
+                    <option value="Internet Explorer">Internet Explorer</option>
+                    <option value="Firefox">Firefox</option>
+                    <option value="Opera">Opera</option>
+                    <option value="Safari">Safari</option>
+                    <option value="Others">Others?</option>
+                  </datalist>
+                  <input id="search" type="text" list="browsers" placeholder="What are you looking for?" />
                 </div>
                 <div className="input-field second-wrap">
                   <input id="location" type="text" placeholder="location" />
