@@ -88,7 +88,15 @@ export const Home = () => {
               </fieldset>
               <div className="inner-form" style={{ width: "90%", margin: "auto" }}>
                 <div className="input-field first-wrap">
-                  <input id="search" type="text" placeholder="What are you looking for?" />
+                  <datalist id="browsers">
+                    <option value="Google Chrome">Google Chrome</option>
+                    <option value="Internet Explorer">Internet Explorer</option>
+                    <option value="Firefox">Firefox</option>
+                    <option value="Opera">Opera</option>
+                    <option value="Safari">Safari</option>
+                    <option value="Others">Others?</option>
+                  </datalist>
+                  <input id="search" type="text" list="browsers" placeholder="What are you looking for?" />
                 </div>
                 <div className="input-field second-wrap">
                   <input id="location" type="text" placeholder="location" />
@@ -202,31 +210,19 @@ export const Home = () => {
         </section> 
 
 
-        <section className="services1" style={{minHeight:"600px" }}>
+        {/* <section className="services1" style={{minHeight:"600px" }}>
           
           <h1 className='serviceh1 mt-5'>  Our Servicess </h1>
-       
-          
-          
-           {service.data != undefined && service.data.data.length > 0 && (
-            
-              
+           {service.data != undefined && service.data.data.length > 0 && (  
             <div className="d-flex flex-wrap justify-content-center w-75 mx-auto mt-2">
-        
-              {service.data.data.map(product => (
-
-               
-              
-                  
+              {service.data.data.map(product => (    
                      <div className="card mx-3 my-4" style={{backgroundColor: "	rgb(152,152,152)",
-width:"12rem", height:"11rem" ,   boxShadow:"rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset"}} >
-                  {/* <img src={'http://localhost:4000/image/' + product.s_icon} className="card-img-top" alt="..." style={{height:"60px",width:"80px",textAlign:"center",marginTop:"5px",margin:"auto"}}/> */}
+             width:"12rem", height:"11rem" ,   boxShadow:"rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset"}} >
+                  <img src={'http://localhost:4000/image/' + product.s_icon} className="card-img-top" alt="..." style={{height:"60px",width:"80px",textAlign:"center",marginTop:"5px",margin:"auto"}}/>
                   <div className='text-center mt-2' >
         <img src={'http://localhost:4000/image/' + product.s_icon} width="100" height="100"  alt="..."/>
         </div>
                   <div className="card-body">
-             
-          
             <p class="card-text text-center text-dark">
             <h5>{product.s_name} </h5>
             </p>
@@ -242,7 +238,7 @@ width:"12rem", height:"11rem" ,   boxShadow:"rgba(0, 0, 0, 0.2) 0px 12px 28px 0p
           )}
           
          
-        </section>
+        </section> */}
       </div>
 
 
@@ -359,14 +355,6 @@ width:"12rem", height:"11rem" ,   boxShadow:"rgba(0, 0, 0, 0.2) 0px 12px 28px 0p
 
 
       </section>
-
-
-
-
-
-
-
-
       <Footer />
 
 
