@@ -80,6 +80,8 @@ router1.get("/spdata", spdetail.getalldata);
 router1.post("/addsubser", upload.single('image'), subser.addservices);
 router1.post("/showsermain", subser.showservicebymain);
 router1.post("/showserbyspid", subser.showservicebyspid);
+router1.put("/updatesub", subser.updatesubser);
+router1.delete("/deletesub", subser.deletesubser);
 
 // router1.post("/getuser",logcontroller.getuserlogin);
 // router1.post("/getuser",logcontroller.getuserlogin);

@@ -8,9 +8,11 @@ import { Button, Modal } from 'react-bootstrap';
 import { FormControl, FormGroup, Input, InputLabel, Typography, Select, MenuItem } from '@mui/material'
 
 
+
 export const Ser_servicepage = () => {
     const [spid, setspid] = useState('');
     const [serdata, setserdata] = useState([]);
+    const [isEdit, setisEdit] = useState(true);
     const handleser = async () => {
         const response = await subser.getsubserbyspid({ spid });
         console.log(response);
@@ -32,9 +34,9 @@ export const Ser_servicepage = () => {
 
 
     useEffect(() => {
-        getspclient();
+        isEdit && getspclient();
 
-    }, [spid]);
+    }, [spid, isEdit]);
 
 
     console.log("spid", serdata);
@@ -70,7 +72,8 @@ export const Ser_servicepage = () => {
                                                 <h1>{sr.subname}</h1>
                                                 <p className="price">{sr.prize}</p>
                                                 <p>{sr.discription}</p>
-                                                <Update />
+                                                <Update data={sr} handleIsEdit={() => setisEdit(!isEdit)} />
+                                                <Delete data={sr} />
                                             </div>
                                         ))
                                     )}
@@ -83,14 +86,14 @@ export const Ser_servicepage = () => {
         </>
     )
 }
-const Update = () => {
+const Update = (props) => {
+    console.log(props.data.subname);
     const [getser, setgetser] = useState('');
-    const [serviceid, setserviceid] = useState('');
-    const [spid, setspid] = useState('');
-    const [subname, setsubname] = useState('');
-    const [prize, setprize] = useState();
-    const [discription, setdiscription] = useState('');
-    const [image, setimage] = useState('');
+    const [serviceid, setserviceid] = useState(props.data.serviceid);
+    const [subname, setsubname] = useState(props.data.subname);
+    const [prize, setprize] = useState(props.data.prize);
+    const [discription, setdiscription] = useState(props.data.discription);
+    const [id, setid] = useState(props.data._id);
 
     const handleservice = async () => {
         try {
@@ -110,10 +113,26 @@ const Update = () => {
 
     const handleupdate = async (event) => {
         alert(subname + prize + serviceid + discription);
+        const response = await subser.updateser({ id, subname, prize, discription, serviceid });
+        if (response.data.success === true) {
+            initmodel();
+            window.location.reload();
+        }
+
+        console.log(response);
     }
     useEffect(() => {
         handleservice();
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        setsubname(props.data.subname);
+        setprize(props.data.prize);
+        setdiscription(props.data.discription);
+        setserviceid(props.data.serviceid);
+        setid(props.data._id);
+    }, [props]);
+
     return (
 
         <>
@@ -129,15 +148,16 @@ const Update = () => {
 
                 <Modal.Body>
 
-                    <form className="s_add__form_container">
+                    <form className="s_add__form_container" autoComplete='off'>
                         <FormControl variant="standard" sx={{ minWidth: 260 }} className='mb-4 area_detail_container'>
-                            <InputLabel id="demo-simple-select-standard-label" className='sel_ser'>Select Service</InputLabel>
+                            <InputLabel id="demo-simple-select-standard-label">Select Service</InputLabel>
                             <Select
                                 labelId="demo-simple-select-standard-label"
                                 id="demo-simple-select-standard"
                                 label="Select service"
                                 name="serviceid"
-                                onChange={(event) => { setserviceid(event.target.value); alert(serviceid) }}
+                                defaultValue={serviceid}
+                                onChange={(event) => { setserviceid(event.target.value); }}
                             >
                                 {getser ? getser.map(ser => (
                                     <MenuItem value={ser._id}>{ser.s_name}</MenuItem>
@@ -146,11 +166,11 @@ const Update = () => {
                             </Select>
                         </FormControl><br />
                         <label>Enter Your Sub service</label><br />
-                        <input type="text" className=" px-2 py-1 mb-3" name="Sub_service" onChange={(event) => { setsubname(event.target.value) }} /><br />
+                        <input type="text" className=" px-2 py-1 mb-3" name="Sub_service" defaultValue={subname} onChange={(event) => { setsubname(event.target.value) }} /><br />
                         <label>Price</label><br />
-                        <input type="Number" className=" px-2 py-1 mb-3" name="Price" onChange={(event) => { setprize(event.target.value) }} /><br />
+                        <input type="Number" className=" px-2 py-1 mb-3" name="Price" defaultValue={prize} onChange={(event) => { setprize(event.target.value) }} /><br />
                         <label>Description</label><br />
-                        <textarea type="number" className=" px-2 py-1 mb-3" name="description" onChange={(event) => { setdiscription(event.target.value) }} /><br />
+                        <textarea type="number" className=" px-2 py-1 mb-3" name="description" defaultValue={discription} onChange={(event) => { setdiscription(event.target.value) }} /><br />
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
@@ -163,6 +183,58 @@ const Update = () => {
                 </Modal.Footer>
 
             </Modal>
+        </>
+    )
+}
+
+const Delete = (props) => {
+    const [isshow, invokemodel] = useState(false);
+    console.log(props.data._id)
+    const initmodel = () => {
+        return invokemodel(!isshow);
+    }
+    const handledelete = async (id, e) => {
+        alert(id);
+        const data = { id };
+        const respo = await subser.deleteser(data);
+        console.log(respo);
+        if (respo.data.success === true) {
+            initmodel();
+            window.location.reload();
+        }
+
+
+
+    }
+    return (
+        <>
+            <Button variant="contained" style={{ backgroundColor: "rgb(50,50,50)", color: "white" }} onClick={initmodel}>
+                Delete
+            </Button>
+            <Modal show={isshow} style={{ overflowX: "scroll", width: "100%", marginTop: "px" }} >
+                <Modal.Header closeButton onClick={initmodel}>
+                    <Modal.Title className='' >
+                        Delete service
+                    </Modal.Title>
+                </Modal.Header>
+
+                <Modal.Body>
+                    <div className="dlt">
+                        Are You Sure to Delete Service?
+                    </div>
+
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="" className="mx-3" onClick={initmodel}>
+                        CLOSE
+                    </Button>
+                    <Button variant="" className="mx-3" type='submit' style={{ backgroundColor: "red" }} onClick={(e) => handledelete(props.data._id, e)}>
+                        Delete
+                    </Button>
+                </Modal.Footer>
+
+            </Modal>
+
         </>
     )
 }
