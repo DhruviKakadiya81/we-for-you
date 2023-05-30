@@ -26,10 +26,9 @@ export const SubService = () => {
 
     const options =
     {
-        loop: true,
+        loop: false,
         center: true,
-        items: servicedata.length,
-        autoplay: true,
+        items: 8,
         nav: true,
         autoplayTimeout: 8500,
         smartSpeed: 450,
@@ -55,6 +54,7 @@ export const SubService = () => {
         <>
             <Navbar />
             <section className="servicepage">
+
                 <div className="row d-flex justify-content-center" id="feedback-carousel">
                     {
 
@@ -75,10 +75,10 @@ export const SubService = () => {
 
                                     {servicedata.map((service) => (
                                         <>
-                                            <div class="cards">
-                                                <figure class="card">
+                                            <div class="cards" >
+                                                <figure class="card" style={{ width: "150px", height: "150px" }}>
                                                     <img src={"http://localhost:4000/image/" + service.image} alt="" />
-                                                    <figcaption>Dota 2</figcaption>
+                                                    <figcaption style={{ color: "black", backgroundColor: "white" }}>{service.subname}</figcaption>
                                                 </figure>
                                             </div>
 
