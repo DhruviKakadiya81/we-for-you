@@ -9,8 +9,11 @@ import '../css/About.css';
 import OwlCarousel from 'react-owl-carousel2';
 import 'react-owl-carousel2/lib/styles.css';
 import { useNavigate } from 'react-router-dom';
-
+import service1 from '../services/Services'
+import { FormControl, FormGroup, Input, InputLabel, Typography, Select, MenuItem } from '@mui/material'
 export const Home = () => {
+  const [getser, setgetser] = useState('');
+  const [serviceid, setserviceid] = useState('');
   const navigate = useNavigate();
   function reveal() {
     var reveals = document.querySelectorAll(".reveal");
@@ -66,12 +69,22 @@ export const Home = () => {
     // console.log("data2 :", service.data.data.length);
   }
 
+  const handleservice = async () => {
+    try {
+      const response = await service1.getservice();
+      setgetser(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
 
 
   useEffect((event) => {
+    handleservice();
     service && fetchSer();
   }, []);
+  console.log("ser", getser);
   return (
     <>
       <Navbar />
@@ -89,13 +102,24 @@ export const Home = () => {
               <div className="inner-form" style={{ width: "90%", margin: "auto" }}>
                 <div className="input-field first-wrap">
                   <datalist id="browsers">
-                    <option value="Google Chrome">Google Chrome</option>
-                    <option value="Internet Explorer">Internet Explorer</option>
-                    <option value="Firefox">Firefox</option>
-                    <option value="Opera">Opera</option>
-                    <option value="Safari">Safari</option>
-                    <option value="Others">Others?</option>
+                    {getser ? getser.map(ser => (
+                      <option value={ser.s_name}>{ser.s_name}</option>
+                    )) :
+                      <option>Loading...</option>}
                   </datalist>
+                  {/* <Select
+                    labelId="demo-simple-select-standard-label"
+                    id="demo-simple-select-standard"
+                    label="Select service"
+                    name="serviceid"
+                    defaultValue={serviceid}
+                    onChange={(event) => { setserviceid(event.target.value); }}
+                  >
+                    {getser ? getser.map(ser => (
+                      <MenuItem value={ser._id}>{ser.s_name}</MenuItem>
+                    )) :
+                      <MenuItem>Loading...</MenuItem>}
+                  </Select> */}
                   <input id="search" type="text" list="browsers" placeholder="What are you looking for?" />
                 </div>
                 <div className="input-field second-wrap">
