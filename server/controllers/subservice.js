@@ -35,6 +35,25 @@ const showservicebymain = async (req, res) => {
     }
 }
 
+const showservicebyspid = async (req, res) => {
+    try {
+        console.log("data :== ", req.body);
+        const spid = req.body.spid;
+        const subserdata = await subser.find({ spid });
+        if (subserdata !== null) {
+            res.send({ success: true, msg: "sub services data", data: subserdata });
+        }
+        else {
+            res.send({ success: false, msg: "not service" });
+        }
+    } catch (error) {
+        res.send({ success: false, msg: "data" });
+        console.log(error);
+    }
+}
 
 
-module.exports = { addservices, showservicebymain }
+
+
+
+module.exports = { addservices, showservicebymain, showservicebyspid }
