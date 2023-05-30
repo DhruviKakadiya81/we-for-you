@@ -21,5 +21,16 @@ class Post {
         return axios.post(url, data);
     }
 
+    updateser(data) {
+        const url = "http://localhost:4000/updatesub";
+        return axios.put(url, data);
+    }
+
+    deleteser(data) {
+        console.log(data, "data");
+        const url = "http://localhost:4000/deletesub";
+        return axios.delete(url, { data });
+    }
+
 }
 export default new Post();

@@ -52,8 +52,43 @@ const showservicebyspid = async (req, res) => {
     }
 }
 
+const updatesubser = async (req, res) => {
+    try {
+        console.log("data :== ", req.body);
+        const { id, subname, prize, discription } = req.body;
+        const subserdata = await subser.updateOne({ _id: id }, { $set: { subname, prize, discription } });
+        if (subserdata.acknowledged === true) {
+            res.send({ success: true, msg: "updated", data: subserdata });
+        }
+        else {
+            res.send({ success: false, msg: "not service" });
+        }
+    } catch (error) {
+        res.send({ success: false, msg: "data" });
+        console.log(error);
+    }
+}
+
+const deletesubser = async (req, res) => {
+    try {
+        console.log("data :== ", req.body);
+        const { id } = req.body;
+        const subserdata = await subser.findByIdAndDelete({ _id: id });
+        console.log(subserdata)
+        if (subserdata) {
+            res.send({ success: true, msg: "deleted", data: subserdata });
+        }
+        else {
+            res.send({ success: false, msg: "not service" });
+        }
+    } catch (error) {
+        res.send({ success: false, msg: "data" });
+        console.log(error);
+    }
+}
 
 
 
 
-module.exports = { addservices, showservicebymain, showservicebyspid }
+
+module.exports = { addservices, showservicebymain, showservicebyspid, updatesubser, deletesubser }
