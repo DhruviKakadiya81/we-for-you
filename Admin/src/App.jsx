@@ -13,20 +13,20 @@ import { ManageSP } from "./components/ManageSP";
 function App() {
   return (
     <>
-    
-      
-    
+
+
+
       <Router>
-      <Routes>
-        <Route path="/dashboard" element={<AdminDashboard />}></Route>
-        <Route path="/adminmanageservice" element={<AdminManageService/>}></Route>
-        <Route path="/adminmanagecustomer" element={<AdminManageCustomers/>}></Route>
-        <Route path="/showservice" element={<ShowServices/>}></Route>
-        <Route path="/managecity" element={<ManageCity/>}></Route>
-        <Route path="/managearea" element={<ManageArea/>}></Route>
-        <Route path="/" element={<Login/>}></Route>
-        <Route path="/spmanage" element={<ManageSP/>}></Route>
-      </Routes>
+        <Routes>
+          <Route path="/dashboard" element={<AdminDashboard />}></Route>
+          <Route path="/adminmanageservice" element={<AdminManageService />}></Route>
+          <Route path="/adminmanagecustomer" element={<AdminManageCustomers />}></Route>
+          <Route path="/showservice" element={<ShowServices />}></Route>
+          <Route path="/managecity" element={<ManageCity />}></Route>
+          <Route path="/managearea" element={<ManageArea />}></Route>
+          <Route path="/" element={<Login />}></Route>
+          <Route path="/managesp" element={<ManageSP />}></Route>
+        </Routes>
       </Router>
     </>
   );

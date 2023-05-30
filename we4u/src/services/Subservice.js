@@ -16,5 +16,10 @@ class Post {
         return axios.post(url, data);
     }
 
+    getsubserbyspid(data) {
+        const url = "http://localhost:4000/showserbyspid";
+        return axios.post(url, data);
+    }
+
 }
 export default new Post();
