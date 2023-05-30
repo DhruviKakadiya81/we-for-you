@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useFormik } from 'formik';
 import { useNavigate } from "react-router-dom";
 import apiServices from "../services/LoginData.js";
 import '../css/Login.css';
@@ -57,8 +58,38 @@ export const Login = (props) => {
   };
 
 
-  
- 
+  const validate = values => {
+    const errors = {};
+    const pattern = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]$/;
+
+    if (!values.email) {
+        errors.email = 'Required';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+        errors.email = 'Invalid email address';
+    }
+
+    if (!values.password) {
+        errors.password = 'Required';
+    } else if (values.password.length < 8) {
+        errors.password = 'Password must be at least 8 characters long';
+    }else if (values.password.length > 20) {
+      errors.password = 'Password must be at most 20 characters long';
+   }else if(!pattern.test(values.password)){
+      errors.password="Should not Start With Special Character,atleast 1 alphabet,1 Special Character,1 Number"
+    }
+
+    return errors;
+};
+
+const formik = useFormik({
+    initialValues: {
+        email,
+        password
+    },
+    validate,
+    validateOnChange: true,
+});
+
   if (props.state === 1) {
    
     return (
@@ -67,6 +98,7 @@ export const Login = (props) => {
         {/* <div style={{backgroundColor:"#f8f8ff" , borderRadius:"15px" ,  height:"500px", width:"900px" , marginLeft:"300px" , alignContent:"center" , alignItems:"center"}} > */}
         {/* <div style={{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" , marginTop:"135px" }} className=" mx-auto  w-50 p-5 d-flex align-items-center justify-content-center"> */}
         {/* <div style={{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",marginTop:"135px" }} className=" mx-auto  w-50 p-5 d-flex align-items-center justify-content-center"> */}
+
 
         <section className="d-flex flex-wrap" id="header">
           <div className="container-fluid p-5" style={{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset", marginTop: "100px", width: "50rem" }} >
@@ -78,29 +110,39 @@ export const Login = (props) => {
                   </div>
                   <div className="col-md-6 pt-5 m-2 mx-0 pt-lg-0 order-2 order-lg-1" style={{ marginLeft: "-10px" }}>
                     <form action="" method="post" onSubmit={handleLogin}>
-
                       <h2 style={{ fontWeight: "700" }}>SIGN IN</h2>
-                      <i class="fa-solid fa-envelope fa-flip fa-xs" style={{ marginRight: "-18px", position: "relative", left: "-30px", bottom: "0px", color: "gray" }}></i>
+                      <i className="fa-solid fa-envelope fa-xs" style={{ marginRight: "-18px", position: "relative", left: "-30px", bottom: "0px", color: "gray" }}></i>
 
                       <input
-
                         className="my-3 mt-5"
-                        type="text"
+                        type="email"
                         placeholder="Enter your Email"
                         name="email"
-                        onChange={(event) => setEmail(event.target.value)}
+                        onChange={(event) => {
+                        formik.handleChange(event);
+                        setEmail(event.target.value);
+                        }}
+                        onBlur={formik.handleBlur}
+                        value={email}
                         style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width: "100%" }}
-
                       />
                       <br />
-                      {/* <input type="password" placeholder='enter your password' name='password' onChange={event => setPass(event.target.value)} /><br /> */}
-                      <i class="fa-solid fa-lock fa-flip fa-xs " style={{ marginRight: "-18px", position: "relative", left: "-30px", bottom: "0px", color: "gray" }}></i>
+                      {formik.touched.email && formik.errors.email && (
+                       <div>{formik.errors.email}</div>
+                      )}
+                 
+                      <i className="fa-solid fa-lock fa-xs " style={{ marginRight: "-18px", position: "relative", left: "-30px", bottom: "0px", color: "gray" }}></i>
 
                       <input
                         type="password"
                         name="password"
                         placeholder="Enter the Password"
-                        onChange={(event) => setPass(event.target.value)}
+                        onChange={(event) => {
+                        formik.handleChange(event);
+                        setPass(event.target.value);
+                        }}
+                        onBlur={formik.handleBlur}
+                        value={password}
                         id="id_password"
                         className="my-4"
                         style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width: "100%" }}
@@ -110,8 +152,10 @@ export const Login = (props) => {
                         id="togglePassword"
                         style={{ marginLeft: "-25px", cursor: "pointer" }}
                         onClick={handletogglepass} by
-
                       ></i>
+                      {formik.touched.password && formik.errors.password && (
+                       <div>{formik.errors.password}</div>
+                      )}
                       <p><a href="/forget" style={{ textDecoration: "none" }}>Forget password?</a></p>
 
                       <button type="submit" className="p-2 my-3" value="register" style={{ fontSize: "20px", borderRadius: "10px", backgroundColor: "rgb(212, 174, 126)", border: "none", width: "110px" }}>
