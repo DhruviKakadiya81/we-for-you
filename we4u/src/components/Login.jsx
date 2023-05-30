@@ -6,45 +6,54 @@ import apiServices from "../services/LoginData.js";
 import '../css/Login.css';
 import service from '../services/Services';
 export const Login = (props) => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
   const [message, setmessage] = useState("");
   const [spid, setspid] = useState();
   const [eye, seteye] = useState("fa-sharp fa-solid fa-eye-slash");
+  const errors = {};
   const handleLogin = async (event) => {
-    event.preventDefault();
-    let state = props.state;
-    const firmObj = { email, password ,state};
-    const respo = await apiServices.getLoginData(firmObj);
-    alert(respo.data.msg);
-    if (respo.data.success === true) {
-      setmessage(respo.data.msg);
-      if(props.state === 0){
-        localStorage.setItem("sptoken", respo.data.token);
-        const id = localStorage.getItem("sptoken");
-        const response = await service.getspid({ id });
-        setspid(response.data.data._id);
-        const response2 = await service.getdetails({ spid });
-        console.log("response==>", response2);
-        if(response2.data.success === true){
-          navigate("/sphome2");
-          localStorage.setItem("data",true);
+    if (errors === null) {
+      event.preventDefault();
+      let state = props.state;
+      const firmObj = { email, password, state };
+      const respo = await apiServices.getLoginData(firmObj);
+      alert(respo.data.msg);
+      if (respo.data.success === true) {
+        setmessage(respo.data.msg);
+        if (props.state === 0) {
+          localStorage.setItem("sptoken", respo.data.token);
+          const id = localStorage.getItem("sptoken");
+          const response = await service.getspid({ id });
+          setspid(response.data.data._id);
+          const response2 = await service.getdetails({ spid });
+          console.log("response==>", response2);
+          if (response2.data.success === true) {
+            navigate("/sphome2");
+            localStorage.setItem("data", true);
+          }
+          else {
+            navigate("/sphome");
+          }
+        }
+        else {
+          localStorage.setItem("token", respo.data.token);
+          navigate("/");
+        }
+
+      } else {
+        setmessage(respo.data.msg);
       }
-      else{
-          navigate("/sphome");
-      }
-      }
-      else{
-        localStorage.setItem("token", respo.data.token);
-        navigate("/");
-      }
-      
-    } else {
-      setmessage(respo.data.msg);
+      event.target.reset();
     }
-    event.target.reset();
+    else {
+      setmessage("not login please add email and password");
+      // navigate("/login");
+    }
+
   };
+
   const handletogglepass = async (event) => {
     //event.preventDefault();
     var x = document.getElementById("id_password");
@@ -59,39 +68,39 @@ export const Login = (props) => {
 
 
   const validate = values => {
-    const errors = {};
+
     const pattern = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]$/;
-
     if (!values.email) {
-        errors.email = 'Required';
+      errors.email = 'Required';
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-        errors.email = 'Invalid email address';
+      errors.email = 'Invalid email address';
     }
-
     if (!values.password) {
-        errors.password = 'Required';
+      errors.password = 'Required';
     } else if (values.password.length < 8) {
-        errors.password = 'Password must be at least 8 characters long';
-    }else if (values.password.length > 20) {
+      errors.password = 'Password must be at least 8 characters long';
+    } else if (values.password.length > 20) {
       errors.password = 'Password must be at most 20 characters long';
-   }else if(!pattern.test(values.password)){
-      errors.password="Should not Start With Special Character,atleast 1 alphabet,1 Special Character,1 Number"
+    } else if (!pattern.test(values.password)) {
+      errors.password = "Should not Start With Special Character,atleast 1 alphabet,1 Special Character,1 Number"
     }
 
     return errors;
-};
+  };
 
-const formik = useFormik({
+  const formik = useFormik({
     initialValues: {
-        email,
-        password
+      email,
+      password
     },
     validate,
     validateOnChange: true,
-});
+
+
+  });
 
   if (props.state === 1) {
-   
+
     return (
       <>
 
@@ -109,7 +118,7 @@ const formik = useFormik({
                     <img src="Images/login1.png" width={270} height={300} className="login-image" alt="" />
                   </div>
                   <div className="col-md-6 pt-5 m-2 mx-0 pt-lg-0 order-2 order-lg-1" style={{ marginLeft: "-10px" }}>
-                    <form action="" method="post" onSubmit={handleLogin}>
+                    <form action="" method="post" >
                       <h2 style={{ fontWeight: "700" }}>SIGN IN</h2>
                       <i className="fa-solid fa-envelope fa-xs" style={{ marginRight: "-18px", position: "relative", left: "-30px", bottom: "0px", color: "gray" }}></i>
 
@@ -119,8 +128,8 @@ const formik = useFormik({
                         placeholder="Enter your Email"
                         name="email"
                         onChange={(event) => {
-                        formik.handleChange(event);
-                        setEmail(event.target.value);
+                          formik.handleChange(event);
+                          setEmail(event.target.value);
                         }}
                         onBlur={formik.handleBlur}
                         value={email}
@@ -128,9 +137,9 @@ const formik = useFormik({
                       />
                       <br />
                       {formik.touched.email && formik.errors.email && (
-                       <div>{formik.errors.email}</div>
+                        <div>{formik.errors.email}</div>
                       )}
-                 
+
                       <i className="fa-solid fa-lock fa-xs " style={{ marginRight: "-18px", position: "relative", left: "-30px", bottom: "0px", color: "gray" }}></i>
 
                       <input
@@ -138,8 +147,8 @@ const formik = useFormik({
                         name="password"
                         placeholder="Enter the Password"
                         onChange={(event) => {
-                        formik.handleChange(event);
-                        setPass(event.target.value);
+                          formik.handleChange(event);
+                          setPass(event.target.value);
                         }}
                         onBlur={formik.handleBlur}
                         value={password}
@@ -154,11 +163,11 @@ const formik = useFormik({
                         onClick={handletogglepass} by
                       ></i>
                       {formik.touched.password && formik.errors.password && (
-                       <div>{formik.errors.password}</div>
+                        <div>{formik.errors.password}</div>
                       )}
                       <p><a href="/forget" style={{ textDecoration: "none" }}>Forget password?</a></p>
 
-                      <button type="submit" className="p-2 my-3" value="register" style={{ fontSize: "20px", borderRadius: "10px", backgroundColor: "rgb(212, 174, 126)", border: "none", width: "110px" }}>
+                      <button type="button" onClick={handleLogin} className="p-2 my-3" style={{ fontSize: "20px", borderRadius: "10px", backgroundColor: "rgb(212, 174, 126)", border: "none", width: "110px" }}>
                         Login
                       </button>
                       <br />
@@ -174,16 +183,16 @@ const formik = useFormik({
             </div>
           </div>
 
-        
-        
-      </section>
-    </>
-  );
-}
-else if(props.state === 0){
-  // console.log("spid===>",spid);
-  return (
-    <>
+
+
+        </section>
+      </>
+    );
+  }
+  else if (props.state === 0) {
+    // console.log("spid===>",spid);
+    return (
+      <>
 
 
         {/* <div style={{backgroundColor:"#f8f8ff" , borderRadius:"15px" ,  height:"500px", width:"900px" , marginLeft:"300px" , alignContent:"center" , alignItems:"center"}} > */}
@@ -191,7 +200,7 @@ else if(props.state === 0){
         {/* <div style={{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",marginTop:"135px" }} className=" mx-auto  w-50 p-5 d-flex align-items-center justify-content-center"> */}
 
         <section className="d-flex flex-wrap" id="header">
-        
+
           <div className="container-fluid p-5" style={{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset", marginTop: "100px", width: "50rem" }} >
             <div className="row">
               <div className="col-8 mx-5">
@@ -269,7 +278,7 @@ else if(props.state === 0){
 }
 
 
-    {/* <section class="sign-in">
+{/* <section class="sign-in">
             <div class="container" id="login_contain">
                 <div class="signin-content">
                     <div class="signin-image">
