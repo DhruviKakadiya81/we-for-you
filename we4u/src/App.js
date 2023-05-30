@@ -28,6 +28,7 @@ import { Sp } from "./components/Sp";
 import { Ser_add_Service } from "./components/Ser_add_Service";
 import { SubService } from "./components/SubService";
 import { Ser_servicepage } from "./components/Ser_servicepage";
+import MyForm from "./components/MyForm";
 
 
 function App() {
@@ -89,7 +90,7 @@ function App() {
           <Route path="/sphome2" element={<Sp />}></Route>
           <Route path="/contactsp" element={<Ser_pro_contact />}></Route>
           <Route path="/yourser" element={<Ser_servicepage />}></Route>
-
+          <Route path="/test" element={<MyForm />}></Route>
         </Routes>
       </Router>
     </>
