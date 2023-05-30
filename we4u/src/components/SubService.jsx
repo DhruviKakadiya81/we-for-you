@@ -72,12 +72,13 @@ export const SubService = () => {
                                 :
 
                                 <OwlCarousel ref={owl} options={options}>
+                                
 
                                     {servicedata.map((service) => (
                                         <>
-                                            <div class="cards">
-                                                <figure class="card">
-                                                    <img src={"http://localhost:4000/image/" + service.image} alt="" />
+                                            <div class="cards" >
+                                                <figure class="card" style={{width:"200px" , height:"250px"}}>
+                                                    <img src={"http://localhost:4000/image/" + service.image} style={{height:"210px"}} alt="" />
                                                     <figcaption>Dota 2</figcaption>
                                                 </figure>
                                             </div>

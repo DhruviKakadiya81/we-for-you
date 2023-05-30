@@ -128,3 +128,13 @@
 .owl-carousel .owl-nav.disabled {
     display: block;
 }
+
+.owl-stage{
+    margin-top: 80px;
+}
+
+/* .owl-item.card:active {
+    width: 200px;
+    height:100px
+  
+} */
