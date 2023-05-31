@@ -70,7 +70,7 @@ export const Ser_servicepage = () => {
                                             {(
                                                 serdata.map((sr) => (
 
-                                                    <div className="col-lg-6 col-md-12 col-sm-12 my-5 g-3">
+                                                    <div className="col-lg-6 col-md-12 col-sm-12 my-5">
                                                         <div className="row" >
                                                             <div className="col-6 h-20">
                                                                 <img className="mx-auto w-100" src={"http://localhost:4000/image/" + sr.subname.image} alt="" height={"100%"} width={"50%"} />
