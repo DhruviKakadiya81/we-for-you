@@ -15,7 +15,7 @@ export const Login = (props) => {
   const errors = {};
   const handleLogin = async (event) => {
     if (errors === null) {
-      event.preventDefault();
+      // event.preventDefault();
       let state = props.state;
       const firmObj = { email, password, state };
       const respo = await apiServices.getLoginData(firmObj);
@@ -45,11 +45,9 @@ export const Login = (props) => {
       } else {
         setmessage(respo.data.msg);
       }
-      event.target.reset();
     }
     else {
       setmessage("not login please add email and password");
-      // navigate("/login");
     }
 
   };
@@ -91,7 +89,6 @@ export const Login = (props) => {
 
     return (
       <>
-
         {/* <div style={{backgroundColor:"#f8f8ff" , borderRadius:"15px" ,  height:"500px", width:"900px" , marginLeft:"300px" , alignContent:"center" , alignItems:"center"}} > */}
         {/* <div style={{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" , marginTop:"135px" }} className=" mx-auto  w-50 p-5 d-flex align-items-center justify-content-center"> */}
         {/* <div style={{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",marginTop:"135px" }} className=" mx-auto  w-50 p-5 d-flex align-items-center justify-content-center"> */}
@@ -164,22 +161,87 @@ export const Login = (props) => {
 
                   </div>
                 </div>
+
               </div>
+              <form className="col-lg-6 col-md-6 pt-5 pt-lg-0 order-2 order-lg-1">
+                <h2 style={{ fontWeight: "700" }}>SIGN UP</h2>
+                <i class="fa-solid fa-envelope  fa-xm" style={{ position: "relative", left: "0px", top: "35px" }}></i>
+                <input
+                  className="pt-3 px-4"
+                  type="email"
+                  placeholder="Enter Your Email"
+                  name="email"
+                  onChange={(event) => {
+                    formik.handleChange(event);
+                    setEmail(event.target.value);
+                  }}
+                  onBlur={formik.handleBlur}
+                  value={email}
+                  style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width: "100%" }}
+                  required
+                />
+                <br />
+                {formik.touched.email && formik.errors.email && (
+                  <div>{formik.errors.email}</div>
+                )}
+
+                <i class="fa-solid fa-lock fa-xm" style={{ position: "relative", left: "0px", top: "35px" }}></i>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Enter the password"
+                  onChange={(event) => {
+                    formik.handleChange(event);
+                    setPass(event.target.value);
+                  }}
+                  onBlur={formik.handleBlur}
+                  value={password}
+                  id="id_password"
+                  className="my-0 pt-3 px-4"
+                  style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width: "100%" }}
+                  required
+                />
+                <i
+                  className={eye}
+                  id="togglePassword"
+                  style={{ marginLeft: "-25px", cursor: "pointer", position: "relative", cursor: "pointer" }}
+                  onClick={handletogglepass}
+                ></i>
+                <br />
+                {formik.touched.password && formik.errors.password && (
+                  <div>{formik.errors.password}</div>
+                )}
+                <br />
+                <p><a href="/forget" style={{ textDecoration: "none" }}>Forget password?</a></p>
+                <button
+                  type="button"
+                  className="p-2"
+                  value="register"
+                  onClick={handleLogin}
+                  style={{ fontSize: "20px", borderRadius: "10px", backgroundColor: "rgb(212, 174, 126)", border: "none", width: "110px" }}>
+                  Login
+                </button>
+                <br />
+                <br />
+                <p><a href="/reg" style={{ textDecoration: "none" }}>Dont have an Account??</a></p>
+                <span>{message}</span>
+              </form>
             </div>
           </div>
-
-
-
         </section>
       </>
     );
   }
   else if (props.state === 0) {
-    // console.log("spid===>",spid);
     return (
       <>
+        {/* <section className="" id="header">
+          <div className="container" style={{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset", marginTop: "70px", width: "60%" }} >
+            <div className="row justify-content-center d-flex">
 
-
+              <div className="col-md-6 pt-5  pt-lg-0 order-1 order-lg-2 d-flex justify-content-center align-items-center header-image mx-md-auto" >
+                <img src="Images/login1.png" width={270} height={300} className="login-image" alt="" />
+              </div>
         {/* <div style={{backgroundColor:"#f8f8ff" , borderRadius:"15px" ,  height:"500px", width:"900px" , marginLeft:"300px" , alignContent:"center" , alignItems:"center"}} > */}
         {/* <div style={{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" , marginTop:"135px" }} className=" mx-auto  w-50 p-5 d-flex align-items-center justify-content-center"> */}
         {/* <div style={{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",marginTop:"135px" }} className=" mx-auto  w-50 p-5 d-flex align-items-center justify-content-center"> */}
@@ -250,21 +312,80 @@ export const Login = (props) => {
 
                       <p><a href="/regprof" style={{ textDecoration: "none" }}>Don't Have An Account ?? </a></p>
 
-                      <span>{message}</span>
-                    </form>
+        </section> */}
 
-                  </div>
-                </div>
+        <section className="d-flex mb-5" id="header">
+          <div className="container pt-5 pb-5 mb-5 pb-5" style={{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset", marginTop: "100px", width: "50rem", overflowX: "hidden" }} >
+            <div className="row mx-lg-5 mx-md-2 mx-sm-2">
+              <div className="col-md-6 pt-5 mx-auto pt-lg-0 order-1  d-flex justify-content-center order-lg-2 header-image" >
+                <img src="Images/Login1.png" width={270} height={300} className="" alt="" />
               </div>
+              <form className="col-lg-6 col-md-6 pt-5 pt-lg-0 order-2 order-lg-1">
+                <h2 style={{ fontWeight: "700" }}>SIGN UP</h2>
+                <i class="fa-solid fa-envelope  fa-xm" style={{ position: "relative", left: "0px", top: "35px" }}></i>
+                <input
+                  className="pt-3 px-4"
+                  type="email"
+                  placeholder="Enter Your Email"
+                  name="email"
+                  onChange={(event) => {
+                    formik.handleChange(event);
+                    setEmail(event.target.value);
+                  }}
+                  onBlur={formik.handleBlur}
+                  value={email}
+                  style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width: "100%" }}
+                  required
+                />
+                <br />
+                {formik.touched.email && formik.errors.email && (
+                  <div>{formik.errors.email}</div>
+                )}
+
+                <i class="fa-solid fa-lock fa-xm" style={{ position: "relative", left: "0px", top: "35px" }}></i>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Enter the password"
+                  onChange={(event) => {
+                    formik.handleChange(event);
+                    setPass(event.target.value);
+                  }}
+                  onBlur={formik.handleBlur}
+                  value={password}
+                  id="id_password"
+                  className="my-0 pt-3 px-4"
+                  style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width: "100%" }}
+                  required
+                />
+                <i
+                  className={eye}
+                  id="togglePassword"
+                  style={{ marginLeft: "-25px", cursor: "pointer", position: "relative", cursor: "pointer" }}
+                  onClick={handletogglepass}
+                ></i>
+                <br />
+                {formik.touched.password && formik.errors.password && (
+                  <div>{formik.errors.password}</div>
+                )}
+                <br />
+                <p><a href="/forgetasp" style={{ textDecoration: "none" }}>Forget password?</a></p>
+                <button
+                  type="button"
+                  className="p-2"
+                  value="register"
+                  onClick={handleLogin}
+                  style={{ fontSize: "20px", borderRadius: "10px", backgroundColor: "rgb(212, 174, 126)", border: "none", width: "110px" }}>
+                  Login
+                </button>
+                <br />
+                <br />
+                <p><a href="/regprof" style={{ textDecoration: "none" }}>Dont have an Account??</a></p>
+                <span>{message}</span>
+              </form>
             </div>
           </div>
         </section>
-
-
-
-
-
-
       </>
     );
 

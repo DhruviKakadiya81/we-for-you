@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import apiServices from "../services/RegisterData";
 import { useFormik } from 'formik';
+import { useNavigate } from "react-router-dom";
 export const Register = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
@@ -9,19 +10,24 @@ export const Register = (props) => {
   const [eye, seteye] = useState("fa-sharp fa-solid fa-eye-slash");
   const [state, setstate] = useState(props.state);
   const errors = {};
+  const navigate = useNavigate();
   const handleRegister = async (event) => {
-    // if(errors===null){
-          // event.preventDefault();
-          const firmObj = { email, password, state };
-          console.log("object----" + password);
-          alert(firmObj.state);
+    event.preventDefault();
+    const firmObj = { email, password, state };
+    console.log("object----" + password);
+    // alert(firmObj.state);
 
-          const respo = await apiServices.create(firmObj);
-          if (respo.data.success === true) {
-            setmessage(respo.data.msg);
-            localStorage.setItem("token", respo.data.token);
-            alert(localStorage.getItem("token"));
-
+    const respo = await apiServices.create(firmObj);
+    if (respo.data.success === true) {
+      setmessage(respo.data.msg);
+      localStorage.setItem("token", respo.data.token);
+      alert(localStorage.getItem("token"));
+      if (firmObj.state === 1) {
+        navigate("/login");
+      }
+      else {
+        navigate("/loginasp");
+      }
           } else {
             setmessage(respo.data.msg);
           }
