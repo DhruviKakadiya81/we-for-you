@@ -3,7 +3,7 @@
     position: absolute;
 }
 
-.cards .card {
+/* .cards .card {
     position: relative;
 }
 
@@ -26,11 +26,11 @@
 .dn {
     display: none;
 }
+ */
 
-
-.cards {
+/* .cards {
     display: flex;
-}
+} */
 
 .dif {
     display: inline-flex;

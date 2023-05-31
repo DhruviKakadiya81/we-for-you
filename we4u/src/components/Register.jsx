@@ -45,7 +45,7 @@ export const Register = (props) => {
           <div className="container pt-5 pb-5 mb-5 pb-5" style={{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset", marginTop: "100px", width: "50rem", overflowX: "hidden" }} >
             <div className="row mx-lg-5 mx-md-2 mx-sm-2">
               <div className="col-md-6 pt-5 mx-auto pt-lg-0 order-1  d-flex justify-content-center order-lg-2 header-image" >
-                <img src="Images/register1.png" width={270} height={300} className="" alt="" />
+                <img src="Images/login2.png" width={350} height={380} className="" alt="" />
               </div>
               <form className="col-lg-6 col-md-6 pt-5 pt-lg-0 order-2 order-lg-1" action="" method="" onSubmit={handleRegister}>
                 <h2 style={{ fontWeight: "700" }}>SIGN UP</h2>
@@ -60,14 +60,14 @@ export const Register = (props) => {
                   required
                 />
                 <br />
-                <i class="fa-solid fa-lock fa-xm" style={{ position: "relative", left: "0px", top: "35px" }}></i>
+                <i class="fa-solid fa-lock fa-xm" style={{ position: "relative", left: "0px", top: "43px" }}></i>
                 <input
                   type="password"
                   name="password"
                   placeholder="Enter the password"
                   onChange={(event) => setPass(event.target.value)}
                   id="id_password"
-                  className="my-0 pt-3 px-4"
+                  className="my-0 pt-4 px-4"
                   style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width: "100%" }}
                   required
                 />
@@ -79,13 +79,15 @@ export const Register = (props) => {
                 ></i>
                 <br />
                 <br />
+                <br />
                 <button
                   type="submit"
-                  className="p-2"
+                  className="p-2 text-white"
                   value="register"
-                  style={{ fontSize: "20px", borderRadius: "10px", backgroundColor: "rgb(212, 174, 126)", border: "none", width: "110px" }}>
-                  register
+                  style={{ fontSize: "20px", borderRadius: "10px", backgroundColor: "rgb(50,50,50)", border: "none", width: "110px" }}>
+                  Register
                 </button>
+                <br />
                 <br />
                 <br />
                 <p><a href="/login" style={{ textDecoration: "none" }}>Already Have An Account??</a></p>
@@ -106,7 +108,7 @@ export const Register = (props) => {
           <div className="container pt-5 pb-5 mb-5 pb-5" style={{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset", marginTop: "100px", width: "50rem", overflowX: "hidden" }} >
             <div className="row mx-lg-5 mx-md-2 mx-sm-2">
               <div className="col-md-6 pt-5 mx-auto pt-lg-0 order-1  d-flex justify-content-center order-lg-2 header-image" >
-                <img src="Images/register1.png" width={270} height={300} className="" alt="" />
+                <img src="Images/login2.png" width={270} height={300} className="" alt="" />
               </div>
               <form className="col-lg-6 col-md-6 pt-5 pt-lg-0 order-2 order-lg-1" action="" method="" onSubmit={handleRegister}>
                 <h2 style={{ fontWeight: "700" }}>SIGN UP</h2>
@@ -121,14 +123,14 @@ export const Register = (props) => {
                   required
                 />
                 <br />
-                <i class="fa-solid fa-lock fa-xm" style={{ position: "relative", left: "0px", top: "35px" }}></i>
+                <i class="fa-solid fa-lock fa-xm" style={{ position: "relative", left: "0px", top: "43px" }}></i>
                 <input
                   type="password"
                   name="password"
                   placeholder="Enter the password"
                   onChange={(event) => setPass(event.target.value)}
                   id="id_password"
-                  className="my-0 pt-3 px-4"
+                  className="my-0 pt-4 px-4"
                   style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width: "100%" }}
                   required
                 />
@@ -140,13 +142,15 @@ export const Register = (props) => {
                 ></i>
                 <br />
                 <br />
+                <br />
                 <button
                   type="submit"
-                  className="p-2"
+                  className="p-2 text-white"
                   value="register"
-                  style={{ fontSize: "20px", borderRadius: "10px", backgroundColor: "rgb(212, 174, 126)", border: "none", width: "110px" }}>
-                  register
+                  style={{ fontSize: "20px", borderRadius: "10px", backgroundColor: "rgb(50,50,50)", border: "none", width: "110px" }}>
+                  Register
                 </button>
+                <br />
                 <br />
                 <br />
                 <p><a href="/loginasp" style={{ textDecoration: "none" }}>Already Have An Account??</a></p>
