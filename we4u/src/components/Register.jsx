@@ -1,28 +1,34 @@
 import React from "react";
 import { useState } from "react";
 import apiServices from "../services/RegisterData";
-
+import { useFormik } from 'formik';
 export const Register = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
   const [message, setmessage] = useState("");
   const [eye, seteye] = useState("fa-sharp fa-solid fa-eye-slash");
   const [state, setstate] = useState(props.state);
+  const errors = {};
   const handleRegister = async (event) => {
-    // event.preventDefault();
-    const firmObj = { email, password, state };
-    console.log("object----" + password);
-    alert(firmObj.state);
+    // if(errors===null){
+          // event.preventDefault();
+          const firmObj = { email, password, state };
+          console.log("object----" + password);
+          alert(firmObj.state);
 
-    const respo = await apiServices.create(firmObj);
-    if (respo.data.success === true) {
-      setmessage(respo.data.msg);
-      localStorage.setItem("token", respo.data.token);
-      alert(localStorage.getItem("token"));
+          const respo = await apiServices.create(firmObj);
+          if (respo.data.success === true) {
+            setmessage(respo.data.msg);
+            localStorage.setItem("token", respo.data.token);
+            alert(localStorage.getItem("token"));
 
-    } else {
-      setmessage(respo.data.msg);
-    }
+          } else {
+            setmessage(respo.data.msg);
+          }
+    // }else{
+    //   setmessage("not register please add email and password");
+    // }
+    
   };
 
   const handletogglepass = async (event) => {
@@ -36,6 +42,39 @@ export const Register = (props) => {
       seteye("fa-sharp fa-solid fa-eye-slash");
     }
   };
+
+  const validate = values => {
+
+    const numberRegex = /\d/;
+    const alphabetRegex = /[a-zA-Z]/;
+    if (!values.email) {
+      errors.email = 'Required';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+      errors.email = 'Invalid email address';
+    }
+    if (!values.password) {
+      errors.password = 'Required';
+    } else if (values.password.length < 6) {
+      errors.password = 'Password must be at least 6 characters long';
+    } else if (values.password.length > 20) {
+      errors.password = 'Password must be at most 20 characters long';
+    } else if (!numberRegex.test(values.password) || !alphabetRegex.test(values.password)) {
+      errors.password = "Password must contain at least 1 number and 1 alphabet"
+    }
+
+    return errors;
+  };
+
+  const formik = useFormik({
+    initialValues: {
+      email,
+      password
+    },
+    validate,
+    validateOnChange: true,
+  });
+
+
   if (props.state === 1) {
 
     return (
@@ -47,25 +86,38 @@ export const Register = (props) => {
               <div className="col-md-6 pt-5 mx-auto pt-lg-0 order-1  d-flex justify-content-center order-lg-2 header-image" >
                 <img src="Images/register1.png" width={270} height={300} className="" alt="" />
               </div>
-              <form className="col-lg-6 col-md-6 pt-5 pt-lg-0 order-2 order-lg-1" action="" method="" onSubmit={handleRegister}>
+              <form className="col-lg-6 col-md-6 pt-5 pt-lg-0 order-2 order-lg-1" action="" method="">
                 <h2 style={{ fontWeight: "700" }}>SIGN UP</h2>
                 <i class="fa-solid fa-envelope  fa-xm" style={{ position: "relative", left: "0px", top: "35px" }}></i>
                 <input
                   className="pt-3 px-4"
-                  type="text"
+                  type="email"
                   placeholder="Enter Your Email"
                   name="email"
-                  onChange={(event) => setEmail(event.target.value)}
+                  onChange={(event) => {
+                          formik.handleChange(event);
+                          setEmail(event.target.value);
+                  }}
+                  onBlur={formik.handleBlur}
+                  value={email}
                   style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width: "100%" }}
                   required
                 />
                 <br />
+                {formik.touched.email && formik.errors.email && (
+                        <div>{formik.errors.email}</div>
+                )}
                 <i class="fa-solid fa-lock fa-xm" style={{ position: "relative", left: "0px", top: "35px" }}></i>
                 <input
                   type="password"
                   name="password"
                   placeholder="Enter the password"
-                  onChange={(event) => setPass(event.target.value)}
+                  onChange={(event) => {
+                          formik.handleChange(event);
+                          setPass(event.target.value);
+                        }}
+                  onBlur={formik.handleBlur}
+                  value={password}
                   id="id_password"
                   className="my-0 pt-3 px-4"
                   style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width: "100%" }}
@@ -77,10 +129,14 @@ export const Register = (props) => {
                   style={{ marginLeft: "-25px", cursor: "pointer", position: "relative", cursor: "pointer" }}
                   onClick={handletogglepass}
                 ></i>
+                {formik.touched.password && formik.errors.password && (
+                        <div>{formik.errors.password}</div>
+                      )}
                 <br />
                 <br />
                 <button
                   type="submit"
+                  onClick={handleRegister}
                   className="p-2"
                   value="register"
                   style={{ fontSize: "20px", borderRadius: "10px", backgroundColor: "rgb(212, 174, 126)", border: "none", width: "110px" }}>
@@ -108,7 +164,7 @@ export const Register = (props) => {
               <div className="col-md-6 pt-5 mx-auto pt-lg-0 order-1  d-flex justify-content-center order-lg-2 header-image" >
                 <img src="Images/register1.png" width={270} height={300} className="" alt="" />
               </div>
-              <form className="col-lg-6 col-md-6 pt-5 pt-lg-0 order-2 order-lg-1" action="" method="" onSubmit={handleRegister}>
+              <form className="col-lg-6 col-md-6 pt-5 pt-lg-0 order-2 order-lg-1" action="" method="">
                 <h2 style={{ fontWeight: "700" }}>SIGN UP</h2>
                 <i class="fa-solid fa-envelope  fa-xm" style={{ position: "relative", left: "0px", top: "35px" }}></i>
                 <input
@@ -116,17 +172,30 @@ export const Register = (props) => {
                   type="text"
                   placeholder="Enter Your Email"
                   name="email"
-                  onChange={(event) => setEmail(event.target.value)}
+                  onChange={(event) => {
+                          formik.handleChange(event);
+                          setEmail(event.target.value);
+                        }}
+                  onBlur={formik.handleBlur}
+                  value={email}
                   style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width: "100%" }}
                   required
                 />
                 <br />
+                {formik.touched.email && formik.errors.email && (
+                        <div>{formik.errors.email}</div>
+                      )}
                 <i class="fa-solid fa-lock fa-xm" style={{ position: "relative", left: "0px", top: "35px" }}></i>
                 <input
                   type="password"
                   name="password"
                   placeholder="Enter the password"
-                  onChange={(event) => setPass(event.target.value)}
+                  onChange={(event) => {
+                          formik.handleChange(event);
+                          setPass(event.target.value);
+                  }}
+                  onBlur={formik.handleBlur}
+                  value={password}
                   id="id_password"
                   className="my-0 pt-3 px-4"
                   style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width: "100%" }}
@@ -138,16 +207,18 @@ export const Register = (props) => {
                   style={{ marginLeft: "-25px", cursor: "pointer", position: "relative", cursor: "pointer" }}
                   onClick={handletogglepass}
                 ></i>
-                <br />
+                {formik.touched.password && formik.errors.password && (
+                        <div>{formik.errors.password}</div>
+                )}
                 <br />
                 <button
                   type="submit"
-                  className="p-2"
+                  className="p-2 my-4"
                   value="register"
+                  onClick={handleRegister}
                   style={{ fontSize: "20px", borderRadius: "10px", backgroundColor: "rgb(212, 174, 126)", border: "none", width: "110px" }}>
-                  register
+                  Register
                 </button>
-                <br />
                 <br />
                 <p><a href="/loginasp" style={{ textDecoration: "none" }}>Already Have An Account??</a></p>
                 <span>{message}</span>
