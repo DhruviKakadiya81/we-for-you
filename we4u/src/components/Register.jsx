@@ -1,24 +1,32 @@
 import React from "react";
 import { useState } from "react";
 import apiServices from "../services/RegisterData";
-
+import { useNavigate } from "react-router-dom";
 export const Register = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
   const [message, setmessage] = useState("");
   const [eye, seteye] = useState("fa-sharp fa-solid fa-eye-slash");
   const [state, setstate] = useState(props.state);
+  const navigate = useNavigate();
   const handleRegister = async (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     const firmObj = { email, password, state };
     console.log("object----" + password);
-    alert(firmObj.state);
+    // alert(firmObj.state);
 
     const respo = await apiServices.create(firmObj);
     if (respo.data.success === true) {
       setmessage(respo.data.msg);
       localStorage.setItem("token", respo.data.token);
       alert(localStorage.getItem("token"));
+      if (firmObj.state === 1) {
+        navigate("/login");
+      }
+      else {
+        navigate("/loginasp");
+      }
+
 
     } else {
       setmessage(respo.data.msg);
