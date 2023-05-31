@@ -89,21 +89,8 @@ export const Login = (props) => {
       password
     },
     validate,
-    validateOnChange: true,
-    onClick: values => {
-      // Manually trigger form validation
-      formik.validateForm().then(errors => {
-        if (Object.keys(errors).length === 0) {
-          // No validation errors, handle form submission
-          console.log(values);
-        }
-        else {
-          setmessage(errors);
-        }
-      });
-
-    }
-  });
+    validateOnChange: true
+  })
 
 
 
