@@ -2,14 +2,35 @@ import { AdminNavbar } from './AdminNavbar';
 import React from 'react'
 import { useState, useEffect } from 'react'
 import managecity from '../services/managecity'
+import styled from '@emotion/styled'
 import "../css/ManageCity.css";
 import { Button,Modal} from 'react-bootstrap';
 import { FormControl, FormGroup, Input, InputLabel, Typography} from '@mui/material';
+import {useFormik} from "formik"
+
+
+const FlexColumnContainer = styled('div')`
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  width: ${props => props.width};
+  justify-content: ${props => (props.justifyContent ? props.justifyContent : 'center')};
+  align-items: ${props => (props.alignItems ? props.alignItems : 'center')};
+  box-sizing: border-box;
+`;
+const StepContainer = styled('div')`
+  width: 100%;
+  height: 100%;
+`;
+
+
 export const ManageCity = () => {
     const [cityname, setcityname] = useState('');
     const [citydata, setcitydata] = useState([]);
     const [isEdit, setisEdit] = useState(true);
     let counter = 1;
+
+    const errors={};
     const handleAddCity = async () => {
         // alert(cityname);
 
@@ -49,17 +70,76 @@ export const ManageCity = () => {
     //     { id: 2, name: 'Jane', age: 30 },
     //     { id: 3, name: 'Bob', age: 40 },
     //   ];
+
+
+    const validate = values => {
+
+        if (!values.city) {
+          errors.city = 'Required';
+        }else if (!/^[a-zA-Z\\s]+$/i.test(values.city)) {
+            errors.city = 'You Can Insert Only Characters';
+          }
+        return errors;
+      };
+    
+      const formik = useFormik({
+        initialValues: {
+          cityname
+        },
+        validate,
+        validateOnChange: true,
+      });
       
 
     return (
         <>
             <AdminNavbar>
+
+            {/* <StepContainer>
+      <div className="outer_container">
+        <div
+          className="inner_container"
+        >
+          <FlexColumnContainer>
+            <div className="step_heading_container">
+              Add City
+            </div>
+            <FlexColumnContainer width="100%">
+              <div className="step_form_container">
+                <label>Enter City Name</label><br />
+
+                <input type="text" className="px-2 py-1 mb-3 step_input" name="city" value ={cityname} onChange={(event)=>{
+                    formik.handleChange(event);
+                    setcityname(event.target.value);
+                }} onBlur={formik.handleBlur}/><br />
+
+                     {formik.touched.city && formik.errors.city && (
+                        <div>{formik.errors.city}</div>
+                )}
+
+                <input type='button' value="Add City" className='mx-4 px-3 py-2 my-2' style={{backgroundColor:"rgb(50,50,50)",borderRadius:"5px",color:"white"}}/>
+                
+              </div>
+            </FlexColumnContainer>
+          </FlexColumnContainer>
+        </div>
+      </div>
+    </StepContainer> */}
+
+
+
             <FormGroup className='city_main_container mx-auto'>
                 <Typography variant='h4' className='add_city_heading'>Add City</Typography>
                 <div className="mx-auto mt-5">
                    <FormControl className='mb-3 city_detail_container'>
                     <InputLabel className='mx-3'>Enter City Name</InputLabel>
-                    <Input type='text' name='name' value ={cityname} onChange={(event)=>setcityname(event.target.value)} className='mx-3 my-3'/>
+                    <Input type='text' name='city' value ={cityname} onChange={(event)=>{
+                    formik.handleChange(event);
+                    setcityname(event.target.value);
+                }} onBlur={formik.handleBlur} className='mx-3 my-3'/>
+                {formik.touched.city && formik.errors.city && (
+                        <div>{formik.errors.city}</div>
+                )}
                    </FormControl><br/>
                    <FormControl>
                     <Button type='submit' className='my-3 px-5 py-3' onClick={handleAddCity} style={{backgroundColor:"rgb(50,50,50)",border:"none",color:"white"}}>ADD CITY</Button>
