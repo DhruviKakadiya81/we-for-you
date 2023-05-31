@@ -9,6 +9,7 @@ import { ManageCity } from "./components/ManageCity";
 import { ManageArea } from "./components/ManageArea";
 import { Login } from "./components/Login";
 import { ManageSP } from "./components/ManageSP";
+import { ManageSubService } from "./components/ManageSubService";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/managearea" element={<ManageArea />}></Route>
           <Route path="/" element={<Login />}></Route>
           <Route path="/managesp" element={<ManageSP />}></Route>
+          <Route path="/managesubser" element={<ManageSubService />}></Route>
         </Routes>
       </Router>
     </>

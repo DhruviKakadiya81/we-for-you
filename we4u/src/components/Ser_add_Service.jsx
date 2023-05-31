@@ -26,7 +26,8 @@ const StepContainer = styled('div')`
 `;
 
 export const Ser_add_Service = () => {
-  const [getser, setgetser] = useState('');
+  const [getser, setgetser] = useState([]);
+  const [getsubser, setgetsubser] = useState([])
   const [serviceid, setserviceid] = useState('');
   const [spid, setspid] = useState('');
   const [subname, setsubname] = useState('');
@@ -38,6 +39,16 @@ export const Ser_add_Service = () => {
     try {
       const response = await service.getservice();
       setgetser(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const handlesubservice = async () => {
+    try {
+      const response = await subser.getsubserbymain({ serviceid });
+      setgetsubser(response.data.data);
+      console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -56,8 +67,8 @@ export const Ser_add_Service = () => {
 
 
   const handleadd = async (event) => {
-    // event.preventDefault();
-    const data = { subname, image, prize, discription, spid, serviceid }
+    event.preventDefault();
+    const data = { subname, prize, discription, spid, serviceid }
     console.log("data ==>", data);
     const response = await subser.addsubser(data);
     console.log(response);
@@ -73,8 +84,11 @@ export const Ser_add_Service = () => {
   useEffect(() => {
     getspclient();
     handleservice();
-  }, [])
-
+  }, []);
+  useEffect(() => {
+    serviceid && handlesubservice();
+  }, [serviceid]);
+  console.log(serviceid);
   return (
     <>
       <Ser_Pro_Navbar />
@@ -94,21 +108,34 @@ export const Ser_add_Service = () => {
                       id="demo-simple-select-standard"
                       label="Select service"
                       name="serviceid"
+
                       style={{ backgroundColor: "transparent", color: "white" }}
-                      onChange={(event) => { setserviceid(event.target.value); alert(serviceid) }}
+                      onChange={(event) => { setserviceid(event.target.value); }}
                     >
                       {getser ? getser.map(ser => (
                         <MenuItem value={ser._id}>{ser.s_name}</MenuItem>
                       )) :
+                        <MenuItem>Select Main service</MenuItem>}
+                    </Select>
+                  </FormControl><br />
+                  <FormControl variant="standard" sx={{ minWidth: 260 }} className='mb-4 area_detail_container'>
+                    <InputLabel id="demo-simple-select-standard-label" className='sel_ser'>Select Service</InputLabel>
+                    <Select
+                      labelId="demo-simple-select-standard-label"
+                      id="demo-simple-select-standard"
+                      label="Select service"
+                      name="serviceid"
+                      style={{ backgroundColor: "transparent", color: "white" }}
+                      onChange={(event) => { setsubname(event.target.value); }}
+                    >
+                      {getsubser ? getsubser.map(ser => (
+                        <MenuItem value={ser._id}>{ser.subname}</MenuItem>
+                      )) :
                         <MenuItem>Loading...</MenuItem>}
                     </Select>
                   </FormControl><br />
-                  <label style={{ color: "white" }}>Enter Your Sub service</label><br />
-                  <input type="text" className="s_add_input px-2 py-1 mb-3" name="Sub_service" onChange={(event) => { setsubname(event.target.value) }} /><br />
                   <label style={{ color: "white" }}>Price</label><br />
                   <input type="Number" className="s_add_input px-2 py-1 mb-3" name="Price" onChange={(event) => { setprize(event.target.value) }} /><br />
-                  <label style={{ color: "white" }}>Image</label><br />
-                  <input type="file" className="s_add_input px-2 py-1 mb-3" name="image" onChange={(event) => { setimage(event.target.files[0]) }} /><br />
                   <label style={{ color: "white" }}>Description</label><br />
                   <textarea type="number" className="s_add_input px-2 py-1 mb-3" name="description" onChange={(event) => { setdiscription(event.target.value) }} /><br />
                   <button className='px-4 py-2 mx-5 add_s_s' onClick={handleadd}>Add Sub Service</button>

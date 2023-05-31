@@ -14,8 +14,9 @@ export const Login = (props) => {
   const [eye, seteye] = useState("fa-sharp fa-solid fa-eye-slash");
   const errors = {};
   const handleLogin = async (event) => {
-    if (errors === null) {
+    if (errors.email === undefined && errors.password === undefined) {
       // event.preventDefault();
+      // alert("hello");
       let state = props.state;
       const firmObj = { email, password, state };
       const respo = await apiServices.getLoginData(firmObj);
@@ -47,7 +48,9 @@ export const Login = (props) => {
       }
     }
     else {
-      setmessage("not login please add email and password");
+      // alert("hello2");
+      setmessage(errors.email);
+      // console.log("errors", errors.email);
     }
 
   };
@@ -75,12 +78,6 @@ export const Login = (props) => {
     }
     if (!values.password) {
       errors.password = 'Required';
-    } else if (values.password.length < 8) {
-      errors.password = 'Password must be at least 8 characters long';
-    } else if (values.password.length > 20) {
-      errors.password = 'Password must be at most 20 characters long';
-    } else if (!pattern.test(values.password)) {
-      errors.password = "Should not Start With Special Character,atleast 1 alphabet,1 Special Character,1 Number"
     }
 
     return errors;
@@ -93,9 +90,22 @@ export const Login = (props) => {
     },
     validate,
     validateOnChange: true,
+    onClick: values => {
+      // Manually trigger form validation
+      formik.validateForm().then(errors => {
+        if (Object.keys(errors).length === 0) {
+          // No validation errors, handle form submission
+          console.log(values);
+        }
+        else {
+          setmessage(errors);
+        }
+      });
 
-
+    }
   });
+
+
 
   if (props.state === 1) {
 
@@ -254,7 +264,7 @@ export const Login = (props) => {
                 <img src="Images/Login1.png" width={270} height={300} className="" alt="" />
               </div>
               <form className="col-lg-6 col-md-6 pt-5 pt-lg-0 order-2 order-lg-1">
-                <h2 style={{ fontWeight: "700" }}>SIGN UP</h2>
+                <h2 style={{ fontWeight: "700" }}>SIGN IN</h2>
                 <i class="fa-solid fa-envelope  fa-xm" style={{ position: "relative", left: "0px", top: "35px" }}></i>
                 <input
                   className="pt-3 px-4"

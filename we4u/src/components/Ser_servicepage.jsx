@@ -68,8 +68,8 @@ export const Ser_servicepage = () => {
                                     {(
                                         serdata.map((sr) => (
                                             <div className="card">
-                                                <img src={"http://localhost:4000/image/" + sr.image} alt="" />
-                                                <h1>{sr.subname}</h1>
+                                                <img src={"http://localhost:4000/image/" + sr.subname.image} alt="" />
+                                                <h1>{sr.subname.subname}</h1>
                                                 <p className="price">{sr.prize}</p>
                                                 <p>{sr.discription}</p>
                                                 <Update data={sr} handleIsEdit={() => setisEdit(!isEdit)} />
