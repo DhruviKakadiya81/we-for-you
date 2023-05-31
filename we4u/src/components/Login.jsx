@@ -69,7 +69,6 @@ export const Login = (props) => {
 
 
   const validate = values => {
-
     const pattern = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]$/;
     if (!values.email) {
       errors.email = 'Required';
