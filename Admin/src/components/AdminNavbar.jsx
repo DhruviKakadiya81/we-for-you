@@ -85,6 +85,7 @@ export const AdminNavbar = ({ children }) => {
                 <div className="sub_list px-1 py-2"><NavLink to="/managesp" className="sub_items">Manage ServiceProvider</NavLink></div>
                 <div className="sub_list px-1 py-2"><NavLink to="/managecity" className="sub_items">Manage City</NavLink></div>
                 <div className="sub_list px-1 py-2"><NavLink to="/managearea" className="sub_items">Manage Area</NavLink></div>
+                <div className="sub_list px-1 py-2"><NavLink to="/managesubser" className="sub_items">Manage Sub service</NavLink></div>
               </div>
             </div>
           </div>

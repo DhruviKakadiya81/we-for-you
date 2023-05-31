@@ -22,12 +22,14 @@ export const SubService = () => {
         setserviceid(localStorage.getItem("serviceid"));
         serviceid && getsubservice();
     }, []);
-    console.log("serviceid", servicedata);
+    console.log("serviceid", serviceid);
 
     const options =
     {
         loop: false,
-        center: true,
+        center: false,
+        left: true,
+        left: true,
         items: 8,
         nav: true,
         autoplayTimeout: 8500,
@@ -75,10 +77,10 @@ export const SubService = () => {
 
                                     {servicedata.map((service) => (
                                         <>
-                                            <div class="cards" >
-                                                <figure class="card" style={{ width: "150px", height: "150px" }}>
+                                            <div class="cards mt-5 pt-3" >
+                                                <figure class="card" style={{ width: "130px", height: "130px" }}>
                                                     <img src={"http://localhost:4000/image/" + service.image} alt="" />
-                                                    <figcaption style={{ color: "black", backgroundColor: "white" }}>{service.subname}</figcaption>
+                                                    <figcaption style={{ color: "black", backgroundColor: "white", fontSize: "10px" }}>{service.subname}</figcaption>
                                                 </figure>
                                             </div>
 

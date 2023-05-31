@@ -44,6 +44,8 @@ const getdetail = async (req, res) => {
   }
 }
 
+
+
 const getalldata = async (req, res) => {
   try {
     const data = await SPModel.find().populate('spid').populate('cityid').populate('areaid');

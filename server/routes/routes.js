@@ -13,6 +13,7 @@ const managecity = require("../controllers/managecity");
 const userdetail = require("../controllers/userdetails");
 const spdetail = require("../controllers/spDetail");
 const subser = require("../controllers/subservice");
+const subserad = require("../controllers/subserviceadmin");
 const path = require("path");
 var multer = require("multer");
 const router1 = express.Router();
@@ -77,11 +78,17 @@ router1.post("/getsp", auth, getuser.getsplogin);
 router1.post("/getspdetail", spdetail.getdetail);
 router1.get("/spdata", spdetail.getalldata);
 
-router1.post("/addsubser", upload.single('image'), subser.addservices);
+router1.post("/addsubser", subser.addservices);
 router1.post("/showsermain", subser.showservicebymain);
 router1.post("/showserbyspid", subser.showservicebyspid);
 router1.put("/updatesub", subser.updatesubser);
 router1.delete("/deletesub", subser.deletesubser);
+
+// admin subservive
+router1.post("/addsubserad", upload.single('image'), subserad.addservicesadmin);
+router1.get("/showsub", subserad.showservice);
+router1.delete("/deletesubser", subserad.deletesubser);
+router1.put("/updatesubser", upload.single('image'), subserad.updatesubser);
 
 // router1.post("/getuser",logcontroller.getuserlogin);
 // router1.post("/getuser",logcontroller.getuserlogin);
