@@ -28,15 +28,12 @@ export const Register = (props) => {
       else {
         navigate("/loginasp");
       }
-          } else {
-            setmessage(respo.data.msg);
-          }
-    // }else{
-    //   setmessage("not register please add email and password");
-    // }
-    
-  };
 
+
+    } else {
+      setmessage(respo.data.msg);
+    }
+  };
   const handletogglepass = async (event) => {
     //event.preventDefault();
     var x = document.getElementById("id_password");
