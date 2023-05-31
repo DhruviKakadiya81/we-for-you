@@ -14,8 +14,9 @@ export const Login = (props) => {
   const [eye, seteye] = useState("fa-sharp fa-solid fa-eye-slash");
   const errors = {};
   const handleLogin = async (event) => {
-    if (errors === null) {
+    if (errors.email === undefined && errors.password === undefined) {
       // event.preventDefault();
+      // alert("hello");
       let state = props.state;
       const firmObj = { email, password, state };
       const respo = await apiServices.getLoginData(firmObj);
@@ -47,7 +48,9 @@ export const Login = (props) => {
       }
     }
     else {
-      setmessage("not login please add email and password");
+      // alert("hello2");
+      setmessage(errors.email);
+      // console.log("errors", errors.email);
     }
 
   };
@@ -66,11 +69,14 @@ export const Login = (props) => {
 
 
   const validate = values => {
-
+    const pattern = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]$/;
     if (!values.email) {
       errors.email = 'Required';
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
       errors.email = 'Invalid email address';
+    }
+    if (!values.password) {
+      errors.password = 'Required';
     }
 
     return errors;
@@ -82,10 +88,10 @@ export const Login = (props) => {
       password
     },
     validate,
-    validateOnChange: true,
+    validateOnChange: true
+  })
 
 
-  });
 
   if (props.state === 1) {
 
@@ -125,7 +131,12 @@ export const Login = (props) => {
                   type="password"
                   name="password"
                   placeholder="Enter the password"
-                  onChange={(event) => setPass(event.target.value)}
+                  onChange={(event) => {
+                    formik.handleChange(event);
+                    setPass(event.target.value);
+                  }}
+                  onBlur={formik.handleBlur}
+                  value={password}
                   id="id_password"
                   className="my-0 pt-3 px-4"
                   style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width: "100%" }}
@@ -138,6 +149,9 @@ export const Login = (props) => {
                   onClick={handletogglepass}
                 ></i>
                 <br />
+                {formik.touched.password && formik.errors.password && (
+                  <div>{formik.errors.password}</div>
+                )}
                 <br />
                 <p><a href="/forget" style={{ textDecoration: "none" }}>Forget password?</a></p>
                 <button
@@ -236,7 +250,7 @@ export const Login = (props) => {
                 <img src="Images/Login1.png" width={270} height={300} className="" alt="" />
               </div>
               <form className="col-lg-6 col-md-6 pt-5 pt-lg-0 order-2 order-lg-1">
-                <h2 style={{ fontWeight: "700" }}>SIGN UP</h2>
+                <h2 style={{ fontWeight: "700" }}>SIGN IN</h2>
                 <i class="fa-solid fa-envelope  fa-xm" style={{ position: "relative", left: "0px", top: "35px" }}></i>
                 <input
                   className="pt-3 px-4"
@@ -262,7 +276,12 @@ export const Login = (props) => {
                   type="password"
                   name="password"
                   placeholder="Enter the password"
-                  onChange={(event) => setPass(event.target.value)}              
+                  onChange={(event) => {
+                    formik.handleChange(event);
+                    setPass(event.target.value);
+                  }}
+                  onBlur={formik.handleBlur}
+                  value={password}
                   id="id_password"
                   className="my-0 pt-3 px-4"
                   style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width: "100%" }}
