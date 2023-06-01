@@ -1,4 +1,4 @@
-/* .main_div1{
+.main_div1{
     background-color:white;
      border-radius: 15px;
     
@@ -7,42 +7,43 @@
         width: 50rem;
          overflow-X: hidden;
 
-} */
+} 
 
-/* .icon_mail{
+ .icon_mail{
     position: relative;
      left: 0px;
-      top: 35px;
-} */
+      top: 40px;
+} 
 
-/* .em_in{
+ .em_in{
     border-bottom: 1px solid black;
      outline: none;
      border-top-style :hidden;
       border-left-style: none;
       border-right-style: none;
        width: 100%; 
-} */
-/* 
+} 
+ 
 .icon_pass{
     position: relative;
      left: 0px;
-      top: 35px;
-    } */
+      top: 45px;
+    } 
 
-    /* .pass_in{
+     .pass_in{
         border-bottom: 1px solid black;
         outline: none;
          border-top-style :hidden;
         border-left-style: none;
         border-right-style: none;
          width: 100%;
-       } */
+       } 
 
-/* .btn_sub{
+ .btn_sub{
     font-size: 20px; 
     border-radius: 10px;
-     background-color: rgb(212, 174, 126);
+     background-color: rgb(50, 50, 50);
       border: none;
        width: 110px; 
-} */
+       color:white;
+} 

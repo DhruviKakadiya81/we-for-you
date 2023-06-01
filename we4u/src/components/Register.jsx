@@ -3,6 +3,8 @@ import { useState } from "react";
 import apiServices from "../services/RegisterData";
 import { useFormik } from 'formik';
 import { useNavigate } from "react-router-dom";
+import '../css/Register.css';
+
 export const Register = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
@@ -84,16 +86,16 @@ export const Register = (props) => {
       <>
 
         <section className="d-flex mb-5" id="header">
-          <div className="container pt-5 pb-5 mb-5 pb-5" style={{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset", marginTop: "100px", width: "50rem", overflowX: "hidden" }} >
+          <div className="container pt-5 pb-5 mb-5 pb-5 r_main_div1">
             <div className="row mx-lg-5 mx-md-2 mx-sm-2">
               <div className="col-md-6 pt-5 mx-auto pt-lg-0 order-1  d-flex justify-content-center order-lg-2 header-image" >
-                <img src="Images/register1.png" width={270} height={300} className="" alt="" />
+                <img src="Images/login4.png" width={350} height={360} className="" alt="" />
               </div>
               <form className="col-lg-6 col-md-6 pt-5 pt-lg-0 order-2 order-lg-1" action="" method="">
                 <h2 style={{ fontWeight: "700" }}>SIGN UP</h2>
-                <i class="fa-solid fa-envelope  fa-xm" style={{ position: "relative", left: "0px", top: "35px" }}></i>
+                <i class="fa-solid fa-envelope  fa-xm r_icon_mail" ></i>
                 <input
-                  className="pt-3 px-4"
+                  className="pt-3 px-4 r_em_in"
                   type="email"
                   placeholder="Enter Your Email"
                   name="email"
@@ -103,14 +105,13 @@ export const Register = (props) => {
                   }}
                   onBlur={formik.handleBlur}
                   value={email}
-                  style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width: "100%" }}
-                  required
+                   required
                 />
                 <br />
                 {formik.touched.email && formik.errors.email && (
                         <div>{formik.errors.email}</div>
                 )}
-                <i class="fa-solid fa-lock fa-xm" style={{ position: "relative", left: "0px", top: "35px" }}></i>
+                <i class="fa-solid fa-lock fa-xm r_icon_pass" ></i>
                 <input
                   type="password"
                   name="password"
@@ -122,8 +123,7 @@ export const Register = (props) => {
                   onBlur={formik.handleBlur}
                   value={password}
                   id="id_password"
-                  className="my-0 pt-3 px-4"
-                  style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width: "100%" }}
+                  className="my-0 pt-3 mt-2 px-4 r_pass_in"
                   required
                 />
                 <i
@@ -140,10 +140,10 @@ export const Register = (props) => {
                 <button
                   type="submit"
                   onClick={handleRegister}
-                  className="p-2"
+                  className="p-2 r_btn_sub"
                   value="register"
-                  style={{ fontSize: "20px", borderRadius: "10px", backgroundColor: "rgb(212, 174, 126)", border: "none", width: "110px" }}>
-                  register
+                >
+                  Register
                 </button>
                 <br />
                 <br />
@@ -162,16 +162,16 @@ export const Register = (props) => {
       <>
 
         <section className="d-flex mb-5" id="header">
-          <div className="container pt-5 pb-5 mb-5 pb-5" style={{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset", marginTop: "100px", width: "50rem", overflowX: "hidden" }} >
+          <div className="container pt-5 pb-5 mb-5 pb-5 r_main_div1">
             <div className="row mx-lg-5 mx-md-2 mx-sm-2">
               <div className="col-md-6 pt-5 mx-auto pt-lg-0 order-1  d-flex justify-content-center order-lg-2 header-image" >
-                <img src="Images/register1.png" width={270} height={300} className="" alt="" />
+                <img src="Images/login4.png" width={270} height={300} className="" alt="" />
               </div>
               <form className="col-lg-6 col-md-6 pt-5 pt-lg-0 order-2 order-lg-1" action="" method="">
                 <h2 style={{ fontWeight: "700" }}>SIGN UP</h2>
-                <i class="fa-solid fa-envelope  fa-xm" style={{ position: "relative", left: "0px", top: "35px" }}></i>
+                <i class="fa-solid fa-envelope  fa-xm r_icon_mail" ></i>
                 <input
-                  className="pt-3 px-4"
+                  className="pt-3 px-4 r_em_in"
                   type="text"
                   placeholder="Enter Your Email"
                   name="email"
@@ -181,14 +181,13 @@ export const Register = (props) => {
                         }}
                   onBlur={formik.handleBlur}
                   value={email}
-                  style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width: "100%" }}
-                  required
+                 required
                 />
                 <br />
                 {formik.touched.email && formik.errors.email && (
                         <div>{formik.errors.email}</div>
                       )}
-                <i class="fa-solid fa-lock fa-xm" style={{ position: "relative", left: "0px", top: "35px" }}></i>
+                <i class="fa-solid fa-lock fa-xm r_icon_pass" ></i>
                 <input
                   type="password"
                   name="password"
@@ -200,8 +199,7 @@ export const Register = (props) => {
                   onBlur={formik.handleBlur}
                   value={password}
                   id="id_password"
-                  className="my-0 pt-3 px-4"
-                  style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width: "100%" }}
+                  className="my-0 mt-2 pt-3 px-4 r_pass_in"
                   required
                 />
                 <i
@@ -216,10 +214,10 @@ export const Register = (props) => {
                 <br />
                 <button
                   type="submit"
-                  className="p-2 my-4"
+                  className="p-2 my-4 r_btn_sub"
                   value="register"
                   onClick={handleRegister}
-                  style={{ fontSize: "20px", borderRadius: "10px", backgroundColor: "rgb(212, 174, 126)", border: "none", width: "110px" }}>
+                  >
                   Register
                 </button>
                 <br />
