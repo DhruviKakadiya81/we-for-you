@@ -21,7 +21,7 @@ export const Login = () => {
             <div className='container d-flex justify-content-center align-items-center mx-5 me-0 mx-lg-0 mt-5' style={{ marginTop: "60px" }}>
                 <div class="screen">
                     <div class="screen__content">
-                        <img src="../../public/images/logo2.png" className="" alt="hello" style={{ height: "100px", width: "100px", position: "relative", left: "38%", top: "70px", borderRadius: "50%", border: "5px solid grey" }} />
+                        <img src="/images/logo2.png" className="" alt="hello" style={{ height: "100px", width: "100px", position: "relative", left: "38%", top: "70px", borderRadius: "50%", border: "5px solid grey" }} />
                         <form class="login  ">
                             <div class="login__field">
                                 <i class="login__icon fas fa-user"></i>
