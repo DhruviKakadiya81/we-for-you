@@ -64,16 +64,13 @@ function App() {
           <Route path="/forget" element={<Forget state={1} />}></Route>
           <Route path="/forgetasp" element={<Forget state={0} />}></Route>
           {/* <Route path="/about" element={<about/>}></Route>  */}
-
           <Route path="/logout" element={<Home />}></Route>
           <Route path="/ser_contact" element={<Ser_pro_contact />}></Route>
           <Route path="/logout" element={<Home />}></Route>
           <Route path="/ser_pro_nav" element={<Ser_Pro_Navbar />}></Route>
           <Route path="/ser_add_service" element={<Ser_add_Service />}></Route>
           <Route path="/service" element={<SubService />}></Route>
-
           <Route path="/showprofile" element={<Myprofile />}></Route>
-         
 
           {/* <Route path="/about" element={<TestiMonials/>}></Route> */}
           <Route path="/contact" element={<Contact />}></Route>
@@ -93,7 +90,7 @@ function App() {
           <Route path="/contactsp" element={<Ser_pro_contact />}></Route>
           <Route path="/yourser" element={<Ser_servicepage />}></Route>
           <Route path="/test" element={<MyForm />}></Route>
-          <Route path="/myform" element={<MyForm/>}></Route>
+          <Route path="/myform" element={<MyForm />}></Route>
         </Routes>
       </Router>
     </>

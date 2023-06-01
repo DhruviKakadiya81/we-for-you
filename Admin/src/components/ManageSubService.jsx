@@ -6,14 +6,13 @@ import { Button, Modal } from 'react-bootstrap';
 import { FormControl, FormGroup, Input, InputLabel, Typography, Select, MenuItem } from '@mui/material';
 import subservice from '../services/managesubservice';
 export const ManageSubService = () => {
-
-
     const [citydata, setcitydata] = useState([]);
     const [subname, setsubname] = useState('');
     const [image, setimage] = useState('');
     const [isEdit, setisEdit] = useState(true);
     const [serviceid, setserviceid] = useState('');
     const [getser, setgetser] = useState([]);
+
     let counter = 1;
     const handleAddser = async () => {
         alert(serviceid + subname + image);

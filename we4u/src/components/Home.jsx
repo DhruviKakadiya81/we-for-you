@@ -11,9 +11,12 @@ import 'react-owl-carousel2/lib/styles.css';
 import { useNavigate } from 'react-router-dom';
 import service1 from '../services/Services'
 import { FormControl, FormGroup, Input, InputLabel, Typography, Select, MenuItem } from '@mui/material'
+import { event } from 'jquery';
 export const Home = () => {
   const [getser, setgetser] = useState('');
   const [serviceid, setserviceid] = useState('');
+  const [location, setLocation] = useState(null);
+
   const navigate = useNavigate();
   function reveal() {
     var reveals = document.querySelectorAll(".reveal");
@@ -31,6 +34,51 @@ export const Home = () => {
     }
   }
 
+  function handleLocationClick(event) {
+
+    // alert("hello");
+    event.preventDefault();
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(success, error);
+    } else {
+      console.log("Geolocation not supported");
+    }
+  }
+
+  function success(position) {
+
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    const token = "pk.abe6a7e1dc03bb5924c0341041c0abcc"
+    // setLocation({ latitude, longitude });
+    console.log("hello");
+    console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', "https://us1.locationiq.com/v1/reverse.php?key=" + token + "&lat=" +
+      latitude + "&lon=" + longitude + "&format=json", true);
+    xhr.send();
+    xhr.onreadystatechange = processRequest;
+    xhr.addEventListener("readystatechange", processRequest, false);
+
+    function processRequest(e) {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        var response = JSON.parse(xhr.responseText);
+        var city = response.address.state_district;
+        var address = response.address;
+        setLocation(city);
+        sessionStorage.setItem("cityname", city);
+        console.log(response);
+        return;
+      }
+    }
+
+  }
+
+  function error() {
+    console.log("Unable to retrieve your location");
+  }
+
+
   window.addEventListener("scroll", reveal);
   const options = {
     loop: true,
@@ -40,7 +88,10 @@ export const Home = () => {
       0: {
         items: 1
       },
-      600: {
+      700: {
+        items: 1
+      },
+      800: {
         items: 2
       },
       1000: {
@@ -83,6 +134,7 @@ export const Home = () => {
   useEffect((event) => {
     handleservice();
     service && fetchSer();
+    // handleLocationClick();
   }, []);
   console.log("ser", getser);
   return (
@@ -101,17 +153,18 @@ export const Home = () => {
               </fieldset>
               <div className="inner-form" style={{ width: "90%", margin: "auto" }}>
                 <div className="input-field first-wrap">
-                  <datalist id="browsers">
+                  <datalist id="browsers" style={{ backgroundColor: "white" }}>
                     {getser ? getser.map(ser => (
-                      <option value={ser.s_name}>{ser.s_name}</option>
-                    )) :
-                      <option>Loading...</option>}
+                      <option style={{ backgroundColor: "white" }} value={ser.s_name}>{ser.s_name}</option>
+                    )) : getser.length > 0 ?
+                      <option>no found</option>
+                      : <option>Loading...</option>}
                   </datalist>
 
                   <input id="search" type="text" list="browsers" placeholder="What are you looking for?" />
                 </div>
                 <div className="input-field second-wrap">
-                  <input id="location" type="text" placeholder="location" />
+                  <input id="location" type="button" placeholder="location" value={location ? location : "click to access your city"} onClick={handleLocationClick} />
                 </div>
                 <div className="input-field third-wrap">
                   <button className="btn-search" type="button">Search</button>

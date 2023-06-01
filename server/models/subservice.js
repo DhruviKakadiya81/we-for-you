@@ -24,7 +24,7 @@ const subServiceSchema = new mongoose.Schema({
     required: true
   }
 });
-
+subServiceSchema.index({ subname: 1, spid: 1 }, { unique: true });
 const SubService = mongoose.model('SubService', subServiceSchema);
 
 module.exports = SubService;

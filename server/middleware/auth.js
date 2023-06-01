@@ -6,17 +6,17 @@ const auth = async (req, res, next) => {
     console.log("hello");
     // id = localStorage.getItem("token");
     // console.log("----ls----"+id);
-    console.log("id"+req.body.id);
+    console.log("id" + req.body.id);
     const token = req.body.id;
     console.log("token is :" + token);
     if (!token) {
-       return  res.status(401).send(error);
+        return res.status(200).send({ error: "your network is interrupted" });
     }
 
     try {
         const ver = jwt.verify(token, JWT_SECRET);
-    
-        console.log("ver-----" , ver)
+
+        console.log("ver-----", ver)
         const userdata = await user.findOne({ _id: ver.id });
         console.log("userdata : " + userdata);
         //let id = ver.iat;
@@ -38,17 +38,17 @@ const auth2 = async (req, res, next) => {
     console.log("hello");
     // id = localStorage.getItem("token");
     // console.log("----ls----"+id);
-    console.log("id"+req.body.id);
+    console.log("id" + req.body.id);
     const token = req.body.id;
     console.log("token is :" + token);
     if (!token) {
-       return  res.status(401).send(error);
+        return res.status(401).send(error);
     }
 
     try {
         const ver = jwt.verify(token, JWT_SECRET);
-    
-        console.log("ver-----" , ver)
+
+        console.log("ver-----", ver)
         const userdata = await serviceprovider.findOne({ _id: ver.id });
         console.log("userdata : " + userdata);
         //let id = ver.iat;
@@ -65,4 +65,4 @@ const auth2 = async (req, res, next) => {
     }
 
 }
-module.exports = {auth,auth2};
+module.exports = { auth, auth2 };

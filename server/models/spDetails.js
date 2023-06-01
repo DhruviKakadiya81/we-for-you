@@ -9,7 +9,7 @@ const SPModelSchema = new mongoose.Schema({
   },
   mobileno: {
     type: String,
-    unique:true,
+    unique: true,
   },
   gender: {
     type: String,
@@ -43,11 +43,25 @@ const SPModelSchema = new mongoose.Schema({
   spid: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Service_Provider',
-    required: true, 
+    required: true,
     unique: true
+  },
+  serviceid: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Service',
 
-  }
+    }
+  ],
+  subserid: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'SubService',
+    }
+  ]
 });
+
+SPModelSchema.index({ subserid: 1, spid: 1 }, { unique: true });
 
 const SPModel = mongoose.model('SPModel', SPModelSchema);
 
