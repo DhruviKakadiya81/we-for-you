@@ -162,7 +162,7 @@ export const Home = () => {
       </section>
       <div class="parallax mb-0" style={{
         /* The image used */
-        backgroundImage: ` linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/homeimag9.jpg")`,
+        backgroundImage: ` linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/homeimg3.jpg")`,
 
         /* Set a specific height */
         minHeight: "500px",
