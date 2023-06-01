@@ -6,11 +6,15 @@ import '../css/Subser.css';
 import $ from 'jquery'
 import OwlCarousel from 'react-owl-carousel2';
 import 'react-owl-carousel2/lib/styles.css';
+import detail from '../services/spservice';
 
 
 export const SubService = () => {
     const [serviceid, setserviceid] = useState(localStorage.getItem("serviceid"));
     const [servicedata, setservicedata] = useState([]);
+    const [city, setcity] = useState('');
+    const [location, setLocation] = useState(null);
+    const [spdetail, setspdetail] = useState([]);
     const getsubservice = async () => {
         const response = await showservice.getsubserbymain({ serviceid });
         console.log(response);
@@ -18,11 +22,66 @@ export const SubService = () => {
 
     }
 
+    function handleLocationClick(event) {
+
+        // alert("hello");
+        event.preventDefault();
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(success, error);
+        } else {
+            console.log("Geolocation not supported");
+        }
+    }
+
+    function success(position) {
+
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        const token = "pk.abe6a7e1dc03bb5924c0341041c0abcc"
+        // setLocation({ latitude, longitude });
+        console.log("hello");
+        console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', "https://us1.locationiq.com/v1/reverse.php?key=" + token + "&lat=" +
+            latitude + "&lon=" + longitude + "&format=json", true);
+        xhr.send();
+        xhr.onreadystatechange = processRequest;
+        xhr.addEventListener("readystatechange", processRequest, false);
+
+        function processRequest(e) {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var response = JSON.parse(xhr.responseText);
+                var city = response.address.city;
+                var address = response.address;
+                setLocation(city);
+                localStorage.setItem("cityname", city);
+                console.log(address);
+                return;
+            }
+        }
+
+    }
+
+    function error() {
+        console.log("Unable to retrieve your location");
+    }
+
+    const handledetail = async () => {
+        // alert("hello");
+        const data = { city, serviceid }
+        const response = await detail.getdetailbycity(data);
+        console.log(response.data.data);
+        setspdetail(response.data.data);
+    }
+
+
     useEffect(() => {
         setserviceid(localStorage.getItem("serviceid"));
         serviceid && getsubservice();
+        setcity(sessionStorage.getItem("cityname"));
+        handledetail();
     }, []);
-    console.log("serviceid", serviceid);
+    console.log("serviceid", spdetail);
 
     const options =
     {
@@ -38,23 +97,42 @@ export const SubService = () => {
             '<i class="fa fa-angle-left"></i>',
             '<i class="fa fa-angle-right"></i>'
         ],
-        // responsive: {
-        //     0: {
-        //         items: 1
-        //     },
-        //     768: {
-        //         items: 2
-        //     },
-        //     1170: {
-        //         items: 3
-        //     }
-        // }
+        responsive: {
+            0: {
+                items: 1
+            },
+            275: {
+                items: 2
+            },
+            410: {
+                items: 3
+            },
+            600: {
+                items: 4
+            },
+            750: {
+                items: 5
+            },
+            900: {
+                items: 6
+            },
+            1200: {
+                items: 8
+            },
+            1300: {
+                items: 9
+            },
+            1500: {
+                items: 11
+            }
+        }
     }
 
     const owl = React.useRef(null);
     return (
         <>
             <Navbar />
+            <h3 className="text-left pt-5 pb-0 mx-5 mt-4 mb-0" style={{ color: "black" }}>Book your Services</h3>
             <section className="servicepage">
 
                 <div className="row d-flex justify-content-center" id="feedback-carousel">
@@ -77,27 +155,88 @@ export const SubService = () => {
 
                                     {servicedata.map((service) => (
                                         <>
-                                            <div class="cards mt-5 pt-3" >
+                                            <div class="cards" >
                                                 <figure class="card" style={{ width: "130px", height: "130px" }}>
                                                     <img src={"http://localhost:4000/image/" + service.image} alt="" />
                                                     <figcaption style={{ color: "black", backgroundColor: "white", fontSize: "10px" }}>{service.subname}</figcaption>
                                                 </figure>
                                             </div>
-
-                                            {/* <h1>{service.subname}</h1>
-                                                <h1>{service.prize}</h1>
-                                                <h1>{service.discription}</h1> */}
-
                                         </>
                                     ))}
-
-
                                 </OwlCarousel>
                     }
                 </div>
+            </section>
+            <section>
+                {city ?
+                    <>
+                        <p>your location</p>
+                        <input id="location" type="button" placeholder="location" value={city} onClick={handleLocationClick} />
+                    </>
+
+                    :
+
+                    <>
+                        <p>Give access Your Location so that we can provide best service providers of your city</p>
+                        <input id="location" type="button" placeholder="location" value={location ? location : "click to access your city"} onClick={handleLocationClick} />
+
+                    </>
+                }
+
+            </section>
+
+            <section>
+                Hire your service provider
+                {
+                    (spdetail === undefined || spdetail.length === 0) ?
+                        <div className="row d-flex justify-content-center pt-5">
+                            <div className="spinner-border" style={{ position: "absolute", textAlign: "center", top: "50%", left: "50%" }}>
+                            </div>
+
+                        </div>
+                        : (spdetail.length === 0) ?
+                            <div className="row d-flex justify-content-center pt-5" style={{ height: "80vh", overflowY: "hidden" }}>
+                                <span>no data found</span>
+
+                            </div>
+                            :
+                            <div className="sp">
+                                <div className='bg-danger'></div>
+                                {
+                                    spdetail.map((sp) => (
+                                        <>
+                                            <div className="card text-center">
+                                                <p key={sp.serviceid._id}>{sp.firstname}</p>
+                                                <p>{sp.lastname}</p>
+                                                <p>{sp.mobileno}</p>
+                                                <p>{sp.gender}</p>
+                                                <p>{sp.shopname}</p>
+                                                <p>{sp.address}</p>
+                                                <p>{sp.cityid.cityname}</p>
+                                                <p>{sp.areaid.areaname}</p>
+
+                                                <p>{sp.pemail}</p>
+                                                <h1>my services</h1>
+                                                <p>{sp.subserid.map((key) => (
+                                                    <>
+                                                        <p>
+                                                            {key.subname.subname}
+                                                            <p> {key.prize}</p>
+                                                        </p>
+
+                                                    </>
+                                                ))}</p>
+                                            </div>
 
 
+                                        </>
 
+
+                                    ))
+                                }
+                            </div>
+
+                }
             </section>
 
         </>

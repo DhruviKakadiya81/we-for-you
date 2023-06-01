@@ -13,7 +13,11 @@ export const ManageSubService = () => {
     const [isEdit, setisEdit] = useState(true);
     const [serviceid, setserviceid] = useState('');
     const [getser, setgetser] = useState([]);
+<<<<<<< HEAD
+
+=======
     const errors={};
+>>>>>>> 469fe714a37c837fdb312d3b0c5f50d2669115c9
     let counter = 1;
     const handleAddser = async () => {
         alert(serviceid + subname + image);

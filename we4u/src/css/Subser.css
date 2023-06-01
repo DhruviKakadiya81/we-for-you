@@ -3,57 +3,14 @@
     position: absolute;
 }
 
-/* .cards .card {
-    position: relative;
-}
-
-.fix {
-    position: fixed;
-}
-
-.dfix {
-    display: inline;
-}
-
-.dib {
-    display: inline-block;
-}
-
-.db {
-    display: block;
-}
-
-.dn {
-    display: none;
-}
- */
-
-/* .cards {
-    display: flex;
-} */
-
-.dif {
-    display: inline-flex;
-}
-
-.dg {
-    display: grid;
-}
-
-.dig {
-    display: inline-grid;
-}
-
-
-
 
 .cards {
     flex-flow: row wrap;
 }
 
 .cards .card {
-    margin: 20px;
-    width: 180px;
+    /* margin: 20px; */
+    /* width: 180px; */
     height: 270px;
     overflow: hidden;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
@@ -86,8 +43,8 @@
     z-index: 10;
     width: 200%;
     height: 100%;
-    top: -90%;
-    left: -20px;
+    /* top: -90%; */
+    /* left: -20px; */
     opacity: 0.1;
     transform: rotate(45deg);
     background: linear-gradient(to top, transparent, #8f8c8c 15%, rgba(255, 255, 255, 0.5));
