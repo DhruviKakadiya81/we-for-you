@@ -58,7 +58,7 @@ export const Footer = () => {
                                 </li>
                             
                                 <li class="mt-2">
-                                    Happy Hours:4PM-6PM
+                                    Happy Hours: 24 * 7
                                 </li>
                             </ul>
                         </div>
