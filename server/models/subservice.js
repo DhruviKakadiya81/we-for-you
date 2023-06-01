@@ -2,13 +2,9 @@ const mongoose = require('mongoose');
 
 const subServiceSchema = new mongoose.Schema({
   subname: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  image: {
-    type: String,
-    required: true
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'SubServiceAdmin',
+    require: true
   },
   prize: {
     type: Number,
@@ -16,7 +12,6 @@ const subServiceSchema = new mongoose.Schema({
   },
   discription: {
     type: String,
-    require: true
   },
   serviceid: {
     type: mongoose.Schema.Types.ObjectId,

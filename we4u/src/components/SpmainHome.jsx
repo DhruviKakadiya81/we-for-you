@@ -78,7 +78,7 @@ export const SpmainHome = () => {
             (
                 <>
                     <Ser_Pro_Navbar />
-                    <div class="d-flex justify-content-center mt-5 overflow-y-hidden">
+                    <div class="d-flex justify-content-center overflow-y-hidden" style={{marginTop:"90px"}}>
                         <div class="spinner-border" role="status">
                             <span class="visually-hidden">Loading...</span>
                         </div>

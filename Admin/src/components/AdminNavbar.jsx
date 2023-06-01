@@ -67,8 +67,6 @@ export const AdminNavbar = ({ children }) => {
               <FaCaretRight onClick={drop} style={{ display: isDrop ? "none" : "block", cursor: "pointer" }} className='dropdown' />
               <div className="sub_menu mt-3" style={{ display: isDrop ? "block" : "none" }} >
                 <div className="sub_list px-1 py-2"><NavLink to="/adminmanageservice" className="sub_items">Add Services</NavLink></div>
-                <div className="sub_list px-1 py-2"><NavLink to="/adminmanagecustomer" className="sub_items">Add Customers</NavLink></div>
-                <div className="sub_list px-1 py-2"><NavLink to="#" className="sub_items">Add ServiceProvider</NavLink></div>
               </div>
             </div>
           </div>
@@ -85,6 +83,7 @@ export const AdminNavbar = ({ children }) => {
                 <div className="sub_list px-1 py-2"><NavLink to="/managesp" className="sub_items">Manage ServiceProvider</NavLink></div>
                 <div className="sub_list px-1 py-2"><NavLink to="/managecity" className="sub_items">Manage City</NavLink></div>
                 <div className="sub_list px-1 py-2"><NavLink to="/managearea" className="sub_items">Manage Area</NavLink></div>
+                <div className="sub_list px-1 py-2"><NavLink to="/managesubser" className="sub_items">Manage Sub service</NavLink></div>
               </div>
             </div>
           </div>

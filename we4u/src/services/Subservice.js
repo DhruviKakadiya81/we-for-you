@@ -2,17 +2,13 @@ import axios from "axios";
 class Post {
     addsubser(data) {
         const url = "http://localhost:4000/addsubser";
-        const config = {
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
-        };
-        return axios.post(url, data, config);
+
+        return axios.post(url, data);
     }
 
     getsubserbymain(data) {
+        console.log("data", data);
         const url = "http://localhost:4000/showsermain";
-
         return axios.post(url, data);
     }
 
@@ -31,6 +27,14 @@ class Post {
         const url = "http://localhost:4000/deletesub";
         return axios.delete(url, { data });
     }
+
+    getsubser() {
+        // console.log(data, "data");
+        const url = "http://localhost:4000/showsub";
+        return axios.get(url);
+    }
+
+
 
 }
 export default new Post();

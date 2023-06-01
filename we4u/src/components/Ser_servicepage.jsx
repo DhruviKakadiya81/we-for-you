@@ -64,19 +64,40 @@ export const Ser_servicepage = () => {
 
                                 :
                                 <div>
+                                    <div className="container">
+                                        <div className="row d-flex justify-content-center">
 
-                                    {(
-                                        serdata.map((sr) => (
-                                            <div className="card">
-                                                <img src={"http://localhost:4000/image/" + sr.image} alt="" />
-                                                <h1>{sr.subname}</h1>
-                                                <p className="price">{sr.prize}</p>
-                                                <p>{sr.discription}</p>
-                                                <Update data={sr} handleIsEdit={() => setisEdit(!isEdit)} />
-                                                <Delete data={sr} />
-                                            </div>
-                                        ))
-                                    )}
+                                            {(
+                                                serdata.map((sr) => (
+
+                                                    <div className="col-lg-6 col-md-12 col-sm-12 my-5">
+                                                        <div className="row" >
+                                                            <div className="col-6 h-20">
+                                                                <img className="mx-auto w-100" src={"http://localhost:4000/image/" + sr.subname.image} alt="" height={"100%"} width={"50%"} />
+                                                            </div>
+                                                            <div className="col-6 h-20" >
+                                                                <h1>{sr.subname.subname}</h1>
+                                                                <p className="price">{sr.prize}</p>
+                                                                {sr.discription ? <p>{sr.discription}</p> : <p><br /></p>}
+                                                                <div className="d-flex justify-content-lg-around">
+                                                                    <Update data={sr} handleIsEdit={() => setisEdit(!isEdit)} />
+                                                                    <Delete data={sr} />
+                                                                </div>
+
+
+                                                            </div>
+                                                        </div>
+
+
+
+                                                    </div>
+
+
+                                                ))
+                                            )}
+                                        </div>
+                                    </div>
+
                                 </div>
 
                     }

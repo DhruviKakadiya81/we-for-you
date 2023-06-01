@@ -41,8 +41,7 @@ const MyForm = () => {
             password
         },
         validate,
-        validateOnChange: true,
-        onSubmit: handleinput(),
+        validateOnChange: true
     });
 
 
