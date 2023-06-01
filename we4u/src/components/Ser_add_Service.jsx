@@ -104,13 +104,13 @@ export const Ser_add_Service = () => {
                     </Select>
                   </FormControl><br />
                   <label style={{ color: "white" }}>Enter Your Sub service</label><br />
-                  <input type="text" className="s_add_input px-2 py-1 mb-3" name="Sub_service" style={{ backgroundColor: "transparent", color: "white" }} onChange={(event) => { setsubname(event.target.value) }} /><br />
+                  <input type="text" className="s_add_input px-2 py-1 mb-3" name="Sub_service" onChange={(event) => { setsubname(event.target.value) }} /><br />
                   <label style={{ color: "white" }}>Price</label><br />
-                  <input type="Number" className="step_input px-2 py-1 mb-3" style={{ backgroundColor: "transparent", color: "white" }} name="Price" onChange={(event) => { setprize(event.target.value) }} /><br />
-                  <label style={{ color: "white" }}>Price</label><br />
-                  <input type="file" className="s_add_input px-2 py-1 mb-3" name="image" style={{ backgroundColor: "transparent", color: "white" }} onChange={(event) => { setimage(event.target.files[0]) }} /><br />
+                  <input type="Number" className="s_add_input px-2 py-1 mb-3" name="Price" onChange={(event) => { setprize(event.target.value) }} /><br />
+                  <label style={{ color: "white" }}>Image</label><br />
+                  <input type="file" className="s_add_input px-2 py-1 mb-3" name="image" onChange={(event) => { setimage(event.target.files[0]) }} /><br />
                   <label style={{ color: "white" }}>Description</label><br />
-                  <textarea type="number" className="s_add_input px-2 py-1 mb-3" name="description" style={{ backgroundColor: "transparent", color: "white" }} onChange={(event) => { setdiscription(event.target.value) }} /><br />
+                  <textarea type="number" className="s_add_input px-2 py-1 mb-3" name="description" onChange={(event) => { setdiscription(event.target.value) }} /><br />
                   <button className='px-4 py-2 mx-5 add_s_s' onClick={handleadd}>Add Sub Service</button>
                 </form>
               </FlexColumnContainer>

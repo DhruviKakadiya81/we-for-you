@@ -93,10 +93,7 @@ export const SubService = () => {
                                 </OwlCarousel>
                     }
                 </div>
-                {/* <div className="owl-carousel__nav">
-                    <button className="owl-carousel__next" onClick={handleNextClick}>Next</button>
-                    <button className="owl-carousel__prev" onClick={handlePrevClick}>Prev</button>
-                </div> */}
+
 
 
             </section >

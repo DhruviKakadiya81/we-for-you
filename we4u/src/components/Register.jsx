@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import apiServices from "../services/RegisterData";
+import { useNavigate } from "react-router-dom";
+import '../css/Register.css';
 
 export const Register = (props) => {
   const [email, setEmail] = useState("");
@@ -8,17 +10,25 @@ export const Register = (props) => {
   const [message, setmessage] = useState("");
   const [eye, seteye] = useState("fa-sharp fa-solid fa-eye-slash");
   const [state, setstate] = useState(props.state);
+  const navigate = useNavigate();
   const handleRegister = async (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     const firmObj = { email, password, state };
     console.log("object----" + password);
-    alert(firmObj.state);
+    // alert(firmObj.state);
 
     const respo = await apiServices.create(firmObj);
     if (respo.data.success === true) {
       setmessage(respo.data.msg);
       localStorage.setItem("token", respo.data.token);
       alert(localStorage.getItem("token"));
+      if (firmObj.state === 1) {
+        navigate("/login");
+      }
+      else {
+        navigate("/loginasp");
+      }
+
 
     } else {
       setmessage(respo.data.msg);
@@ -42,33 +52,31 @@ export const Register = (props) => {
       <>
 
         <section className="d-flex mb-5" id="header">
-          <div className="container pt-5 pb-5 mb-5 pb-5" style={{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset", marginTop: "100px", width: "50rem", overflowX: "hidden" }} >
+          <div className="container pt-5 pb-5 mb-5 pb-5 r_main_div1" >
             <div className="row mx-lg-5 mx-md-2 mx-sm-2">
               <div className="col-md-6 pt-5 mx-auto pt-lg-0 order-1  d-flex justify-content-center order-lg-2 header-image" >
-                <img src="Images/login2.png" width={350} height={380} className="" alt="" />
+                <img src="Images/login4.png" width={350} height={360} className="" alt="" />
               </div>
               <form className="col-lg-6 col-md-6 pt-5 pt-lg-0 order-2 order-lg-1" action="" method="" onSubmit={handleRegister}>
                 <h2 style={{ fontWeight: "700" }}>SIGN UP</h2>
-                <i class="fa-solid fa-envelope  fa-xm" style={{ position: "relative", left: "0px", top: "35px" }}></i>
+                <i class="fa-solid fa-envelope  fa-xm r_icon_mail" ></i>
                 <input
-                  className="pt-3 px-4"
+                  className="pt-3 px-4 r_em_in"
                   type="text"
                   placeholder="Enter Your Email"
                   name="email"
                   onChange={(event) => setEmail(event.target.value)}
-                  style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width: "100%" }}
                   required
                 />
                 <br />
-                <i class="fa-solid fa-lock fa-xm" style={{ position: "relative", left: "0px", top: "43px" }}></i>
+                <i class="fa-solid fa-lock fa-xm r_icon_pass" ></i>
                 <input
                   type="password"
                   name="password"
                   placeholder="Enter the password"
                   onChange={(event) => setPass(event.target.value)}
                   id="id_password"
-                  className="my-0 pt-4 px-4"
-                  style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width: "100%" }}
+                  className="my-0 mt-2 pt-3 px-4 r_pass_in"
                   required
                 />
                 <i
@@ -79,15 +87,13 @@ export const Register = (props) => {
                 ></i>
                 <br />
                 <br />
-                <br />
                 <button
                   type="submit"
-                  className="p-2 text-white"
+                  className="p-2 r_btn_sub"
                   value="register"
-                  style={{ fontSize: "20px", borderRadius: "10px", backgroundColor: "rgb(50,50,50)", border: "none", width: "110px" }}>
-                  Register
+                 >
+                  register
                 </button>
-                <br />
                 <br />
                 <br />
                 <p><a href="/login" style={{ textDecoration: "none" }}>Already Have An Account??</a></p>
@@ -105,33 +111,31 @@ export const Register = (props) => {
       <>
 
         <section className="d-flex mb-5" id="header">
-          <div className="container pt-5 pb-5 mb-5 pb-5" style={{ backgroundColor: "white", borderRadius: "15px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset", marginTop: "100px", width: "50rem", overflowX: "hidden" }} >
+          <div className="container pt-5 pb-5 mb-5 pb-5 r_main_div1" >
             <div className="row mx-lg-5 mx-md-2 mx-sm-2">
               <div className="col-md-6 pt-5 mx-auto pt-lg-0 order-1  d-flex justify-content-center order-lg-2 header-image" >
-                <img src="Images/login2.png" width={270} height={300} className="" alt="" />
+                <img src="Images/login4.png" width={350} height={360} className="" alt="" />
               </div>
               <form className="col-lg-6 col-md-6 pt-5 pt-lg-0 order-2 order-lg-1" action="" method="" onSubmit={handleRegister}>
                 <h2 style={{ fontWeight: "700" }}>SIGN UP</h2>
-                <i class="fa-solid fa-envelope  fa-xm" style={{ position: "relative", left: "0px", top: "35px" }}></i>
+                <i class="fa-solid fa-envelope  fa-xm r_icon_mail" ></i>
                 <input
-                  className="pt-3 px-4"
+                  className="pt-3 px-4 r_em_in"
                   type="text"
                   placeholder="Enter Your Email"
                   name="email"
                   onChange={(event) => setEmail(event.target.value)}
-                  style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width: "100%" }}
-                  required
+                 required
                 />
                 <br />
-                <i class="fa-solid fa-lock fa-xm" style={{ position: "relative", left: "0px", top: "43px" }}></i>
+                <i class="fa-solid fa-lock fa-xm r_icon_pass" ></i>
                 <input
                   type="password"
                   name="password"
                   placeholder="Enter the password"
                   onChange={(event) => setPass(event.target.value)}
                   id="id_password"
-                  className="my-0 pt-4 px-4"
-                  style={{ borderBottom: "1px solid black", outline: "none", borderTopStyle: "hidden", borderLeftStyle: "none", borderRightStyle: "none", width: "100%" }}
+                  className="my-0 mt-2 pt-3 px-4 r_pass_in"
                   required
                 />
                 <i
@@ -142,15 +146,13 @@ export const Register = (props) => {
                 ></i>
                 <br />
                 <br />
-                <br />
                 <button
                   type="submit"
-                  className="p-2 text-white"
+                  className="p-2 r_btn_sub"
                   value="register"
-                  style={{ fontSize: "20px", borderRadius: "10px", backgroundColor: "rgb(50,50,50)", border: "none", width: "110px" }}>
-                  Register
+                  >
+                  register
                 </button>
-                <br />
                 <br />
                 <br />
                 <p><a href="/loginasp" style={{ textDecoration: "none" }}>Already Have An Account??</a></p>
