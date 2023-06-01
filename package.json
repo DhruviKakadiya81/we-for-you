@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@material-ui/core": "^4.12.4",
+    "formik": "^2.4.0",
     "react-bootstrap": "^2.7.4",
     "react-owl-carousel2": "^0.3.0"
   }

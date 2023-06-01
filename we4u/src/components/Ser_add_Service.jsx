@@ -6,6 +6,7 @@ import "../css/Ser_add_service.css"
 import service from '../services/Services'
 import { useState } from 'react'
 import subser from '../services/Subservice'
+import {useFormik} from "formik"
 
 const FlexColumnContainer = styled('div')`
   padding: 10px;
@@ -34,7 +35,7 @@ export const Ser_add_Service = () => {
   const [prize, setprize] = useState();
   const [discription, setdiscription] = useState('');
   const [image, setimage] = useState('');
-
+  const errors={};
   const handleservice = async () => {
     try {
       const response = await service.getservice();
@@ -89,6 +90,35 @@ export const Ser_add_Service = () => {
     serviceid && handlesubservice();
   }, [serviceid]);
   console.log(serviceid);
+
+  const validate = values => {
+
+    if (!values.serviceid) {
+      errors.serviceid = 'Required';
+    } 
+
+    if (!values.subserviceid) {
+      errors.subserviceid = 'Required';
+    } 
+
+    if (!values.Price) {
+      errors.Price = 'Required';
+    } 
+
+    return errors;
+  };
+
+  const formik = useFormik({
+    initialValues: {
+      serviceid,
+      subname,
+      prize
+    },
+    validate,
+    validateOnChange: true,
+  });
+
+
   return (
     <>
       <Ser_Pro_Navbar />
@@ -102,7 +132,7 @@ export const Ser_add_Service = () => {
               <FlexColumnContainer width="100%">
                 <form className="s_add__form_container">
                   <FormControl variant="standard" sx={{ minWidth: 260 }} className='mb-4 area_detail_container'>
-                    <InputLabel id="demo-simple-select-standard-label" className='sel_ser'>Select Service</InputLabel>
+                    <InputLabel id="demo-simple-select-standard-label" className='sel_ser'>Select Main Service</InputLabel>
                     <Select
                       labelId="demo-simple-select-standard-label"
                       id="demo-simple-select-standard"
@@ -110,32 +140,53 @@ export const Ser_add_Service = () => {
                       name="serviceid"
 
                       style={{ backgroundColor: "transparent", color: "white" }}
-                      onChange={(event) => { setserviceid(event.target.value); }}
+                      onChange={(event) => {
+                          formik.handleChange(event);
+                          setserviceid(event.target.value);
+                  }}
+                  onBlur={formik.handleBlur}
                     >
                       {getser ? getser.map(ser => (
                         <MenuItem value={ser._id}>{ser.s_name}</MenuItem>
                       )) :
                         <MenuItem>Select Main service</MenuItem>}
                     </Select>
+                    {formik.touched.serviceid && formik.errors.serviceid && (
+                        <div>{formik.errors.serviceid}</div>
+                )}
                   </FormControl><br />
                   <FormControl variant="standard" sx={{ minWidth: 260 }} className='mb-4 area_detail_container'>
-                    <InputLabel id="demo-simple-select-standard-label" className='sel_ser'>Select Service</InputLabel>
+                    <InputLabel id="demo-simple-select-standard-label" className='sel_ser'>Select Sub Service</InputLabel>
                     <Select
                       labelId="demo-simple-select-standard-label"
                       id="demo-simple-select-standard"
                       label="Select service"
-                      name="serviceid"
+                      name="subserviceid"
                       style={{ backgroundColor: "transparent", color: "white" }}
-                      onChange={(event) => { setsubname(event.target.value); }}
+                      onChange={(event) => {
+                          formik.handleChange(event);
+                          setsubname(event.target.value);
+                  }}
+                  onBlur={formik.handleBlur}
                     >
                       {getsubser ? getsubser.map(ser => (
                         <MenuItem value={ser._id}>{ser.subname}</MenuItem>
                       )) :
                         <MenuItem>Loading...</MenuItem>}
                     </Select>
+                    {formik.touched.subserviceid && formik.errors.subserviceid && (
+                        <div>{formik.errors.subserviceid}</div>
+                )}
                   </FormControl><br />
                   <label style={{ color: "white" }}>Price</label><br />
-                  <input type="Number" className="s_add_input px-2 py-1 mb-3" name="Price" onChange={(event) => { setprize(event.target.value) }} /><br />
+                  <input type="Number" className="s_add_input px-2 py-1 mb-3" name="Price" onChange={(event) => {
+                          formik.handleChange(event);
+                          setprize(event.target.value);
+                  }}
+                  onBlur={formik.handleBlur}/><br/>
+                  {formik.touched.Price && formik.errors.Price && (
+                        <div>{formik.errors.Price}</div>
+                )}
                   <label style={{ color: "white" }}>Description</label><br />
                   <textarea type="number" className="s_add_input px-2 py-1 mb-3" name="description" onChange={(event) => { setdiscription(event.target.value) }} /><br />
                   <button className='px-4 py-2 mx-5 add_s_s' onClick={handleadd}>Add Sub Service</button>
@@ -149,4 +200,3 @@ export const Ser_add_Service = () => {
     </>
   )
 }
-

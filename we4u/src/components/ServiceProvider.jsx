@@ -25,6 +25,7 @@ const StepContainer = styled('div')`
 export const ServiceProvider = (props) => {
   const [activeStep, setActiveStep] = useState(0);
   const [spid, setspid] = useState();
+  const [message, setmessage] = useState("");
   const [isData, setisData] = useState(false);
   const navigate = useNavigate();
   const [step1, setstep1] = useState({
@@ -53,13 +54,30 @@ export const ServiceProvider = (props) => {
   const handleNext = () => {
     if (activeStep === 0) {
       console.log("data:", step1);
-      if (step1.firstname === '') {
+      if (step1.firstname === '' || step1.lastname===''|| step1.mobileno===''||step1.gender==='') {
         setActiveStep((prevActiveStep) => prevActiveStep);
+        document.getElementById("first_error").innerHTML="Fill All the Fields";
+      }
+      else {
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      }
+    }else if (activeStep === 1) {
+      console.log("data:", step1);
+      if (step1.shopname===''||step1.address===''||step1.pemail===''||step1.description==='') {
+        setActiveStep((prevActiveStep) => prevActiveStep);
+        document.getElementById("second_error").innerHTML="Fill All the Fields";
       }
       else {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
       }
     }
+    // else if(activeStep===2){
+    //   console.log("data:",step1);
+    //   if(step1.cityid===''){
+    //     setActiveStep((prevActiveStep) => prevActiveStep);
+    //     document.getElementById("third_error").innerHTML="Fill All the Fields";
+    //   }
+    // }
     else {
       console.log("data:", step1);
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -266,6 +284,7 @@ const Step3 = (props) => {
                   </Select>
                 </FormControl><br />
               </div>
+              <span id='third_error'></span>
             </FlexColumnContainer>
           </FlexColumnContainer>
         </div>
@@ -297,6 +316,7 @@ const Step2 = (props) => {
                 <input type="text" className="step_input px-2 py-1 mb-3" name="pemail" value={props.data.pemail} onChange={handleChange} /><br />
                 <label>Description</label><br />
                 <textarea type="number" className="step_input px-2 py-1 mb-3" name="description" value={props.data.description} onChange={handleChange} /><br />
+                <span id='second_error'></span>
               </div>
             </FlexColumnContainer>
           </FlexColumnContainer>
@@ -326,7 +346,6 @@ const Step1 = (props) => {
               <div className="step_form_container">
                 <label>First Name</label><br />
                 <input type="text" className="px-2 py-1 mb-3 step_input" name='firstname' value={props.data.firstname} onChange={handleChange} /><br />
-
                 <label>Last Name</label><br />
                 <input type="text" className="px-2 py-1 mb-3 step_input" name='lastname' value={props.data.lastname} onChange={handleChange} /><br />
                 <label>Mobile Number</label><br />
@@ -338,6 +357,7 @@ const Step1 = (props) => {
                   <input type="radio" value={'male'} name='gender' className='radio_detail' onChange={handleChange} />
                   <label htmlFor="male" className='me-2 ms-1 radio_detail'> Male </label>
                 </div>
+                <span id='first_error'></span><br/>
               </div>
             </FlexColumnContainer>
           </FlexColumnContainer>

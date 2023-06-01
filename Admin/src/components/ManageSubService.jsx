@@ -5,6 +5,7 @@ import "../css/ManageCity.css";
 import { Button, Modal } from 'react-bootstrap';
 import { FormControl, FormGroup, Input, InputLabel, Typography, Select, MenuItem } from '@mui/material';
 import subservice from '../services/managesubservice';
+import {useFormik} from "formik"
 export const ManageSubService = () => {
     const [citydata, setcitydata] = useState([]);
     const [subname, setsubname] = useState('');
@@ -12,7 +13,11 @@ export const ManageSubService = () => {
     const [isEdit, setisEdit] = useState(true);
     const [serviceid, setserviceid] = useState('');
     const [getser, setgetser] = useState([]);
+<<<<<<< HEAD
 
+=======
+    const errors={};
+>>>>>>> 469fe714a37c837fdb312d3b0c5f50d2669115c9
     let counter = 1;
     const handleAddser = async () => {
         alert(serviceid + subname + image);
@@ -57,6 +62,36 @@ export const ManageSubService = () => {
     }, [])
 
     console.log("hello", getser);
+
+    const validate = values => {
+
+        if (!values.sub_name) {
+          errors.sub_name = 'Required';
+        }else if (!/^[a-zA-Z ]*$/i.test(values.sub_name)) {
+            errors.sub_name = 'You Can Insert Only Characters';
+        }
+
+        if (!values.ser_image) {
+            errors.ser_image = 'Required';
+          }
+
+          if (!values.serviceid) {
+            errors.serviceid = 'Required';
+          }
+        return errors;
+      };
+    
+      const formik = useFormik({
+        initialValues: {
+            subname,
+            image,
+            serviceid
+        },
+        validate,
+        validateOnChange: true,
+      });
+      
+
     return (
         <>
             <AdminNavbar>
@@ -66,29 +101,49 @@ export const ManageSubService = () => {
                     <div className="mx-auto mt-5">
                         <FormControl className='mb-3 city_detail_container'>
                             <InputLabel className='mx-3'>Enter Sub Service Name</InputLabel>
-                            <Input type='text' name='name' value={subname} onChange={(event) => setsubname(event.target.value)} className='mx-3 my-3' />
+                            <Input type='text' name='sub_name' value={subname}
+                            onChange={(event)=>{
+                            formik.handleChange(event);
+                            setsubname(event.target.value);
+                        }} onBlur={formik.handleBlur} 
+                             className='mx-3 my-3' />
+                         {formik.touched.sub_name && formik.errors.sub_name && (
+                        <div>{formik.errors.sub_name}</div>
+                         )}    
                         </FormControl><br />
                         <FormControl className='mb-3 city_detail_container'>
 
-                            <Input type='file' name='image' onChange={(event) => setimage(event.target.files[0])} className='mx-3 my-3' />
+                            <Input type='file' name='ser_image' onChange={(event)=>{
+                    formik.handleChange(event);
+                    setimage(event.target.files[0]);
+                }} onBlur={formik.handleBlur} className='mx-3 my-3' />
+                {formik.touched.ser_image && formik.errors.ser_image && (
+                        <div>{formik.errors.ser_image}</div>
+                )}
                         </FormControl><br />
-                        <FormControl variant="standard" sx={{ minWidth: 260 }} className='mb-4 area_detail_container'>
+                        <FormControl variant="standard" sx={{ minWidth: 150 }} className='mb-4 area_detail_container'>
                             <InputLabel id="demo-simple-select-standard-label" className='sel_ser'>Select Service</InputLabel>
                             <Select
                                 labelId="demo-simple-select-standard-label"
                                 id="demo-simple-select-standard"
                                 label="Select service"
                                 name="serviceid"
-                                onChange={(event) => { setserviceid(event.target.value) }}
+                                onChange={(event)=>{
+                    formik.handleChange(event);
+                    setserviceid(event.target.value);
+                }} onBlur={formik.handleBlur} 
                             >
                                 {getser ? getser.map(ser => (
                                     <MenuItem value={ser._id}>{ser.s_name}</MenuItem>
                                 )) :
                                     <MenuItem>Loading...</MenuItem>}
                             </Select>
+                            {formik.touched.serviceid && formik.errors.serviceid && (
+                        <div>{formik.errors.serviceid}</div>
+                )}
                         </FormControl><br />
                         <FormControl>
-                            <Button type='button' className='my-3 px-5 py-3' onClick={handleAddser} style={{ backgroundColor: "rgb(50,50,50)", border: "none", color: "white" }}>Add Service</Button>
+                            <Button type='button' className='my-3 px-2 py-3' onClick={handleAddser} style={{ backgroundColor: "rgb(50,50,50)", border: "none", color: "white" }}>Add Service</Button>
                         </FormControl>
                     </div>
                 </FormGroup>
