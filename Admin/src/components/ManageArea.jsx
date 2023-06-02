@@ -104,7 +104,7 @@ export const ManageArea = () => {
                     setareaname(event.target.value);
                 }} onBlur={formik.handleBlur} className='my-3'/>
                 {formik.touched.area && formik.errors.area && (
-                        <div>{formik.errors.area}</div>
+                        <div className="formik_error">{formik.errors.area}</div>
                 )}
                    </FormControl><br/>
                     <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }} className='mb-3 area_detail_container'>
@@ -126,7 +126,7 @@ export const ManageArea = () => {
                     ))}
                     </Select>
                     {formik.touched.Select_city && formik.errors.Select_city && (
-                        <div>{formik.errors.Select_city}</div>
+                        <div className="formik_error">{formik.errors.Select_city}</div>
                 )}
                    </FormControl><br/>
 
