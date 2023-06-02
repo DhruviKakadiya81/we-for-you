@@ -23,7 +23,7 @@ const AdminManageService = () => {
 
     if (!values.service) {
       errors.service = 'Required';
-    }else if (!/^[a-zA-Z\\s]+$/i.test(values.service)) {
+    }else if (!/^[a-zA-Z ]*$/i.test(values.service)) {
         errors.service = 'You Can Insert Only Characters';
       }
 
@@ -45,17 +45,17 @@ const AdminManageService = () => {
   return (
     <AdminNavbar>
  
-    <FormGroup className='city_main_container mx-auto'>
-                <Typography variant='h4' className='add_city_heading'>Add Service</Typography>
+    <FormGroup className='ser_main_container mx-auto'>
+                <Typography variant='h4' className='add_ser_heading'>Add Service</Typography>
                 <div className="mx-auto mt-5">
-                   <FormControl className='mb-3 city_detail_container'>
+                   <FormControl className='mb-3 ser_detail_container'>
                     <InputLabel className='mx-3'>Enter Service Name</InputLabel>
                     <Input type='text' name='service' onChange={(event)=>{
                     formik.handleChange(event);
                     setsname(event.target.value);
                 }} onBlur={formik.handleBlur} className='mx-3 my-3'/>
                    {formik.touched.service && formik.errors.service && (
-                        <div>{formik.errors.service}</div>
+                        <div className="formik_error">{formik.errors.service}</div>
                     )}
                    </FormControl><br/>
                    <FormControl className='mb-3 city_detail_container'>
@@ -66,11 +66,11 @@ const AdminManageService = () => {
                 }} onBlur={formik.handleBlur}
                  className='mx-3 my-3' style={{borderBottom:"none"}}/>
                  {formik.touched.image && formik.errors.image && (
-                        <div>{formik.errors.image}</div>
-                )}
-                                    </FormControl><br/>
+                        <div className="formik_error">{formik.errors.image}</div>
+                 )}
+                   </FormControl><br/>
                    <FormControl>
-                    <Button type='submit' className='my-3 px-4 py-3' style={{backgroundColor:"rgb(50,50,50)",border:"none",color:"white"}}>ADD SERVICE</Button>
+                    <Button type='submit' className='px-4 py-3 mb-4' style={{backgroundColor:"rgb(50,50,50)",border:"none",color:"white"}} onClick={handleAddServices}>ADD SERVICE</Button>
                    </FormControl>
                 </div>
             </FormGroup>
