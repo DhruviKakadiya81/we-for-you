@@ -64,33 +64,34 @@ export const Ser_servicepage = () => {
 
                                 :
                                 <div>
-                                    <div className="container">
-                                        <div className="row d-flex justify-content-center">
+                                <h1 className='text-center'>Our Services</h1>
+                                    <div class="container">
+                                        <div class="row d-flex justify-content-center">
 
                                             {(
                                                 serdata.map((sr) => (
 
-                                                    <div className="col-lg-6 col-md-12 col-sm-12 my-5">
-                                                        <div className="row" >
-                                                            <div className="col-6 h-20">
-                                                                <img className="mx-auto w-100" src={"http://localhost:4000/image/" + sr.subname.image} alt="" height={"100%"} width={"50%"} />
-                                                            </div>
-                                                            <div className="col-6 h-20" >
-                                                                <h1>{sr.subname.subname}</h1>
-                                                                <p className="price">{sr.prize}</p>
-                                                                {sr.discription ? <p>{sr.discription}</p> : <p><br /></p>}
-                                                                <div className="d-flex justify-content-lg-around">
-                                                                    <Update data={sr} handleIsEdit={() => setisEdit(!isEdit)} />
-                                                                    <Delete data={sr} />
-                                                                </div>
 
 
+
+                                                    <div class="card" style={{ border:"none", flexDirection: "row", width: "400px", marginLeft: "20px", marginTop: "20px" , boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset" }}>
+                                                        <img src={"http://localhost:4000/image/" + sr.subname.image} style={{ width: "40%", height: "auto" }} alt="" class="card-img-top" />
+                                                        <div class="card-body">
+
+                                                            <h3 class="card-title">{sr.subname.subname}</h3>
+                                                            <p className="price card-text">{sr.prize}</p>
+
+                                                            <p class="card-text">  {sr.discription ? <p>{sr.discription}</p> : <p><br /></p>}</p>
+                                                            <div className="d-flex justify-content-lg-around">
+                                                                <Update data={sr} handleIsEdit={() => setisEdit(!isEdit)} />
+                                                                <Delete data={sr} />
                                                             </div>
                                                         </div>
-
-
-
                                                     </div>
+
+
+
+
 
 
                                                 ))
@@ -99,6 +100,8 @@ export const Ser_servicepage = () => {
                                     </div>
 
                                 </div>
+
+
 
                     }
                 </div>
