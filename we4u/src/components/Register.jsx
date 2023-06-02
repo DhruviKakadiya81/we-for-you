@@ -109,7 +109,7 @@ export const Register = (props) => {
                 />
                 <br />
                 {formik.touched.email && formik.errors.email && (
-                        <div>{formik.errors.email}</div>
+                        <div className="formik_error">{formik.errors.email}</div>
                 )}
                 <i class="fa-solid fa-lock fa-xm r_icon_pass" ></i>
                 <input
@@ -133,7 +133,7 @@ export const Register = (props) => {
                   onClick={handletogglepass}
                 ></i>
                 {formik.touched.password && formik.errors.password && (
-                        <div>{formik.errors.password}</div>
+                        <div className="formik_error">{formik.errors.password}</div>
                       )}
                 <br />
                 <br />
@@ -185,7 +185,7 @@ export const Register = (props) => {
                 />
                 <br />
                 {formik.touched.email && formik.errors.email && (
-                        <div>{formik.errors.email}</div>
+                        <div className="formik_error">{formik.errors.email}</div>
                       )}
                 <i class="fa-solid fa-lock fa-xm r_icon_pass" ></i>
                 <input
@@ -209,7 +209,7 @@ export const Register = (props) => {
                   onClick={handletogglepass}
                 ></i>
                 {formik.touched.password && formik.errors.password && (
-                        <div>{formik.errors.password}</div>
+                        <div className="formik_error">{formik.errors.password}</div>
                 )}
                 <br />
                 <button
