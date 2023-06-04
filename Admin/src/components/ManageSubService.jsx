@@ -19,6 +19,8 @@ export const ManageSubService = () => {
         alert(serviceid + subname + image);
         const response = await subservice.addsubser({ serviceid, subname, image })
         console.log("response", response);
+
+        
         setisEdit(false);
         if (response.data.success === true) {
             alert("added successfully");
