@@ -164,7 +164,7 @@ const Update = (props) => {
                 Edit
             </Button>
             <Modal show={isshow} style={{ overflowX: "scroll", width: "80%" }} >
-                <Modal.Header closeButton onClick={initmodel}>
+                <Modal.Header closeButton onClick={initmodel} style={{border:"none" , outline:"none" , width:"80%"}} >
                     <Modal.Title className='' >
                         Update Product
                     </Modal.Title>
