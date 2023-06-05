@@ -5,28 +5,28 @@ import managearea from '../services/managearea'
 import managecity from '../services/managecity'
 import "../css/ManageArea.css";
 import { Button, Modal, DropdownButton, Dropdown } from 'react-bootstrap';
-import { FormControl, FormGroup, Input, InputLabel, Typography,Select,MenuItem } from '@mui/material'
-import {useFormik} from "formik"
+import { FormControl, FormGroup, Input, InputLabel, Typography, Select, MenuItem } from '@mui/material'
+import { useFormik } from "formik"
 
 export const ManageArea = () => {
     const [areaname, setareaname] = useState('');
-    const [cityname, setcityname] = useState('');
+    // const [cityname, setcityname] = useState('');
     const [cityid, setcityid] = useState("");
     const [citydata, setcitydata] = useState([]);
     const [area, setAreaData] = useState([]);
     const [isEdit, setisEdit] = useState(true);
-    const errors={};
+    const errors = {};
     let counter = 1;
     const handleAddArea = async (event) => {
         const data = { areaname, cityid }
         // alert(data);
-        // console.log("data----", data);
+        console.log("data----", data);
         const response = await managearea.addarea(data);
         console.log("response", response);
         setisEdit(false);
         if (response.data.success === true) {
             alert("added successfully");
-            
+
         }
         else {
             alert("add another city");
@@ -48,7 +48,7 @@ export const ManageArea = () => {
         console.log("area ---", area);
     }
     const handleSelect = (eventKey, event) => {
-        console.log("hello---",event.target.getAttribute('data-value'));
+        console.log("hello---", event.target.getAttribute('data-value'));
         alert(eventKey)
         setcityid(event.target.getAttribute('data-value'));
         setcityname(event.target.getAttribute('value'));
@@ -60,7 +60,7 @@ export const ManageArea = () => {
         setAreaData(area);
         isEdit && handleAreaData();
         setisEdit(true);
-    },[isEdit]);
+    }, [isEdit]);
 
     useEffect(() => {
         handleCityData();
@@ -69,78 +69,78 @@ export const ManageArea = () => {
     const validate = values => {
 
         if (!values.area) {
-          errors.area = 'Required';
-        }else if (!/^[a-zA-Z\\s]+$/i.test(values.area)) {
+            errors.area = 'Required';
+        } else if (!/^[a-zA-Z\\s]+$/i.test(values.area)) {
             errors.area = 'You Can Insert Only Characters';
         }
 
         if (!values.Select_city) {
             errors.Select_city = 'Required';
-          }
+        }
         return errors;
-      };
-    
-      const formik = useFormik({
+    };
+
+    const formik = useFormik({
         initialValues: {
             areaname,
             cityid
         },
         validate,
         validateOnChange: true,
-      });
+    });
 
-
+    console.log(area);
     return (
         <>
             <AdminNavbar>
 
-<FormGroup className='mx-auto area_container'>
-                <Typography variant='h4' className='add_area_heading'>Add Area</Typography>
-                <div className="mt-5 mx-auto main_area_container">
-                   <FormControl className='area_detail_container' sx={{ m: 1, minWidth: 120 }}>
-                    <InputLabel className=''>Enter Area Name</InputLabel>
-                    <Input variant='dark' type='text' name='area' onChange={(event)=>{
-                    formik.handleChange(event);
-                    setareaname(event.target.value);
-                }} onBlur={formik.handleBlur} className='my-3'/>
-                {formik.touched.area && formik.errors.area && (
-                        <div>{formik.errors.area}</div>
-                )}
-                   </FormControl><br/>
-                    <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }} className='mb-3 area_detail_container'>
-                    <InputLabel id="demo-simple-select-standard-label">Select City</InputLabel>
-                    <Select
-                    labelId="demo-simple-select-standard-label"
-                    name='Select_city'
-                    id="demo-simple-select-standard"
-                    label="Select City"
-                    onChange={(event)=>{
-                    formik.handleChange(event);
-                    setcityid(event.target.value);
-                    }} 
-                onBlur={formik.handleBlur}
-                    >
-                    {citydata.map(city => (
-                            <MenuItem key={city._id}   onSelect={handleSelect} data-value={city._id} value={city._id}>{city.cityname}</MenuItem>
+                <FormGroup className='mx-auto area_container'>
+                    <Typography variant='h4' className='add_area_heading'>Add Area</Typography>
+                    <div className="mt-5 mx-auto main_area_container">
+                        <FormControl className='area_detail_container' sx={{ m: 1, minWidth: 120 }}>
+                            <InputLabel className=''>Enter Area Name</InputLabel>
+                            <Input variant='dark' type='text' name='area' onChange={(event) => {
+                                formik.handleChange(event);
+                                setareaname(event.target.value);
+                            }} onBlur={formik.handleBlur} className='my-3' />
+                            {formik.touched.area && formik.errors.area && (
+                                <div>{formik.errors.area}</div>
+                            )}
+                        </FormControl><br />
+                        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }} className='mb-3 area_detail_container'>
+                            <InputLabel id="demo-simple-select-standard-label">Select City</InputLabel>
+                            <Select
+                                labelId="demo-simple-select-standard-label"
+                                name='Select_city'
+                                id="demo-simple-select-standard"
+                                label="Select City"
+                                onChange={(event) => {
+                                    formik.handleChange(event);
+                                    setcityid(event.target.value);
+                                }}
+                                onBlur={formik.handleBlur}
+                            >
+                                {citydata.map(city => (
+                                    <MenuItem key={city._id} onSelect={handleSelect} data-value={city._id} value={city._id}>{city.cityname}</MenuItem>
 
-                    ))}
-                    </Select>
-                    {formik.touched.Select_city && formik.errors.Select_city && (
-                        <div>{formik.errors.Select_city}</div>
-                )}
-                   </FormControl><br/>
+                                ))}
+                            </Select>
+                            {formik.touched.Select_city && formik.errors.Select_city && (
+                                <div>{formik.errors.Select_city}</div>
+                            )}
+                        </FormControl><br />
 
-                   {/* <FormControl className='area_detail_container'  >
+                        {/* <FormControl className='area_detail_container'  >
                         <InputLabel className=''>Selected City Name</InputLabel>
                         <Input variant="dark" type="text" name="name" value={cityname}  className='mx-3 my-3' style={{ color: "black" }} readOnly />
                     </FormControl><br /> */}
 
-                   <FormControl className='mb-3 mx-auto'>
-                    <Button type='submit' className='my-3 px-5 py-3' style={{backgroundColor:"rgb(50,50,50)",border:"none",color:"white"}} onClick={handleAddArea}>ADD AREA</Button>
-                   </FormControl>
+                        <FormControl className='mb-3 mx-auto'>
+                            <Button type='submit' className='my-3 px-5 py-3' style={{ backgroundColor: "rgb(50,50,50)", border: "none", color: "white" }} onClick={handleAddArea}>ADD AREA</Button>
+                        </FormControl>
 
-                </div>
-            </FormGroup>
+                    </div>
+                </FormGroup>
                 {area != undefined && area.length > 0 && (
                     <div className="tablemain" id='abc'>
                         <table className="table table table-striped table-sm">
@@ -148,7 +148,6 @@ export const ManageArea = () => {
                                 <tr>
                                     <th>Index</th>
                                     <th>Area name</th>
-                                    <th>City name</th>
                                     <th>Delete</th>
                                     <th>Update</th>
                                 </tr>
@@ -161,7 +160,7 @@ export const ManageArea = () => {
                                     <tr key={area._id}>
                                         <td>{counter++}</td>
                                         <td>{area.areaname}</td>
-                                        <td>{area.cityid.cityname}</td>
+                                        <td>{area.cityid._id}</td>
 
                                         <td>
                                             <Delete id={area._id} handleIsEdit={() => setisEdit(!isEdit)} />
@@ -314,7 +313,7 @@ const Update = (props) => {
                             <InputLabel className=''>Enter Area Name</InputLabel>
                             <Input variant="dark" type="text" value={areaname} name="name" onChange={(event) => setareaname(event.target.value)} className='mx-3 my-3' style={{ color: "black" }} />
                         </FormControl><br />
-                        <br/>
+                        <br />
                         <DropdownButton
                             title="Select City"
                             variant='Secondary'

@@ -39,7 +39,7 @@ export const Ser_servicepage = () => {
     }, [spid, isEdit]);
 
 
-    console.log("spid", serdata);
+    console.log("spid", spid);
 
     return (
         <>
@@ -47,7 +47,7 @@ export const Ser_servicepage = () => {
             <section className='mt-5 pt-5'>
                 <div className="container">
                     {
-                        (!spid) ?
+                        (!spid || !serdata) ?
                             <div className="d-flex justify-content-center ">
                                 <div className="spinner-border d-flex align-items-center" role="status">
                                     <span className="visually-hidden">Loading...</span>
@@ -57,9 +57,9 @@ export const Ser_servicepage = () => {
                             : (!serdata.length > 0) ?
 
                                 <div className="d-flex justify-content-center ">
-                                    <div className="spinner-border d-flex align-items-center" role="status">
-                                        <span className="visually-hidden">Loading...</span>
-                                    </div>
+
+                                    not added services
+
                                 </div>
 
                                 :
@@ -109,12 +109,13 @@ export const Ser_servicepage = () => {
 }
 const Update = (props) => {
     console.log(props.data.subname);
-    const [getser, setgetser] = useState('');
+    const [getser, setgetser] = useState([]);
     const [serviceid, setserviceid] = useState(props.data.serviceid);
-    const [subname, setsubname] = useState(props.data.subname);
+    const [subname, setsubname] = useState(props.data.subname._id);
     const [prize, setprize] = useState(props.data.prize);
     const [discription, setdiscription] = useState(props.data.discription);
     const [id, setid] = useState(props.data._id);
+    const [getsubser, setgetsubser] = useState([]);
 
     const handleservice = async () => {
         try {
@@ -133,7 +134,7 @@ const Update = (props) => {
 
 
     const handleupdate = async (event) => {
-        alert(subname + prize + serviceid + discription);
+        alert(prize);
         const response = await subser.updateser({ id, subname, prize, discription, serviceid });
         if (response.data.success === true) {
             initmodel();
@@ -142,18 +143,32 @@ const Update = (props) => {
 
         console.log(response);
     }
+
+    const handlesubservice = async () => {
+        try {
+            const response = await subser.getsubserbymain({ serviceid });
+            setgetsubser(response.data.data);
+            console.log(response);
+        } catch (error) {
+            console.log(error);
+        }
+    }
     useEffect(() => {
         handleservice();
+        setsubname(props.data.subname._id)
     }, []);
+    useEffect(() => {
+        handlesubservice();
+    }, [serviceid]);
 
     useEffect(() => {
-        setsubname(props.data.subname);
+        setsubname(props.data.subname._id);
         setprize(props.data.prize);
         setdiscription(props.data.discription);
         setserviceid(props.data.serviceid);
         setid(props.data._id);
     }, [props]);
-
+    console.log("subname ===>", subname);
     return (
 
         <>
@@ -186,8 +201,26 @@ const Update = (props) => {
                                     <MenuItem>Loading...</MenuItem>}
                             </Select>
                         </FormControl><br />
-                        <label>Enter Your Sub service</label><br />
-                        <input type="text" className=" px-2 py-1 mb-3" name="Sub_service" defaultValue={subname} onChange={(event) => { setsubname(event.target.value) }} /><br />
+                        <FormControl variant="standard" sx={{ minWidth: 260 }} className='mb-4 area_detail_container'>
+                            <InputLabel id="demo-simple-select-standard-label" className='sel_ser'>Select Sub Service</InputLabel>
+                            <Select
+                                labelId="demo-simple-select-standard-label"
+                                id="demo-simple-select-standard"
+                                label="Select service"
+                                name="subname"
+                                defaultValue={subname}
+                                onChange={(event) => {
+                                    setsubname(event.target.value);
+                                }}
+
+                            >
+                                {getsubser ? getsubser.map(ser => (
+                                    <MenuItem value={ser._id}>{ser.subname}</MenuItem>
+                                )) :
+                                    <MenuItem>Loading...</MenuItem>}
+                            </Select>
+
+                        </FormControl><br />
                         <label>Price</label><br />
                         <input type="Number" className=" px-2 py-1 mb-3" name="Price" defaultValue={prize} onChange={(event) => { setprize(event.target.value) }} /><br />
                         <label>Description</label><br />

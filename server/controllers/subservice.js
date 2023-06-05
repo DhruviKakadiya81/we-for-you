@@ -74,7 +74,7 @@ const showservicebyspid = async (req, res) => {
             res.send({ success: true, msg: "sub services data", data: subserdata });
         }
         else {
-            res.send({ success: false, msg: "not service" });
+            res.send({ success: true, msg: "not service", data: subserdata });
         }
     } catch (error) {
         res.send({ success: false, msg: "data" });
@@ -136,22 +136,41 @@ const showdallservicepr = async (req, res) => {
     }
 }
 
-const getdetailbycity = async (req, res) => {
+const getdetailbysubserandcity = async (req, res) => {
     try {
-        const city = req.body.city;
-        const serviceid = req.body.serviceid;
-
-        const data = await SPModel.find({ serviceid: serviceid, cityname: city }).populate('cityid').populate('areaid').populate('serviceid').populate('spid').populate({
-            path: 'subserid', populate: {
-                path: 'subname', model: 'SubServiceAdmin'
+        if (!req.body.city) {
+            const subserid = req.body.subserid;
+            const data = await SPModel.find({ subserid: subserid }).populate('cityid').populate('areaid').populate('serviceid').populate('spid').populate({
+                path: 'subserid', populate: {
+                    path: 'subname', model: 'SubServiceAdmin'
+                }
+            });
+            console.log("data is===>", data);
+            if (data === null) {
+                return res.send({ success: false, data: data });
             }
-        });
-        console.log("data is===>", data);
-        if (data === null) {
-            return res.send({ success: false, data: data });
+            else {
+                return res.send({ success: true, data: data });
+            }
+
         }
         else {
-            return res.send({ success: true, data: data });
+            const city = req.body.city;
+            const subserid = req.body.subserid;
+
+            const data = await SPModel.find({ subserid: subserid, cityname: city }).populate('cityid').populate('areaid').populate('serviceid').populate('spid').populate({
+                path: 'subserid', populate: {
+                    path: 'subname', model: 'SubServiceAdmin'
+                }
+            });
+            console.log("data is===>", data);
+            if (data === null) {
+                return res.send({ success: false, data: data });
+            }
+            else {
+                return res.send({ success: true, data: data });
+            }
+
         }
 
     } catch (error) {
@@ -160,5 +179,60 @@ const getdetailbycity = async (req, res) => {
     }
 }
 
+const getdetailbycity = async (req, res) => {
+    try {
+        if (!req.body.city) {
+            const serviceid = req.body.serviceid;
+            const data = await SPModel.find({ serviceid: serviceid }).populate('cityid').populate('areaid').populate('serviceid').populate('spid').populate({
+                path: 'subserid', populate: {
+                    path: 'subname', model: 'SubServiceAdmin'
+                }
+            });
+            console.log("data is===>", data);
+            if (data === null) {
+                return res.send({ success: false, data: data });
+            }
+            else {
+                return res.send({ success: true, data: data });
+            }
 
-module.exports = { addservices, showservicebymain, showservicebyspid, updatesubser, deletesubser, showdallservicepr, getdetailbycity }
+        }
+        else {
+            const city = req.body.city;
+            const serviceid = req.body.serviceid;
+
+            const data = await SPModel.find({ serviceid: serviceid, cityname: city }).populate('cityid').populate('areaid').populate('serviceid').populate('spid').populate({
+                path: 'subserid', populate: {
+                    path: 'subname', model: 'SubServiceAdmin'
+                }
+            });
+            console.log("data is===>", data);
+            if (data === null) {
+                return res.send({ success: false, data: data });
+            }
+            else {
+                return res.send({ success: true, data: data });
+            }
+
+        }
+
+    } catch (error) {
+        console.log("error", error);
+        res.send({ success: false });
+    }
+}
+
+const searchbysubname = async (req, res) => {
+    try {
+        const subname = req.body.subname;
+        console.log("subname:=>", req.body);
+        const data = await subser.findOne({ subname }).populate('subname');
+        res.send({ success: true, data: data });
+    } catch (error) {
+        console.log("error", error);
+        res.send({ success: false });
+    }
+}
+
+
+module.exports = { addservices, showservicebymain, showservicebyspid, updatesubser, deletesubser, showdallservicepr, getdetailbycity, getdetailbysubserandcity, searchbysubname }
