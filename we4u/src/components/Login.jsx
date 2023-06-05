@@ -122,7 +122,7 @@ export const Login = (props) => {
                 />
                 <br />
                 {formik.touched.email && formik.errors.email && (
-                  <div>{formik.errors.email}</div>
+                  <div className="formik_error">{formik.errors.email}</div>
                 )}
 
                 <i class="fa-solid fa-lock  fa-xm icon_pass" ></i>
@@ -148,7 +148,7 @@ export const Login = (props) => {
                 ></i>
                 <br />
                 {formik.touched.password && formik.errors.password && (
-                  <div>{formik.errors.password}</div>
+                  <div className="formik_error">{formik.errors.password}</div>
                 )}
                 <br />
                 <p><a href="/forget" style={{ textDecoration: "none" }}>Forget password?</a></p>
@@ -265,7 +265,7 @@ export const Login = (props) => {
                 />
                 <br />
                 {formik.touched.email && formik.errors.email && (
-                  <div>{formik.errors.email}</div>
+                  <div className="formik_error">{formik.errors.email}</div>
                 )}
 
                 <i class="fa-solid fa-lock fa-xm icon_pass" ></i>
@@ -291,7 +291,7 @@ export const Login = (props) => {
                 ></i>
                 <br />
                 {formik.touched.password && formik.errors.password && (
-                  <div>{formik.errors.password}</div>
+                  <div className="formik_error">{formik.errors.password}</div>
                 )}
                 <br />
                 <p><a href="/forgetasp" style={{ textDecoration: "none" }}>Forget password?</a></p>

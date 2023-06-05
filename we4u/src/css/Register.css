@@ -49,3 +49,7 @@
        color: white;
        margin-top: 10px;
 }
+
+.formik_error{
+    color: red;
+}

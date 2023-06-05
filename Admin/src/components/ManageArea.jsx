@@ -10,7 +10,7 @@ import { useFormik } from "formik"
 
 export const ManageArea = () => {
     const [areaname, setareaname] = useState('');
-    // const [cityname, setcityname] = useState('');
+    const [cityname, setcityname] = useState('');
     const [cityid, setcityid] = useState("");
     const [citydata, setcitydata] = useState([]);
     const [area, setAreaData] = useState([]);
@@ -20,7 +20,7 @@ export const ManageArea = () => {
     const handleAddArea = async (event) => {
         const data = { areaname, cityid }
         // alert(data);
-        console.log("data----", data);
+        // console.log("data----", data);
         const response = await managearea.addarea(data);
         console.log("response", response);
         setisEdit(false);
@@ -89,7 +89,7 @@ export const ManageArea = () => {
         validateOnChange: true,
     });
 
-    console.log(area);
+
     return (
         <>
             <AdminNavbar>
@@ -104,7 +104,7 @@ export const ManageArea = () => {
                                 setareaname(event.target.value);
                             }} onBlur={formik.handleBlur} className='my-3' />
                             {formik.touched.area && formik.errors.area && (
-                                <div>{formik.errors.area}</div>
+                                <div className='formik_error'>{formik.errors.area}</div>
                             )}
                         </FormControl><br />
                         <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }} className='mb-3 area_detail_container'>
@@ -126,7 +126,7 @@ export const ManageArea = () => {
                                 ))}
                             </Select>
                             {formik.touched.Select_city && formik.errors.Select_city && (
-                                <div>{formik.errors.Select_city}</div>
+                                <div className='formik_error'>{formik.errors.Select_city}</div>
                             )}
                         </FormControl><br />
 
@@ -148,6 +148,7 @@ export const ManageArea = () => {
                                 <tr>
                                     <th>Index</th>
                                     <th>Area name</th>
+                                    <th>City name</th>
                                     <th>Delete</th>
                                     <th>Update</th>
                                 </tr>
@@ -160,7 +161,7 @@ export const ManageArea = () => {
                                     <tr key={area._id}>
                                         <td>{counter++}</td>
                                         <td>{area.areaname}</td>
-                                        <td>{area.cityid._id}</td>
+                                        <td>{area.cityid.cityname}</td>
 
                                         <td>
                                             <Delete id={area._id} handleIsEdit={() => setisEdit(!isEdit)} />

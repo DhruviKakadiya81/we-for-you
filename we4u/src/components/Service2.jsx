@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
 import detail from '../services/spservice';
+import { event } from 'jquery';
+
 
 export const Service2 = () => {
     const [query, setQuery] = useState('');
@@ -12,34 +14,9 @@ export const Service2 = () => {
     const [image, setimage] = useState(sessionStorage.getItem("subname"));
     const [service, setservice] = useState(JSON.parse(localStorage.getItem("subservicedata")));
     const [spdetail, setspdetail] = useState([]);
-    // const searchImages = async (query) => {
-    //     try {
-    //         alert("hello");
-    //         const apikey = "AIzaSyC3LwGQz2Pq2QbRxZhfzwiBSV7OnjY4bHY";
-    //         const clientid = "a729227f3d3424afd";
-    //         const response = await axios.get(
-    //             `https://www.googleapis.com/customsearch/v1?key=${apikey}&cx=${clientid}&q=${sessionStorage.getItem("subname")}&searchType=image`
-    //         );
-
-    //         const images = response.data.items.map((item) => item.link);
-    //         setimage(images[1]);
-    //         console.log("images", images);
-    //         // Handle the image URLs or update the state with the image URLs as per your application needs
-    //     } catch (error) {
-    //         console.error('Error searching images:', error);
-    //         // Handle the error
-    //     }
-    // };
-    // useEffect(() => {
-    //     searchImages(sessionStorage.getItem("subname"));
-    // }, []);
-
-
-
-    // const handleSearch = () => {
-    //     alert("hello");
-    //     searchImages(query);
-    // };
+    const [bookeddata, setbookeddata] = useState();
+    const [prize, setprize] = useState()
+    // var prize;
     function handleLocationClick(event) {
         event.preventDefault();
         if (navigator.geolocation) {
@@ -85,25 +62,35 @@ export const Service2 = () => {
         // alert("hello");
 
         console.log("first==>", service.subname._id);
-        const data = { subserid: service._id }
+        const data = { subserid: service.subname._id }
         const response = await detail.getdetailbysubser(data);
         console.log(response.data.data);
         setspdetail(response.data.data);
     }
 
-    const handlesubserdetail = async () => {
-        // alert("hello");
-        const data = { subserid: service.subname._id }
-        alert(data.subserid);
-        const response = await detail.getdetailbycity(data);
-        console.log(response.data.data);
-        setspdetail(response.data.data);
+    const handlebookser = (data) => {
+
+        console.log(data);
+        console.log(data.subserid);
+
+        data.subserid.map((key) => {
+            // console.log(key.subname.subname, "name");
+            if (key.subname.subname === service.subname.subname) {
+                setprize(key.prize);
+                console.log("prize", key.prize)
+            }
+        }
+        );
+
+
     }
 
     useEffect(() => {
         handledetail();
     }, []);
-    console.log("serviceid", service._id);
+
+    console.log("serviceid", prize);
+    // console.log("serviceid", spdetail);
     return (
         <>
             <Navbar />
@@ -151,6 +138,7 @@ export const Service2 = () => {
                                 {
                                     spdetail.map((sp) => (
                                         <>
+
                                             <div className="text-center">
                                                 <p key={sp.serviceid._id}>{sp.firstname} {sp.lastname}</p>
                                                 <p></p>
@@ -162,20 +150,22 @@ export const Service2 = () => {
                                                 <p>{sp.areaid.areaname}</p>
                                                 <p>{sp.pemail}</p>
                                                 {
+
                                                     sp.subserid.map((key) => (
                                                         <>
-                                                            {key._id === service._id ?
+
+                                                            <p>{key.subname.subname === service.subname.subname ?
                                                                 <p>prize := {key.prize}</p>
                                                                 :
                                                                 <p></p>
-                                                            }
+                                                            }</p>
                                                         </>
 
 
 
                                                     ))
                                                 }
-                                                <button>Hire service provider</button>
+                                                <button type='button' onClick={(event) => { handlebookser(sp) }}>Hire service provider</button>
                                             </div>
 
 
