@@ -65,7 +65,7 @@ export const Ser_servicepage = () => {
                                 :
                                 <div>
                                 <h1 className='text-center'>Our Services</h1>
-                                    <div class="container">
+                                    <div class="container" style={{width:"1000px"}}>
                                         <div class="row d-flex justify-content-center">
 
                                             {(

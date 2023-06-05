@@ -244,20 +244,6 @@ const Step3 = (props) => {
             <FlexColumnContainer width="100%">
               <div className="step_form_container">
                 <FormControl variant="standard" sx={{ m: 1, minWidth: 180 }} className='drop_input my-3'>
-                  <InputLabel id="demo-simple-select-standard-label">Select Service</InputLabel>
-                  <Select
-                    labelId="demo-simple-select-standard-label"
-                    id="demo-simple-select-standard"
-                    label="Select service"
-                    name="serviceid"
-                    onChange={handleChange}
-                  >
-                    {getservice1.map(ser => (
-                      <MenuItem value={ser._id}>{ser.s_name}</MenuItem>
-                    ))}
-                  </Select>
-                </FormControl><br />
-                <FormControl variant="standard" sx={{ m: 1, minWidth: 180 }} className='drop_input my-3'>
                   <InputLabel id="demo-simple-select-standard-label">Select City</InputLabel>
                   <Select
                     labelId="demo-simple-select-standard-label"
