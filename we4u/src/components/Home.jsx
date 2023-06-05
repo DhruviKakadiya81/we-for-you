@@ -175,9 +175,9 @@ export const Home = () => {
         </div>
       </section>
 
-      <section className="services1" style={{ minHeight: "600px" }}>
+      <section className="services1" style={{ minHeight: "300px" }}>
 
-        <h1 className='serviceh1 mt-5'>  Our Servicess </h1>
+        <h1 className='serviceh1 mt-5'>  Our Services </h1>
 
 
 
@@ -191,14 +191,14 @@ export const Home = () => {
 
               <div className="card mx-3 my-4" onClick={(event) => { event.preventDefault(); localStorage.setItem("serviceid", product._id); navigate("/service") }} style={{ width: "12rem", height: "11rem", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset" }} >
                 {/* <img src={'http://localhost:4000/image/' + product.s_icon} className="card-img-top" alt="..." style={{height:"60px",width:"80px",textAlign:"center",marginTop:"5px",margin:"auto"}}/> */}
-                <div className='text-center mt-2' >
-                  <img src={'http://localhost:4000/image/' + product.s_icon} width="100" height="100" alt="..." />
+                <div className='text-center mt-1' >
+                  <img src={'http://localhost:4000/image/' + product.s_icon} width="125" height="125" alt="..." />
                 </div>
                 <div className="card-body">
 
 
 
-                  <p class="card-text text-center">
+                  <p className="card-text text-center">
                     <h5>{product.s_name} </h5>
                   </p>
                 </div>
@@ -215,7 +215,7 @@ export const Home = () => {
       </section>
       <div class="parallax mb-0" style={{
         /* The image used */
-        backgroundImage: ` linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/homeimag9.jpg")`,
+        backgroundImage: ` linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/homeimg3.jpg")`,
 
         /* Set a specific height */
         minHeight: "500px",

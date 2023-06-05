@@ -138,7 +138,7 @@ export const ManageCity = () => {
                     setcityname(event.target.value);
                 }} onBlur={formik.handleBlur} className='mx-3 my-3'/>
                 {formik.touched.city && formik.errors.city && (
-                        <div>{formik.errors.city}</div>
+                        <div className="formik_error">{formik.errors.city}</div>
                 )}
                    </FormControl><br/>
                    <FormControl>
