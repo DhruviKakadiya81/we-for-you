@@ -14,5 +14,15 @@ class Post {
         const url = "http://localhost:4000/spdetailbycity";
         return axios.post(url, data);
     }
+
+    getdetailbysubser(data) {
+        const url = "http://localhost:4000/spdetailbysubser";
+        return axios.post(url, data);
+    }
+
+    getserdetailbysubname(data) {
+        const url = "http://localhost:4000/searchbysubaname";
+        return axios.post(url, data);
+    }
 }
 export default new Post();

@@ -30,6 +30,7 @@ import { SubService } from "./components/SubService";
 import { Ser_servicepage } from "./components/Ser_servicepage";
 
 import MyForm from "./components/MyForm";
+import { Service2 } from "./components/Service2";
 
 
 
@@ -91,6 +92,7 @@ function App() {
           <Route path="/yourser" element={<Ser_servicepage />}></Route>
           <Route path="/test" element={<MyForm />}></Route>
           <Route path="/myform" element={<MyForm />}></Route>
+          <Route path="/service2" element={<Service2 />}></Route>
         </Routes>
       </Router>
     </>

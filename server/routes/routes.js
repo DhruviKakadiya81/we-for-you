@@ -91,7 +91,8 @@ router1.delete("/deletesubser", subserad.deletesubser);
 router1.put("/updatesubser", upload.single('image'), subserad.updatesubser);
 router1.get("/spdetail", subser.showdallservicepr);
 router1.post("/spdetailbycity", subser.getdetailbycity);
-
+router1.post("/spdetailbysubser", subser.getdetailbysubserandcity);
+router1.post("/searchbysubaname", subser.searchbysubname);
 // router1.post("/getuser",logcontroller.getuserlogin);
 // router1.post("/getuser",logcontroller.getuserlogin);
 

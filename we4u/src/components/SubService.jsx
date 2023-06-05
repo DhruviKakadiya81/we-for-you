@@ -7,7 +7,7 @@ import $ from 'jquery'
 import OwlCarousel from 'react-owl-carousel2';
 import 'react-owl-carousel2/lib/styles.css';
 import detail from '../services/spservice';
-
+import { useNavigate } from 'react-router-dom';
 
 export const SubService = () => {
     const [serviceid, setserviceid] = useState(localStorage.getItem("serviceid"));
@@ -15,6 +15,7 @@ export const SubService = () => {
     const [city, setcity] = useState('');
     const [location, setLocation] = useState(null);
     const [spdetail, setspdetail] = useState([]);
+    const navigate = useNavigate();
     const getsubservice = async () => {
         const response = await showservice.getsubserbymain({ serviceid });
         console.log(response);
@@ -72,6 +73,15 @@ export const SubService = () => {
         const response = await detail.getdetailbycity(data);
         console.log(response.data.data);
         setspdetail(response.data.data);
+    }
+
+    const handleservice2 = async (service) => {
+        console.log("main service data", service);
+        const subname = service._id;
+        const response = await detail.getserdetailbysubname({ subname });
+        console.log("response of subservice data", response);
+        localStorage.setItem("subservicedata", JSON.stringify(response.data.data));
+        navigate("/service2");
     }
 
 
@@ -155,7 +165,7 @@ export const SubService = () => {
 
                                     {servicedata.map((service) => (
                                         <>
-                                            <div class="cards" >
+                                            <div class="cards" onClick={(event) => { handleservice2(service) }} >
                                                 <figure class="card" style={{ width: "130px", height: "130px" }}>
                                                     <img src={"http://localhost:4000/image/" + service.image} alt="" />
                                                     <figcaption style={{ color: "black", backgroundColor: "white", fontSize: "10px" }}>{service.subname}</figcaption>
@@ -190,7 +200,7 @@ export const SubService = () => {
                 {
                     (spdetail === undefined || spdetail.length === 0) ?
                         <div className="row d-flex justify-content-center pt-5">
-                            <div className="spinner-border" style={{ position: "absolute", textAlign: "center", top: "50%", left: "50%" }}>
+                            <div className="spinner-border" style={{ position: "absolute", textAlign: "center", top: "80%", left: "50%" }}>
                             </div>
 
                         </div>
@@ -212,15 +222,17 @@ export const SubService = () => {
                                                 <p>{sp.gender}</p>
                                                 <p>{sp.shopname}</p>
                                                 <p>{sp.address}</p>
-                                                <p>{sp.cityid.cityname}</p>
-                                                <p>{sp.areaid.areaname}</p>
+                                                {sp.cityid ? <p>{sp.cityid.cityname} </p> : <br />}
+                                                {sp.areaid ? <p>{sp.areaid.areaname}</p> : <br />}
+
 
                                                 <p>{sp.pemail}</p>
                                                 <h1>my services</h1>
                                                 <p>{sp.subserid.map((key) => (
                                                     <>
                                                         <p>
-                                                            {key.subname.subname}
+
+                                                            {/* {key.subname.subname} */}
                                                             <p> {key.prize}</p>
                                                         </p>
 
