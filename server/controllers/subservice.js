@@ -139,18 +139,37 @@ const showdallservicepr = async (req, res) => {
 const getdetailbysubserandcity = async (req, res) => {
     try {
         if (!req.body.city) {
+
             const subserid = req.body.subserid;
-            const data = await SPModel.find({ subserid: subserid }).populate('cityid').populate('areaid').populate('serviceid').populate('spid').populate({
+            const data = await SPModel.find().populate('cityid').populate('areaid').populate('serviceid').populate('spid').populate({
                 path: 'subserid', populate: {
                     path: 'subname', model: 'SubServiceAdmin'
                 }
-            });
-            console.log("data is===>", data);
+            })
+            const getSubseridBySubname = (subname_id) => {
+                const subserids = [];
+
+                data.forEach((entry) => {
+                    // console.log(entry)
+                    entry.subserid.forEach((subserid) => {
+                        console.log("subserid =>", subserid)
+                        if (subserid.subname._id == subname_id) {
+                            subserids.push(entry);
+                        }
+                    });
+                });
+                console.log("subserid2 =>", subserids);
+                // 647c6d923759ebdf33deefc9
+                return subserids;
+            };
+
+            const subserids = getSubseridBySubname(subserid);
+
             if (data === null) {
                 return res.send({ success: false, data: data });
             }
             else {
-                return res.send({ success: true, data: data });
+                return res.send({ success: true, data: subserids });
             }
 
         }

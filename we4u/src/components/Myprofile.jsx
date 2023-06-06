@@ -6,9 +6,9 @@ export const Myprofile = (props) => {
 
     return (
         <>
-            <div class="page-content page-container" id="page-content">
+            <div class="page-content page-container" id="page-content" style={{ position: "absolute", top: "300px" }}>
                 <div class="padding">
-                    <div class="row container d-flex justify-content-center">
+                    <div class="row container d-flex justify-content-center" style={{ position: "absolute", top: "300px" }}>
                         <div class="col-xl- col-md-12">
                             <div class="card1 user-card-full">
                                 <div class="row m-l-0 m-r-0">

@@ -233,7 +233,7 @@ export const SubService = () => {
                                                         <p>
 
                                                             {/* {key.subname.subname} */}
-                                                            <p> {key.prize}</p>
+                                                            <p>{key.subname.subname} :  {key.prize}Rs</p>
                                                         </p>
 
                                                     </>

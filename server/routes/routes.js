@@ -14,6 +14,7 @@ const userdetail = require("../controllers/userdetails");
 const spdetail = require("../controllers/spDetail");
 const subser = require("../controllers/subservice");
 const subserad = require("../controllers/subserviceadmin");
+const addtocart = require("../controllers/bookservice");
 const path = require("path");
 var multer = require("multer");
 const router1 = express.Router();
@@ -93,6 +94,11 @@ router1.get("/spdetail", subser.showdallservicepr);
 router1.post("/spdetailbycity", subser.getdetailbycity);
 router1.post("/spdetailbysubser", subser.getdetailbysubserandcity);
 router1.post("/searchbysubaname", subser.searchbysubname);
+
+
+router1.post("/addtocart", addtocart.bookservice);
+router1.post("/showcart", addtocart.showcart);
+router1.delete("/deletecart", addtocart.deleteintocart);
 // router1.post("/getuser",logcontroller.getuserlogin);
 // router1.post("/getuser",logcontroller.getuserlogin);
 
