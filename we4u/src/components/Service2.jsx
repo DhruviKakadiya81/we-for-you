@@ -4,42 +4,22 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
 import detail from '../services/spservice';
+import getuser from '../services/GetUser';
+import { useNavigate } from 'react-router-dom';
+import userdata from '../services/UserProfile';
+import cartservice from '../services/cartservics';
 
 export const Service2 = () => {
-    const [query, setQuery] = useState('');
     const [city, setcity] = useState(sessionStorage.getItem("cityname"));
     const [location, setLocation] = useState(null);
     const [image, setimage] = useState(sessionStorage.getItem("subname"));
     const [service, setservice] = useState(JSON.parse(localStorage.getItem("subservicedata")));
     const [spdetail, setspdetail] = useState([]);
-    // const searchImages = async (query) => {
-    //     try {
-    //         alert("hello");
-    //         const apikey = "AIzaSyC3LwGQz2Pq2QbRxZhfzwiBSV7OnjY4bHY";
-    //         const clientid = "a729227f3d3424afd";
-    //         const response = await axios.get(
-    //             `https://www.googleapis.com/customsearch/v1?key=${apikey}&cx=${clientid}&q=${sessionStorage.getItem("subname")}&searchType=image`
-    //         );
-
-    //         const images = response.data.items.map((item) => item.link);
-    //         setimage(images[1]);
-    //         console.log("images", images);
-    //         // Handle the image URLs or update the state with the image URLs as per your application needs
-    //     } catch (error) {
-    //         console.error('Error searching images:', error);
-    //         // Handle the error
-    //     }
-    // };
-    // useEffect(() => {
-    //     searchImages(sessionStorage.getItem("subname"));
-    // }, []);
-
-
-
-    // const handleSearch = () => {
-    //     alert("hello");
-    //     searchImages(query);
-    // };
+    const [bookeddata, setbookeddata] = useState();
+    const [serviceid, setserviceid] = useState();
+    const [userid, setuserid] = useState();
+    const navigate = useNavigate();
+    // var prize;
     function handleLocationClick(event) {
         event.preventDefault();
         if (navigator.geolocation) {
@@ -85,25 +65,77 @@ export const Service2 = () => {
         // alert("hello");
 
         console.log("first==>", service.subname._id);
-        const data = { subserid: service._id }
+        const data = { subserid: service.subname._id }
         const response = await detail.getdetailbysubser(data);
         console.log(response.data.data);
         setspdetail(response.data.data);
     }
 
-    const handlesubserdetail = async () => {
-        // alert("hello");
-        const data = { subserid: service.subname._id }
-        alert(data.subserid);
-        const response = await detail.getdetailbycity(data);
-        console.log(response.data.data);
-        setspdetail(response.data.data);
+    const get_user = async () => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            alert("you have to first login");
+            navigate("/login");
+        }
+        else {
+            const data = { id: token }
+            console.log(data);
+            const response = await getuser.sendauth(data);
+            console.log("response===>", response.data.data._id);
+
+            const response2 = await userdata.getdata({ userid: response.data.data._id })
+            console.log("userdata2==>", response2);
+            setuserid(response2.data.data._id)
+        }
+
     }
+    const handlebookser = async (data) => {
+        get_user();
+        if (userid !== null || userid !== undefined) {
+            console.log(data);
+            console.log(data.subserid);
+
+            data.subserid.map((key) => {
+                // console.log(key.subname.subname, "name");
+                if (key.subname.subname === service.subname.subname) {
+                    setserviceid(key.subname._id);
+                    console.log("prize", key.subname._id)
+                }
+            }
+            );
+
+            console.log("data._id", data._id);
+            if (serviceid !== null || serviceid !== undefined) {
+                const bookdata = { userid, serviceid, spid: data._id }
+                const response = await cartservice.addtocart(bookdata);
+                console.log("response of book service === >", response);
+                if (response.data.duplicate === true) {
+                    alert("you already added that")
+
+                }
+                else if (response.data.success === true) {
+                    navigate("/cart");
+                }
+            } else {
+                alert("try again");
+            }
+
+        }
+        else {
+            alert("some issues are there please try again");
+        }
+
+
+
+    }
+
 
     useEffect(() => {
         handledetail();
     }, []);
-    console.log("serviceid", service._id);
+
+    console.log("serviceid", serviceid);
+    // console.log("serviceid", spdetail);
     return (
         <>
             <Navbar />
@@ -151,6 +183,7 @@ export const Service2 = () => {
                                 {
                                     spdetail.map((sp) => (
                                         <>
+
                                             <div className="text-center">
                                                 <p key={sp.serviceid._id}>{sp.firstname} {sp.lastname}</p>
                                                 <p></p>
@@ -162,20 +195,22 @@ export const Service2 = () => {
                                                 <p>{sp.areaid.areaname}</p>
                                                 <p>{sp.pemail}</p>
                                                 {
+
                                                     sp.subserid.map((key) => (
                                                         <>
-                                                            {key._id === service._id ?
+
+                                                            <p>{key.subname.subname === service.subname.subname ?
                                                                 <p>prize := {key.prize}</p>
                                                                 :
                                                                 <p></p>
-                                                            }
+                                                            }</p>
                                                         </>
 
 
 
                                                     ))
                                                 }
-                                                <button>Hire service provider</button>
+                                                <button type='button' onClick={(event) => { handlebookser(sp) }}>Hire service provider</button>
                                             </div>
 
 

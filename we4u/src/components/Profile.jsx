@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Profile = () => {
   const classes = useStyles();
-  
+
   const [userid, setuserid] = useState('');
   const [firstname, setfirstname] = useState('');
   const [lastname, setlastname] = useState('');
@@ -61,8 +61,8 @@ const Profile = () => {
       }
       else {
         console.log("response==>", response);
-        let fbirthdate = response.data.data.birthdate.slice(0,10);
-        console.log("birthdate====>",fbirthdate);
+        let fbirthdate = response.data.data.birthdate.slice(0, 10);
+        console.log("birthdate====>", fbirthdate);
         setuserdata((userdata) => ({
           ...userdata,
           userid: response.data.data.userid,
@@ -89,7 +89,7 @@ const Profile = () => {
 
   useEffect(() => {
     console.log("userdata", isData);
-    
+
     isEdit && getdata();
     setisEdit(true);
     //  setfirstname(response.data.data.firstname);
@@ -179,59 +179,59 @@ const Profile = () => {
     return (
       <>
         <Navbar />
-        
+
         <div class="page-content page-container" id="page-content">
-                <div class="padding">
-                    <div class="row container d-flex justify-content-center">
-                        <div class="col-xl-7 col-md-12">
-                            <div class="card1 user-card-full">
-                                <div class="row m-l-0 m-r-0">
-                                    <div class="col-sm-4 bg-c-lite-green user-profile">
-                                        <div class="card-block text-center text-white">
-                                            <div class="m-b-25">
-                                                <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image" />
-                                            </div>
-                                            <h6 class="f-w-600">Hembo Tingor</h6>
-                                            <p>Web Designer</p>
-                                            <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <div class="card-block">
-                                            <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <p class="m-b-10 f-w-600">Email</p>
-                                                    <h6 class="text-muted f-w-400">rntng@gmail.com</h6>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <p class="m-b-10 f-w-600">Phone</p>
-                                                    <h6 class="text-muted f-w-400">98979989898</h6>
-                                                </div>
-                                            </div>
-                                            <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <p class="m-b-10 f-w-600">Recent</p>
-                                                    <h6 class="text-muted f-w-400">Sam Disuja</h6>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <p class="m-b-10 f-w-600">Most Viewed</p>
-                                                    <h6 class="text-muted f-w-400">Dinoter husainm</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+          <div class="padding">
+            <div class="row container d-flex justify-content-center">
+              <div class="col-xl-7 col-md-12">
+                <div class="card1 user-card-full">
+                  <div class="row m-l-0 m-r-0">
+                    <div class="col-sm-4 bg-c-lite-green user-profile">
+                      <div class="card-block text-center text-white">
+                        <div class="m-b-25">
+                          <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image" />
                         </div>
+                        <h6 class="f-w-600">Hembo Tingor</h6>
+                        <p>Web Designer</p>
+                        <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                      </div>
                     </div>
+                    <div class="col-sm-8">
+                      <div class="card-block">
+                        <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <p class="m-b-10 f-w-600">Email</p>
+                            <h6 class="text-muted f-w-400">rntng@gmail.com</h6>
+                          </div>
+                          <div class="col-sm-6">
+                            <p class="m-b-10 f-w-600">Phone</p>
+                            <h6 class="text-muted f-w-400">98979989898</h6>
+                          </div>
+                        </div>
+                        <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <p class="m-b-10 f-w-600">Recent</p>
+                            <h6 class="text-muted f-w-400">Sam Disuja</h6>
+                          </div>
+                          <div class="col-sm-6">
+                            <p class="m-b-10 f-w-600">Most Viewed</p>
+                            <h6 class="text-muted f-w-400">Dinoter husainm</h6>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
+        </div>
 
-       
 
-       
+
+
 
       </>
 
@@ -246,28 +246,28 @@ const ChangePass = (props) => {
   const [isshow, invokemodel] = useState(false);
   const [eye, seteye] = useState("fa-sharp fa-solid fa-eye-slash");
   const [password, setPass] = useState("");
-  const [userid,setuserid] = useState(props.userid);
+  const [userid, setuserid] = useState(props.userid);
   const [oldpassword, setoldpassword] = useState('');
   const [newpassword, setnewpassword] = useState('');
   const [conpassword, setconpassword] = useState('');
-  const[msg,setmsg]=useState('');
+  const [msg, setmsg] = useState('');
   const initmodel = () => {
     return invokemodel(!isshow);
   }
- console.log(props)
-  const handlepassword = async() =>{
-      if(conpassword === newpassword){
-          console.log("userid==>",userid);
-          const data = {userid,oldpassword,newpassword};
-          const response = await userprofile.updatepassword(data);
-          console.log("response===>",response);
-      }
-      else{
-        setmsg("your confirm password and new password is not matched");
-      }
+  console.log(props)
+  const handlepassword = async () => {
+    if (conpassword === newpassword) {
+      console.log("userid==>", userid);
+      const data = { userid, oldpassword, newpassword };
+      const response = await userprofile.updatepassword(data);
+      console.log("response===>", response);
+    }
+    else {
+      setmsg("your confirm password and new password is not matched");
+    }
   }
 
-   const handletogglepass = async (event) => {
+  const handletogglepass = async (event) => {
     event.preventDefault();
     var x = document.getElementById("id_password");
     var y = document.getElementById("id_password2");
@@ -286,14 +286,14 @@ const ChangePass = (props) => {
       seteye("fa-sharp fa-solid fa-eye-slash");
     }
   };
-   
+
 
   useEffect(() => {
     setuserid(props.userid);
     setmsg('');
     seteye('fa-sharp fa-solid fa-eye-slash')
   }, [props])
-  
+
   return (
     <>
       <Button variant="contained" style={{ backgroundColor: "white", color: "black" }} onClick={initmodel}>
@@ -310,31 +310,31 @@ const ChangePass = (props) => {
           <div className="dlt">
             <FormControl className='mb-3 detail_container'>
               <InputLabel className='mx-3'>Old Password</InputLabel>
-              <Input type="text" name="name" className='my-3' onChange={(event)=>{setoldpassword(event.target.value)}}/>
+              <Input type="text" name="name" className='my-3' onChange={(event) => { setoldpassword(event.target.value) }} />
 
             </FormControl><br />
             <i
-                        className={eye}
-                        id="togglePassword"
-                        style={{ marginLeft: "-25px", cursor: "pointer" }}
-                        onClick={handletogglepass} 
+              className={eye}
+              id="togglePassword"
+              style={{ marginLeft: "-25px", cursor: "pointer" }}
+              onClick={handletogglepass}
 
-                      ></i>
+            ></i>
             <FormControl className='mb-3 detail_container'>
               <InputLabel className='mx-3' >New Password</InputLabel>
-              <Input type="text" name="name" id="id_password2" className='my-3' onChange={(event)=>{setnewpassword(event.target.value)}}/>
+              <Input type="text" name="name" id="id_password2" className='my-3' onChange={(event) => { setnewpassword(event.target.value) }} />
             </FormControl><br />
-          
+
             <FormControl className='mb-3 detail_container'>
               <InputLabel className='mx-3' >Confirm New Password</InputLabel>
-              <Input type="text" name="name" id = "id_password" className='my-3' onChange={(event)=>{setconpassword(event.target.value)}}/>
+              <Input type="text" name="name" id="id_password" className='my-3' onChange={(event) => { setconpassword(event.target.value) }} />
               <i
-                        className={eye}
-                        id="togglePassword"
-                        style={{ marginLeft: "-25px", cursor: "pointer" }}
-                        onClick={handletogglepass} 
+                className={eye}
+                id="togglePassword"
+                style={{ marginLeft: "-25px", cursor: "pointer" }}
+                onClick={handletogglepass}
 
-                      ></i>
+              ></i>
               {msg}
             </FormControl><br />
           </div>
@@ -348,40 +348,8 @@ const ChangePass = (props) => {
           </Button>
         </Modal.Footer>
 
-      
-          {/* <Modal.Body>
-              <div className="dlt">
-              <FormControl className='mb-3 detail_container'>
-               <InputLabel className='mx-3'>Old Password</InputLabel>
-               <Input type="password" name="password" className='my-3' onChange={(event) => setPass(event.target.value)} id="id_password" />
-              </FormControl>
-              <i
-                        className={eye}
-                        id="togglePassword"
-                        style={{ marginLeft: "-25px", cursor: "pointer" }}
-                        onClick={handletogglepass} by
 
-                      ></i>
-              <br/>
-              <FormControl className='mb-3 detail_container'>
-                  <InputLabel className='mx-3' >New Password</InputLabel>
-                  <Input type="text" name="name" className='my-3'  />
-              </FormControl><br/>
-              <FormControl className='mb-3 detail_container'>
-                  <InputLabel className='mx-3' >Confirm New Password</InputLabel>
-                  <Input type="text" name="name" className='my-3'  />
-              </FormControl><br/>
-              </div>             
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="" className="mx-3" onClick={initmodel} style={{backgroundColor:"red"}}>
-              CLOSE
-            </Button>
-            <Button variant=""  className="mx-3" type='submit' style={{backgroundColor:"black",color:"white"}}>
-              Change
-            </Button>
-          </Modal.Footer>
-       */}
+
       </Modal>
 
     </>
@@ -417,7 +385,7 @@ const Update = (props) => {
     setlastname(props.lastname);
     setbirthdate(props.birthdate);
     setgender(props.gender);
-     setuserid(props.userid);
+    setuserid(props.userid);
     console.log("userdata updated====>", userid);
   }, [props])
 
