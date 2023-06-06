@@ -4,18 +4,21 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
 import detail from '../services/spservice';
-import { event } from 'jquery';
-
+import getuser from '../services/GetUser';
+import { useNavigate } from 'react-router-dom';
+import userdata from '../services/UserProfile';
+import cartservice from '../services/cartservics';
 
 export const Service2 = () => {
-    const [query, setQuery] = useState('');
     const [city, setcity] = useState(sessionStorage.getItem("cityname"));
     const [location, setLocation] = useState(null);
     const [image, setimage] = useState(sessionStorage.getItem("subname"));
     const [service, setservice] = useState(JSON.parse(localStorage.getItem("subservicedata")));
     const [spdetail, setspdetail] = useState([]);
     const [bookeddata, setbookeddata] = useState();
-    const [prize, setprize] = useState()
+    const [serviceid, setserviceid] = useState();
+    const [userid, setuserid] = useState();
+    const navigate = useNavigate();
     // var prize;
     function handleLocationClick(event) {
         event.preventDefault();
@@ -68,28 +71,70 @@ export const Service2 = () => {
         setspdetail(response.data.data);
     }
 
-    const handlebookser = (data) => {
-
-        console.log(data);
-        console.log(data.subserid);
-
-        data.subserid.map((key) => {
-            // console.log(key.subname.subname, "name");
-            if (key.subname.subname === service.subname.subname) {
-                setprize(key.prize);
-                console.log("prize", key.prize)
-            }
+    const get_user = async () => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            alert("you have to first login");
+            navigate("/login");
         }
-        );
+        else {
+            const data = { id: token }
+            console.log(data);
+            const response = await getuser.sendauth(data);
+            console.log("response===>", response.data.data._id);
+
+            const response2 = await userdata.getdata({ userid: response.data.data._id })
+            console.log("userdata2==>", response2);
+            setuserid(response2.data.data._id)
+        }
+
+    }
+    const handlebookser = async (data) => {
+        get_user();
+        if (userid !== null || userid !== undefined) {
+            console.log(data);
+            console.log(data.subserid);
+
+            data.subserid.map((key) => {
+                // console.log(key.subname.subname, "name");
+                if (key.subname.subname === service.subname.subname) {
+                    setserviceid(key.subname._id);
+                    console.log("prize", key.subname._id)
+                }
+            }
+            );
+
+            console.log("data._id", data._id);
+            if (serviceid !== null || serviceid !== undefined) {
+                const bookdata = { userid, serviceid, spid: data._id }
+                const response = await cartservice.addtocart(bookdata);
+                console.log("response of book service === >", response);
+                if (response.data.duplicate === true) {
+                    alert("you already added that")
+
+                }
+                else if (response.data.success === true) {
+                    navigate("/cart");
+                }
+            } else {
+                alert("try again");
+            }
+
+        }
+        else {
+            alert("some issues are there please try again");
+        }
+
 
 
     }
+
 
     useEffect(() => {
         handledetail();
     }, []);
 
-    console.log("serviceid", prize);
+    console.log("serviceid", serviceid);
     // console.log("serviceid", spdetail);
     return (
         <>

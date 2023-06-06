@@ -39,10 +39,13 @@ function App() {
 
   const Authentication = () => {
     let token = localStorage.getItem("token");
+
     if (token === null) {
       setisLogin(false);
     }
-    console.log("token=====>", token);
+    else {
+      setisLogin(true);
+    }
   }
 
   useEffect(() => {
