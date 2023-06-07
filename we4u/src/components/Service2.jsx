@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import userdata from '../services/UserProfile';
 import cartservice from '../services/cartservics';
 import "../css/Service2.css"
+import $ from "jquery"
 
 export const Service2 = () => {
     const [city, setcity] = useState(sessionStorage.getItem("cityname"));
@@ -20,6 +21,13 @@ export const Service2 = () => {
     const [serviceid, setserviceid] = useState();
     const [userid, setuserid] = useState();
     const navigate = useNavigate();
+
+    $('.container').on('click', '.view-more', function () {
+        $(this).addClass('hide');
+        $('.description').removeClass('hide');
+      });
+      
+
     // var prize;
     function handleLocationClick(event) {
         event.preventDefault();
@@ -164,6 +172,7 @@ export const Service2 = () => {
 
             </section>
 
+            
             <section className=''>
             <div className="container p-lg-5 p-sm-0 p-md-0 ">
                 <div className="row d-flex justify-content-center">
@@ -180,8 +189,12 @@ export const Service2 = () => {
                 </div>
             </div>       
             </section>
-            <section className='mt-5'>
-                <p className='hire_header'>Hire your service provider</p>
+
+            {/* <div class="container">
+  
+</div> */}
+            <section className='mt-5 mb-5'>
+                <p className='hire_header mb-5'>Hire your service provider</p>
                 
                 {
                     (spdetail === undefined || spdetail.length === 0) ?
@@ -196,29 +209,33 @@ export const Service2 = () => {
 
                             </div>
                             :
+                            
                             <div className="sp">
-                                <div className='bg-danger'></div>
-                                {
+                            <div class="container">
+    <div class="row mx-auto justify-content-center">
+        
+                {
                                     spdetail.map((sp) => (
                                         <>
-
-                                            <div className="text-center">
-                                                <p key={sp.serviceid._id}>{sp.firstname} {sp.lastname}</p>
-                                                <p></p>
-                                                <p>{sp.mobileno}</p>
-                                                <p>{sp.gender}</p>
-                                                <p>{sp.shopname}</p>
-                                                <p>{sp.address}</p>
-                                                <p>{sp.cityid.cityname}</p>
-                                                <p>{sp.areaid.areaname}</p>
-                                                <p>{sp.pemail}</p>
+                                        
+                                           
+                                            <div class="col-lg-4">
+                                <div class="card">
+               
+                         <div class="card-body">
+                                     <p className='ser_2_head'>{sp.shopname}</p>
+                                     <p className='ser_2_label' key={sp.serviceid._id}>{sp.firstname} {sp.lastname}</p>
+                                     <p className='ser_2_label'><span>Mobile No : </span>{sp.mobileno}</p>
+                                        <p className='ser_2_label'><span>Gender : </span>{sp.gender}</p>
+                                        <p className='ser_2_label'><span>Address : </span>{sp.address}</p>
+                                                <p className='ser_2_label'><span>City : </span>{sp.cityid.cityname}</p>
+                                                <p className='ser_2_label'><span>Area : </span>{sp.areaid.areaname}</p>
+                                                <p className='ser_2_label'><span>Gmail : </span>{sp.pemail}</p>
                                                 {
-
                                                     sp.subserid.map((key) => (
                                                         <>
-
                                                             <p>{key.subname.subname === service.subname.subname ?
-                                                                <p>prize := {key.prize}</p>
+                                                                <p className='ser_2_label'><span>Prize : </span>{key.prize}</p>
                                                                 :
                                                                 <p></p>
                                                             }</p>
@@ -228,15 +245,23 @@ export const Service2 = () => {
 
                                                     ))
                                                 }
-                                                <button type='button' onClick={(event) => { handlebookser(sp) }}>Hire service provider</button>
-                                            </div>
-
+                                        
+                                                <button type='button' onClick={(event) => { handlebookser(sp) }} className='ser_2_hire_btn px-3 py-2 mx-4'>Hire service provider</button>
+                                           
+</div>
+              </div>
+        </div>  
 
                                         </>
 
 
                                     ))
                                 }
+                
+    </div>
+</div>
+                                {/* <div className='bg-danger'></div> */}
+                                
                             </div>
 
                 }
