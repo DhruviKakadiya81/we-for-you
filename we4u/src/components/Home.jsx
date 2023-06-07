@@ -164,7 +164,7 @@ export const Home = () => {
                   <input id="search" type="text" list="browsers" placeholder="What are you looking for?" />
                 </div>
                 <div className="input-field second-wrap">
-                  <input id="location" type="button" placeholder="location" value={location ? location : "click to access your city"} onClick={handleLocationClick} />
+                  <input id="location" type="button" placeholder="location" value={location ? location : "Click To Access Your City"} onClick={handleLocationClick} />
                 </div>
                 <div className="input-field third-wrap">
                   <button className="btn-search" type="button">Search</button>
@@ -177,7 +177,7 @@ export const Home = () => {
 
       <section className="services1" style={{ minHeight: "300px" }}>
 
-        <h1 className='serviceh1 mt-5'>  Our Services </h1>
+        <h1 className='serviceh1 mt-5' style={{fontWeight:"700"}}>  Our Services </h1>
 
 
 

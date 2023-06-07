@@ -41,3 +41,25 @@
     text-align: center;
     font-weight: 700;
 }
+ 
+  .ser_2_head{
+    font-size: 25px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .ser_2_hire_btn{
+    background-color: rgb(50, 50, 50);
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+
+.ser_2_label{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+  .hide {
+    display: none;
+  }
