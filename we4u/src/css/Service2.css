@@ -1,0 +1,43 @@
+.Ser_2_head{
+    font-size: 30px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.Ser_2_desc{
+    font-size: 20px;
+    text-align: justify;
+}
+
+.loc_container{
+    margin:30px;
+    text-align: right;
+}
+
+.loc_span{
+   display: inline-block;
+   position: relative;
+}
+
+.loc_icon{
+    display: inline-block;
+        position: absolute;
+        left:5px ;
+        top: 19px;
+        color: white;
+}
+
+.loc_btn{
+    background-color: rgb(32, 134, 225);
+    color: white;
+    border: none;
+    font-size: 20px;
+    border-radius: 10px;
+    padding-left: 2em;
+}
+
+.hire_header{
+    font-size: 35px;
+    text-align: center;
+    font-weight: 700;
+}

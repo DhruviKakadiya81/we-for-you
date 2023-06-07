@@ -229,6 +229,33 @@ export const SubService = () => {
                                     spdetail.map((sp) => (
                                         <>
 
+                                            <div className="card text-center">
+                                                <p key={sp.serviceid._id}>{sp.firstname}</p>
+                                                <p>{sp.lastname}</p>
+                                                <p>{sp.mobileno}</p>
+                                                <p>{sp.gender}</p>
+                                                <p>{sp.shopname}</p>
+                                                <p>{sp.address}</p>
+                                                {sp.cityid ? <p>{sp.cityid.cityname} </p> : <br />}
+                                                {sp.areaid ? <p>{sp.areaid.areaname}</p> : <br />}
+
+
+                                                <p>{sp.pemail}</p>
+                                                <h1>my services</h1>
+                                                <p>{sp.subserid.map((key) => (
+                                                    <>
+                                                        <p>
+
+                                                            {/* {key.subname.subname} */}
+                                                            <p>{key.subname.subname} :  {key.prize}Rs</p>
+                                                        </p>
+
+                                                    </>
+                                                ))}</p>
+                                            </div>
+
+
+
                                             <div class="flip-card">
                                                 <div class="flip-card-inner">
                                                     <div className="flip-card-front text-left " style={{textAlign:"left" }}>

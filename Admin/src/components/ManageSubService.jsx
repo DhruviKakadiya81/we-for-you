@@ -19,6 +19,8 @@ export const ManageSubService = () => {
         alert(serviceid + subname + image);
         const response = await subservice.addsubser({ serviceid, subname, image })
         console.log("response", response);
+
+
         setisEdit(false);
         if (response.data.success === true) {
             alert("added successfully");
@@ -104,7 +106,7 @@ export const ManageSubService = () => {
                                 }} onBlur={formik.handleBlur}
                                 className='mx-3 my-3' />
                             {formik.touched.sub_name && formik.errors.sub_name && (
-                                <div>{formik.errors.sub_name}</div>
+                                <div className="formik_error">{formik.errors.sub_name}</div>
                             )}
                         </FormControl><br />
                         <FormControl className='mb-3 city_detail_container'>
@@ -114,7 +116,7 @@ export const ManageSubService = () => {
                                 setimage(event.target.files[0]);
                             }} onBlur={formik.handleBlur} className='mx-3 my-3' />
                             {formik.touched.ser_image && formik.errors.ser_image && (
-                                <div>{formik.errors.ser_image}</div>
+                                <div className="formik_error">{formik.errors.ser_image}</div>
                             )}
                         </FormControl><br />
                         <FormControl variant="standard" sx={{ minWidth: 150 }} className='mb-4 area_detail_container'>
@@ -135,7 +137,7 @@ export const ManageSubService = () => {
                                     <MenuItem>Loading...</MenuItem>}
                             </Select>
                             {formik.touched.serviceid && formik.errors.serviceid && (
-                                <div>{formik.errors.serviceid}</div>
+                                <div className="formik_error">{formik.errors.serviceid}</div>
                             )}
                         </FormControl><br />
                         <FormControl>
@@ -351,7 +353,3 @@ const Update = (props) => {
         </>
     )
 }
-
-
-
-

@@ -152,7 +152,7 @@ export const Ser_add_Service = () => {
                         <MenuItem>Select Main service</MenuItem>}
                     </Select>
                     {formik.touched.serviceid && formik.errors.serviceid && (
-                        <div>{formik.errors.serviceid}</div>
+                        <div className='formik_error'>{formik.errors.serviceid}</div>
                 )}
                   </FormControl><br />
                   <FormControl variant="standard" sx={{ minWidth: 260 }} className='mb-4 area_detail_container'>
@@ -175,7 +175,7 @@ export const Ser_add_Service = () => {
                         <MenuItem>Loading...</MenuItem>}
                     </Select>
                     {formik.touched.subserviceid && formik.errors.subserviceid && (
-                        <div>{formik.errors.subserviceid}</div>
+                        <div className='formik_error'>{formik.errors.subserviceid}</div>
                 )}
                   </FormControl><br />
                   <label style={{ color: "white" }}>Price</label><br />
@@ -185,7 +185,7 @@ export const Ser_add_Service = () => {
                   }}
                   onBlur={formik.handleBlur}/><br/>
                   {formik.touched.Price && formik.errors.Price && (
-                        <div>{formik.errors.Price}</div>
+                        <div className='formik_error'>{formik.errors.Price}</div>
                 )}
                   <label style={{ color: "white" }}>Description</label><br />
                   <textarea type="number" className="s_add_input px-2 py-1 mb-3" name="description" onChange={(event) => { setdiscription(event.target.value) }} /><br />

@@ -40,7 +40,6 @@ export const Navbar = () => {
       nevigate("/cart");
       event.preventDefault();
       const data = { id };
-      alert("id-----" + id);
       const respo = await LoginData.sendauth(data);
       console.log("response====>", respo);
     }
@@ -58,9 +57,8 @@ export const Navbar = () => {
       nevigate("/profile");
       event.preventDefault();
       const data = { id };
-      alert("id-----" + id);
       const respo = await LoginData.sendauth(data);
-      alert(respo.data.data.email);
+
     }
   }
   return (
@@ -81,7 +79,7 @@ export const Navbar = () => {
               </li>
               <li className="dropdown nav-item">
                 <Link className="nav-link" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false"> Register </Link>
-                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{zIndex:"0"}}>
+                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{ zIndex: "0" }}>
                   <li><Link className="dropdown-item" to="/register">Register As Client</Link></li>
                   <li><Link className="dropdown-item" to="/regprof">Register As Professional</Link></li>
                 </ul>
