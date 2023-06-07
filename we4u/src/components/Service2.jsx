@@ -8,6 +8,7 @@ import getuser from '../services/GetUser';
 import { useNavigate } from 'react-router-dom';
 import userdata from '../services/UserProfile';
 import cartservice from '../services/cartservics';
+import Alert from 'react-bootstrap/Alert';
 
 export const Service2 = () => {
     const [city, setcity] = useState(sessionStorage.getItem("cityname"));
@@ -18,6 +19,8 @@ export const Service2 = () => {
     const [bookeddata, setbookeddata] = useState();
     const [serviceid, setserviceid] = useState();
     const [userid, setuserid] = useState();
+    const [spid, setspid] = useState();
+    const [resp, setresp] = useState();
     const navigate = useNavigate();
     // var prize;
     function handleLocationClick(event) {
@@ -98,27 +101,15 @@ export const Service2 = () => {
             data.subserid.map((key) => {
                 // console.log(key.subname.subname, "name");
                 if (key.subname.subname === service.subname.subname) {
-                    setserviceid(key.subname._id);
+                    setserviceid(key._id);
                     console.log("prize", key.subname._id)
                 }
             }
             );
 
             console.log("data._id", data._id);
-            if (serviceid !== null || serviceid !== undefined) {
-                const bookdata = { userid, serviceid, spid: data._id }
-                const response = await cartservice.addtocart(bookdata);
-                console.log("response of book service === >", response);
-                if (response.data.duplicate === true) {
-                    alert("you already added that")
+            setspid(data._id);
 
-                }
-                else if (response.data.success === true) {
-                    navigate("/cart");
-                }
-            } else {
-                alert("try again");
-            }
 
         }
         else {
@@ -129,17 +120,46 @@ export const Service2 = () => {
 
     }
 
+    const handleadd = async () => {
+
+        if (serviceid !== null || serviceid !== undefined) {
+            const bookdata = { userid, serviceid, spid }
+            const response = await cartservice.addtocart(bookdata);
+            console.log("response of book service === >", response);
+            if (response.data.success === false) {
+                setresp(false);
+
+            }
+            else if (response.data.success === true) {
+                navigate("/cart");
+            }
+        } else {
+            alert("try again");
+        }
+
+    }
+
 
     useEffect(() => {
         handledetail();
     }, []);
+    useEffect(() => {
+        serviceid && userid && spid && handleadd()
+    }, [serviceid, userid, spid])
+
 
     console.log("serviceid", serviceid);
     // console.log("serviceid", spdetail);
     return (
         <>
             <Navbar />
+            {resp === false && (
+        <Alert variant="danger">
+        <div>Hello</div>
+        </Alert>
+      )}
             <section className='mt-5 pt-5'>
+                <div id="toastContainer" class="position-fixed top-0 end-0 p-3"></div>
                 <div>{service.subname.subname}</div>
                 <div>{`we provides many service providers that provides you many services in your city and we4u helps you to get services at your home in very less time like  ${service.subname.subname} `}</div>
                 <img src={"http://localhost:4000/image/" + service.subname.image} alt="images" height={"100px"} />
@@ -227,4 +247,3 @@ export const Service2 = () => {
         </>
     )
 }
-
