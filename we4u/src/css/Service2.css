@@ -49,10 +49,12 @@
   }
 
   .ser_2_hire_btn{
-    background-color: rgb(50, 50, 50);
-    color: white;
+    color: black;
+    background-color: white;
     border: none;
     border-radius: 5px;
+    font-size: 18px;
+    font-weight: 400;
   }
 
 .ser_2_label{
@@ -65,9 +67,22 @@
   }
 
 
-  .view_more_link{
-    background-color: rgb(50, 50, 50);
-    color: white;
-    text-align: center;
-    border-radius: 10px;
+  .ser_2_main_card{
+    background-color: rgb(		80,80,80);
+    color: rgb(255, 255, 255);
+    /* border: 2px solid black; */
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
   }
+
+  .view_more_link{
+    font-size: 18px;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    width: 180px;
+    border: none;
+  }
+
+
+  #more {display: none;}
