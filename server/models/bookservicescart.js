@@ -19,7 +19,7 @@ const BookServiceShema = new mongoose.Schema({
 });
 
 
-BookServiceShema.index({ userid: 1, serviceid: 1, spid: 1 }, { unique: true });
+
 const BookService = mongoose.model('BookService', BookServiceShema);
 
 module.exports = BookService;
