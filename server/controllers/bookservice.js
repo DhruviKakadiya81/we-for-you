@@ -17,9 +17,15 @@ const bookservice = async (req, res) => {
 const showcart = async (req, res) => {
     try {
         const { userid } = req.body
-        const cartdata = await bookser.find({ userid }).populate('userid').populate('spid').populate({
+        const cartdata = await bookser.find({ userid }).populate({
+            path: 'userid', populate: {
+                path: 'userid', model: 'User'
+            }
+        }).populate('spid').populate({
             path: 'serviceid', populate: {
-                path: 'subname', model: 'SubServiceAdmin'
+                path: 'subname', model: 'SubServiceAdmin', populate: {
+                    path: 'serviceid', model: 'Service',
+                }
             }
         });
         res.send({ success: true, data: cartdata });

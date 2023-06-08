@@ -32,7 +32,7 @@ const Profile = () => {
   const [birthdate, setbirthdate] = useState('');
   const [gender, setgender] = useState('');
   const [image, setimage] = useState('');
-  const [userdata, setuserdata] = useState({});
+  const [userdata, setuserdata] = useState();
   const [isData, setIsData] = useState(true);
   const [isEdit, setisEdit] = useState(true);
 
@@ -63,19 +63,16 @@ const Profile = () => {
         console.log("response==>", response);
         let fbirthdate = response.data.data.birthdate.slice(0, 10);
         console.log("birthdate====>", fbirthdate);
-        setuserdata((userdata) => ({
-          ...userdata,
-          userid: response.data.data.userid,
-          firstname: response.data.data.firstname,
-          lastname: response.data.data.lastname,
-          gender: response.data.data.gender,
-          birthdate: fbirthdate,
-          image: response.data.data.image
-        }));
-
-        setTimeout(() => {
-          console.log("userdata===>", userdata.firstname);
-        }, 1000);
+        setuserdata(response.data.data);
+        // setuserdata((userdata) => ({
+        //   ...userdata,
+        //   userid: response.data.data.userid,
+        //   firstname: response.data.data.firstname,
+        //   lastname: response.data.data.lastname,
+        //   gender: response.data.data.gender,
+        //   birthdate: fbirthdate,
+        //   image: response.data.data.image
+        // }));
         setIsData(true);
 
       }
@@ -92,12 +89,8 @@ const Profile = () => {
 
     isEdit && getdata();
     setisEdit(true);
-    //  setfirstname(response.data.data.firstname);
-    // setlastname(response.data.data.lastname);
-    // setbirthdate(response.data.data.birthdate);
-    // setgender(response.data.data.gender);
   }, [isEdit])
-
+  console.log("userdata===", userdata);
   if (isData === false) {
 
     return (
@@ -179,45 +172,64 @@ const Profile = () => {
     return (
       <>
         <Navbar />
+        {
 
-        <div class="page-content page-container" id="page-content">
-          <div class="padding">
-            <div class="row container d-flex justify-content-center">
-              <div class="col-xl-7 col-md-12">
-                <div class="card1 user-card-full">
-                  <div class="row m-l-0 m-r-0">
-                    <div class="col-sm-4 bg-c-lite-green user-profile">
-                      <div class="card-block text-center text-white">
-                        <div class="m-b-25">
-                          <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image" />
-                        </div>
-                        <h6 class="f-w-600">Hembo Tingor</h6>
-                        <p>Web Designer</p>
-                        <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
-                      </div>
-                    </div>
-                    <div class="col-sm-8">
-                      <div class="card-block">
-                        <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
-                        <div class="row">
-                          <div class="col-sm-6">
-                            <p class="m-b-10 f-w-600">Email</p>
-                            <h6 class="text-muted f-w-400">rntng@gmail.com</h6>
-                          </div>
-                          <div class="col-sm-6">
-                            <p class="m-b-10 f-w-600">Phone</p>
-                            <h6 class="text-muted f-w-400">98979989898</h6>
+          (!userdata) ?
+            <div className="row d-flex justify-content-center pt-5">
+              <div className="spinner-border" style={{ position: "absolute", textAlign: "center", top: "80%", left: "50%" }}>
+              </div>
+            </div>
+            : <div class="page-content page-container" id="page-content">
+              <div class="padding">
+                <div class="row container d-flex justify-content-center">
+                  <div class="col-xl-7 col-md-12">
+                    <div class="card1 user-card-full">
+                      <div class="row m-l-0 m-r-0">
+                        <div class="col-sm-4 bg-c-lite-green user-profile">
+                          <div class="card-block text-center text-white">
+                            <div class="m-b-25">
+                              <img src={"http://localhost:4000/image/" + userdata.image} class="img-radius" alt="User-Profile-Image" height={"100px"} width={"100px"} style={{ borderRadius: "50px" }} />
+                            </div>
+                            <p className='mb-2'>{userdata.firstname} {userdata.lastname}</p>
+                            {/* <a class="f-w-600" style={{ color: "white" }}>Edit Your Image</a> */}
+
+
                           </div>
                         </div>
-                        <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
-                        <div class="row">
-                          <div class="col-sm-6">
-                            <p class="m-b-10 f-w-600">Recent</p>
-                            <h6 class="text-muted f-w-400">Sam Disuja</h6>
-                          </div>
-                          <div class="col-sm-6">
-                            <p class="m-b-10 f-w-600">Most Viewed</p>
-                            <h6 class="text-muted f-w-400">Dinoter husainm</h6>
+                        <div class="col-sm-8">
+                          <div class="card-block">
+                            <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                            <div class="row">
+                              <div class="col-sm-6">
+                                <p class="m-b-10 f-w-600">First Name</p>
+                                <h6 class="text-muted f-w-400">{userdata.firstname}</h6>
+                              </div>
+                              <div class="col-sm-6">
+                                <p class="m-b-10 f-w-600">Last Name</p>
+                                <h6 class="text-muted f-w-400">{userdata.lastname}</h6>
+                              </div>
+                            </div>
+
+
+                            <div class="row">
+                              <div class="col-sm-6">
+                                <p class="m-b-10 f-w-600">Email</p>
+                                <h6 class="text-muted f-w-400">{userdata.userid.email}</h6>
+                              </div>
+                              <div class="col-sm-6">
+                                <p class="m-b-10 f-w-600">Gender</p>
+                                <h6 class="text-muted f-w-400">{userdata.gender}</h6>
+                              </div>
+                              <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Edit Youe Details</h6>
+                              <div class="col-sm-6">
+                                <ChangePass userid={userdata.userid._id} />
+
+                              </div>
+                              <div class="col-sm-6">
+
+                                <Update userid={userdata.userid._id} firstname={userdata.firstname} lastname={userdata.lastname} gender={userdata.gender} birthdate={userdata.birthdate} handleIsEdit={() => setisEdit(!isEdit)} />
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -226,13 +238,7 @@ const Profile = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-
-
-
-
-
+        }
       </>
 
     )
@@ -261,6 +267,14 @@ const ChangePass = (props) => {
       const data = { userid, oldpassword, newpassword };
       const response = await userprofile.updatepassword(data);
       console.log("response===>", response);
+      if (response.data.success === true) {
+        initmodel();
+        alert("password updated successfully");
+      }
+      else {
+        initmodel();
+        alert("password not updated");
+      }
     }
     else {
       setmsg("your confirm password and new password is not matched");

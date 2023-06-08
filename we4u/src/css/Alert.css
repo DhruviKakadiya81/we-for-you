@@ -5,6 +5,16 @@
     opacity: 1;
     transition: opacity 0.6s;
     margin-bottom: 15px;
+    position: fixed;
+    top: 100px;
+    width: 70%;
+
+    z-index: 10;
+}
+
+.alertdiv {
+    display: flex;
+    justify-content: center;
 }
 
 .alert.success {
