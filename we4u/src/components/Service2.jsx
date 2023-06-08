@@ -10,6 +10,7 @@ import userdata from '../services/UserProfile';
 import cartservice from '../services/cartservics';
 import "../css/Service2.css"
 import $ from "jquery"
+import Collapsible from 'react-collapsible';
 
 export const Service2 = () => {
     const [city, setcity] = useState(sessionStorage.getItem("cityname"));
@@ -170,9 +171,7 @@ export const Service2 = () => {
                     </>
                 }
 
-            </section>
-
-            
+            </section>  
             <section className=''>
             <div className="container p-lg-5 p-sm-0 p-md-0 ">
                 <div className="row d-flex justify-content-center">
@@ -189,10 +188,7 @@ export const Service2 = () => {
                 </div>
             </div>       
             </section>
-
-            {/* <div class="container">
-  
-</div> */}
+           
             <section className='mt-5 mb-5'>
                 <p className='hire_header mb-5'>Hire your service provider</p>
                 
@@ -228,7 +224,8 @@ export const Service2 = () => {
                                      <p className='ser_2_label'><span>Mobile No : </span>{sp.mobileno}</p>
                                         <p className='ser_2_label'><span>Gender : </span>{sp.gender}</p>
                                         <p className='ser_2_label'><span>Address : </span>{sp.address}</p>
-                                                <p className='ser_2_label'><span>City : </span>{sp.cityid.cityname}</p>
+                                        <Collapsible trigger="View More" className='view_more_link px-2 py-1 mx-4 my-2'>
+                                        <p className='ser_2_label'><span>City : </span>{sp.cityid.cityname}</p>
                                                 <p className='ser_2_label'><span>Area : </span>{sp.areaid.areaname}</p>
                                                 <p className='ser_2_label'><span>Gmail : </span>{sp.pemail}</p>
                                                 {
@@ -246,6 +243,7 @@ export const Service2 = () => {
                                                     ))
                                                 }
                                         
+                           </Collapsible>
                                                 <button type='button' onClick={(event) => { handlebookser(sp) }} className='ser_2_hire_btn px-3 py-2 mx-4'>Hire service provider</button>
                                            
 </div>
