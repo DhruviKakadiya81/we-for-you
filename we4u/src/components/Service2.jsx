@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import userdata from '../services/UserProfile';
 import cartservice from '../services/cartservics';
 import "../css/Service2.css"
-
+import Collapsible from 'react-collapsible';
 
 export const Service2 = () => {
     const [city, setcity] = useState(sessionStorage.getItem("cityname"));
@@ -155,14 +155,121 @@ export const Service2 = () => {
 
     console.log("serviceid", serviceid);
     // console.log("serviceid", spdetail);
+    // return (
+    //     <>
+    //         <Navbar />
+
+
+    //         <section className=' mt-3 mb-0 pt-5'>
+    //             {city ?
+
+    //                 <>
+    //                     <div className="loc_container">
+    //                         <span className='loc_span'>
+    //                             <i className="fa-sharp fa-solid fa-location-dot fa-xl loc_icon ps-3"></i>&nbsp;&nbsp;
+    //                             <input id="location" type="button"
+    //                                 className='loc_btn py-2 pe-3' placeholder="location" value={location ? location : "click to access your city"} onClick={handleLocationClick} />
+    //                         </span>
+    //                     </div>
+    //                 </>
+
+    //                 :
+
+    //                 <>
+    //                     <div className="location">
+    //                         <input id="location" type="button"
+    //                             placeholder="location" value={location ? location : "click to access your city"} onClick={handleLocationClick} />
+    //                     </div>
+    //                 </>
+    //             }
+
+    //         </section>
+
+    //         <section className=''>
+    //             <div className="container p-lg-5 p-sm-0 p-md-0 pt-lg-0 ">
+    //                 <div className="row d-flex justify-content-center">
+    //                     <div className="col-lg-7">
+    //                         <div className='mb-4 Ser_2_head'>{service.subname.subname}</div>
+    //                         <div className='Ser_2_desc'>{`We Provide Many Service Providers And They Provide You Many Services. You Can Choose Your Service Providers As Per Your Requirement And Cost Like We Provide Many Service Providers And They Provide You Many Services. You Can Choose Your Service Providers As Per Your Requirement And Cost Like ${service.subname.subname} `}</div>
+    //                     </div>
+    //                     <div className="col-lg-5">
+    //                         <img src={"http://localhost:4000/image/" + service.subname.image} alt="images" height={"250px"} className='mx-auto d-flex mt-lg-0  mt-md-0  mt-sm-5 mt-xm-5' />
+    //                     </div>
+    //                     <div className="col">
+
+    //                     </div>
+    //                 </div>
+    //             </div>
+    //         </section>
+    //         <section className='mt-5'>
+    //             <p className='hire_header'>Hire your service provider</p>
+
+    //             {
+    //                 (spdetail === undefined || spdetail.length === 0) ?
+    //                     <div className="row d-flex justify-content-center pt-5">
+    //                         <div className="spinner-border" style={{ position: "absolute", textAlign: "center", top: "80%", left: "50%" }}>
+    //                         </div>
+
+    //                     </div>
+    //                     : (spdetail.length === 0) ?
+    //                         <div className="row d-flex justify-content-center pt-5" style={{ height: "80vh", overflowY: "hidden" }}>
+    //                             <span>no data found</span>
+
+    //                         </div>
+    //                         :
+    //                         <div className="sp">
+    //                             <div className='bg-danger'></div>
+    //                             {
+    //                                 spdetail.map((sp) => (
+    //                                     <>
+
+    //                                         <div className="text-center">
+    //                                             <p key={sp.serviceid._id}>{sp.firstname} {sp.lastname}</p>
+    //                                             <p></p>
+    //                                             <p>{sp.mobileno}</p>
+    //                                             <p>{sp.gender}</p>
+    //                                             <p>{sp.shopname}</p>
+    //                                             <p>{sp.address}</p>
+    //                                             <p>{sp.cityid.cityname}</p>
+    //                                             <p>{sp.areaid.areaname}</p>
+    //                                             <p>{sp.pemail}</p>
+    //                                             {
+
+    //                                                 sp.subserid.map((key) => (
+    //                                                     <>
+
+    //                                                         <p>{key.subname.subname === service.subname.subname ?
+    //                                                             <p>prize := {key.prize}</p>
+    //                                                             :
+    //                                                             <p></p>
+    //                                                         }</p>
+    //                                                     </>
+
+
+
+    //                                                 ))
+    //                                             }
+    //                                             <button type='button' onClick={(event) => { handlebookser(sp) }}>Hire service provider</button>
+    //                                         </div>
+
+
+    //                                     </>
+
+
+    //                                 ))
+    //                             }
+    //                         </div>
+
+    //             }
+    //         </section>
+
+    //     </>
+    // )
     return (
         <>
             <Navbar />
-
-
-            <section className=' mt-3 mb-0 pt-5'>
+            <section className='mt-5 pt-3'>
                 {city ?
-
                     <>
                         <div className="loc_container">
                             <span className='loc_span'>
@@ -184,9 +291,8 @@ export const Service2 = () => {
                 }
 
             </section>
-
             <section className=''>
-                <div className="container p-lg-5 p-sm-0 p-md-0 pt-lg-0 ">
+                <div className="container p-lg-5 p-sm-0 p-md-0 ">
                     <div className="row d-flex justify-content-center">
                         <div className="col-lg-7">
                             <div className='mb-4 Ser_2_head'>{service.subname.subname}</div>
@@ -201,8 +307,9 @@ export const Service2 = () => {
                     </div>
                 </div>
             </section>
-            <section className='mt-5'>
-                <p className='hire_header'>Hire your service provider</p>
+
+            <section className='mt-5 mb-5'>
+                <p className='hire_header mb-5'>Hire your service provider</p>
 
                 {
                     (spdetail === undefined || spdetail.length === 0) ?
@@ -217,47 +324,61 @@ export const Service2 = () => {
 
                             </div>
                             :
+
                             <div className="sp">
-                                <div className='bg-danger'></div>
-                                {
-                                    spdetail.map((sp) => (
-                                        <>
+                                <div class="container">
+                                    <div class="row mx-auto justify-content-center">
 
-                                            <div className="text-center">
-                                                <p key={sp.serviceid._id}>{sp.firstname} {sp.lastname}</p>
-                                                <p></p>
-                                                <p>{sp.mobileno}</p>
-                                                <p>{sp.gender}</p>
-                                                <p>{sp.shopname}</p>
-                                                <p>{sp.address}</p>
-                                                <p>{sp.cityid.cityname}</p>
-                                                <p>{sp.areaid.areaname}</p>
-                                                <p>{sp.pemail}</p>
-                                                {
-
-                                                    sp.subserid.map((key) => (
-                                                        <>
-
-                                                            <p>{key.subname.subname === service.subname.subname ?
-                                                                <p>prize := {key.prize}</p>
-                                                                :
-                                                                <p></p>
-                                                            }</p>
-                                                        </>
+                                        {
+                                            spdetail.map((sp) => (
+                                                <>
 
 
+                                                    <div class="col-lg-4">
+                                                        <div class="card">
 
-                                                    ))
-                                                }
-                                                <button type='button' onClick={(event) => { handlebookser(sp) }}>Hire service provider</button>
-                                            </div>
+                                                            <div class="card-body">
+                                                                <p className='ser_2_head'>{sp.shopname}</p>
+                                                                <p className='ser_2_label' key={sp.serviceid._id}>{sp.firstname} {sp.lastname}</p>
+                                                                <p className='ser_2_label'><span>Mobile No : </span>{sp.mobileno}</p>
+                                                                <p className='ser_2_label'><span>Gender : </span>{sp.gender}</p>
+                                                                <p className='ser_2_label'><span>Address : </span>{sp.address}</p>
+                                                                <Collapsible trigger="View More" className='view_more_link px-2 py-1 mx-4 my-2'>
+                                                                    <p className='ser_2_label'><span>City : </span>{sp.cityid.cityname}</p>
+                                                                    <p className='ser_2_label'><span>Area : </span>{sp.areaid.areaname}</p>
+                                                                    <p className='ser_2_label'><span>Gmail : </span>{sp.pemail}</p>
+                                                                    {
+                                                                        sp.subserid.map((key) => (
+                                                                            <>
+                                                                                <p>{key.subname.subname === service.subname.subname ?
+                                                                                    <p className='ser_2_label'><span>Prize : </span>{key.prize}</p>
+                                                                                    :
+                                                                                    <p></p>
+                                                                                }</p>
+                                                                            </>
 
 
-                                        </>
+
+                                                                        ))
+                                                                    }
+
+                                                                </Collapsible>
+                                                                <button type='button' onClick={(event) => { handlebookser(sp) }} className='ser_2_hire_btn px-3 py-2 mx-4'>Hire service provider</button>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </>
 
 
-                                    ))
-                                }
+                                            ))
+                                        }
+
+                                    </div>
+                                </div>
+                                {/* <div className='bg-danger'></div> */}
+
                             </div>
 
                 }
