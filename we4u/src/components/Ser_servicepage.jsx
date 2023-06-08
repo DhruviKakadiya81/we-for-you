@@ -64,7 +64,7 @@ export const Ser_servicepage = () => {
 
                                 :
                                 <div>
-                                <h1 className='text-center'>Our Services</h1>
+                                    <h1 className='text-center'>Our Services</h1>
                                     <div class="container">
                                         <div class="row d-flex justify-content-center">
 
@@ -74,8 +74,13 @@ export const Ser_servicepage = () => {
 
 
 
-                                                    <div class="card" style={{ border:"none", flexDirection: "row", width: "400px", marginLeft: "20px", marginTop: "20px" , boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset" }}>
+
+                                                    <div class="card" style={{ border: "none", flexDirection: "row", width: "400px", marginLeft: "20px", marginTop: "20px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset" }}>
+                                                        <img src={"http://localhost:4000/image/" + sr.subname.image} style={{ width: "40%", height: "auto" }} alt="" class="card-img-top" />
+
+                                                  <div class="card" style={{ border:"none", flexDirection: "row", width: "400px", marginLeft: "20px", marginTop: "20px" , boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset" }}>
                                                         <img src={"http://localhost:4000/image/" + sr.subname.image} style={{ width: "50%", height: "90%"}} alt="" className="card-img-top mt-2" />
+
                                                         <div class="card-body">
 
                                                             <h3 class="card-title">{sr.subname.subname}</h3>
@@ -179,7 +184,7 @@ const Update = (props) => {
                 Edit
             </Button>
             <Modal show={isshow} style={{ overflowX: "scroll", width: "80%" }} >
-                <Modal.Header closeButton onClick={initmodel} style={{border:"none" , outline:"none" , width:"80%"}} >
+                <Modal.Header closeButton onClick={initmodel} style={{ border: "none", outline: "none", width: "80%" }} >
                     <Modal.Title className='' >
                         Update Product
                     </Modal.Title>
