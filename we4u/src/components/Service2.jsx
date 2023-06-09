@@ -199,7 +199,9 @@ export const Service2 = () => {
             </section>
 
             <section className='mt-5 mb-5'>
+
                 <p className='hire_header mb-5'>Hire your service provider</p>
+
 
                 {
                     (spdetail === undefined || spdetail.length === 0) ?
@@ -216,6 +218,7 @@ export const Service2 = () => {
                             :
 
                             <div className="sp">
+
                                 <div class="container">
                                     <div class="row mx-auto justify-content-center">
 
@@ -225,7 +228,7 @@ export const Service2 = () => {
 
 
                                                     <div class="col-lg-4">
-                                                        <div class="card">
+                                                        <div class="card ser_2_main_card px-2 py-2" style={{width:"350px"}}>
 
                                                             <div class="card-body">
                                                                 <p className='ser_2_head'>{sp.shopname}</p>
@@ -233,7 +236,7 @@ export const Service2 = () => {
                                                                 <p className='ser_2_label'><span>Mobile No : </span>{sp.mobileno}</p>
                                                                 <p className='ser_2_label'><span>Gender : </span>{sp.gender}</p>
                                                                 <p className='ser_2_label'><span>Address : </span>{sp.address}</p>
-                                                                <Collapsible trigger="View More" className='view_more_link px-2 py-1 mx-4 my-2'>
+                                                                <Collapsible trigger="View More Details" className='my-3 view_more_link px-2 text-center py-1 mx-auto'>
                                                                     <p className='ser_2_label'><span>City : </span>{sp.cityid.cityname}</p>
                                                                     <p className='ser_2_label'><span>Area : </span>{sp.areaid.areaname}</p>
                                                                     <p className='ser_2_label'><span>Gmail : </span>{sp.pemail}</p>
@@ -253,8 +256,9 @@ export const Service2 = () => {
                                                                     }
 
                                                                 </Collapsible>
+                                                                <div style={{textAlign:"center"}}>
                                                                 <button type='button' onClick={(event) => { handlebookser(sp) }} className='ser_2_hire_btn px-3 py-2 mx-4'>Hire service provider</button>
-
+                                                               </div>
                                                             </div>
                                                         </div>
                                                     </div>
