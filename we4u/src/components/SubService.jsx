@@ -129,7 +129,7 @@ export const SubService = () => {
                 items: 6
             },
             1200: {
-                items: 8
+                items: 6
             },
             1300: {
                 items: 9
@@ -144,48 +144,48 @@ export const SubService = () => {
     return (
         <>
             <Navbar />
-            <h3 className="text-left pt-5 pb-0    mt-5 mb-0  h1_class" style={{ color: "black" , marginLeft:"98px" , fontWeight:"500" , fontSize:"40px"}}>Book your Services</h3>
+            <h3 className="text-left pt-5 pb-0    mt-5 mb-0  h1_class" style={{ color: "black", marginLeft: "98px", fontWeight: "500", fontSize: "30px" }}>Book your Services</h3>
             <section className="servicepage mt-4" >
-             <div className="container-fluid ms-lg-5 ms-md-3 ms-sm-0 ps-lg-5 ps-md-0 ps-sm-0
+                <div className="container-fluid ms-lg-5 ms-md-3 ms-sm-0 ps-lg-5 ps-md-0 ps-sm-0
               text-center krupa_try" >
-             <div className="row d-flex justify-content-center" id="feedback-carousel">
-                    {
+                    <div className="row d-flex justify-content-center" id="feedback-carousel">
+                        {
 
-                        (servicedata === undefined) ?
-                            <div className="row d-flex justify-content-center pt-5" style={{ height: "80vh", overflowY: "hidden" }}>
-                                <div className="spinner-border" style={{ position: "absolute", textAlign: "center", top: "50%", left: "50%" }}>
-                                </div>
-
-                            </div>
-                            : (servicedata.length === 0) ?
+                            (servicedata === undefined) ?
                                 <div className="row d-flex justify-content-center pt-5" style={{ height: "80vh", overflowY: "hidden" }}>
-                                    <span>no data found</span>
+                                    <div className="spinner-border" style={{ position: "absolute", textAlign: "center", top: "50%", left: "50%" }}>
+                                    </div>
 
                                 </div>
-                                :
+                                : (servicedata.length === 0) ?
+                                    <div className="row d-flex justify-content-center pt-5" style={{ height: "80vh", overflowY: "hidden" }}>
+                                        <span>no data found</span>
 
-                                <OwlCarousel ref={owl} options={options}>
+                                    </div>
+                                    :
 
-                                    {servicedata.map((service) => (
-                                        <>
-                                        <div className="container d-flex justify-content-center">
-                                            <div class="cards" onClick={(event) => { handleservice2(service) }} >
-                                                <figure class="card" style={{ width: "130px", height: "130px" }}>
-                                                    <img src={"http://localhost:4000/image/" + service.image} alt="" />
-                                                    <figcaption style={{ color: "black", backgroundColor: "white", fontSize: "10px" }}>{service.subname}</figcaption>
-                                                </figure>
-                                            </div>
-                                            </div>
-                                        </>
-                                    ))}
-                                </OwlCarousel>
-                    }
+                                    <OwlCarousel ref={owl} options={options}>
+
+                                        {servicedata.map((service) => (
+                                            <>
+                                                <div className="container d-flex justify-content-center">
+                                                    <div class="cards" onClick={(event) => { handleservice2(service) }} >
+                                                        <figure class="card" style={{ width: "130px", height: "130px" }}>
+                                                            <img src={"http://localhost:4000/image/" + service.image} alt="" />
+                                                            <figcaption style={{ color: "black", backgroundColor: "white", fontSize: "10px" }}>{service.subname}</figcaption>
+                                                        </figure>
+                                                    </div>
+                                                </div>
+                                            </>
+                                        ))}
+                                    </OwlCarousel>
+                        }
+                    </div>
                 </div>
-             </div>
-               
+
             </section>
 
-            <hr style={{color:"black" , width:"1000px" , marginLeft:"100px"}} />
+            <hr style={{ color: "black", width: "1000px", marginLeft: "100px" }} />
             {/* <section>
                 {city ?
                     <>
@@ -206,7 +206,7 @@ export const SubService = () => {
 
             <section>
                 {/* <h1 className="text-left">Hire Your Service Provider</h1> */}
-            <h3 className="text-left pt-5 pb-0    mt-3 mb-0  h1_class" style={{ color: "black" , marginLeft:"98px" , fontWeight:"500" , fontSize:"40px"}}>Hire Your Service Provider</h3>
+                <h3 className="text-left pt-5 pb-0    mt-3 mb-0  h1_class" style={{ color: "black", marginLeft: "98px", fontWeight: "500", fontSize: "40px" }}>Hire Your Service Provider</h3>
 
                 {
                     (spdetail === undefined || spdetail.length === 0) ?
@@ -224,84 +224,57 @@ export const SubService = () => {
                             <div className="sp">
                                 <div className='bg-danger'></div>
                                 {/* <div class="container"> */}
-                                        <div class="row d-flex justify-content-center">
-                                {
-                                    spdetail.map((sp) => (
-                                        <>
+                                <div class="row d-flex justify-content-center">
+                                    {
+                                        spdetail.map((sp) => (
+                                            <>
 
-                                            <div className="card text-center">
-                                                <p key={sp.serviceid._id}>{sp.firstname}</p>
-                                                <p>{sp.lastname}</p>
-                                                <p>{sp.mobileno}</p>
-                                                <p>{sp.gender}</p>
-                                                <p>{sp.shopname}</p>
-                                                <p>{sp.address}</p>
-                                                {sp.cityid ? <p>{sp.cityid.cityname} </p> : <br />}
-                                                {sp.areaid ? <p>{sp.areaid.areaname}</p> : <br />}
+                                                <div class="flip-card">
+                                                    <div class="flip-card-inner">
+                                                        <div className="flip-card-front text-left " style={{ textAlign: "left" }}>
 
+                                                            <h2 className='text-center mt-4'>    {sp.shopname}  </h2>
+                                                            <p className="mt-4 ps-5 " key={sp.serviceid._id} style={{ fontSize: "17px" }}> Service Provider :: {sp.firstname} {sp.lastname}</p>
 
-                                                <p>{sp.pemail}</p>
-                                                <h1>my services</h1>
-                                                <p>{sp.subserid.map((key) => (
-                                                    <>
-                                                        <p>
+                                                            {/* <p>{sp.gender}</p> */}
 
-                                                            {/* {key.subname.subname} */}
-                                                            <p>{key.subname.subname} :  {key.prize}Rs</p>
-                                                        </p>
-
-                                                    </>
-                                                ))}</p>
-                                            </div>
+                                                            <p className=" ps-5 " style={{ fontSize: "17px" }}>  Address :: {sp.address}  <br /><br />  {sp.cityid ? <p className=" " style={{ fontSize: "17px" }} >City :: {sp.cityid.cityname} </p> : <br />}</p>
+                                                            <p className=" ps-5 " style={{ fontSize: "17px" }}> {sp.areaid ? <p style={{ fontSize: "17px" }}>Area:: {sp.areaid.areaname}</p> : <br />}</p>
 
 
 
-                                            <div class="flip-card">
-                                                <div class="flip-card-inner">
-                                                    <div className="flip-card-front text-left " style={{textAlign:"left" }}>
-                                                   
-                                                    <h2 className='text-center mt-4'>    {sp.shopname}  </h2>
-                                                      <p  className= "mt-4 ps-5 "  key={sp.serviceid._id} style={{fontSize:"17px"}}> Service Provider :: {sp.firstname} {sp.lastname}</p>
-                                                        
-                                                        {/* <p>{sp.gender}</p> */}
-                                                        
-                                                        <p className= " ps-5 " style={{fontSize:"17px"}}>  Address :: {sp.address}  <br /><br />  {sp.cityid ?   <p className= " " style={{fontSize:"17px"}} >City :: {sp.cityid.cityname} </p> : <br />}</p>
-                                                        <p className= " ps-5 " style={{fontSize:"17px"}}> {sp.areaid ? <p style={{fontSize:"17px"}}>Area:: {sp.areaid.areaname}</p> : <br />}</p>
-                                                       
+                                                            <p className=" ps-5 " style={{ fontSize: "17px" }}> Contact Us :: {sp.mobileno} </p>
+                                                            <p className=" ps-5 " style={{ fontSize: "17px" }}> Email Id :: {sp.pemail} </p>
+
+                                                        </div>
+                                                        <div class="flip-card-back">
+                                                            <h1 className='d-flex justify-content-center mb-5'>My Services</h1>
+                                                            <p>{sp.subserid.map((key) => (
+                                                                <>
+                                                                    <div className='text-center'>
+                                                                        <p> {key.subname.subname} : {key.prize} Rs</p>
+                                                                    </div>
 
 
-                                                        <p className= " ps-5 " style={{fontSize:"17px"}}> Contact Us :: {sp.mobileno} </p>
-                                                        <p className= " ps-5 " style={{fontSize:"17px"}}> Email Id :: {sp.pemail} </p>
 
-                                                    </div>
-                                                    <div class="flip-card-back">
-                                                    <h1 className='d-flex justify-content-center mb-5'>My Services</h1>
-                                                        <p>{sp.subserid.map((key) => (
-                                                            <>
-                                                            <div className='text-center'>
-                                                            <p> {key.subname.subname} : {key.prize} Rs</p>
-                                                            </div>
-                                                              
-                                                                   
-                                                                  
-                                                              
 
-                                                            </>
-                                                        ))}</p>
+
+                                                                </>
+                                                            ))}</p>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                          
-                                        </>
+
+                                            </>
 
 
-                                    ))
-                                }
+                                        ))
+                                    }
+                                </div>
+                                {/* </div> */}
+
                             </div>
-                            {/* </div> */}
 
-                            </div>
-                          
 
 
                 }

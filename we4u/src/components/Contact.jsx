@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "../css/Contact.css";
 import { Navbar } from './Navbar'
 import {
@@ -12,8 +12,30 @@ import {
 import { TextField, Button } from "@mui/material";
 import { Link } from 'react-router-dom';
 import { Footer } from './Footer'
+import cntuser from '../services/contact'
 
 export const Contact = () => {
+  const [firstname, setfirstname] = useState('');
+  const [lastname, setlastname] = useState('');
+  const [email, setemail] = useState('');
+  const [phone, setphone] = useState('');
+  const [message, setmessage] = useState('');
+
+  const handleadd = async () => {
+    const data = { firstname, lastname, email, phone, message }
+    if (data.firstname === '' || data.lastname === '' || data.email === '' || data.phone === '' || data.message === '') {
+      alert("enter all data", data);
+      console.log("data", data);
+    } else {
+      const response = await cntuser.cntuseradd(data);
+      if (response.data.success === true) {
+        alert("your message delivered successfully");
+      }
+      else {
+        alert("please add your message again")
+      }
+    }
+  }
 
   return (
 
@@ -54,16 +76,19 @@ export const Contact = () => {
               </div>
             </div>
             <div className="col c_form_container">
-              <div className="d-flex justify-content-center">
-                <input type="text" name="firstName" className="c_input_first_name mx-2 my-2 px-4 py-2" placeholder="Enter First Name" />
-                <input type="text" name="Last name" className="c_input_last_name mx-2 my-2 px-4 py-2" placeholder="Enter Last Name" />
-              </div>
-              <div className="d-flex justify-content-center">
-                <input type="number" name="phoneNumber" className="c_input_phone_number mx-2 my-2 px-4 py-2" placeholder="Phone Number" />
-                <input type="Email" name="Email" className="c_input_email_address mx-2 my-2 px-4 py-2" placeholder="Email Address" />
-              </div>
-              <textarea name="message" className="c_input_message mx-2 my-2" placeholder="Your Message"></textarea><br />
-              <button type="submit" className="c_send_btn px-5 py-2 mb-5">Send Message</button>
+              <form action="" method="post" >
+                <div className="d-flex justify-content-center">
+                  <input type="text" name="firstName" className="c_input_first_name mx-2 my-2 px-4 py-2" placeholder="Enter First Name" onChange={(event) => { setfirstname(event.target.value) }} />
+                  <input type="text" name="Last name" className="c_input_last_name mx-2 my-2 px-4 py-2" placeholder="Enter Last Name" onChange={(event) => { setlastname(event.target.value) }} />
+                </div>
+
+                <div className="d-flex justify-content-center">
+                  <input type="number" name="phoneNumber" className="c_input_phone_number mx-2 my-2 px-4 py-2" placeholder="Phone Number" onChange={(event) => { setphone(event.target.value) }} />
+                  <input type="Email" name="Email" className="c_input_email_address mx-2 my-2 px-4 py-2" placeholder="Email Address" onChange={(event) => { setemail(event.target.value) }} />
+                </div>
+                <textarea name="message" className="c_input_message mx-2 my-2" placeholder="Your Message" onChange={(event) => { setmessage(event.target.value) }}></textarea><br />
+              </form>
+              <button type="button" className="c_send_btn px-5 py-2 mb-5" onClick={handleadd}>Send Message</button>
             </div>
           </div>
         </div>
