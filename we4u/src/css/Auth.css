@@ -5,3 +5,7 @@
     outline-offset: none;
     border-radius: 5px;
 }
+
+label .mx-2 {
+    font-size: 15px;
+}

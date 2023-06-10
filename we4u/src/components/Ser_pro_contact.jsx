@@ -2,8 +2,30 @@ import React from 'react'
 import "../css/Ser_pro_contact.css"
 import { Ser_Pro_Navbar } from "./Ser_Pro_Navbar";
 import { Footer } from './Footer';
-
+import contact from '../services/contact';
+import { useState } from 'react';
 export const Ser_pro_contact = () => {
+    const [firstname, setfirstname] = useState('');
+    const [lastname, setlastname] = useState('');
+    const [email, setemail] = useState('');
+    const [phone, setphone] = useState('');
+    const [message, setmessage] = useState('');
+
+    const handleadd = async () => {
+        const data = { firstname, lastname, email, phone, message }
+        if (data.firstname === '' || data.lastname === '' || data.email === '' || data.phone === '' || data.message === '') {
+            alert("enter all data", data);
+            console.log("data", data);
+        } else {
+            const response = await contact.cntuspadd(data);
+            if (response.data.success === true) {
+                alert("your message delivered successfully");
+            }
+            else {
+                alert("please add your message again")
+            }
+        }
+    }
     return (
         <>
             <Ser_Pro_Navbar />
@@ -88,41 +110,30 @@ export const Ser_pro_contact = () => {
                         </div>
                         <div class="col-lg-6 col-sm-12 col-md-10 contact-form">
                             <form class="row g-3">
-                                <div class="col-md-6 ">
-                                    <input type="text" class="form-control" id="inputEmail4" placeholder="First Name" />
+                                <h1 className='text-center' style={{ color: "white" }}>Contact Us</h1>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="inputEmail4" placeholder="First Name" onChange={(event) => { setfirstname(event.target.value) }} />
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" id="inputPassword4" placeholder="Last Name" />
+                                    <input type="text" class="form-control" id="inputPassword4" placeholder="Last Name" onChange={(event) => { setlastname(event.target.value) }} />
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="email" class="form-control" id="inputEmail4" placeholder="Your Email" />
+                                    <input type="email" class="form-control" id="inputEmail4" placeholder="Your Email" onChange={(event) => { setemail(event.target.value) }} />
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" id="inputPassword4" placeholder="Your Mobile No." />
-                                </div>
-                                <div class="col-12">
-                                    <select class="form-select col-12" aria-label="Default select example">
-
-                                        <option class="col-6" selected>Select City</option>
-                                        <option class="col-6" value="1">One</option>
-                                        <option class="col-6" value="2">Two</option>
-                                        <option class="col-6" value="3">Three</option>
-
-
-
-                                    </select>
+                                    <input type="text" class="form-control" id="inputPassword4" placeholder="Your Mobile No." onChange={(event) => { setphone(event.target.value) }} />
                                 </div>
 
                                 <div class="col-12">
                                     <div class="mb-3">
 
                                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                            placeholder="Write Message...."></textarea>
+                                            placeholder="Write Message...." onChange={(event) => { setmessage(event.target.value) }} ></textarea>
                                     </div>
                                 </div>
 
                                 <div class="col-12 text-center">
-                                    <button type="submit" class="s_cnt_btn px-5 py-2">Contact Us </button>
+                                    <button type="submit" class="s_cnt_btn px-5 py-2" onClick={handleadd}>Contact Us </button>
                                 </div>
                             </form>
                         </div>

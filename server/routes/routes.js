@@ -16,6 +16,8 @@ const subser = require("../controllers/subservice");
 const subserad = require("../controllers/subserviceadmin");
 const addtocart = require("../controllers/bookservice");
 const bookser = require("../controllers/finalBooking");
+const contactuser = require("../controllers/contactuser");
+const contactsp = require("../controllers/contactsp");
 
 const path = require("path");
 var multer = require("multer");
@@ -103,7 +105,10 @@ router1.post("/showcart", addtocart.showcart);
 router1.delete("/deletecart", addtocart.deleteintocart);
 
 
-router1.post("/book", bookser.adddata);
+router1.post("/cntuser", contactuser.adddetail);
+router1.post("/cntsp", contactsp.adddetail);
+
+
 // router1.post("/getuser",logcontroller.getuserlogin);
 // router1.post("/getuser",logcontroller.getuserlogin);
 
