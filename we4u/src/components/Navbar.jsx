@@ -49,7 +49,7 @@ export const Navbar = () => {
     event.preventDefault();
     var id = localStorage.getItem("token");
     if (id == null) {
-
+      alert("you have to login first");
       nevigate("/login");
       event.preventDefault();
     }
