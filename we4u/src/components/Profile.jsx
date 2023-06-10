@@ -8,7 +8,7 @@ import { useState } from 'react';
 import userprofile from '../services/UserProfile'
 import getLoginUser from '../services/GetUser'
 import { useEffect } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 import '../css/Showprofile.css';
 
 const useStyles = makeStyles((theme) => ({
@@ -35,12 +35,20 @@ const Profile = () => {
   const [userdata, setuserdata] = useState();
   const [isData, setIsData] = useState(true);
   const [isEdit, setisEdit] = useState(true);
-
+  const navigate = useNavigate();
   const handleProfile = async (event) => {
-    alert(firstname + lastname + birthdate + gender + image);
+    event.preventDefault();
+    // alert(firstname + lastname + birthdate + gender + image);
     const data = { firstname, lastname, birthdate, gender, image, userid };
     console.log("images===>", image);
     const respo = await userprofile.create(data);
+    if (respo.data.success === true) {
+      alert("your profile is created");
+      window.location.reload();
+    }
+    else {
+      alert(respo.data.msg);
+    }
     console.log("response---->", respo);
   }
 
@@ -64,15 +72,6 @@ const Profile = () => {
         let fbirthdate = response.data.data.birthdate.slice(0, 10);
         console.log("birthdate====>", fbirthdate);
         setuserdata(response.data.data);
-        // setuserdata((userdata) => ({
-        //   ...userdata,
-        //   userid: response.data.data.userid,
-        //   firstname: response.data.data.firstname,
-        //   lastname: response.data.data.lastname,
-        //   gender: response.data.data.gender,
-        //   birthdate: fbirthdate,
-        //   image: response.data.data.image
-        // }));
         setIsData(true);
 
       }
@@ -85,6 +84,10 @@ const Profile = () => {
 
 
   useEffect(() => {
+    if (localStorage.getItem("token") === undefined) {
+      alert("login successful");
+      navigate("/login");
+    }
     console.log("userdata", isData);
 
     isEdit && getdata();
@@ -188,7 +191,7 @@ const Profile = () => {
                         <div class="col-sm-4 bg-c-lite-green user-profile">
                           <div class="card-block text-center text-white">
                             <div class="m-b-25">
-                              <img src={"http://localhost:4000/image/" + userdata.image} class="img-radius" alt="User-Profile-Image" height={"100px"} width={"100px"} style={{ borderRadius: "50px" }} />
+                              <img src={userdata.image ? "http://localhost:4000/image/" + userdata.image : "https://img.icons8.com/bubbles/100/000000/user.png"} class="img-radius" alt="User-Profile-Image" height={"100px"} width={"100px"} style={{ borderRadius: "50px" }} />
                             </div>
                             <p className='mb-2'>{userdata.firstname} {userdata.lastname}</p>
                             {/* <a class="f-w-600" style={{ color: "white" }}>Edit Your Image</a> */}
@@ -220,7 +223,7 @@ const Profile = () => {
                                 <p class="m-b-10 f-w-600">Gender</p>
                                 <h6 class="text-muted f-w-400">{userdata.gender}</h6>
                               </div>
-                              <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Edit Youe Details</h6>
+                              <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Edit Your Details</h6>
                               <div class="col-sm-6">
                                 <ChangePass userid={userdata.userid._id} />
 
@@ -272,8 +275,8 @@ const ChangePass = (props) => {
         alert("password updated successfully");
       }
       else {
-        initmodel();
-        alert("password not updated");
+
+        alert(response.data.msg);
       }
     }
     else {
@@ -281,25 +284,6 @@ const ChangePass = (props) => {
     }
   }
 
-  const handletogglepass = async (event) => {
-    event.preventDefault();
-    var x = document.getElementById("id_password");
-    var y = document.getElementById("id_password2");
-    if (x.type === "password") {
-      x.type = "text";
-      seteye("fa-solid fa-eye");
-    } else {
-      x.type = "password";
-      seteye("fa-sharp fa-solid fa-eye-slash");
-    }
-    if (y.type === "password") {
-      y.type = "text";
-      seteye("fa-solid fa-eye");
-    } else {
-      y.type = "password";
-      seteye("fa-sharp fa-solid fa-eye-slash");
-    }
-  };
 
 
   useEffect(() => {
@@ -310,51 +294,39 @@ const ChangePass = (props) => {
 
   return (
     <>
-      <Button variant="contained" style={{ backgroundColor: "white", color: "black" }} onClick={initmodel}>
+      <button variant="contained" className='btn' style={{ backgroundColor: "grey", color: "white" }} onClick={initmodel}>
         Change Password??
-      </Button>
+      </button>
       <Modal show={isshow} style={{ overflowX: "scroll", width: "100%" }} >
-        <Modal.Header closeButton onClick={initmodel}>
+        <Modal.Header>
           <Modal.Title className='' >
             Change Password
           </Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
-          <div className="dlt">
-            <FormControl className='mb-3 detail_container'>
+          <div className="dlt d-grid justify-content-center">
+            <FormControl className=''>
               <InputLabel className='mx-3'>Old Password</InputLabel>
               <Input type="text" name="name" className='my-3' onChange={(event) => { setoldpassword(event.target.value) }} />
 
             </FormControl><br />
-            <i
-              className={eye}
-              id="togglePassword"
-              style={{ marginLeft: "-25px", cursor: "pointer" }}
-              onClick={handletogglepass}
 
-            ></i>
-            <FormControl className='mb-3 detail_container'>
+            <FormControl className='r'>
               <InputLabel className='mx-3' >New Password</InputLabel>
               <Input type="text" name="name" id="id_password2" className='my-3' onChange={(event) => { setnewpassword(event.target.value) }} />
             </FormControl><br />
 
-            <FormControl className='mb-3 detail_container'>
+            <FormControl className=''>
               <InputLabel className='mx-3' >Confirm New Password</InputLabel>
               <Input type="text" name="name" id="id_password" className='my-3' onChange={(event) => { setconpassword(event.target.value) }} />
-              <i
-                className={eye}
-                id="togglePassword"
-                style={{ marginLeft: "-25px", cursor: "pointer" }}
-                onClick={handletogglepass}
 
-              ></i>
-              {msg}
+
             </FormControl><br />
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="" className="mx-3" onClick={initmodel} style={{ backgroundColor: "red" }}>
+          <Button variant="" className="mx-3" onClick={initmodel} style={{ backgroundColor: "grey", color: "white" }}>
             CLOSE
           </Button>
           <Button variant="" className="mx-3" type='submit' style={{ backgroundColor: "black", color: "white" }} onClick={handlepassword}>
@@ -406,9 +378,9 @@ const Update = (props) => {
 
   return (
     <>
-      <Button variant="contained" style={{ backgroundColor: "white", color: "black" }} onClick={initmodel}>
+      <button variant="contained" className='btn' style={{ backgroundColor: "grey", color: "white" }} onClick={initmodel}>
         Update Your Detail
-      </Button>
+      </button>
       <Modal show={isshow} style={{ overflowX: "scroll", width: "100%" }} >
         <Modal.Header onClick={initmodel}>
           <Modal.Title className='' >
@@ -431,21 +403,7 @@ const Update = (props) => {
               </FormControl><br />
             </div>
 
-            <div className="pro_input_container">
-              <FormControl className='{classes.container} mb-4 detail_container'>
-                <TextField
-                  id="date"
-                  label="Birthday"
-                  type="date"
-                  defaultValue={birthdate}
-                  className={classes.textField}
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  onChange={(event) => { setbirthdate(event.target.value) }}
-                />
-              </FormControl><br />
-            </div>
+
             <div className="pro_input_container">
               <FormControl className='mb-3 detail_container'>
                 <RadioGroup
@@ -463,7 +421,7 @@ const Update = (props) => {
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="" className="mx-3" onClick={initmodel} style={{ backgroundColor: "red" }}>
+          <Button variant="" className="mx-3" onClick={initmodel} style={{ backgroundColor: "grey" }}>
             CLOSE
           </Button>
           <Button variant="" className="mx-3" type='submit' style={{ backgroundColor: "black", color: "white" }} onClick={handleupdate}>

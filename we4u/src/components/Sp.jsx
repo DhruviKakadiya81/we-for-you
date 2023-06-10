@@ -21,13 +21,12 @@ export const Sp = () => {
           </div>
         </div>
 
-
-      </section >
+      </section>
 
       <div className="text-center d-flex justify-content-center">
         <div className="upperdiv w-75 justify-content-center p-3" >
           <p className='ser_home_card_title'>Join We4U And Make Your Business Wide</p>
-          <p className='ser_home_card_title2'>We4U is an app-based marketplace that empowers profssional like you to become your own buasiness</p>
+          <p className='ser_home_card_title2 text-center'>We4U is an app-based marketplace that empowers profssional like you to become your own buasiness</p>
         </div>
       </div>
 

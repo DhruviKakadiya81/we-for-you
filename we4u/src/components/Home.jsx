@@ -10,29 +10,15 @@ import OwlCarousel from 'react-owl-carousel2';
 import 'react-owl-carousel2/lib/styles.css';
 import { useNavigate } from 'react-router-dom';
 import service1 from '../services/Services'
-import { FormControl, FormGroup, Input, InputLabel, Typography, Select, MenuItem } from '@mui/material'
 import { event } from 'jquery';
+
 export const Home = () => {
   const [getser, setgetser] = useState('');
   const [serviceid, setserviceid] = useState('');
   const [location, setLocation] = useState(null);
-
+  const [searchser, setsearchser] = useState('');
+  const [searchid, setsearchid] = useState('');
   const navigate = useNavigate();
-  function reveal() {
-    var reveals = document.querySelectorAll(".reveal");
-
-    for (var i = 0; i < reveals.length; i++) {
-      var windowHeight = window.innerHeight;
-      var elementTop = reveals[i].getBoundingClientRect().top;
-      var elementVisible = 150;
-
-      if (elementTop < windowHeight - elementVisible) {
-        reveals[i].classList.add("active");
-      } else {
-        reveals[i].classList.remove("active");
-      }
-    }
-  }
 
   function handleLocationClick(event) {
 
@@ -79,7 +65,6 @@ export const Home = () => {
   }
 
 
-  window.addEventListener("scroll", reveal);
   const options = {
     loop: true,
     nav: false,
@@ -113,17 +98,21 @@ export const Home = () => {
   const [service, setService] = useState([]);
   var ser;
   const fetchSer = async (event) => {
-    // event.prventDefault();
+
     ser = await showservice.getservice();
-    console.log("data :", ser.data.data[0].s_name);
     setService(ser);
-    // console.log("data2 :", service.data.data.length);
   }
 
   const handleservice = async () => {
     try {
       const response = await service1.getservice();
       setgetser(response.data.data);
+      getser.map((key) => {
+        if (key.s_name === searchser) {
+          setsearchid(key._id);
+
+        }
+      })
     } catch (error) {
       console.log(error);
     }
@@ -135,8 +124,9 @@ export const Home = () => {
     handleservice();
     service && fetchSer();
     // handleLocationClick();
-  }, []);
+  }, [searchser]);
   console.log("ser", getser);
+  console.log("serchid==", searchid);
   return (
     <>
       <Navbar />
@@ -147,7 +137,7 @@ export const Home = () => {
             background: `url("images/homeimag9.jpg")`, backgroundSize: "cover",
             backgroundPosition: "center center", width: "auto"
           }}>
-            <form className="reveal fade-In">
+            <form className="">
               <fieldset className="inner-form mb-0 pb-0" style={{ fontSize: "30px", width: "90%", margin: "auto" }}>
                 <legend className="pb-0 mb-0" style={{ fontSize: "40px", width: "90%" }}> Discover the Amazing Services</legend>
               </fieldset>
@@ -161,13 +151,14 @@ export const Home = () => {
                       : <option>Loading...</option>}
                   </datalist>
 
-                  <input id="search" type="text" list="browsers" placeholder="What are you looking for?" />
+                  <input id="search" type="text" list="browsers" placeholder="What are you looking for?" onChange={(event) => { setsearchser(event.target.value) }} />
                 </div>
                 <div className="input-field second-wrap">
-                  <input id="location" type="button" placeholder="location" value={location ? location : "Click To Access Your City"} onClick={handleLocationClick} />
+                  <input id="location" type="button" placeholder="location" value={location ? location : "Location"} onClick={handleLocationClick} />
                 </div>
                 <div className="input-field third-wrap">
-                  <button className="btn-search" type="button">Search</button>
+
+                  <button className="btn-search" type="button" onClick={(event) => { event.preventDefault(); localStorage.setItem("serviceid", searchid); navigate("/service") }}>Search</button>
                 </div>
               </div>
             </form>
@@ -177,7 +168,7 @@ export const Home = () => {
 
       <section className="services1" style={{ minHeight: "300px" }}>
 
-        <h1 className='serviceh1 mt-5' style={{fontWeight:"700"}}>  Our Services </h1>
+        <h1 className='serviceh1 mt-5' style={{ fontWeight: "700" }}>  Our Services </h1>
 
 
 
@@ -245,7 +236,7 @@ export const Home = () => {
               <div className="col-lg-3 col-md-4 col-sm-10">
                 <div className="progress-card">
                   <div className="progress-card-body text-center" style={{ color: "white" }}>
-                    <img src="/images/search_service.png" alt="apply" width="80px" style={{ borderRadius: "100%" }} />
+                    <img src="/images/search_service_10.png" alt="apply" width="80px" style={{ borderRadius: "100%" }} />
                     <h5 className="card-title mt-3 mb-3">Search Service</h5>
                     <p className="p mt-2 mb-5">Search Service Which You Want and As Per Your Need</p>
                   </div>
@@ -263,7 +254,7 @@ export const Home = () => {
               <div className="col-lg-3 col-md-4 col-sm-10">
                 <div className="progress-card">
                   <div className="progress-card-body text-center" style={{ color: "white" }}>
-                    <img src="images/funded.png" alt="funded" width="80px" />
+                    <img src="images/get_service_9.jpg" alt="funded" width="80px" style={{ borderRadius: "100%" }}/>
                     <h5 className="card-title mt-3 mb-3">Get Services</h5>
                     <p className="p mt-2">Get Services On Time</p>
                   </div>

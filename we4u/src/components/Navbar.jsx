@@ -49,7 +49,7 @@ export const Navbar = () => {
     event.preventDefault();
     var id = localStorage.getItem("token");
     if (id == null) {
-
+      alert("you have to login first");
       nevigate("/login");
       event.preventDefault();
     }
@@ -91,7 +91,7 @@ export const Navbar = () => {
 
             <ul className="navbar-nav sm-icons">
               <li className="dropdown nav-item">
-                <Link className="nav-link" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false"><i className="fa-solid fa-user fa-lg"></i></Link>
+                <Link className="nav-link" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false">Login</Link>
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <li><Link className="dropdown-item" to="/login">Login As Client</Link></li>
                   <li><Link className="dropdown-item" to="/loginasp">Login As Professional</Link></li>
