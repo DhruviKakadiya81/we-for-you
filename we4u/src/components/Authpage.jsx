@@ -120,14 +120,16 @@ const Update = (props) => {
   const [start_time, setstart_time] = useState();
 
   // const navigate = useNavigate();
-  console.log(props)
+
   const [isshow, invokemodel] = useState(false);
   const initmodel = () => {
     return invokemodel(!isshow);
   }
 
   const handlebook = async () => {
-
+    console.log("start", start_time);
+    const bookingdata = { spid: data.spid, userid: data.userid, serviceid: data.serviceid, mobileno, date }
+    console.log("first => ", bookingdata);
   }
 
   useEffect(() => {
@@ -145,94 +147,97 @@ const Update = (props) => {
       <Button variant="contained" style={{ backgroundColor: "lightgray", color: "black" }} onClick={initmodel}>
         Book Service
       </Button>
-      <Modal show={isshow}  >
-        <Modal.Header className='text-center'>
-          <Modal.Title className='' >
-            Add Your Details
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <section className="contact-form-sec pt-3 pb-3" style={{ padding: "0px 0px", backgroundColor: "rgba(5, 5, 5, 0.70)" }}>
-            <div className="container" style={{ marginTop: "0px" }}>
-              <div className="row d-flex justify-content-lg-between justify-content-md-center">
-                <div className="col-lg-12 col-sm-12 col-md-10">
-                  <form className="row g-3">
-                    <div className="col-md-6 ">
-                      <label htmlFor="" className='mx-2' style={{ color: "white" }}>Service Category : </label>
-                      <input type="text" className="form-control p-2" id="inputEmail4" defaultValue={data.serviceid.subname.serviceid.s_name} readOnly />
-                    </div>
-                    <div className="col-md-6">
-                      <label htmlFor="" className='mx-2' style={{ color: "white" }}>Service Name : </label>
-                      <input type="text" className="form-control  p-2" id="inputPassword4" defaultValue={data.serviceid.subname.subname} readOnly />
-                    </div>
-                    <div className="col-md-6">
-                      <label htmlFor="" className='mx-2' style={{ color: "white" }}>Service Provider Name </label>
-                      <input type="text" className="form-control  p-2" id="inputEmail4" defaultValue={data.spid.firstname + " " + data.spid.lastname} readOnly />
-                    </div>
-                    <div className="col-md-6">
-                      <label htmlFor="" className='mx-2' style={{ color: "white" }}>Service Prize </label>
-                      <input type="text" className="form-control  p-2" id="inputPassword4" defaultValue={data.serviceid.prize + " Rs Only/--"} readOnly />
-                    </div>
-                    <div className="col-md-6">
-                      <label htmlFor="" className='mx-2' style={{ color: "white" }}>Your First Name </label>
-                      <input type="text" className="form-control  p-2" id="inputPassword4" defaultValue={data.userid.firstname} readOnly />
-                    </div>
-                    <div className="col-md-6">
-                      <label htmlFor="" className='mx-2' style={{ color: "white" }}>Your Last Name </label>
-                      <input type="text" className="form-control  p-2" id="inputPassword4" defaultValue={data.userid.lastname} readOnly />
-                    </div>
-                    <div className="col-md-12">
-                      <label htmlFor="" className='mx-2' style={{ color: "white" }}>Your Email </label>
-                      <input type="email" className="form-control  p-2" id="inputPassword4" defaultValue={data.userid.userid.email} readOnly />
-                    </div>
-                    <div className="col-md-6">
-                      <label htmlFor="" className='mx-2' style={{ color: "white" }}>Enter Your Mobile No </label>
-                      <input type="number" className="form-control  p-2" id="inputPassword4" onChange={(event) => { setmobileno(event.target.value) }} />
-                    </div>
-                    <div className="col-md-6">
-                      <label htmlFor="" className='mx-2' style={{ color: "white" }}>Choose Date </label>
-                      <input type="date" className="form-control  p-2" id="inputPassword4" onChange={(event) => { setdate(event.target.value) }} />
-
-                    </div>
-                    <div className="col-md-12">
-                      <label htmlFor="" className='mx-2' style={{ color: "white" }}>Choose Date </label>
-                      <input type="time" className="form-control  p-2" id="inputPassword4" onChange={(event) => { setstart_time(event.target.value) }} />
-
-                    </div>
-
-
-                    <div className="col-12">
-                      <div className="mb-3">
-
-                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"
-                          placeholder="Write Your Current Address...."></textarea>
+      <div style={{ width: "2000px" }}>
+        <Modal show={isshow} >
+          <Modal.Header className='text-center'>
+            <Modal.Title className='' >
+              Add Your Details
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body >
+            <section className="contact-form-sec pt-3 pb-3" style={{ padding: "0px 0px", backgroundColor: "rgba(5, 5, 5, 0.70)" }}>
+              <div className="container" style={{ marginTop: "0px" }}>
+                <div className="row d-flex justify-content-lg-between justify-content-md-center">
+                  <div className="col-lg-12 col-sm-12 col-md-10">
+                    <form className="row g-3">
+                      <div className="col-md-6 ">
+                        <label htmlFor="" className='mx-2' style={{ color: "white" }}>Service Category : </label>
+                        <input type="text" className="form-control p-2" id="inputEmail4" defaultValue={data.serviceid.subname.serviceid.s_name} readOnly />
                       </div>
-                    </div>
+                      <div className="col-md-6">
+                        <label htmlFor="" className='mx-2' style={{ color: "white" }}>Service Name : </label>
+                        <input type="text" className="form-control  p-2" id="inputPassword4" defaultValue={data.serviceid.subname.subname} readOnly />
+                      </div>
+                      <div className="col-md-6">
+                        <label htmlFor="" className='mx-2' style={{ color: "white" }}>Service Provider Name </label>
+                        <input type="text" className="form-control  p-2" id="inputEmail4" defaultValue={data.spid.firstname + " " + data.spid.lastname} readOnly />
+                      </div>
+                      <div className="col-md-6">
+                        <label htmlFor="" className='mx-2' style={{ color: "white" }}>Service Prize </label>
+                        <input type="text" className="form-control  p-2" id="inputPassword4" defaultValue={data.serviceid.prize + " Rs Only/--"} readOnly />
+                      </div>
+                      <div className="col-md-6">
+                        <label htmlFor="" className='mx-2' style={{ color: "white" }}>Your First Name </label>
+                        <input type="text" className="form-control  p-2" id="inputPassword4" defaultValue={data.userid.firstname} readOnly />
+                      </div>
+                      <div className="col-md-6">
+                        <label htmlFor="" className='mx-2' style={{ color: "white" }}>Your Last Name </label>
+                        <input type="text" className="form-control  p-2" id="inputPassword4" defaultValue={data.userid.lastname} readOnly />
+                      </div>
+                      <div className="col-md-12">
+                        <label htmlFor="" className='mx-2' style={{ color: "white" }}>Your Email </label>
+                        <input type="email" className="form-control  p-2" id="inputPassword4" defaultValue={data.userid.userid.email} readOnly />
+                      </div>
+                      <div className="col-md-6">
+                        <label htmlFor="" className='mx-2' style={{ color: "white" }}>Enter Your Mobile No </label>
+                        <input type="number" className="form-control  p-2" id="inputPassword4" onChange={(event) => { setmobileno(event.target.value) }} />
+                      </div>
+                      <div className="col-md-6">
+                        <label htmlFor="" className='mx-2' style={{ color: "white" }}>Choose Date </label>
+                        <input type="date" className="form-control  p-2" id="inputPassword4" onChange={(event) => { setdate(event.target.value) }} />
 
-                    <div className="col-12 text-center">
-                      <button type="button" className="s_cnt_btn px-5 py-2">Book Service </button>
-                    </div>
-                  </form>
+                      </div>
+                      <div className="col-md-12">
+                        <label htmlFor="" className='mx-2' style={{ color: "white" }}>Choose Time slot </label>
+                        <input type="time" className="form-control  p-2" id="inputPassword4" onChange={(event) => { setstart_time(event.target.value) }} />
+
+                      </div>
+
+
+                      <div className="col-12">
+                        <div className="mb-3">
+
+                          <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"
+                            placeholder="Write Your Current Address...."></textarea>
+                        </div>
+                      </div>
+
+                      {/* <div className="col-12 text-center">
+                        <button type="button" className="s_cnt_btn px-5 py-2">Book Service </button>
+                      </div> */}
+                    </form>
+                  </div>
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
 
 
 
 
 
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="danger" className="mx-3" onClick={initmodel}>
-            CLOSE
-          </Button>
-          <Button variant="dark" className="mx-3" type='submit' >
-            Update
-          </Button>
-        </Modal.Footer>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="danger" className="mx-3" onClick={initmodel}>
+              CLOSE
+            </Button>
+            <Button variant="dark" className="mx-3" type='submit' onClick={handlebook} >
+              Book Service
+            </Button>
+          </Modal.Footer>
 
-      </Modal>
+        </Modal>
+      </div>
+
     </>
   )
 }

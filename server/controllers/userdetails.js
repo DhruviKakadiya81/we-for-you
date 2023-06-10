@@ -22,27 +22,44 @@ const adddetails = async (req, res) => {
         console.log("data :== ", req.body);
         const { firstname, lastname, gender, birthdate, userid } = req.body;
         const check = await profile.findOne({ userid });
-        console.log("checking==>", check)
+        console.log("file", req.file);
         if (!check) {
-            const userdetail = new profile({
-                firstname,
-                lastname,
-                gender,
-                birthdate,
-                image: req.file.filename,
-                userid
-            });
-            const data = await userdetail.save();
-            console.log(data);
-            return res.send({ success: true, msg: "data", data: data });
+            if (!req.file) {
+                console.log("hello");
+                const userdetail = new profile({
+                    firstname,
+                    lastname,
+                    gender,
+                    birthdate,
+                    userid
+                });
+                const data = await userdetail.save();
+                console.log(data);
+                return res.send({ success: true, msg: "your profile is created", data: data });
+            }
+            else {
+                console.log("hello2");
+                const userdetail = new profile({
+                    firstname,
+                    lastname,
+                    gender,
+                    birthdate,
+                    image: req.file.filename,
+                    userid
+                });
+                const data = await userdetail.save();
+                console.log(data);
+                return res.send({ success: true, msg: "your profile is created", data: data });
+            }
         }
+
         else {
 
-            res.send({ success: false, msg: `not added` });
+            res.send({ success: false, msg: "your profile is already there" });
         }
 
     } catch (error) {
-        res.send({ success: false, msg: `data ${error}` });
+        res.send({ success: false, msg: "your profile is not created" });
     }
 
 }

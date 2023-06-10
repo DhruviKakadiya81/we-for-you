@@ -3,7 +3,7 @@
   margin-top: 30px;
   padding: 20px;
   width: 420px;
-  /* background-color: transparent; */
+  background-color: transparent;
   height: 400px;
   border-radius: 20px;
 
@@ -46,7 +46,7 @@
 .flip-card-front {
   color: rgb(255, 255, 255);
   height: fit-content;
-  background: linear-gradient(128deg, #212529de, transparent);
+  background: rgb(86, 83, 83);
   padding: 10px;
   box-shadow: rgba(0, 0, 0, 0.2) 9px 9px 28px 0px;
   /* border: 2px solid black; */

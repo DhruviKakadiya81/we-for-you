@@ -186,7 +186,7 @@ export const Service2 = () => {
                     <div className="row d-flex justify-content-center">
                         <div className="col-lg-7">
                             <div className='mb-4 Ser_2_head'>{service.subname.subname}</div>
-                            <div className='Ser_2_desc'>{`We Provide Many Service Providers And They Provide You Many Services. You Can Choose Your Service Providers As Per Your Requirement And Cost Like We Provide Many Service Providers And They Provide You Many Services. You Can Choose Your Service Providers As Per Your Requirement And Cost Like ${service.subname.subname} `}</div>
+                            <div className='Ser_2_desc'>{`We provide many service providers and they provide you many services. You can choose your service providers as per your requirement and cost like we provide many service providers and they provide you many services. you can choose your service providers as per your requirement and lost like ${service.subname.subname} `}</div>
                         </div>
                         <div className="col-lg-5">
                             <img src={"http://localhost:4000/image/" + service.subname.image} alt="images" height={"250px"} className='mx-auto d-flex mt-lg-0  mt-md-0  mt-sm-5 mt-xm-5' />
@@ -228,7 +228,7 @@ export const Service2 = () => {
 
 
                                                     <div class="col-lg-4">
-                                                        <div class="card ser_2_main_card px-2 py-2" style={{width:"350px"}}>
+                                                        <div class="card ser_2_main_card px-2 py-2" style={{ width: "350px" }}>
 
                                                             <div class="card-body">
                                                                 <p className='ser_2_head'>{sp.shopname}</p>
@@ -256,9 +256,9 @@ export const Service2 = () => {
                                                                     }
 
                                                                 </Collapsible>
-                                                                <div style={{textAlign:"center"}}>
-                                                                <button type='button' onClick={(event) => { handlebookser(sp) }} className='ser_2_hire_btn px-3 py-2 mx-4'>Hire service provider</button>
-                                                               </div>
+                                                                <div style={{ textAlign: "center" }}>
+                                                                    <button type='button' onClick={(event) => { handlebookser(sp) }} className='ser_2_hire_btn px-3 py-2 mx-4'>Hire service provider</button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>

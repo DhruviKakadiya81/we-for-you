@@ -132,7 +132,7 @@ export const SubService = () => {
                 items: 6
             },
             1300: {
-                items: 9
+                items: 7
             },
             1500: {
                 items: 10
@@ -144,11 +144,10 @@ export const SubService = () => {
     return (
         <>
             <Navbar />
-            <h3 className="text-left pt-5 pb-0    mt-5 mb-0  h1_class" style={{ color: "black", marginLeft: "98px", fontWeight: "500", fontSize: "30px" }}>Book your Services</h3>
-            <section className="servicepage mt-4" >
-                <div className="container-fluid ms-lg-5 ms-md-3 ms-sm-0 ps-lg-5 ps-md-0 ps-sm-0
-              text-center krupa_try" >
-                    <div className="row d-flex justify-content-center" id="feedback-carousel">
+            <h3 className="text-left pt-5 pb-0  mt-5 mb-0  " style={{ color: "black", marginLeft: "98px", fontWeight: "600", fontSize: "30px" }}>Book your Services</h3>
+            <section className="servicepage mt-4   text-center" >
+                <div className="container-fluid text-center krupa_try" style={{ width: "100%" }} >
+                    <div className="row d-flex justify-content-around" id="feedback-carousel">
                         {
 
                             (servicedata === undefined) ?
@@ -168,14 +167,14 @@ export const SubService = () => {
 
                                         {servicedata.map((service) => (
                                             <>
-                                                <div className="container d-flex justify-content-center">
-                                                    <div class="cards" onClick={(event) => { handleservice2(service) }} >
-                                                        <figure class="card" style={{ width: "130px", height: "130px" }}>
-                                                            <img src={"http://localhost:4000/image/" + service.image} alt="" />
-                                                            <figcaption style={{ color: "black", backgroundColor: "white", fontSize: "10px" }}>{service.subname}</figcaption>
-                                                        </figure>
-                                                    </div>
+
+                                                <div class="cards" onClick={(event) => { handleservice2(service) }} >
+                                                    <figure class="card" style={{ width: "130px", height: "130px" }}>
+                                                        <img className="" src={"http://localhost:4000/image/" + service.image} alt="" />
+                                                        <figcaption style={{ color: "black", backgroundColor: "white", fontSize: "10px" }}>{service.subname}</figcaption>
+                                                    </figure>
                                                 </div>
+
                                             </>
                                         ))}
                                     </OwlCarousel>
@@ -185,28 +184,10 @@ export const SubService = () => {
 
             </section>
 
-            <hr style={{ color: "black", width: "1000px", marginLeft: "100px" }} />
-            {/* <section>
-                {city ?
-                    <>
-                        <p>your location</p>
-                        <input id="location" type="button" placeholder="location" value={city} onClick={handleLocationClick} />
-                    </>
-
-                    :
-
-                    <>
-                        <p>Give access Your Location so that we can provide best service providers of your city</p>
-                        <input id="location" type="button" placeholder="location" value={location ? location : "click to access your city"} onClick={handleLocationClick} />
-
-                    </>
-                }
-
-            </section> */}
-
+            <hr style={{ color: "black", height: "3px", margin: "10px auto", width: "80%" }} />
             <section>
                 {/* <h1 className="text-left">Hire Your Service Provider</h1> */}
-                <h3 className="text-left pt-5 pb-0    mt-3 mb-0  h1_class" style={{ color: "black", marginLeft: "98px", fontWeight: "500", fontSize: "40px" }}>Hire Your Service Provider</h3>
+                <h3 className="text-left pt-5 pb-0  mt-3 mb-0" style={{ color: "black", marginLeft: "98px", fontWeight: "600", fontSize: "30px" }}>Hire Your Service Provider</h3>
 
                 {
                     (spdetail === undefined || spdetail.length === 0) ?
