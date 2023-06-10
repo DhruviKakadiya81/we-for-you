@@ -144,9 +144,9 @@ export const SubService = () => {
     return (
         <>
             <Navbar />
-            <h3 className="text-left pt-5 pb-0  mt-5 mb-0  " style={{ color: "black", marginLeft: "98px", fontWeight: "600", fontSize: "30px" }}>Book your Services</h3>
+            <h3 className="text-center pt-5 pb-0  mt-5 mb-0  " style={{ color: "black", marginLeft: "98px", fontWeight: "600", fontSize: "30px" }}>Book your Services</h3>
             <section className="servicepage mt-4   text-center" >
-                <div className="container-fluid text-center krupa_try" style={{ width: "100%" }} >
+                <div className="container-fluid text-center" style={{ width: "100%" }} >
                     <div className="row d-flex justify-content-around" id="feedback-carousel">
                         {
 
