@@ -6,11 +6,16 @@ import cartser from '../services/cartservics'
 import userdata from '../services/UserProfile'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import "../css/Auth.css";
+
+
 import { FormControl, FormGroup, Input, InputLabel, Typography } from '@mui/material';
 export const Authpage = () => {
   const [userid, setuserid] = useState();
   const [cartdata, setcartdata] = useState([]);
   const [isshow, invokemodel] = useState(false);
+  const [total, settotal] = useState(0);
+  let totalrs = 0;
   const initmodel = () => {
     return invokemodel(!isshow);
   }
@@ -43,17 +48,30 @@ export const Authpage = () => {
     console.log("response===>", response);
     setcartdata(response.data.data);
   }
+
+  const handlemap = () =>{
+    cartdata.map((key)=>{
+      totalrs += key.serviceid.prize;
+      console.log("total",totalrs)
+    });
+    settotal(totalrs);
+  }
   useEffect(() => {
     userid && handlebookser();
-  }, [userid])
-
-  console.log(cartdata);
+  }, [userid]);
+   
+  useEffect(() => {
+      cartdata && handlemap();
+  }, [cartdata])
+  
+  
+  console.log(total);
 
   return (
     <>
       <Navbar />
-      <section className='mt-5 pt-5'>
-        <div className='text-center pb-5'><b>You Added Services</b> </div>
+      <section className='mt-5 pt-4'>
+        <div className='text-center'><b> <h1> Your Services</h1></b> </div>
         <div className="container">
           <div className="row d-flex justify-content-center">
             {
@@ -64,40 +82,122 @@ export const Authpage = () => {
 
                 </div>
                 : (cartdata.length === 0) ?
-                  <div className="row d-flex justify-content-center pt-5" style={{ height: "80vh", overflowY: "hidden" }}>
-                    <span>Not Added Services</span>
-
-                  </div>
+                    <div className="d-flex justify-content-center" >
+                          <img src="images/emptycart.jpg" alt="not image" />
+                    </div>
                   :
                   <div className="sp">
-                    <div className='bg-danger'></div>
-
-                    <div className="row d-flex justify-content-center ">
-
-                      {
-                        cartdata.map((sp) => (
-                          <>
-                            <div className="col-8 p-3 m-3 mt-0" style={{ border: "2px solid grey", borderRadius: "15px" }}>
-                              <div className="text-center row  d-flex justify-content-center" key={sp._id}>
-                                <div className="col-6"><p>{sp.serviceid.subname.subname}</p>
-                                  <p>Prize: <span>{sp.serviceid.prize}</span></p>
-                                  <Update data={sp} />
-                                </div>
-                                <div className="col-4" style={{ height: "150px", width: "150px" }}>
-                                  <img style={{ border: "2px solid lightgray", height: "150px", width: "150px", backgroundSize: "contain", borderRadius: "15px" }} src={"http://localhost:4000/image/" + sp.serviceid.subname.image} alt="images" />
-                                </div>
-
-                              </div>
-                            </div>
+                    <div class="container padding-bottom-3x mb-1">
 
 
 
-                          </>
+                      <div class="table-responsive shopping-cart mx-auto" style={{ width: "100%" }}>
+                        <table class="table" >
+                          <thead>
+                            <tr>
+                              <th>Product Name</th>
+
+                              <th class="text-center">Prize</th>
+
+                              <th class="text-center">Service Provider</th>
+
+                              <th class="text-center">Shop Name</th>
+
+                              <th class="text-center">Book Service</th>
 
 
-                        ))
-                      }
+                              <th class="text-center"><a class="btn btn-sm btn-outline-danger bg-danger text-white" href="#">Clear Cart</a></th>
+
+                       
+
+                            </tr>
+                          </thead>
+
+
+
+                          {
+                            cartdata.map((sp) => (
+                              <>
+
+
+
+
+                                <tbody>
+                                  <tr>
+                                  
+                                    <td class=""><img style={{ width: "150px" }} src={"http://localhost:4000/image/" + sp.serviceid.subname.image} alt="Product" /><span className='ps-3'>{sp.serviceid.subname.subname}</span></td>
+                                    <td class="text-center text-lg text-medium">{sp.serviceid.prize} Rs</td>
+                                    <td class="text-center text-lg text-medium">{sp.spid.firstname}</td>
+                                    <td class="text-center text-lg text-medium">{sp.spid.shopname}</td>
+                                    <td class="text-center text-lg text-medium"> <Update class="column"  data={sp} /></td>
+
+                           
+                                 
+                                    
+       
+
+                                    <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title="" data-original-title="Remove item"><i class="fa fa-trash"></i></a></td>
+                                  </tr>
+
+
+
+
+
+                                </tbody>
+
+
+
+
+
+                              </>
+
+
+                            ))
+                          }
+
+
+
+
+                        </table>
+
+                        <table style={{width:"100%" , border:"none"}}>
+                       
+                        <tr className='pt-3' >
+                          <td style={{alignItems:"right" , float:"right" , border:"none"}}>
+                            <div  class="column text-lg"> <h5>Total: <span class="text-medium">{total} Rs</span></h5></div>
+                          </td>
+
+
+
+                        
+                        </tr>
+                      
+                        </table>
+
+                        <table style={{width:"100%" , marginTop:"20px" ,  border:"none"}}>
+                       
+                       <tr className='pt-5' >
+                         <td style={{alignItems:"right" , float:"right" , border:"none"}}>
+                         
+                         <div class="column "><a class="btn btn-success " href="#">Book Now</a></div>
+                          {/* <div class="column"><a class="btn btn-primary" href="#" data-toast="" data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Your cart" data-toast-message="is updated successfully!">Update Cart</a><a class="btn btn-success" href="#">Checkout</a></div> */}
+                          {/* <Update class="column"   /> */}
+                        </td>
+
+                         <td style={{alignItems:"right" , float:"left" , border:"none"}}>
+                         <div class="column "><a style={{backgroundColor:"rgb(100,100,100)"}} class="btn btn-outline-secondary w-100 text-white" href="#"><i class="icon-arrow-left"></i>&nbsp;Back to Shopping</a></div>
+                         
+                            </td>
+                       </tr>
+                     
+                       </table>
+
+
+
+                      </div>
+
                     </div>
+
 
                   </div>
             }
