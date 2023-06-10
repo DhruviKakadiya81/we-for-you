@@ -10,6 +10,7 @@ import OwlCarousel from 'react-owl-carousel2';
 import 'react-owl-carousel2/lib/styles.css';
 import detail from '../services/spservice';
 import { useNavigate } from 'react-router-dom';
+import { Footer } from './Footer';
 
 export const SubService = () => {
     const [serviceid, setserviceid] = useState(localStorage.getItem("serviceid"));
@@ -279,6 +280,7 @@ export const SubService = () => {
 
                 }
             </section>
+            <Footer/>
 
         </>
     )

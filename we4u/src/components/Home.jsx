@@ -147,7 +147,7 @@ export const Home = () => {
             background: `url("images/homeimag9.jpg")`, backgroundSize: "cover",
             backgroundPosition: "center center", width: "auto"
           }}>
-            <form className="reveal fade-In">
+            <form className="">
               <fieldset className="inner-form mb-0 pb-0" style={{ fontSize: "30px", width: "90%", margin: "auto" }}>
                 <legend className="pb-0 mb-0" style={{ fontSize: "40px", width: "90%" }}> Discover the Amazing Services</legend>
               </fieldset>
@@ -245,7 +245,7 @@ export const Home = () => {
               <div className="col-lg-3 col-md-4 col-sm-10">
                 <div className="progress-card">
                   <div className="progress-card-body text-center" style={{ color: "white" }}>
-                    <img src="/images/search_service.png" alt="apply" width="80px" style={{ borderRadius: "100%" }} />
+                    <img src="/images/search_service_10.png" alt="apply" width="80px" style={{ borderRadius: "100%" }} />
                     <h5 className="card-title mt-3 mb-3">Search Service</h5>
                     <p className="p mt-2 mb-5">Search Service Which You Want and As Per Your Need</p>
                   </div>
@@ -263,7 +263,7 @@ export const Home = () => {
               <div className="col-lg-3 col-md-4 col-sm-10">
                 <div className="progress-card">
                   <div className="progress-card-body text-center" style={{ color: "white" }}>
-                    <img src="images/funded.png" alt="funded" width="80px" />
+                    <img src="images/get_service_9.jpg" alt="funded" width="80px" style={{ borderRadius: "100%" }}/>
                     <h5 className="card-title mt-3 mb-3">Get Services</h5>
                     <p className="p mt-2">Get Services On Time</p>
                   </div>
