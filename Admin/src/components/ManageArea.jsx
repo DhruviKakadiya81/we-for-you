@@ -15,6 +15,11 @@ export const ManageArea = () => {
     const [citydata, setcitydata] = useState([]);
     const [area, setAreaData] = useState([]);
     const [isEdit, setisEdit] = useState(true);
+    const [msg, setmsg] = useState();
+    const [isshow, invokemodel] = useState(false);
+    const initmodel = () => {
+        return invokemodel(!isshow);
+    }
     const errors = {};
     let counter = 1;
     const handleAddArea = async (event) => {
@@ -25,11 +30,12 @@ export const ManageArea = () => {
         console.log("response", response);
         setisEdit(false);
         if (response.data.success === true) {
-            alert("added successfully");
-
+            setmsg("Added Successfully!!");
+            initmodel();
         }
         else {
-            alert("add another city");
+            setmsg("Already Added!! Add Another Area!!");
+            initmodel();
         }
     }
 
@@ -93,7 +99,21 @@ export const ManageArea = () => {
     return (
         <>
             <AdminNavbar>
-
+            <Modal show={isshow}  >
+                <Modal.Header className='text-center'>
+                    <Modal.Title className='' >
+                        Area Added Details
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {msg}
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="dark" className="mx-3" onClick={initmodel}>
+                       OK
+                    </Button>
+                </Modal.Footer>
+                </Modal>
                 <FormGroup className='mx-auto area_container'>
                     <Typography variant='h4' className='add_area_heading'>Add Area</Typography>
                     <div className="mt-5 mx-auto main_area_container">
@@ -205,21 +225,21 @@ const Delete = (props) => {
             <Modal show={isshow} style={{ overflowX: "scroll", width: "100%", marginTop: "180px" }} >
                 <Modal.Header closeButton onClick={initmodel}>
                     <Modal.Title className='' >
-                        Delete City
+                        Delete Area
                     </Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
                     <div className="dlt">
-                        Are You Sure to Delete Area?
+                        Are You Sure To Delete Area?
                     </div>
 
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="" className="mx-3" onClick={() => { initmodel }} style={{ backgroundColor: "red" }}>
-                        CLOSE
-                    </Button>
-                    <Button variant="" className="mx-3" type='submit' style={{ backgroundColor: "red" }} onClick={(e) => handledelete(props.id, e)}>
+                <Button variant="dark" className="mx-3" onClick={initmodel}>
+              CLOSE
+            </Button>
+                    <Button variant="danger" className="mx-3" type='submit' onClick={(e) => handledelete(props.id, e)}>
                         Delete
                     </Button>
                 </Modal.Footer>
@@ -258,20 +278,20 @@ const Update = (props) => {
     }
 
     const handleupdate = async (event) => {
-        alert(id);
+        // alert(id);
         const data = { areaname, cityid, id }
-        alert(data);
+        // alert(data);
         const respo = await managearea.updateData(data);
         console.log("updated---", respo);
         props.handleIsEdit();
         if (respo.data.success === true) {
-            alert("updated")
+            // alert("updated")
             initmodel();
             //   window.location.reload();
             //alert("successful");
         }
         else {
-            alert("enter another city");
+            // alert("enter another Area");
         }
 
         // console.log(respo);
@@ -303,7 +323,7 @@ const Update = (props) => {
             <Modal show={isshow} style={{ overflowX: "scroll", width: "80%" }} >
                 <Modal.Header closeButton onClick={initmodel}>
                     <Modal.Title className='' >
-                        Update Product
+                        Update Area
                     </Modal.Title>
                 </Modal.Header>
 
@@ -319,6 +339,7 @@ const Update = (props) => {
                             title="Select City"
                             variant='Secondary'
                             onSelect={handleSelect}
+                            className='mx-auto'
                         >
                             {citydata.map(city => (
                                 <Dropdown.Item key={city._id} eventKey={city._id} value={city.cityname}>{city.cityname}</Dropdown.Item>

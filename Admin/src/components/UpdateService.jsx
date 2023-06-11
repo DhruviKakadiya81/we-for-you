@@ -1,12 +1,13 @@
 import React from 'react'
-import { Modal } from 'react-bootstrap';
-import { FormControl, FormGroup, Input, InputLabel, Typography, Button } from '@mui/material';
+import {Button, Modal } from 'react-bootstrap';
+import { FormControl, FormGroup, Input, InputLabel, Typography } from '@mui/material';
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import addservice from '../services/manageservice';
 
 export const UpdateService = (props) => {
     const navigate = useNavigate();
+    const [msg, setmsg] = useState();
   const [isshow, invokemodel] = useState(false);
   const initmodel = () => {
     return invokemodel(!isshow);
@@ -18,12 +19,13 @@ export const UpdateService = (props) => {
    
   
     const handleupdate = async (event) => {
-        alert(s_id);
+        // alert(s_id);
         const data = {_id:s_id,s_name,s_icon}
-        alert(data);
+        // alert(data);
         const respo = await addservice.updateService(data);
-        alert(respo.data.success);
+        // alert(respo.data.success);
         if (respo.data.success == true) {
+          // setmsg("Updated Succesfully!");
           initmodel();
         //   window.location.reload();
           //alert("successful");
@@ -40,13 +42,13 @@ export const UpdateService = (props) => {
   return ( 
 
      <>
-     <Button variant="contained" style={{backgroundColor:"rgb(50,50,50)"}} onClick={initmodel}>
+     <Button variant="dark" style={{backgroundColor:"rgb(50,50,50)"}} onClick={initmodel}>
         Edit
       </Button>
       <Modal show={isshow} style={{overflowX:"scroll",width:"100%"}} >
         <Modal.Header closeButton onClick={initmodel}>
           <Modal.Title className='' > 
-            Update Product
+            Update Service
           </Modal.Title>
         </Modal.Header>
       

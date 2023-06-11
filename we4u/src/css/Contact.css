@@ -43,14 +43,14 @@ html,body{
 }
 
 .c_container3{
-    background-color: #1D232A;
+    background-color: white;
     height: 80px;
 }
 
 .c_container4{
-    background-color: #111518;
+    /* background-color: rgb(241, 240, 240); */
     height: auto;
-    color: white;
+    color: black;
 }
 
 .c_details{
@@ -60,7 +60,7 @@ html,body{
     font-size: 18px;
     line-height: 22px;
     text-transform: capitalize;
-    color: #FFFFFF;
+    color: black;
 }
 
 
@@ -71,8 +71,8 @@ html,body{
 }
 
 hr{
-    background-color: #FECC07;
-    color: #FECC07;
+    background-color:black;
+    color: black;
     width: 300px;
     height: 2px;
 }
@@ -84,7 +84,7 @@ hr{
     font-size: 40px;
     line-height: 52px;
     text-transform: capitalize;  
-    color: #FFFFFF;
+    color: black;
 }
 
 .c_add_detail1{
@@ -128,7 +128,7 @@ margin-top: -20px;
 .c_form_container input,
 .c_form_container textarea{
     background-color: #3e3e3e;
-    color: white;
+    color: white !important;
     border-radius: 5px;
     border: none;
     font-family: 'Poppins';
@@ -138,7 +138,12 @@ margin-top: -20px;
     line-height: 24px;
     letter-spacing: 0.02em;
     text-transform: capitalize;
-    color: #AAA9A9;
+    /* color: #AAA9A9; */
+}
+
+.c_form_container input::placeholder,
+.c_form_container textarea::placeholder{
+    color: rgb(219, 218, 218);
 }
 
 .c_form_container input{
@@ -156,10 +161,11 @@ margin-top: -20px;
 }
 
 .c_send_btn{
-background-color: #FFBA2A;
+background-color: rgb(50,50,50);
 height: 48px;
 left: 825px;
 top: 1080px;
+border: none;
 font-family: 'Montserrat';
 font-style: normal;
 font-weight: 700;
@@ -172,9 +178,9 @@ color: #FFFFFF;
 
 
 .c_container5{
-    background-color: #1D232A;
+    /* background-color: rgb(241, 240, 240); */
     height: 1000px;
-    color: #FFFFFF;
+    color: rgb(50,50,50);
 }
 
 .c_loc_header{
@@ -205,9 +211,10 @@ font-size: 18px;
 }
 
 .c_loc_inner{
-    background-color: #10151c;
+    background-color:rgb(50,50,50);
     padding: 20px 30px;
     width: 220px;
+    border-radius: 8px;
 }
 
 .c_loc_outer{
@@ -229,7 +236,7 @@ font-size: 30px;
 line-height: 39px;
 text-align: center;
 text-transform: capitalize;
-color: #FFFFFF;
+color: rgb(50,50,50);
 margin-top: 30px;
 }
 
@@ -243,10 +250,11 @@ text-align: center;
 }
 
 .c_sec_loc_inner{
-    background-color: #10151c;
+    background-color: rgb(50,50,50);
     margin:13px;
     padding: 13px 33px;
     max-width: 190px;
+    border-radius: 8px;
 }
 
 .c_loc_sec_title{

@@ -41,14 +41,25 @@ export const Contact = () => {
 
     <>
       <Navbar />
-      <div className="c_container2 hero-image" style={{ background: `url(Images/cont_first.png)`, backgroundSize: "cover" }}>
-        <div className="hero-text c_p_container mx-5 px-5">
-          <p className="c_par1">Contact Us</p>
-          <p className="c_par2">We're easy to get in touch with</p>
+      <div className="c_container2 hero-image" style={{ background: `url(Images/contact_backgroud_10.png)`, backgroundSize:"cover",backgroundRepeat:"no-repeat",height:"80vh"}}>
+        <div className="mt-5 pt-5 mx-5 px-5">
+          <p className="pt-5 mt-5 c_par1 px-5 mx-5">Contact Us</p>
+          <p className="c_par2 px-5 mx-5">We're easy to get in touch with Us</p>
         </div>
       </div>
-      <div className="c_container3">
-      </div>
+      <div class="parallax mb-0" style={{
+        /* The image used */
+        backgroundImage: ` linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("images/loc_backgound.jpg")`,
+
+        /* Set a specific height */
+        minHeight: "500px",
+
+        /* Create the parallax scrolling effect */
+        backgroundAttachment: "fixed",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}>
       <div className="c_container4 hero-text">
         <div className="container text-center">
           <div className="row">
@@ -78,7 +89,7 @@ export const Contact = () => {
             <div className="col c_form_container">
               <form action="" method="post" >
                 <div className="d-flex justify-content-center">
-                  <input type="text" name="firstName" className="c_input_first_name mx-2 my-2 px-4 py-2" placeholder="Enter First Name" onChange={(event) => { setfirstname(event.target.value) }} />
+                  <input type="text" name="firstName" className="c_input_first_name mx-2 my-2 px-4 py-2" style={{color:"white"}} placeholder="Enter First Name" onChange={(event) => { setfirstname(event.target.value) }} />
                   <input type="text" name="Last name" className="c_input_last_name mx-2 my-2 px-4 py-2" placeholder="Enter Last Name" onChange={(event) => { setlastname(event.target.value) }} />
                 </div>
 
@@ -93,63 +104,64 @@ export const Contact = () => {
           </div>
         </div>
       </div>
-      <div className="c_container5 hero-text">
+
+<div className="c_container5 hero-text">
         <div className="c_inner_container">
           <p className="c_loc_header px-3">
-            Location Of Restaurants All Over The India
+            Location Of Services City All Over The India
           </p>
           <hr className="c_hr_c5" />
           <div className="container text-center">
             <div className="d-flex justify-content-evenly c_loc_outer">
               <div className="c_loc_inner my-2">
-                <img src="/images/Vector.png" alt="" height="40px" />
-                <p className="c_loc_title">Jarkhand</p>
+              <i className="fa-sharp fa-solid fa-location-dot fa-2xl py-4" style={{fontSize:"40px"}}></i>
+                <p className="c_loc_title">Surat</p>
                 <p className="c_loc_desc">58,Ralph Ave New York,New York 111</p>
               </div>
               <div className="c_loc_inner my-2">
-                <img src="/images/Vector.png" alt="" height="40px" />
+              <i className="fa-sharp fa-solid fa-location-dot fa-2xl py-4" style={{fontSize:"40px"}}></i>
+                <p className="c_loc_title">Ahemdabad</p>
+                <p className="c_loc_desc">58,Ralph Ave New York,New York 111</p>
+              </div>
+              <div className="c_loc_inner my-2">
+              <i className="fa-sharp fa-solid fa-location-dot fa-2xl py-4" style={{fontSize:"40px"}}></i>
                 <p className="c_loc_title">Vadodara</p>
-                <p className="c_loc_desc">58,Ralph Ave New York,New York 111</p>
-              </div>
-              <div className="c_loc_inner my-2">
-                <img src="/images/Vector.png" alt="" height="40px" />
-                <p className="c_loc_title">Bhopal</p>
                 <p className="c_loc_desc">58,Ralph Ave New York,New York 111</p>
               </div>
             </div>
           </div>
           <div className="c_second_header">
-            <p className="c_second_heading">Upcoming</p>
+            <p className="c_second_heading">Areas</p>
             <div className="container text-center">
               <div className="d-flex justify-content-evenly c_sec_loc_outer">
                 <div className="c_sec_loc_inner my-2">
-                  <img src="/images/Vector.png" alt="" height="40px" />
-                  <p className="c_loc_sec_title">Indore</p>
+                <i className="fa-sharp fa-solid fa-location-dot fa-2xl py-4" style={{fontSize:"35px"}}></i>
+                  <p className="c_loc_sec_title">Vesu</p>
                   <p className="c_loc_sec_desc">58,Ralph Ave New York,New York 111</p>
                 </div>
                 <div className="c_sec_loc_inner my-2">
-                  <img src="/images/Vector.png" alt="" height="40px" />
-                  <p className="c_loc_sec_title">Bengaluru</p>
+                <i className="fa-sharp fa-solid fa-location-dot fa-2xl py-4" style={{fontSize:"35px"}}></i>
+                  <p className="c_loc_sec_title">Varachha</p>
                   <p className="c_loc_sec_desc">58,Ralph Ave New York,New York 111</p>
                 </div>
                 <div className="c_sec_loc_inner my-2">
-                  <img src="/images/Vector.png" alt="" height="40px" />
-                  <p className="c_loc_sec_title">Chennai</p>
+                <i className="fa-sharp fa-solid fa-location-dot fa-2xl py-4" style={{fontSize:"35px"}}></i>
+                  <p className="c_loc_sec_title">Thaltej</p>
                   <p className="c_loc_sec_desc">58,Ralph Ave New York,New York 111</p>
                 </div>
                 <div className="c_sec_loc_inner my-2">
-                  <img src="/images/Vector.png" alt="" height="40px" />
-                  <p className="c_loc_sec_title">Jamshedpur</p>
+                <i className="fa-sharp fa-solid fa-location-dot fa-2xl py-4" style={{fontSize:"35px"}}></i>
+                  <p className="c_loc_sec_title">Nanpura</p>
                   <p className="c_loc_sec_desc">58,Ralph Ave New York,New York 111</p>
                 </div>
                 <div className="c_sec_loc_inner my-2">
-                  <img src="/images/Vector.png" alt="" height="40px" />
-                  <p className="c_loc_sec_title">Patna</p>
+                <i className="fa-sharp fa-solid fa-location-dot fa-2xl py-4" style={{fontSize:"35px"}}></i>
+                  <p className="c_loc_sec_title">Sarkhej</p>
                   <p className="c_loc_sec_desc">58,Ralph Ave New York,New York 111</p>
                 </div>
                 <div className="c_sec_loc_inner my-2">
-                  <img src="/images/Vector.png" alt="" height="40px" />
-                  <h5 className="c_loc_sec_title">Patna</h5>
+                <i className="fa-sharp fa-solid fa-location-dot fa-2xl py-4" style={{fontSize:"35px"}}></i>
+                  <h5 className="c_loc_sec_title">Kankaria</h5>
                   <p className="c_loc_sec_desc">58,Ralph Ave New York,New York 111</p>
                 </div>
               </div>
@@ -160,6 +172,8 @@ export const Contact = () => {
           <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7441.68091850823!2d72.78242768220215!3d21.15874651462442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1675149979922!5m2!1sen!2sin" width="1600" height="460" style={{ border: "0" }} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" className="c_map"></iframe>
         </div>
       </div>
+      </div>
+      
 
       <Footer />
     </>
