@@ -220,7 +220,7 @@ export const SubService = () => {
                                                             <p className=" ps-5 " style={{ fontSize: "17px" }}> Email Id :: {sp.pemail} </p>
                                                         </div>
                                                         <div class="flip-card-back">
-                                                            <h1 className='d-flex justify-content-center mb-5'>My Services</h1>
+                                                            <h1 className='d-flex justify-content-center my-4'>My Services</h1>
                                                             <p>{sp.subserid.map((key) => (
                                                                 <>
                                                                     <div className='text-center'>

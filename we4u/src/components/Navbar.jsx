@@ -77,18 +77,19 @@ export const Navbar = () => {
               <li className="nav-item">
                 <Link className="nav-link" to="/about">About</Link>
               </li>
-              <li className="dropdown nav-item">
-                <Link className="nav-link" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false">Login</Link>
-                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <li><Link className="dropdown-item" to="/login">Login As Client</Link></li>
-                  <li><Link className="dropdown-item" to="/loginasp">Login As Professional</Link></li>
-                </ul>
-              </li>
+             
               <li className="dropdown nav-item">
                 <Link className="nav-link" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false"> Register </Link>
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{ zIndex: "0" }}>
                   <li><Link className="dropdown-item" to="/register">Register As Client</Link></li>
                   <li><Link className="dropdown-item" to="/regprof">Register As Professional</Link></li>
+                </ul>
+              </li>
+              <li className="dropdown nav-item">
+                <Link className="nav-link" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false">Login</Link>
+                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <li><Link className="dropdown-item" to="/login">Login As Client</Link></li>
+                  <li><Link className="dropdown-item" to="/loginasp">Login As Professional</Link></li>
                 </ul>
               </li>
               <li className="nav-item">

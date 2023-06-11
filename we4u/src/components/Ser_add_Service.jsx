@@ -8,6 +8,7 @@ import { useState } from 'react'
 import subser from '../services/Subservice'
 import { useFormik } from "formik"
 import { useNavigate } from 'react-router-dom'
+import { Button,Modal} from 'react-bootstrap';
 const FlexColumnContainer = styled('div')`
   padding: 10px;
   display: flex;
@@ -35,6 +36,11 @@ export const Ser_add_Service = () => {
   const [subname, setsubname] = useState('');
   const [prize, setprize] = useState();
   const [discription, setdiscription] = useState('');
+  const [msg, setmsg] = useState();
+    const [isshow, invokemodel] = useState(false);
+    const initmodel = () => {
+        return invokemodel(!isshow);
+    }
   const [image, setimage] = useState('');
   const errors = {};
   const handleservice = async () => {
@@ -75,11 +81,16 @@ export const Ser_add_Service = () => {
     const response = await subser.addsubser(data);
     console.log(response);
     if (response.data.success === true) {
-      alert("your service added successfully");
-      navigate("/yourser");
+
+      // alert("your service added successfully");
+      setmsg("Your Service Added Successfully");
+      initmodel();
+      // navigate("/yourser");
     }
     else {
-      alert("some problems are there add service again");
+      // alert("some problems are there add service again");
+      setmsg("Some Problems Are There Add Another Service!!");
+      initmodel();
     }
   }
 
@@ -124,6 +135,21 @@ export const Ser_add_Service = () => {
   return (
     <>
       <Ser_Pro_Navbar />
+      <Modal show={isshow}  >
+                <Modal.Header className='text-center'>
+                    <Modal.Title className='' >
+                        Service Added Details
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {msg}
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="dark" className="mx-3" onClick={initmodel}>
+                       OK
+                    </Button>
+                </Modal.Footer>
+                </Modal>
       <StepContainer md="12">
         <div className="s_add_outer_container">
           <div className="s_add_inner_container">

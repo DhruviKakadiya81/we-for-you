@@ -51,7 +51,7 @@ export const AdminNavbar = ({ children }) => {
           <div className="top_section">
             <h1 style={{ display: isOpen ? "block" : "none" }} className="logo">We4U</h1>
             <div style={{ marginLeft: isOpen ? "98px" : "7px" }} className="bars">
-              <FaBars onMouseOver={toggle} />
+              <FaBars onClick={toggle} />
             </div>
           </div>
           <NavLink to="/dashboard" className="link">
