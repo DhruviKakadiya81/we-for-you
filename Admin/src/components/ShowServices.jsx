@@ -4,11 +4,11 @@ import '../../../Admin/src/css/ShowServices.css'
 import showservice from '../../../we4u/src/services/Services';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { Modal } from 'react-bootstrap';
+import {Button, Modal } from 'react-bootstrap';
 import delser from '../services/manageservice';
 import { useNavigate } from 'react-router-dom'
 import { UpdateService } from './UpdateService';
-import { FormControl, FormGroup, Input, InputLabel, Typography, Button } from '@mui/material';
+// import { FormControl, FormGroup, Input, InputLabel, Typography, Button } from '@mui/material';
 // import { AdminNavbar } from '../../../Admin/src/components/AdminNavbar'
 // import '../../../Admin/src/css/ShowServices.css'
 
@@ -80,8 +80,7 @@ export const ShowServices = () => {
                                         <img src={'http://localhost:4000/image/' + product.s_icon} alt="not" style={{ "width": "100px", "height": "100px" }} />
                                     </td>
                                     <td>
-                                      <DeleteService id = {product._id}/>
-                                      
+                                      <DeleteService id = {product._id}/>  
                                     </td>
                                     <td>
                                         <UpdateService s_icon={product.s_icon} s_name={product.s_name} s_id ={product._id}/>
@@ -109,36 +108,33 @@ const DeleteService = (props)=>{
     return invokemodel(!isshow);
   }
   const handledelete = async(id,e) =>{
-    alert(id);
+    // alert(id);
     var ser_id = {id};
     const respo = await delser.deleteData(ser_id);
-    alert("respo : " , respo);
- 
- 
+    // alert("respo : " , respo);
    }
   return(
     <>
-     <Button variant="contained" style={{backgroundColor:"rgb(50,50,50)"}} onClick={initmodel}>
+     <Button variant="dark" style={{backgroundColor:"rgb(50,50,50)"}} onClick={initmodel}>
        Delete
       </Button>
       <Modal show={isshow} style={{overflowX:"scroll",width:"100%",marginTop:"400px"}} >
         <Modal.Header closeButton onClick={initmodel}>
           <Modal.Title className='' > 
-            Delete product
+            Delete Service
           </Modal.Title>
         </Modal.Header>
       
           <Modal.Body>
               <div className="dlt">
-                Are You Sure to Delete Service?
-              </div>
-             
+                Are You Sure To Delete Service?
+              </div>   
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="" className="mx-3" onClick={initmodel} style={{backgroundColor:"red"}}>
+            <Button variant="dark" className="mx-3" onClick={initmodel}>
               CLOSE
             </Button>
-            <Button variant=""  className="mx-3" type='submit' style={{backgroundColor:"red"}} onClick={(e)=>handledelete(props.id,e)}>
+            <Button variant="danger"  className="mx-3" type='submit' onClick={(e)=>handledelete(props.id,e)}>
               Delete
             </Button>
           </Modal.Footer>

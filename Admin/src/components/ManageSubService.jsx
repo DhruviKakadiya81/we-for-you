@@ -13,17 +13,23 @@ export const ManageSubService = () => {
     const [isEdit, setisEdit] = useState(true);
     const [serviceid, setserviceid] = useState('');
     const [getser, setgetser] = useState([]);
+    const [msg, setmsg] = useState();
+    const [isshow, invokemodel] = useState(false);
+    const initmodel = () => {
+        return invokemodel(!isshow);
+    }
     const errors = {};
     let counter = 1;
     const handleAddser = async () => {
-        alert(serviceid + subname + image);
+        // alert(serviceid + subname + image);
         const response = await subservice.addsubser({ serviceid, subname, image })
         console.log("response", response);
 
 
         setisEdit(false);
         if (response.data.success === true) {
-            alert("added successfully");
+            setmsg("Sub Service Added Succesfully!!");
+            initmodel();
             setsubname("");
         }
         else {
@@ -93,7 +99,21 @@ export const ManageSubService = () => {
     return (
         <>
             <AdminNavbar>
-
+            <Modal show={isshow}  >
+                <Modal.Header className='text-center'>
+                    <Modal.Title className='' >
+                    Sub Service Added Details
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {msg}
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="dark" className="mx-3" type='submit' onClick={initmodel}>
+                        Ok
+                    </Button>
+                </Modal.Footer>
+                </Modal>
                 <FormGroup className='city_main_container mx-auto h-auto'>
                     <Typography variant='h5' className='add_city_heading'>Add subservice</Typography>
                     <div className="mx-auto mt-5">
@@ -219,21 +239,21 @@ const Delete = (props) => {
             <Modal show={isshow} style={{ overflowX: "scroll", width: "100%", marginTop: "px" }} >
                 <Modal.Header closeButton onClick={initmodel}>
                     <Modal.Title className='' >
-                        Delete City
+                        Delete Sub Service
                     </Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
                     <div className="dlt">
-                        Are You Sure to Delete City?
+                        Are You Sure To Delete Sub Service?
                     </div>
 
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="" className="mx-3" type='button' onClick={initmodel} style={{ backgroundColor: "red" }}>
+                    <Button variant="dark" className="mx-3" type='button' onClick={initmodel}>
                         CLOSE
                     </Button>
-                    <Button variant="" className="mx-3" type='button' style={{ backgroundColor: "red" }} onClick={handledelete}>
+                    <Button variant="danger" className="mx-3" type='button' onClick={handledelete}>
                         Delete
                     </Button>
                 </Modal.Footer>
@@ -272,11 +292,11 @@ const Update = (props) => {
     const handleupdate = async (event) => {
 
         const data = { id: serid, subname, serviceid, image }
-        alert(data);
+        // alert(data);
         const respo = await subservice.updateData(data);
         props.handleIsEdit();
         if (respo.data.success === true) {
-            alert("updated successfully")
+            // alert("updated successfully")
             initmodel();
         }
         else {

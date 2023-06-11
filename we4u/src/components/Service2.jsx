@@ -2,16 +2,13 @@ import React from 'react'
 import { Navbar } from './Navbar'
 import { useState } from 'react';
 import { useEffect } from 'react';
-import axios from 'axios';
 import detail from '../services/spservice';
 import getuser from '../services/GetUser';
 import { useNavigate } from 'react-router-dom';
 import userdata from '../services/UserProfile';
 import cartservice from '../services/cartservics';
 import "../css/Service2.css"
-import $ from "jquery"
 import Collapsible from 'react-collapsible';
-import { Footer } from './Footer';
 
 export const Service2 = () => {
     const [city, setcity] = useState(sessionStorage.getItem("cityname"));
@@ -22,11 +19,10 @@ export const Service2 = () => {
     const [bookeddata, setbookeddata] = useState();
     const [serviceid, setserviceid] = useState();
     const [userid, setuserid] = useState();
+    const [spid, setspid] = useState();
+    const [resp, setresp] = useState();
     const navigate = useNavigate();
 
-      
-
-    // var prize;
     function handleLocationClick(event) {
         event.preventDefault();
         if (navigator.geolocation) {
@@ -92,7 +88,13 @@ export const Service2 = () => {
 
             const response2 = await userdata.getdata({ userid: response.data.data._id })
             console.log("userdata2==>", response2);
-            setuserid(response2.data.data._id)
+            if (response2.data.data !== null) {
+                setuserid(response2.data.data._id)
+            }
+            else {
+                alert("make profile first");
+            }
+
         }
 
     }
@@ -103,29 +105,17 @@ export const Service2 = () => {
             console.log(data.subserid);
 
             data.subserid.map((key) => {
-                // console.log(key.subname.subname, "name");
+
                 if (key.subname.subname === service.subname.subname) {
-                    setserviceid(key.subname._id);
+                    setserviceid(key._id);
                     console.log("prize", key.subname._id)
                 }
             }
             );
 
             console.log("data._id", data._id);
-            if (serviceid !== null || serviceid !== undefined) {
-                const bookdata = { userid, serviceid, spid: data._id }
-                const response = await cartservice.addtocart(bookdata);
-                console.log("response of book service === >", response);
-                if (response.data.duplicate === true) {
-                    alert("you already added that")
+            setspid(data._id);
 
-                }
-                else if (response.data.success === true) {
-                    navigate("/cart");
-                }
-            } else {
-                alert("try again");
-            }
 
         }
         else {
@@ -136,41 +126,62 @@ export const Service2 = () => {
 
     }
 
+    const handleadd = async () => {
+
+        if (serviceid !== null || serviceid !== undefined) {
+            const bookdata = { userid, serviceid, spid }
+            const response = await cartservice.addtocart(bookdata);
+            console.log("response of book service === >", response);
+            if (response.data.success === false) {
+                alert("this is added already");
+            }
+            else if (response.data.success === true) {
+                navigate("/cart");
+            }
+        } else {
+            alert("try again");
+        }
+
+    }
+
 
     useEffect(() => {
         handledetail();
     }, []);
+    useEffect(() => {
+        serviceid && userid && spid && handleadd()
+    }, [serviceid, userid, spid])
+
 
     console.log("serviceid", serviceid);
-    // console.log("serviceid", spdetail);
+
     return (
         <>
             <Navbar />
             <section className='mt-5 pt-3'>
                 {city ?
                     <>
-                    <div className="loc_container">
-                    <span className='loc_span'>
-                    <i className="fa-sharp fa-solid fa-location-dot fa-xl loc_icon ps-3"></i>&nbsp;&nbsp;
-                    <input id="location" type="button"
-                    className='loc_btn py-2 pe-3'  placeholder="location" value={location ? location : "click to access your city"} onClick={handleLocationClick} />
-                    </span>
-                    </div>
+                        <div className="loc_container">
+                            <span className='loc_span'>
+                                <i className="fa-sharp fa-solid fa-location-dot fa-xl loc_icon ps-3"></i>&nbsp;&nbsp;
+                                <input id="location" type="button"
+                                    className='loc_btn py-2 pe-3' placeholder="location" value={location ? location : "click to access your city"} onClick={handleLocationClick} />
+                            </span>
+                        </div>
                     </>
 
                     :
 
                     <>
-                    <div className="location">
-                        <input id="location" type="button" 
-                        placeholder="location" value={location ? location : "click to access your city"} onClick={handleLocationClick} />
+                        <div className="location">
+                            <input id="location" type="button"
+                                placeholder="location" value={location ? location : "click to access your city"} onClick={handleLocationClick} />
                         </div>
                     </>
                 }
 
-            </section>  
+            </section>
             <section className=''>
-
                 <div className="container p-lg-5 p-sm-0 p-md-0 ">
                     <div className="row d-flex justify-content-center">
                         <div className="col-lg-7">
@@ -185,12 +196,13 @@ export const Service2 = () => {
                         </div>
                     </div>
                 </div>
-            </div>       
             </section>
-           
+
             <section className='mt-5 mb-5'>
-                <p className='hire_header mb-5'>Hire Your Service Provider</p>
-                
+
+                <p className='hire_header mb-5'>Hire your service provider</p>
+
+
                 {
                     (spdetail === undefined || spdetail.length === 0) ?
                         <div className="row d-flex justify-content-center pt-5">
@@ -204,51 +216,8 @@ export const Service2 = () => {
 
                             </div>
                             :
-                            
+
                             <div className="sp">
-                            <div class="container">
-                    <div class="row mx-auto justify-content-center">
-        
-                {
-                                    spdetail.map((sp) => (
-                                        <>
-                                        
-                                           
-                                            <div class="col-lg-4 ">
-                                <div class="card ser_2_main_card px-2 py-2 mx-auto my-2">
-               
-                         <div class="card-body">
-                                     <p className='ser_2_head'>{sp.shopname}</p>
-                                     <p className='ser_2_label' key={sp.serviceid._id}><span>Service Provider : </span>{sp.firstname} {sp.lastname}</p>
-                                     <p className='ser_2_label'><span>Mobile No : </span>{sp.mobileno}</p>
-                                        {/* <p className='ser_2_label'><span>Gender : </span>{sp.gender}</p> */}
-                                        <p className='ser_2_label'><span>Address : </span>{sp.address}</p>
-                                <Collapsible trigger="View More Details" className='my-3 view_more_link px-2 text-center py-1 mx-auto'>
-                                        <p className='ser_2_label'><span>City : </span>{sp.cityid.cityname}</p>
-                                                <p className='ser_2_label'><span>Area : </span>{sp.areaid.areaname}</p>
-                                                <p className='ser_2_label'><span>Gmail : </span>{sp.pemail}</p>
-                                                {
-                                                    sp.subserid.map((key) => (
-                                                        <>
-                                                            <p>{key.subname.subname === service.subname.subname ?
-                                                                <p className='ser_2_label'><span>Prize : </span>{key.prize}</p>
-                                                                :
-                                                                <p></p>
-                                                            }</p>
-                                                        </>
-                                                    ))
-                                                }                                       
-                           </Collapsible>
-                           <div style={{textAlign:"center"}}>
-                           <button type='button' onClick={(event) => { handlebookser(sp) }} className='ser_2_hire_btn px-3 py-2 mx-auto'>Hire service provider</button>
-                           </div>
-
-                                           
-                </div>
-              </div>
-        </div>  
-                                        </>
-
 
                                 <div class="container">
                                     <div class="row mx-auto justify-content-center">
@@ -300,19 +269,14 @@ export const Service2 = () => {
                                             ))
                                         }
 
-                                    ))
-                                }
-                
-    </div>
-</div>
+                                    </div>
+                                </div>
                                 {/* <div className='bg-danger'></div> */}
-                                
-                            </div>
 
+                            </div>
                 }
             </section>
-            <Footer/>
+
         </>
     )
 }
-

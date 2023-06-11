@@ -25,6 +25,11 @@ const StepContainer = styled('div')`
 
 
 export const ManageCity = () => {
+  const [msg, setmsg] = useState();
+    const [isshow, invokemodel] = useState(false);
+    const initmodel = () => {
+        return invokemodel(!isshow);
+    }
     const [cityname, setcityname] = useState('');
     const [citydata, setcitydata] = useState([]);
     const [isEdit, setisEdit] = useState(true);
@@ -38,11 +43,12 @@ export const ManageCity = () => {
         // console.log("response", response);
         setisEdit(false);
         if (response.data.success === true) {
-            alert("added successfully");
-            setcityname("");
+          setmsg("Added Successfully!!");
+          initmodel();
         }
         else {
-            alert("add another city");
+          setmsg("Already Added!! Add Another City");
+          initmodel();
         }
     }
 
@@ -94,6 +100,21 @@ export const ManageCity = () => {
     return (
         <>
             <AdminNavbar>
+            <Modal show={isshow}  >
+                <Modal.Header className='text-center'>
+                    <Modal.Title className='' >
+                        City Added Details
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {msg}
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="dark" className="mx-3" onClick={initmodel}>
+                       OK
+                    </Button>
+                </Modal.Footer>
+                </Modal>
 
             {/* <StepContainer>
       <div className="outer_container">
@@ -179,10 +200,7 @@ export const ManageCity = () => {
                             </tbody>
                         </table>
                     </div>
-                )} 
- 
-  
-              
+                )}  
             </AdminNavbar>
         </>
     )
@@ -215,15 +233,15 @@ const Delete = (props) => {
         
             <Modal.Body>
                 <div className="dlt">
-                  Are You Sure to Delete City?
+                  Are You Sure To Delete City?
                 </div>
                
             </Modal.Body>
             <Modal.Footer>
-              <Button variant="" className="mx-3"  onClick={() => {initmodel}} style={{backgroundColor:"red"}}>
-                CLOSE
-              </Button>
-              <Button variant=""  className="mx-3" type='submit' style={{backgroundColor:"red"}} onClick={(e)=>handledelete(props.id,e)}>
+            <Button variant="dark" className="mx-3" onClick={initmodel}>
+              CLOSE
+            </Button>
+              <Button variant="danger"  className="mx-3" type='submit' onClick={(e)=>handledelete(props.id,e)}>
                 Delete
             </Button>
                 </Modal.Footer>
@@ -250,13 +268,13 @@ const Update = (props) => {
 
 
     const handleupdate = async (event) => {
-        alert(id);
+        // alert(id);
         const data = { cityname, id }
-        alert(data);
+        // alert(data);
         const respo = await managecity.updateData(data);
-        props.handleIsEdit();
+        // props.handleIsEdit();
         if (respo.data.success === true) {
-            alert("updated successfully")
+            setmsg("Updated Successfully")
             initmodel();
         }
         else {
@@ -276,7 +294,7 @@ const Update = (props) => {
       <Modal show={isshow} style={{overflowX:"scroll",width:"80%"}} >
         <Modal.Header closeButton onClick={initmodel}>
           <Modal.Title className='' > 
-            Update Product
+            Update City
           </Modal.Title>
         </Modal.Header>
       
