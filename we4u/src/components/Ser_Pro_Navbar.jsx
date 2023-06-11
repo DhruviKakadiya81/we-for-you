@@ -73,11 +73,6 @@ export const Ser_Pro_Navbar = () => {
                   <li><Link className="dropdown-item" to="/regprof">Register As Professional</Link></li>
                 </ul>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/contactsp">Contact Us</Link>
-              </li>
-            </ul>
-            <ul className="navbar-nav sm-icons">
               <li class="dropdown nav-item">
                 <Link className="nav-link" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false">Login</Link>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -85,6 +80,11 @@ export const Ser_Pro_Navbar = () => {
                   <li><Link className="dropdown-item" to="/loginasp">Login As Professional</Link></li>
                 </ul>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/contactsp">Contact Us</Link>
+              </li>
+            </ul>
+            <ul className="navbar-nav sm-icons">
               <li><Link className="nav-link" to="/profile"><i className="fa-solid fa-user-gear fa-lg"></i></Link></li>
               <li><Link className="nav-link" to="/logout" onClick={handlelogout}><i class="fa-solid fa-right-from-bracket fa-lg"></i></Link></li>
             </ul>

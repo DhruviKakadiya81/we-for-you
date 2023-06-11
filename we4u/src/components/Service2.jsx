@@ -9,6 +9,7 @@ import userdata from '../services/UserProfile';
 import cartservice from '../services/cartservics';
 import "../css/Service2.css"
 import Collapsible from 'react-collapsible';
+import { Footer } from './Footer';
 
 export const Service2 = () => {
     const [city, setcity] = useState(sessionStorage.getItem("cityname"));
@@ -158,7 +159,7 @@ export const Service2 = () => {
     return (
         <>
             <Navbar />
-            <section className='mt-5 pt-3'>
+            {/* <section className='mt-5 pt-3'>
                 {city ?
                     <>
                         <div className="loc_container">
@@ -180,13 +181,13 @@ export const Service2 = () => {
                     </>
                 }
 
-            </section>
-            <section className=''>
+            </section> */}
+            <section className='mt-5 pt-4'>
                 <div className="container p-lg-5 p-sm-0 p-md-0 ">
                     <div className="row d-flex justify-content-center">
                         <div className="col-lg-7">
                             <div className='mb-4 Ser_2_head'>{service.subname.subname}</div>
-                            <div className='Ser_2_desc'>{`We provide many service providers and they provide you many services. You can choose your service providers as per your requirement and cost like we provide many service providers and they provide you many services. you can choose your service providers as per your requirement and lost like ${service.subname.subname} `}</div>
+                            <div className='Ser_2_desc'>{`We Provide You Many Service Provider And Their Details. They Provide You Many Service In Different Different Cost And Different Different Style. You Can Choose One From Them As Per You Requirement And As Per Your Budget By Comparing Them. They Provide Services Like ${service.subname.subname} And Many More. `}</div>
                         </div>
                         <div className="col-lg-5">
                             <img src={"http://localhost:4000/image/" + service.subname.image} alt="images" height={"250px"} className='mx-auto d-flex mt-lg-0  mt-md-0  mt-sm-5 mt-xm-5' />
@@ -228,7 +229,7 @@ export const Service2 = () => {
 
 
                                                     <div class="col-lg-4">
-                                                        <div class="card ser_2_main_card px-2 py-2" style={{ width: "350px" }}>
+                                                        <div class="card ser_2_main_card px-2 py-2 mx-auto my-4">
 
                                                             <div class="card-body">
                                                                 <p className='ser_2_head'>{sp.shopname}</p>
@@ -276,7 +277,7 @@ export const Service2 = () => {
                             </div>
                 }
             </section>
-
+          <Footer/>
         </>
     )
 }
