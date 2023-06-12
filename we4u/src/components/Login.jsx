@@ -139,7 +139,7 @@ export const Login = (props) => {
                   }}
                   onBlur={formik.handleBlur}
                   value={email}
-                 required
+                  required
                 />
                 <br />
                 {formik.touched.email && formik.errors.email && (
@@ -178,7 +178,7 @@ export const Login = (props) => {
                   className="p-2 btn_sub"
                   value="register"
                   onClick={handleLogin}
-                  >
+                >
                   Login
                 </button>
                 <br />
@@ -269,7 +269,7 @@ export const Login = (props) => {
                   className="p-2 btn_sub"
                   value="register"
                   onClick={handleLogin}
-                  >
+                >
                   Login
                 </button>
                 <br />

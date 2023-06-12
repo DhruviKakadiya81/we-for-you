@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom';
 import userdata from '../services/UserProfile';
 import cartservice from '../services/cartservics';
 import "../css/Service2.css"
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 import Collapsible from 'react-collapsible';
 import { Footer } from './Footer';
 
@@ -21,7 +23,12 @@ export const Service2 = () => {
     const [serviceid, setserviceid] = useState();
     const [userid, setuserid] = useState();
     const [spid, setspid] = useState();
-    const [resp, setresp] = useState();
+    const [msg, setmsg] = useState();
+    const [isshow, invokemodel] = useState(false);
+    const initmodel = () => {
+        return invokemodel(!isshow);
+    }
+
     const navigate = useNavigate();
 
     function handleLocationClick(event) {
@@ -34,11 +41,9 @@ export const Service2 = () => {
     }
 
     function success(position) {
-
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
         const token = "pk.abe6a7e1dc03bb5924c0341041c0abcc"
-
         console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
         var xhr = new XMLHttpRequest();
         xhr.open('GET', "https://us1.locationiq.com/v1/reverse.php?key=" + token + "&lat=" +
@@ -46,7 +51,6 @@ export const Service2 = () => {
         xhr.send();
         xhr.onreadystatechange = processRequest;
         xhr.addEventListener("readystatechange", processRequest, false);
-
         function processRequest(e) {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var response = JSON.parse(xhr.responseText);
@@ -58,7 +62,6 @@ export const Service2 = () => {
                 return;
             }
         }
-
     }
 
 
@@ -66,8 +69,6 @@ export const Service2 = () => {
         console.log("Unable to retrieve your location");
     }
     const handledetail = async () => {
-        // alert("hello");
-
         console.log("first==>", service.subname._id);
         const data = { subserid: service.subname._id }
         const response = await detail.getdetailbysubser(data);
@@ -95,10 +96,9 @@ export const Service2 = () => {
             else {
                 alert("make profile first");
             }
-
         }
-
     }
+
     const handlebookser = async (data) => {
         get_user();
         if (userid !== null || userid !== undefined) {
@@ -113,28 +113,24 @@ export const Service2 = () => {
                 }
             }
             );
-
             console.log("data._id", data._id);
             setspid(data._id);
-
-
         }
         else {
             alert("some issues are there please try again");
         }
-
-
-
     }
 
     const handleadd = async () => {
+        alert(serviceid);
 
         if (serviceid !== null || serviceid !== undefined) {
             const bookdata = { userid, serviceid, spid }
             const response = await cartservice.addtocart(bookdata);
             console.log("response of book service === >", response);
             if (response.data.success === false) {
-                alert("this is added already");
+                setmsg("This Service is added Already ");
+                initmodel();
             }
             else if (response.data.success === true) {
                 navigate("/cart");
@@ -158,6 +154,24 @@ export const Service2 = () => {
 
     return (
         <>
+            <Modal show={isshow}  >
+                <Modal.Header className='text-center'>
+                    <Modal.Title className='' >
+                        Add Your Details
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {msg}
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="danger" className="mx-3" onClick={initmodel}>
+                        CLOSE
+                    </Button>
+                    <Button variant="dark" className="mx-3" type='submit'>
+                        Book Service
+                    </Button>
+                </Modal.Footer>
+            </Modal>
             <Navbar />
             {/* <section className='mt-5 pt-3'>
                 {city ?
