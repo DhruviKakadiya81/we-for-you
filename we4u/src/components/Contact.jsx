@@ -9,10 +9,11 @@ import {
   FaInstagram,
   FaLinkedin,
 } from "react-icons/fa";
-import { TextField, Button } from "@mui/material";
+import { TextField } from "@mui/material";
 import { Link } from 'react-router-dom';
 import { Footer } from './Footer'
 import cntuser from '../services/contact'
+import {Button,Modal} from "react-bootstrap"
 
 export const Contact = () => {
   const [firstname, setfirstname] = useState('');
@@ -20,19 +21,30 @@ export const Contact = () => {
   const [email, setemail] = useState('');
   const [phone, setphone] = useState('');
   const [message, setmessage] = useState('');
+  const [msg, setmsg] = useState();
+    const [isshow, invokemodel] = useState(false);
+    const initmodel = () => {
+        return invokemodel(!isshow);
+    }
 
   const handleadd = async () => {
     const data = { firstname, lastname, email, phone, message }
     if (data.firstname === '' || data.lastname === '' || data.email === '' || data.phone === '' || data.message === '') {
-      alert("enter all data", data);
+      setmsg("Fill All The Fields!!");
+      initmodel(); 
+      // alert("enter all data", data);
       console.log("data", data);
     } else {
       const response = await cntuser.cntuseradd(data);
       if (response.data.success === true) {
-        alert("your message delivered successfully");
+        setmsg("Your Message Delivered Successfully!!");
+        initmodel();
+        // alert("your message delivered successfully");
       }
       else {
-        alert("please add your message again")
+        setmsg("Please Add Your Message Again!!");
+        initmodel();
+        // alert("please add your message again")
       }
     }
   }
@@ -41,10 +53,25 @@ export const Contact = () => {
 
     <>
       <Navbar />
+      <Modal show={isshow}  >
+                <Modal.Header className='text-center'>
+                    <Modal.Title className='' >
+                        Contact Details
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {msg}
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="dark" className="mx-3" onClick={initmodel}>
+                       OK
+                    </Button>
+                </Modal.Footer>
+                </Modal>
       <div className="c_container2 hero-image" style={{ background: `url(Images/contact_backgroud_10.png)`, backgroundSize:"cover",backgroundRepeat:"no-repeat",height:"80vh"}}>
-        <div className="mt-5 pt-5 mx-5 px-5">
-          <p className="pt-5 mt-5 c_par1 px-5 mx-5">Contact Us</p>
-          <p className="c_par2 px-5 mx-5">We're easy to get in touch with Us</p>
+        <div className="mt-5 pt-5 ms-lg-5 ps-lg-5 ps-md-5 ms-md-4 ps-sm-4 ps-5">
+          <p className="pt-lg-5 mt-lg-5 pt-md-5 mt-md-5 pt-sm-5 mt-sm-4 pt-5 c_par1 ms-lg-5 ps-lg-5 ps-md-4 ms-md-4 ps-sm-3 ms-sm-3">Contact Us</p>
+          <p className="c_par2 ms-lg-5 ps-lg-5 ps-md-4 ms-md-4 ps-sm-3 ms-sm-3">We're easy to get in touch with Us</p>
         </div>
       </div>
       <div class="parallax mb-0" style={{
@@ -52,7 +79,7 @@ export const Contact = () => {
         backgroundImage: ` linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("images/loc_backgound.jpg")`,
 
         /* Set a specific height */
-        minHeight: "500px",
+        minHeight: "100vh",
 
         /* Create the parallax scrolling effect */
         backgroundAttachment: "fixed",
@@ -73,16 +100,16 @@ export const Contact = () => {
                   Address:
                 </p>
                 <p className="c_add_detail1">
-                  58, Ralph Ave
+                  J P Dawer Institute Of Information 
                 </p>
                 <p className="c_add_detail2">
-                  New York,New York 1111
+                  Science & Technology
                 </p>
                 <p className="c_phone_continer">
-                  <span className="c_phone_head">Phone:</span><span className="c_phone_detail"> +1 800 000 111</span>
+                  <span className="c_phone_head">Phone:</span><span className="c_phone_detail"> +91 90160 63452</span>
                 </p>
                 <p className="c_email_container">
-                  <span className="c_email_head">Email:</span><span className="c_email_detail"> Contact@Example.com</span>
+                  <span className="c_email_head">Email:</span><span className="c_email_detail">we4uservices3@gmail.com</span>
                 </p>
               </div>
             </div>
@@ -116,17 +143,17 @@ export const Contact = () => {
               <div className="c_loc_inner my-2">
               <i className="fa-sharp fa-solid fa-location-dot fa-2xl py-4" style={{fontSize:"40px"}}></i>
                 <p className="c_loc_title">Surat</p>
-                <p className="c_loc_desc">58,Ralph Ave New York,New York 111</p>
+                {/* <p className="c_loc_desc">15, Vinayak Soc, Nana Varachha</p> */}
               </div>
               <div className="c_loc_inner my-2">
               <i className="fa-sharp fa-solid fa-location-dot fa-2xl py-4" style={{fontSize:"40px"}}></i>
                 <p className="c_loc_title">Ahemdabad</p>
-                <p className="c_loc_desc">58,Ralph Ave New York,New York 111</p>
+                {/* <p className="c_loc_desc">45, Shantiniketan Residency, Thaltej</p> */}
               </div>
               <div className="c_loc_inner my-2">
               <i className="fa-sharp fa-solid fa-location-dot fa-2xl py-4" style={{fontSize:"40px"}}></i>
                 <p className="c_loc_title">Vadodara</p>
-                <p className="c_loc_desc">58,Ralph Ave New York,New York 111</p>
+                {/* <p className="c_loc_desc">58,Ralph Ave New York,New York 111</p> */}
               </div>
             </div>
           </div>
@@ -137,33 +164,34 @@ export const Contact = () => {
                 <div className="c_sec_loc_inner my-2">
                 <i className="fa-sharp fa-solid fa-location-dot fa-2xl py-4" style={{fontSize:"35px"}}></i>
                   <p className="c_loc_sec_title">Vesu</p>
-                  <p className="c_loc_sec_desc">58,Ralph Ave New York,New York 111</p>
+                  <p className="c_loc_sec_desc">Surat</p>
                 </div>
                 <div className="c_sec_loc_inner my-2">
                 <i className="fa-sharp fa-solid fa-location-dot fa-2xl py-4" style={{fontSize:"35px"}}></i>
                   <p className="c_loc_sec_title">Varachha</p>
-                  <p className="c_loc_sec_desc">58,Ralph Ave New York,New York 111</p>
+                  <p className="c_loc_sec_desc">Surat</p>
                 </div>
                 <div className="c_sec_loc_inner my-2">
                 <i className="fa-sharp fa-solid fa-location-dot fa-2xl py-4" style={{fontSize:"35px"}}></i>
                   <p className="c_loc_sec_title">Thaltej</p>
-                  <p className="c_loc_sec_desc">58,Ralph Ave New York,New York 111</p>
+                  <p className="c_loc_sec_desc">Ahemdabad</p>
                 </div>
                 <div className="c_sec_loc_inner my-2">
                 <i className="fa-sharp fa-solid fa-location-dot fa-2xl py-4" style={{fontSize:"35px"}}></i>
                   <p className="c_loc_sec_title">Nanpura</p>
-                  <p className="c_loc_sec_desc">58,Ralph Ave New York,New York 111</p>
+                  <p className="c_loc_sec_desc">Surat</p>
                 </div>
                 <div className="c_sec_loc_inner my-2">
                 <i className="fa-sharp fa-solid fa-location-dot fa-2xl py-4" style={{fontSize:"35px"}}></i>
                   <p className="c_loc_sec_title">Sarkhej</p>
-                  <p className="c_loc_sec_desc">58,Ralph Ave New York,New York 111</p>
+                  <p className="c_loc_sec_desc">Ahemdabad</p>
                 </div>
                 <div className="c_sec_loc_inner my-2">
                 <i className="fa-sharp fa-solid fa-location-dot fa-2xl py-4" style={{fontSize:"35px"}}></i>
                   <h5 className="c_loc_sec_title">Kankaria</h5>
-                  <p className="c_loc_sec_desc">58,Ralph Ave New York,New York 111</p>
+                  <p className="c_loc_sec_desc">Ahemdabad</p>
                 </div>
+                
               </div>
             </div>
           </div>

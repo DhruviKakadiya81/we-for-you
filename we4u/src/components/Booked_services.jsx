@@ -109,7 +109,7 @@ export const Booked_services = () => {
 
                                     </div>
                                     <div className="col-md-12">
-                                        <label htmlFor="" className='mx-2' style={{ color: "white" }}>Choose Date </label>
+                                        <label htmlFor="" className='mx-2' style={{ color: "white" }}>Choose Time </label>
                                         <input type="time" className="form-control  p-2" id="inputPassword4" min="09:00" max="22:00" onChange={(event) => { setstart_time(event.target.value) }} />
 
                                     </div>

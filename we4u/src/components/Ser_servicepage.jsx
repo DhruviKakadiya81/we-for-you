@@ -138,7 +138,7 @@ const Update = (props) => {
 
 
     const handleupdate = async (event) => {
-        alert(prize);
+        // alert(prize);
         const response = await subser.updateser({ id, subname, prize, discription, serviceid });
         if (response.data.success === true) {
             initmodel();
@@ -176,7 +176,7 @@ const Update = (props) => {
     return (
 
         <>
-            <Button variant="contained" style={{ backgroundColor: "rgb(50,50,50)", color: "white" }} onClick={initmodel}>
+            <Button variant="contained" style={{ backgroundColor: "rgb(50,50,50)", color: "white" }} onClick={initmodel} className='mx-2'>
                 Edit
             </Button>
             <Modal show={isshow} style={{ overflowX: "scroll"}} >

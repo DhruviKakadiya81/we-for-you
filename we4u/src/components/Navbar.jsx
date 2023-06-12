@@ -46,8 +46,10 @@ export const Navbar = () => {
     event.preventDefault();
     var id = localStorage.getItem("token");
     if (id == null) {
-      alert("Login first");
-      nevigate("/login");
+      // alert("Login first");
+      setmsg("Login First!!");
+      initmodel();
+      // nevigate("/login");
       event.preventDefault();
     }
     else {
@@ -63,8 +65,10 @@ export const Navbar = () => {
     event.preventDefault();
     var id = localStorage.getItem("token");
     if (id == null) {
-      alert("you have to login first");
-      nevigate("/login");
+      // alert("you have to login first");
+      setmsg("Login First!!");
+      initmodel();
+      // nevigate("/login");
       event.preventDefault();
     }
     else {
@@ -80,7 +84,7 @@ export const Navbar = () => {
     <Modal show={isshow}  >
                 <Modal.Header className='text-center'>
                     <Modal.Title className='' >
-                        Logout Details
+                        Login Details
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>

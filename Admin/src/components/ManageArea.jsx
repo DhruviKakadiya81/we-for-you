@@ -222,7 +222,7 @@ const Delete = (props) => {
             <Button variant="contained" style={{ backgroundColor: "rgb(50,50,50)", color: "white" }} onClick={initmodel}>
                 Delete
             </Button>
-            <Modal show={isshow} style={{ overflowX: "scroll", width: "100%", marginTop: "180px" }} >
+            <Modal show={isshow} style={{ overflowX: "scroll", width: "100%"}} >
                 <Modal.Header closeButton onClick={initmodel}>
                     <Modal.Title className='' >
                         Delete Area
