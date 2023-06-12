@@ -94,7 +94,9 @@ export const Service2 = () => {
                 setuserid(response2.data.data._id)
             }
             else {
-                alert("make profile first");
+                // alert("make profile first");
+                setmsg("Make Profile First!!");
+                initmodel();
             }
         }
     }
@@ -122,14 +124,14 @@ export const Service2 = () => {
     }
 
     const handleadd = async () => {
-        alert(serviceid);
+        // alert(serviceid);
 
         if (serviceid !== null || serviceid !== undefined) {
             const bookdata = { userid, serviceid, spid }
             const response = await cartservice.addtocart(bookdata);
             console.log("response of book service === >", response);
             if (response.data.success === false) {
-                setmsg("This Service is added Already ");
+                setmsg("This Service is Added Already!! ");
                 initmodel();
             }
             else if (response.data.success === true) {
@@ -157,18 +159,15 @@ export const Service2 = () => {
             <Modal show={isshow}  >
                 <Modal.Header className='text-center'>
                     <Modal.Title className='' >
-                        Add Your Details
+                        Book Service
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     {msg}
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="danger" className="mx-3" onClick={initmodel}>
-                        CLOSE
-                    </Button>
-                    <Button variant="dark" className="mx-3" type='submit'>
-                        Book Service
+                    <Button variant="dark" className="mx-3" onClick={initmodel}>
+                        OK
                     </Button>
                 </Modal.Footer>
             </Modal>
