@@ -61,6 +61,9 @@ export const Ser_Pro_Navbar = () => {
                 <Link className="nav-link" to="/sphome">Home</Link>
               </li>
               <li className="nav-item">
+                <Link className="nav-link" to="/serdash">Dashboard</Link>
+              </li>
+              <li className="nav-item">
                 <Link className="nav-link" to="/yourser">Your services</Link>
               </li>
               <li className="nav-item">
