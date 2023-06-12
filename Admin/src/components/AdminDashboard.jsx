@@ -483,7 +483,7 @@ const AdminDashboard = () => {
               </div>
 
             </div>
-            <div class="card-body">
+            <div class="card-body mx-auto">
               <div class="tab-content">
                 <div class="tab-pane fade show active" id="tabs-eg-77">
                   <div class="card mb-3 widget-chart widget-chart2 text-left w-100">
@@ -637,7 +637,7 @@ const AdminDashboard = () => {
             <div class="card-body">
               <div class="tab-content">
                 <div class="tab-pane fade show active" id="tabs-eg-77">
-                  <div class="card mb-3 widget-chart widget-chart2 text-left w-100">
+                  <div class="card mb-3 widget-chart widget-chart2 text-left w-100  mx-auto">
                     <div class="widget-chat-wrapper-outer">
                       <div class="widget-chart-wrapper widget-chart-wrapper-lg opacity-10 m-0">
                         <div className="row">
@@ -646,7 +646,8 @@ const AdminDashboard = () => {
                               options={state2.options}
                               series={state2.series}
                               type="donut"
-                              width="500"
+                              width="460"
+                              className="mx-auto"
                               
                             />
                           </div>
@@ -656,7 +657,7 @@ const AdminDashboard = () => {
                   </div>
                   <h6 class="text-muted  text-uppercase font-size-md opacity-5 font-weight-normal">Top Authors</h6>
                   <div class="scroll-area-sm overflow-auto">
-                    <div class="scrollbar-container" style={{ height: "200px" }}>
+                    <div class="scrollbar-container" style={{ height: "240px" }}>
                       <ul class="rm-list-borders rm-list-borders-scroll list-group list-group-flush">
                         <li class="list-group-item">
                           <div class="widget-content p-0">
@@ -781,7 +782,7 @@ const AdminDashboard = () => {
 
 
       <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12 overflow-auto">
                                 <div class="main-card mb-3 card">
                                     <div class="card-header">Active Users
                                         <div class="btn-actions-pane-right">
@@ -911,7 +912,7 @@ const AdminDashboard = () => {
                                     </div> */}
                                 </div>
                             </div>
-                        </div>/
+                        </div>
 
     </AdminNavbar>
   )
