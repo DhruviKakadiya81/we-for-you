@@ -4,12 +4,22 @@ import "../css/Navbar.css";
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import LoginData from "../services/LoginData";
-import { Modal } from 'react-bootstrap';
-import { FormControl, FormGroup, Input, InputLabel, Typography, Button } from '@mui/material';
+import {Button, Modal } from 'react-bootstrap';
+// import { FormControl, FormGroup, Input, InputLabel, Typography } from '@mui/material';
 export const Navbar = () => {
   const location = useLocation();
   const nevigate = useNavigate();
   const [navCollapse, setNavCollapse] = useState(true);
+  const [msg, setmsg] = useState();
+    const [isshow, invokemodel] = useState(false);
+    const initmodel = () => {
+        return invokemodel(!isshow);
+    }
+    const [msg1, setmsg1] = useState();
+    const [isshow1, invokemodel1] = useState(false);
+    const initmodel1 = () => {
+        return invokemodel1(!isshow);
+    }
   const handleNav = () => {
     setNavCollapse(!navCollapse);
   }
@@ -17,12 +27,16 @@ export const Navbar = () => {
   const handlelogout = () => {
     var id = localStorage.getItem("token");
     if (id == null) {
-      alert("Login first");
-      nevigate("/login");
+      // alert("Login first");
+      setmsg("Login First!!");
+      initmodel();
+      // nevigate("/login");
     }
-    else {
+    else {  
+      setmsg1("Are You Sure Want To Logout??");
+      initmodel1();
       localStorage.removeItem("token");
-      alert("logged out");
+      // alert("logged out");
       nevigate("/login");
     }
 
@@ -63,6 +77,40 @@ export const Navbar = () => {
   }
   return (
     <>
+    <Modal show={isshow}  >
+                <Modal.Header className='text-center'>
+                    <Modal.Title className='' >
+                        Logout Details
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {msg}
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="dark" className="mx-3" onClick={initmodel}>
+                       OK
+                    </Button>
+                </Modal.Footer>
+                </Modal>
+
+                <Modal show={isshow1}>
+                <Modal.Header className='text-center'>
+                    <Modal.Title className='' >
+                        Logout Details
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {msg1}
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="dark" className="mx-3" onClick={initmodel1}>
+                       Yes
+                    </Button>
+                    <Button variant="danger" className="mx-3" onClick={initmodel1}>
+                       No
+                    </Button>
+                </Modal.Footer>
+                </Modal>
       <nav className="navbar navbar-expand-md navbar-dark fixed-top">
         <div className="container-fluid">
           <img src="/images/we4U.png" width="100" height="50" className="c_nav_image" />
@@ -76,8 +124,7 @@ export const Navbar = () => {
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/about">About</Link>
-              </li>
-             
+              </li>            
               <li className="dropdown nav-item">
                 <Link className="nav-link" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false"> Register </Link>
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{ zIndex: "0" }}>
