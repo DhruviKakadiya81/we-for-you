@@ -1,6 +1,6 @@
 const finalbooking = require('../models/finalbooking');
-
 const qrcode = require('qrcode-terminal');
+
 const adddata = async (req, res) => {
     try {
         console.log("data of booking service => ", req.body);

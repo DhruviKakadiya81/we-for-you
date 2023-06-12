@@ -15,8 +15,6 @@ export const Login = (props) => {
   const errors = {};
   const handleLogin = async (event) => {
     if (errors.email === undefined && errors.password === undefined) {
-      // event.preventDefault();
-      // alert("hello");
       let state = props.state;
       const firmObj = { email, password, state };
       const respo = await apiServices.getLoginData(firmObj);
@@ -118,7 +116,7 @@ export const Login = (props) => {
                   }}
                   onBlur={formik.handleBlur}
                   value={email}
-                 required
+                  required
                 />
                 <br />
                 {formik.touched.email && formik.errors.email && (
@@ -157,7 +155,7 @@ export const Login = (props) => {
                   className="p-2 btn_sub"
                   value="register"
                   onClick={handleLogin}
-                  >
+                >
                   Login
                 </button>
                 <br />
@@ -300,7 +298,7 @@ export const Login = (props) => {
                   className="p-2 btn_sub"
                   value="register"
                   onClick={handleLogin}
-                  >
+                >
                   Login
                 </button>
                 <br />

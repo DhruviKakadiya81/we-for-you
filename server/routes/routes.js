@@ -108,6 +108,7 @@ router1.delete("/deletecart", addtocart.deleteintocart);
 router1.post("/cntuser", contactuser.adddetail);
 router1.post("/cntsp", contactsp.adddetail);
 
+router1.post("/book", bookser.adddata);
 
 // router1.post("/getuser",logcontroller.getuserlogin);
 // router1.post("/getuser",logcontroller.getuserlogin);
