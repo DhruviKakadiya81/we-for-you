@@ -21,8 +21,7 @@ export const Sp = () => {
           </div>
         </div>
 
-
-      </section >
+      </section>
 
       <div className="text-center d-flex justify-content-center">
         <div className="upperdiv w-75 justify-content-center p-3" >

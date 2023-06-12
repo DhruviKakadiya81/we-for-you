@@ -17,8 +17,6 @@ export const Authpage = () => {
   const [isshow, invokemodel] = useState(false);
   const [total, settotal] = useState(0);
   let totalrs = 0;
-
-
   const navigate = useNavigate();
 
   const get_user = async () => {
@@ -73,6 +71,7 @@ export const Authpage = () => {
 
   console.log(cartdata);
 
+
   return (
     <>
       <Navbar />
@@ -85,16 +84,18 @@ export const Authpage = () => {
                 <div className="row d-flex justify-content-center pt-5">
                   <div className="spinner-border" style={{ position: "absolute", textAlign: "center", top: "80%", left: "50%" }}>
                   </div>
-
                 </div>
-                : (cartdata.length === 0) ?
+
+
+                : (cartdata.length < 0) ?
                   <div className="d-flex justify-content-center" >
                     <img src="images/emptycart.jpg" alt="not image" />
                   </div>
+
+
                   :
                   <div className="sp">
                     <div class="container padding-bottom-3x mb-1">
-
 
 
                       <div class="table-responsive shopping-cart mx-auto" style={{ width: "100%" }}>
@@ -115,9 +116,8 @@ export const Authpage = () => {
                               <th class="text-center"><a class="btn btn-sm btn-outline-danger bg-danger text-white" href="#">Clear Cart</a></th>
 
 
-
-                            </tr>
-                          </thead>
+                            </tr >
+                          </thead >
 
 
 
@@ -131,6 +131,7 @@ export const Authpage = () => {
                                 <tbody>
                                   <tr>
 
+
                                     <td class=""><img style={{ width: "150px", height: "100px" }} src={"http://localhost:4000/image/" + sp.serviceid.subname.image} alt="Product" /><span className='ps-3'>{sp.serviceid.subname.subname}</span></td>
                                     <td class="text-center text-lg text-medium">{sp.serviceid.prize} Rs</td>
                                     <td class="text-center text-lg text-medium">{sp.spid.firstname}</td>
@@ -139,8 +140,9 @@ export const Authpage = () => {
                                       Book Service
                                     </Button> </td>
                                     <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title="" data-original-title="Remove item"><i class="fa fa-trash"></i></a></td>
-                                  </tr>
-                                </tbody>
+                                  </tr >
+                                </tbody >
+
                               </>
 
 
@@ -150,7 +152,7 @@ export const Authpage = () => {
 
 
 
-                        </table>
+                        </table >
 
                         <table style={{ width: "100%", border: "none" }}>
 
@@ -169,7 +171,12 @@ export const Authpage = () => {
                         <table style={{ width: "100%", marginTop: "20px", border: "none" }}>
 
                           <tr className='pt-5' >
+                            <td style={{ alignItems: "right", float: "right", border: "none" }}>
 
+                              <div class="column "><a class="btn btn-success " href="#">Book Now</a></div>
+                              {/* <div class="column"><a class="btn btn-primary" href="#" data-toast="" data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Your cart" data-toast-message="is updated successfully!">Update Cart</a><a class="btn btn-success" href="#">Checkout</a></div> */}
+                              {/* <Update class="column"   /> */}
+                            </td>
 
                             <td style={{ alignItems: "right", float: "left", border: "none" }}>
                               <div class="column "><a style={{ backgroundColor: "rgb(100,100,100)" }} class="btn btn-outline-secondary w-100 text-white" href="#"><i class="icon-arrow-left"></i>&nbsp;Back to Shopping</a></div>
@@ -181,19 +188,19 @@ export const Authpage = () => {
 
 
 
-                      </div>
+                      </div >
 
-                    </div>
+                    </div >
 
 
-                  </div>
+                  </div >
             }
 
-          </div>
-        </div>
+          </div >
+        </div >
 
 
-      </section>
+      </section >
 
     </>
 

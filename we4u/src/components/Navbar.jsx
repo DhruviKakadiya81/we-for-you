@@ -77,11 +77,19 @@ export const Navbar = () => {
               <li className="nav-item">
                 <Link className="nav-link" to="/about">About</Link>
               </li>
+             
               <li className="dropdown nav-item">
                 <Link className="nav-link" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false"> Register </Link>
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{ zIndex: "0" }}>
                   <li><Link className="dropdown-item" to="/register">Register As Client</Link></li>
                   <li><Link className="dropdown-item" to="/regprof">Register As Professional</Link></li>
+                </ul>
+              </li>
+              <li className="dropdown nav-item">
+                <Link className="nav-link" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false">Login</Link>
+                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <li><Link className="dropdown-item" to="/login">Login As Client</Link></li>
+                  <li><Link className="dropdown-item" to="/loginasp">Login As Professional</Link></li>
                 </ul>
               </li>
               <li className="nav-item">
@@ -90,13 +98,6 @@ export const Navbar = () => {
             </ul>
 
             <ul className="navbar-nav sm-icons">
-              <li className="dropdown nav-item">
-                <Link className="nav-link" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false"><i className="fa-solid fa-user fa-lg"></i></Link>
-                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <li><Link className="dropdown-item" to="/login">Login As Client</Link></li>
-                  <li><Link className="dropdown-item" to="/loginasp">Login As Professional</Link></li>
-                </ul>
-              </li>
               <li><Link className="nav-link" to="/cart" onClick={handlecart}><i className="fa-solid fa-cart-shopping fa-lg"></i></Link></li>
               <li><Link className="nav-link" to="/profile"><i className="fa-solid fa-user-gear fa-lg" onClick={handleprofile}></i></Link></li>
               <li><Link className="nav-link" to="/logout" onClick={handlelogout}><i className="fa-solid fa-right-from-bracket fa-lg"></i></Link></li>

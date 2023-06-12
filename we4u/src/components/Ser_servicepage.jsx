@@ -179,16 +179,16 @@ const Update = (props) => {
             <Button variant="contained" style={{ backgroundColor: "rgb(50,50,50)", color: "white" }} onClick={initmodel}>
                 Edit
             </Button>
-            <Modal show={isshow} style={{ overflowX: "scroll", width: "80%" }} >
-                <Modal.Header closeButton onClick={initmodel} style={{ border: "none", outline: "none", width: "80%" }} >
+            <Modal show={isshow} style={{ overflowX: "scroll"}} >
+                <Modal.Header closeButton onClick={initmodel} style={{ border: "none", outline: "none"}} >
                     <Modal.Title className='' >
-                        Update Product
+                        Update Your Service
                     </Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
 
-                    <form className="s_add__form_container" autoComplete='off'>
+                    <form className="text-center s_add__form_container" autoComplete='off'>
                         <FormControl variant="standard" sx={{ minWidth: 260 }} className='mb-4 area_detail_container'>
                             <InputLabel id="demo-simple-select-standard-label">Select Service</InputLabel>
                             <Select
@@ -206,7 +206,7 @@ const Update = (props) => {
                             </Select>
                         </FormControl><br />
                         <FormControl variant="standard" sx={{ minWidth: 260 }} className='mb-4 area_detail_container'>
-                            <InputLabel id="demo-simple-select-standard-label" className='sel_ser'>Select Sub Service</InputLabel>
+                        <InputLabel id="demo-simple-select-standard-label">Select Sub Service</InputLabel>
                             <Select
                                 labelId="demo-simple-select-standard-label"
                                 id="demo-simple-select-standard"
@@ -252,7 +252,7 @@ const Delete = (props) => {
         return invokemodel(!isshow);
     }
     const handledelete = async (id, e) => {
-        alert(id);
+        // alert(id);
         const data = { id };
         const respo = await subser.deleteser(data);
         console.log(respo);
@@ -283,10 +283,10 @@ const Delete = (props) => {
 
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="" className="mx-3" onClick={initmodel}>
+                    <Button variant="dark" className="mx-3" onClick={initmodel}>
                         CLOSE
                     </Button>
-                    <Button variant="" className="mx-3" type='submit' style={{ backgroundColor: "red" }} onClick={(e) => handledelete(props.data._id, e)}>
+                    <Button variant="danger" className="mx-3" type='submit' onClick={(e) => handledelete(props.data._id, e)}>
                         Delete
                     </Button>
                 </Modal.Footer>

@@ -10,6 +10,7 @@ import OwlCarousel from 'react-owl-carousel2';
 import 'react-owl-carousel2/lib/styles.css';
 import detail from '../services/spservice';
 import { useNavigate } from 'react-router-dom';
+import { Footer } from './Footer';
 
 export const SubService = () => {
     const [serviceid, setserviceid] = useState(localStorage.getItem("serviceid"));
@@ -139,7 +140,6 @@ export const SubService = () => {
             }
         }
     }
-
     const owl = React.useRef(null);
     return (
         <>
@@ -162,7 +162,6 @@ export const SubService = () => {
 
                                     </div>
                                     :
-
                                     <OwlCarousel ref={owl} options={options}>
 
                                         {servicedata.map((service) => (
@@ -187,7 +186,7 @@ export const SubService = () => {
             <hr style={{ color: "black", height: "3px", margin: "10px auto", width: "80%" }} />
             <section>
                 {/* <h1 className="text-left">Hire Your Service Provider</h1> */}
-                <h3 className="text-left pt-5 pb-0  mt-3 mb-0" style={{ color: "black", marginLeft: "98px", fontWeight: "600", fontSize: "30px" }}>Hire Your Service Provider</h3>
+                <h3 className="text-center pt-5 pb-0  mt-3 mb-0" style={{ color: "black", marginLeft: "98px", fontWeight: "600", fontSize: "30px" }}>Hire Your Service Provider</h3>
 
                 {
                     (spdetail === undefined || spdetail.length === 0) ?
@@ -209,58 +208,38 @@ export const SubService = () => {
                                     {
                                         spdetail.map((sp) => (
                                             <>
-
                                                 <div class="flip-card">
                                                     <div class="flip-card-inner">
                                                         <div className="flip-card-front text-left " style={{ textAlign: "left" }}>
-
                                                             <h2 className='text-center mt-4'>    {sp.shopname}  </h2>
                                                             <p className="mt-4 ps-5 " key={sp.serviceid._id} style={{ fontSize: "17px" }}> Service Provider :: {sp.firstname} {sp.lastname}</p>
-
                                                             {/* <p>{sp.gender}</p> */}
-
                                                             <p className=" ps-5 " style={{ fontSize: "17px" }}>  Address :: {sp.address}  <br /><br />  {sp.cityid ? <p className=" " style={{ fontSize: "17px" }} >City :: {sp.cityid.cityname} </p> : <br />}</p>
                                                             <p className=" ps-5 " style={{ fontSize: "17px" }}> {sp.areaid ? <p style={{ fontSize: "17px" }}>Area:: {sp.areaid.areaname}</p> : <br />}</p>
-
-
-
                                                             <p className=" ps-5 " style={{ fontSize: "17px" }}> Contact Us :: {sp.mobileno} </p>
                                                             <p className=" ps-5 " style={{ fontSize: "17px" }}> Email Id :: {sp.pemail} </p>
-
                                                         </div>
                                                         <div class="flip-card-back">
-                                                            <h1 className='d-flex justify-content-center mb-5'>My Services</h1>
+                                                            <h1 className='d-flex justify-content-center my-4'>My Services</h1>
                                                             <p>{sp.subserid.map((key) => (
                                                                 <>
                                                                     <div className='text-center'>
                                                                         <p> {key.subname.subname} : {key.prize} Rs</p>
                                                                     </div>
-
-
-
-
-
                                                                 </>
                                                             ))}</p>
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </>
-
-
                                         ))
                                     }
                                 </div>
                                 {/* </div> */}
-
                             </div>
-
-
-
                 }
             </section>
-
+            <Footer/>
         </>
     )
 }

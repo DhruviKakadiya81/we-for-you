@@ -1,11 +1,11 @@
 import React from 'react'
 import { Navbar } from './Navbar'
-import { FormControl, FormGroup, Input, InputLabel, Button, FormLabel, RadioGroup, FormControlLabel, Radio } from '@mui/material';
+import { FormControl, FormGroup, Input, InputLabel, FormLabel, RadioGroup, FormControlLabel, Radio } from '@mui/material';
 import "../css/Profile.css";
 import { makeStyles, TextField } from '@material-ui/core';
-import { Modal } from 'react-bootstrap';
 import { useState } from 'react';
 import userprofile from '../services/UserProfile'
+import { Button, Modal } from 'react-bootstrap';
 import getLoginUser from '../services/GetUser'
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -33,6 +33,11 @@ const Profile = () => {
   const [gender, setgender] = useState('');
   const [image, setimage] = useState('');
   const [userdata, setuserdata] = useState();
+  const [msg, setmsg] = useState();
+  const [isshow, invokemodel] = useState(false);
+  const initmodel = () => {
+      return invokemodel(!isshow);
+  }
   const [isData, setIsData] = useState(true);
   const [isEdit, setisEdit] = useState(true);
   const navigate = useNavigate();
@@ -43,11 +48,15 @@ const Profile = () => {
     console.log("images===>", image);
     const respo = await userprofile.create(data);
     if (respo.data.success === true) {
-      alert("your profile is created");
+      // alert("your profile is created");
+      setmsg("Your Profile Is Created");
+      initmodel();
       window.location.reload();
     }
     else {
-      alert(respo.data.msg);
+      // alert(respo.data.msg);
+      setmsg("Your Profile Is Not Created");
+      initmodel();
     }
     console.log("response---->", respo);
   }
@@ -73,13 +82,8 @@ const Profile = () => {
         console.log("birthdate====>", fbirthdate);
         setuserdata(response.data.data);
         setIsData(true);
-
       }
-
-
     }
-
-
   }
 
 
@@ -100,7 +104,22 @@ const Profile = () => {
       <>
 
         <Navbar />
-        <div className='profile_main_container'>
+        <Modal show={isshow}  >
+                <Modal.Header className='text-center'>
+                    <Modal.Title className='' >
+                        Profile Status
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {msg}
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="dark" className="mx-3" onClick={initmodel}>
+                       OK
+                    </Button>
+                </Modal.Footer>
+                </Modal>
+        <div className='profile_main_container mt-5'>
           <div className="profile_full_form">
             <div className="image_container order-2 order-lg-1">
               <h3 className="title pt-5 mt-5 pb-5">We4U</h3>
@@ -155,7 +174,7 @@ const Profile = () => {
                     >
                       <FormControlLabel value="female" control={<Radio />} label="Female" onChange={(event) => { setgender(event.target.value) }} />
                       <FormControlLabel value="male" control={<Radio />} label="Male" onChange={(event) => { setgender(event.target.value) }} />
-                      <FormControlLabel value="other" control={<Radio />} label="Other" onChange={(event) => { setgender(event.target.value) }} />
+                      {/* <FormControlLabel value="other" control={<Radio />} label="Other" onChange={(event) => { setgender(event.target.value) }} /> */}
                     </RadioGroup>
                   </FormControl><br />
                 </div>
@@ -326,10 +345,10 @@ const ChangePass = (props) => {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="" className="mx-3" onClick={initmodel} style={{ backgroundColor: "grey", color: "white" }}>
+          <Button variant="danger" className="mx-3" onClick={initmodel}>
             CLOSE
           </Button>
-          <Button variant="" className="mx-3" type='submit' style={{ backgroundColor: "black", color: "white" }} onClick={handlepassword}>
+          <Button variant="dark" className="mx-3" type='submit' onClick={handlepassword}>
             Change
           </Button>
         </Modal.Footer>
@@ -413,7 +432,7 @@ const Update = (props) => {
                 >
                   <FormControlLabel value="female" checked={gender === 'female'} control={<Radio />} label="Female" onChange={(event) => { setgender(event.target.value) }} />
                   <FormControlLabel value="male" checked={gender === 'male'} control={<Radio />} label="Male" onChange={(event) => { setgender(event.target.value) }} />
-                  <FormControlLabel value="other" checked={gender === 'other'} control={<Radio />} label="Other" onChange={(event) => { setgender(event.target.value) }} />
+                  {/* <FormControlLabel value="other" checked={gender === 'other'} control={<Radio />} label="Other" onChange={(event) => { setgender(event.target.value) }} /> */}
                 </RadioGroup>
               </FormControl><br />
             </div>
@@ -421,10 +440,10 @@ const Update = (props) => {
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="" className="mx-3" onClick={initmodel} style={{ backgroundColor: "grey" }}>
+          <Button variant="danger" className="mx-3" onClick={initmodel}>
             CLOSE
           </Button>
-          <Button variant="" className="mx-3" type='submit' style={{ backgroundColor: "black", color: "white" }} onClick={handleupdate}>
+          <Button variant="dark" className="mx-3" type='submit' onClick={handleupdate}>
             Update
           </Button>
         </Modal.Footer>

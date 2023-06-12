@@ -51,7 +51,7 @@ export const Ser_Pro_Navbar = () => {
 
 
         <div className="container-fluid">
-          <img src="/images/Logo.png" width="100" height="50" className="c_nav_image" />
+          <img src="/images/we4U.png" width="100" height="50" className="c_nav_image" />
           <div className="d-md-none d-lg-none" onClick={handleNav}>
             <span className="navbar-toggler-icon"></span>
           </div>
@@ -73,19 +73,18 @@ export const Ser_Pro_Navbar = () => {
                   <li><Link className="dropdown-item" to="/regprof">Register As Professional</Link></li>
                 </ul>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/contactsp">Contact Us</Link>
-              </li>
-            </ul>
-            <ul className="navbar-nav sm-icons">
               <li class="dropdown nav-item">
-                <Link className="nav-link" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-user fa-lg"></i></Link>
+                <Link className="nav-link" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false">Login</Link>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <li><Link className="dropdown-item" to="/login">Login As Client</Link></li>
                   <li><Link className="dropdown-item" to="/loginasp">Login As Professional</Link></li>
                 </ul>
               </li>
-              <li><Link className="nav-link" to="/cart" onClick={handlecart}><i class="fa-solid fa-cart-shopping fa-lg"></i></Link></li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/contactsp">Contact Us</Link>
+              </li>
+            </ul>
+            <ul className="navbar-nav sm-icons">
               <li><Link className="nav-link" to="/profile"><i className="fa-solid fa-user-gear fa-lg"></i></Link></li>
               <li><Link className="nav-link" to="/logout" onClick={handlelogout}><i class="fa-solid fa-right-from-bracket fa-lg"></i></Link></li>
             </ul>

@@ -27,7 +27,7 @@ export const Footer = () => {
                                 <h2 class="text-uppercase f_add_title">address</h2>
                                 <p class="my-2 f_add_detail">J P Dawer Institute Of Information Science & Technology</p>
 
-                                <p class="my-2 f_add_detail">we4u@gmail.com</p>
+                                <p class="my-2 f_add_detail">we4uservices3@gmail.com</p>
 
                             </div>
                         </div>
@@ -66,7 +66,7 @@ export const Footer = () => {
                 </div>
                 <hr class="hrStyle" />
                 <div class="d-flex justify-content-between footerEnd">
-                    <p class="text-muted"> 2023 © Foodie Corner </p>
+                    <p class="text-muted"> 2023 © We4U </p>
                     <div>
                         <i class="fa-brands fa-facebook-f mx-2"></i>
                         <i class="fa-brands fa-twitter mx-2"></i>
