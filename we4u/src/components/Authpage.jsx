@@ -398,7 +398,7 @@ const Delete = (props) => {
   return (
     <>
 
-      <i class="fa fa-trash" onClick={initmodel} style={{ cursor: "pointer" }}></i>
+      <i class="fa fa-trash" onClick={initmodel} style={{ cursor: "p" }}></i>
       <Modal show={isshow}>
         <Modal.Body>
           Are You sure To Delete Service into Cart..?

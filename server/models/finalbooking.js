@@ -29,6 +29,14 @@ const FinalBookingSchema = new mongoose.Schema({
     },
     minutes: {
         type: Number
+    },
+    address: {
+        type: String
+
+    },
+    status: {
+        type: String,
+        default: "Schedule"
     }
 
 

@@ -35,6 +35,7 @@ import MyForm from "./components/MyForm";
 import { Service2 } from "./components/Service2";
 import { Booked_services } from "./components/Booked_services";
 import { Ser_pro_profile } from "./components/Ser_pro_profile";
+import { Cust_Dashboard } from "./components/Cust_Dashboard";
 
 
 
@@ -103,7 +104,8 @@ function App() {
           <Route path="/myform" element={<MyForm />}></Route>
           <Route path="/service2" element={<Service2 />}></Route>
           <Route path="/book" element={<Booked_services />}></Route>
-          <Route path="/ser_pro_profile" element={<Ser_pro_profile/>}></Route>
+          <Route path="/ser_pro_profile" element={<Ser_pro_profile />}></Route>
+          <Route path="/custdash" element={<Cust_Dashboard />}></Route>
         </Routes>
       </Router>
     </>

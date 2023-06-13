@@ -112,6 +112,12 @@ router1.post("/cntsp", contactsp.adddetail);
 
 router1.post("/book", bookser.adddata);
 
+router1.post("/scheduluser", bookser.getdatabyUserid);
+router1.post("/schedulsp", bookser.getdatabySpid);
+router1.post("/activeser", bookser.updatedatabyUserid);
+router1.post("/activesp", bookser.getActivebySpid);
+router1.post("/activeuser", bookser.getactivebyUserid);
+
 router1.get("/dashboard", dashboard.total);
 // router1.post("/getuser",logcontroller.getuserlogin);
 // router1.post("/getuser",logcontroller.getuserlogin);

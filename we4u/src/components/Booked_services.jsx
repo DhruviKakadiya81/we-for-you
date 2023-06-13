@@ -8,6 +8,7 @@ import { Ser_Pro_Navbar } from './Ser_Pro_Navbar';
 import { Navbar } from './Navbar';
 import deletecart from '../services/cartservics'
 import cartservics from '../services/cartservics';
+import { Footer } from './Footer';
 export const Booked_services = () => {
     const [data, setdata] = useState(JSON.parse(localStorage.getItem("BookingData")));
     const [mobileno, setmobileno] = useState();
@@ -35,7 +36,7 @@ export const Booked_services = () => {
         else {
             const [hour, minutes] = start_time.split(":");
             alert(hour);
-            const bookingdata = { spid: data.spid, userid: data.userid, serviceid: data.serviceid, hour, mobileno, minutes, date };
+            const bookingdata = { spid: data.spid, userid: data.userid, serviceid: data.serviceid, hour, mobileno, minutes, date, address };
             console.log("booking data...", bookingdata)
             const response = await bookkingser.booking(bookingdata);
 
@@ -70,9 +71,9 @@ export const Booked_services = () => {
 
     return (
         <>
-            <Navbar />
+            <Navbar className="" />
             {(data !== null || data !== undefined) ?
-                <section className="contact-form-sec pt-3 p-5  mx-auto   pb-3" style={{ padding: "0px 0px", backgroundColor: "rgba(5, 5, 5, 0.70)", borderRadius: "15px", width: "70%" }}>
+                <section className="contact-form-sec mx-auto pt-3 pb-3 mb-5" style={{ padding: "0px 0px", marginTop: "100px", backgroundColor: "rgba(5, 5, 5, 0.70)", borderRadius: "15px", width: "70%" }}>
                     <h1 className="text-center mb-3" style={{ color: "white" }}>Booking Data</h1>
                     <div className="container" style={{ marginTop: "0px" }}>
                         <div className="row d-flex justify-content-lg-between justify-content-md-center">
@@ -120,11 +121,8 @@ export const Booked_services = () => {
                                         <input type="time" className="form-control  p-2" id="inputPassword4" min="09:00" max="22:00" onChange={(event) => { setstart_time(event.target.value) }} />
 
                                     </div>
-
-
                                     <div className="col-12">
                                         <div className="mb-3">
-
                                             <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"
                                                 placeholder="Write Your Current Address...." onChange={(event) => { setaddress(event.target.value) }}></textarea>
                                         </div>
@@ -146,23 +144,11 @@ export const Booked_services = () => {
 
 
 
+            <Footer />
 
 
 
 
-            {/* 
-            <Modal show={alert1}  >
-
-                <Modal.Body>
-                    hello
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="danger" className="mx-3" onClick={alertmodel}>
-                        CLOSE
-                    </Button>
-                </Modal.Footer>
-
-            </Modal> */}
         </>
     )
 }

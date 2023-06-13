@@ -10,19 +10,7 @@ export const SpmainHome = () => {
     const [spid, setspid] = useState();
     const [isData, setisData] = useState();
     const [isData1, setisData1] = useState(false);
-    // const [step1, setstep1] = useState({
-    //     firstname: '',
-    //     lastname: '',
-    //     mobileno: '',
-    //     gender: '',
-    //     shopname: '',
-    //     address: '',
-    //     pemail: '',
-    //     description: '',
-    //     cityid: '',
-    //     areaid: '',
-    //     spid: spid
-    // });
+
 
     const getspclient = async () => {
         try {
@@ -40,19 +28,19 @@ export const SpmainHome = () => {
             console.log("spid====>", spid);
             const response = await service.getdetails({ spid });
             console.log("response==>", response);
-            if(response.data.success === true){
+            if (response.data.success === true) {
                 setisData(response.data.data);
                 setisData1(true);
                 navigate("/sphome2");
-                localStorage.setItem("data",true);
+                localStorage.setItem("data", true);
             }
-            else{
+            else {
                 setisData(response.data.data);
                 setisData1(false);
                 navigate("/sphome");
             }
-           
-            console.log("data==>",isData)
+
+            console.log("data==>", isData)
         } catch (error) {
             console.log(error);
         }
@@ -62,10 +50,10 @@ export const SpmainHome = () => {
     }, []);
 
     useEffect(() => {
-        if(spid){
-            handledata(); 
+        if (spid) {
+            handledata();
         }
-      
+
     }, [spid]);
 
 
@@ -89,10 +77,10 @@ export const SpmainHome = () => {
     }
 
     else {
-   
+
         return (
             <>
-                    <ServiceProvider/>
+                <ServiceProvider />
             </>
 
         )
