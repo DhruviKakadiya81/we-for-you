@@ -32,7 +32,7 @@ export const Login = () => {
          <Modal show={isshow}  >
                 <Modal.Header className='text-center'>
                     <Modal.Title className='' >
-                    Sub Service Added Details
+                    Login Details
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -57,7 +57,7 @@ export const Login = () => {
                                 <i class="login__icon fas fa-lock"></i>
                                 <input type="password" class="login__input" placeholder="Enter Password" onChange={(e)=>{setpassword(e.target.value)}} />
                             </div>
-                            <button class="button login__submit" onClick={handlelogin}>
+                            <button type='button' class="button login__submit" onClick={handlelogin}>
                                 <span class="button__text" >Login</span>
                                 <i class="button__icon fas fa-chevron-right"></i>
                             </button>

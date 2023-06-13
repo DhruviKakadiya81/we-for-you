@@ -3,12 +3,16 @@ import "../css/Navbar.css";
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import LoginData from "../services/LoginData";
-import { Modal } from 'react-bootstrap';
-import { FormControl, FormGroup, Input, InputLabel, Typography, Button } from '@mui/material';
+import {Button, Modal } from 'react-bootstrap';
 export const Ser_Pro_Navbar = () => {
   const location = useLocation();
   const nevigate = useNavigate();
   const [navCollapse, setNavCollapse] = useState(true);
+  const [msg1, setmsg1] = useState();
+    const [isshow1, invokemodel1] = useState(false);
+    const initmodel1 = () => {
+        return invokemodel1(!isshow1);
+    }
   const handleNav = () => {
     setNavCollapse(!navCollapse);
   }
@@ -20,8 +24,9 @@ export const Ser_Pro_Navbar = () => {
       nevigate("/loginasp");
     }
     else {
+      setmsg1("Are You Sure Want To Logout??");
+      initmodel1();
       localStorage.removeItem("sptoken");
-      alert("logged out");
       nevigate("/loginsp");
     }
 
@@ -46,10 +51,27 @@ export const Ser_Pro_Navbar = () => {
   }
   return (
     <>
+
+                <Modal show={isshow1}>
+                <Modal.Header className='text-center'>
+                    <Modal.Title className='' >
+                        Logout Details
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {msg1}
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="dark" className="mx-3" onClick={initmodel1}>
+                       Yes
+                    </Button>
+                    <Button variant="danger" className="mx-3" onClick={initmodel1}>
+                       No
+                    </Button>
+                </Modal.Footer>
+                </Modal>
+
       <nav class="navbar navbar-expand-md navbar-dark fixed-top">
-
-
-
         <div className="container-fluid">
           <img src="/images/we4U.png" width="100" height="50" className="c_nav_image" />
           <div className="d-md-none d-lg-none" onClick={handleNav}>
@@ -88,7 +110,7 @@ export const Ser_Pro_Navbar = () => {
               </li>
             </ul>
             <ul className="navbar-nav sm-icons">
-              <li><Link className="nav-link" to="/profile"><i className="fa-solid fa-user-gear fa-lg"></i></Link></li>
+              <li><Link className="nav-link" to="/ser_pro_profile"><i className="fa-solid fa-user-gear fa-lg"></i></Link></li>
               <li><Link className="nav-link" to="/logout" onClick={handlelogout}><i class="fa-solid fa-right-from-bracket fa-lg"></i></Link></li>
             </ul>
           </div>
