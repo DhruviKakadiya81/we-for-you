@@ -4,7 +4,7 @@ import { Ser_Pro_Navbar } from "./Ser_Pro_Navbar";
 import { Footer } from './Footer';
 import contact from '../services/contact';
 import { useState } from 'react';
-import {Button,Modal} from "react-bootstrap"
+import { Button, Modal } from "react-bootstrap"
 
 export const Ser_pro_contact = () => {
     const [firstname, setfirstname] = useState('');
@@ -22,19 +22,19 @@ export const Ser_pro_contact = () => {
         const data = { firstname, lastname, email, phone, message }
         if (data.firstname === '' || data.lastname === '' || data.email === '' || data.phone === '' || data.message === '') {
             setmsg("Fill All The Fields!!");
-      initmodel(); 
+            initmodel();
             // alert("enter all data", data);
             console.log("data", data);
         } else {
             const response = await contact.cntuspadd(data);
             if (response.data.success === true) {
                 setmsg("Your Message Delivered Successfully!!");
-        initmodel();
+                initmodel();
                 // alert("your message delivered successfully");
             }
             else {
                 setmsg("Please Add Your Message Again!!");
-        initmodel();
+                initmodel();
                 // alert("please add your message again")
             }
         }
@@ -53,10 +53,10 @@ export const Ser_pro_contact = () => {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="dark" className="mx-3" onClick={initmodel}>
-                       OK
+                        OK
                     </Button>
                 </Modal.Footer>
-                </Modal>
+            </Modal>
             <section class="chome d-xs-none d-sm-block d-md-block d-lg-block" style={{ marginTop: "-30px", zIndex: "-5" }}>
                 <div class="chome  d-xs-none d-sm-block d-md-block d-lg-block">
                     <svg viewBox="0 0 500 500"
@@ -112,27 +112,28 @@ export const Ser_pro_contact = () => {
                         </div>
                         <div class="col-lg-5 col-md-10  col-sm-12 order-1 contact-info mt-5">
 
-                            <div class="contact-info-div">
-                                <span><i class="fa-sharp fa-solid fa-location-dot bg-dark" style={{ color: "white" }}></i></span>
-                                <div class="">
-                                    <h6>Address</h6>
-                                    <p>Office - Bhd. Shivalik Complex, Opp. Bharucha Hospital, Ellora Park,Gorwa - Subhanpura
-                                        Road,
-                                        Vadodara.</p>
+                            <div class="contact-info-div d-flex mb-4">
+                                <span><i class="fa-sharp fa-solid fa-location-dot bg-dark mt-1" style={{ color: "white" }}></i></span>
+                                <div class="ms-3">
+                                    <b>
+                                        <h6><b>Address</b></h6>
+                                        <p>Office - Bhd. Shivalik Complex, Opp. Bharucha Hospital, Ellora Park,Gorwa - Subhanpura
+                                            Road,
+                                            Vadodara.</p></b>
                                 </div>
                             </div>
-                            <div class="contact-info-div">
-                                <span><i class="fa-sharp fa-solid fa-phone bg-dark" style={{ color: "white" }}></i></span>
-                                <div class="ms-2">
-                                    <h6>Phone</h6>
-                                    <p>7574003377, 9601277779</p>
+                            <div class="contact-info-div d-flex mb-4">
+                                <span><i class="fa-sharp fa-solid fa-phone bg-dark mt-1" style={{ color: "white" }}></i></span>
+                                <div class="ms-3">
+                                    <h6><b>Phone</b></h6>
+                                    <p><b>7574003377, 9601277779</b></p>
                                 </div>
                             </div>
-                            <div class="contact-info-div">
-                                <span><i class="fa-regular fa-envelope bg-dark" style={{ color: "white" }}></i></span>
-                                <div class="ms-2">
-                                    <h6>Email</h6>
-                                    <p>we4uservices3@gmail.com</p>
+                            <div class="contact-info-div d-flex mb-4">
+                                <span><i class="fa-regular fa-envelope bg-dark mt-1" style={{ color: "white" }}></i></span>
+                                <div class="ms-3">
+                                    <h6><b>Email</b></h6>
+                                    <p><b>we4uservices3@gmail.com</b></p>
                                 </div>
                             </div>
                         </div>
