@@ -330,7 +330,7 @@ const Update = (props) => {
 
                 <Modal.Body>
 
-                    <FormGroup className='city_main_container mx-auto h-auto w-75'>
+                    <FormGroup className=' mx-auto h-auto w-75'>
                         <div className="mx-auto mt-5">
                             <FormControl className='mb-3 city_detail_container'>
                                 <InputLabel className='mx-3'>Enter Sub Service Name</InputLabel>
