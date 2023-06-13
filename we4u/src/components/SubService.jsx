@@ -184,7 +184,7 @@ export const SubService = () => {
             </section>
 
             <hr style={{ color: "black", height: "3px", margin: "10px auto", width: "80%" }} />
-            <section>
+            <section className='mb-5'>
                 {/* <h1 className="text-left">Hire Your Service Provider</h1> */}
                 <h3 className="text-center pt-5 pb-0  mt-3 mb-0" style={{ color: "black", marginLeft: "98px", fontWeight: "600", fontSize: "30px" }}>Hire Your Service Provider</h3>
 
