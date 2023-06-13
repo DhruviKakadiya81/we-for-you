@@ -4,31 +4,59 @@ import { Ser_Pro_Navbar } from "./Ser_Pro_Navbar";
 import { Footer } from './Footer';
 import contact from '../services/contact';
 import { useState } from 'react';
+import {Button,Modal} from "react-bootstrap"
+
 export const Ser_pro_contact = () => {
     const [firstname, setfirstname] = useState('');
     const [lastname, setlastname] = useState('');
     const [email, setemail] = useState('');
     const [phone, setphone] = useState('');
     const [message, setmessage] = useState('');
+    const [msg, setmsg] = useState();
+    const [isshow, invokemodel] = useState(false);
+    const initmodel = () => {
+        return invokemodel(!isshow);
+    }
 
     const handleadd = async () => {
         const data = { firstname, lastname, email, phone, message }
         if (data.firstname === '' || data.lastname === '' || data.email === '' || data.phone === '' || data.message === '') {
-            alert("enter all data", data);
+            setmsg("Fill All The Fields!!");
+      initmodel(); 
+            // alert("enter all data", data);
             console.log("data", data);
         } else {
             const response = await contact.cntuspadd(data);
             if (response.data.success === true) {
-                alert("your message delivered successfully");
+                setmsg("Your Message Delivered Successfully!!");
+        initmodel();
+                // alert("your message delivered successfully");
             }
             else {
-                alert("please add your message again")
+                setmsg("Please Add Your Message Again!!");
+        initmodel();
+                // alert("please add your message again")
             }
         }
     }
     return (
         <>
             <Ser_Pro_Navbar />
+            <Modal show={isshow}  >
+                <Modal.Header className='text-center'>
+                    <Modal.Title className='' >
+                        Contact Details
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {msg}
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="dark" className="mx-3" onClick={initmodel}>
+                       OK
+                    </Button>
+                </Modal.Footer>
+                </Modal>
             <section class="chome d-xs-none d-sm-block d-md-block d-lg-block" style={{ marginTop: "-30px", zIndex: "-5" }}>
                 <div class="chome  d-xs-none d-sm-block d-md-block d-lg-block">
                     <svg viewBox="0 0 500 500"
@@ -133,7 +161,7 @@ export const Ser_pro_contact = () => {
                                 </div>
 
                                 <div class="col-12 text-center">
-                                    <button type="submit" class="s_cnt_btn px-5 py-2" onClick={handleadd}>Contact Us </button>
+                                    <button type="button" class="s_cnt_btn px-5 py-2" onClick={handleadd}>Contact Us </button>
                                 </div>
                             </form>
                         </div>

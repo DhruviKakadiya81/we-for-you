@@ -229,7 +229,9 @@ export const Home = () => {
                 </div>
               </div>
             </div>
+
             <div className="row justify-content-center  ">
+
               <div className="progress-img">
                 <img className="w-100 line_img" src="images/get-started.png" alt="progress" />
               </div>
@@ -274,7 +276,7 @@ export const Home = () => {
 
 
 
-      <section className="feedback-section pt-4">
+      <section className="feedback-section pt-4 mb-5">
         <div className="container">
 
           <div className="row mb-4 justify-content-center">
