@@ -13,7 +13,8 @@ import "../css/Auth.css";
 import { FormControl, FormGroup, Input, InputLabel, Typography } from '@mui/material';
 export const Authpage = () => {
   const [userid, setuserid] = useState();
-  const [cartdata, setcartdata] = useState([]);
+  const [cartdata, setcartdata] = useState();
+
   const [isshow, invokemodel] = useState(false);
   const [total, settotal] = useState(0);
   let totalrs = 0;
@@ -55,6 +56,8 @@ export const Authpage = () => {
     settotal(totalrs);
   }
 
+
+
   const handledata = (data) => {
     localStorage.setItem("BookingData", JSON.stringify(data));
     navigate("/book");
@@ -82,12 +85,14 @@ export const Authpage = () => {
             {
               (cartdata === undefined) ?
                 <div className="row d-flex justify-content-center pt-5">
-                  <div className="spinner-border" style={{ position: "absolute", textAlign: "center", top: "80%", left: "50%" }}>
+                  <div className="spinner-border" style={{ position: "absolute", textAlign: "center", top: "50%", left: "50%" }}>
+
                   </div>
+                  <p className='text-center'> Your Network May interrupted</p>
                 </div>
 
 
-                : (cartdata.length < 0) ?
+                : (cartdata.length <= 0) ?
                   <div className="d-flex justify-content-center" >
                     <img src="images/emptycart.jpg" alt="not image" />
                   </div>
@@ -139,7 +144,8 @@ export const Authpage = () => {
                                     <td class="text-center text-lg text-medium"> <Button variant="contained" style={{ backgroundColor: "lightgray", color: "black" }} onClick={(event) => { handledata(sp) }}>
                                       Book Service
                                     </Button> </td>
-                                    <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title="" data-original-title="Remove item"><i class="fa fa-trash"></i></a></td>
+
+                                    <td class="text-center"><Delete id={sp._id} /></td>
                                   </tr >
                                 </tbody >
 
@@ -174,8 +180,6 @@ export const Authpage = () => {
                             <td style={{ alignItems: "right", float: "right", border: "none" }}>
 
                               <div class="column "><a class="btn btn-success " href="#">Book Now</a></div>
-                              {/* <div class="column"><a class="btn btn-primary" href="#" data-toast="" data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Your cart" data-toast-message="is updated successfully!">Update Cart</a><a class="btn btn-success" href="#">Checkout</a></div> */}
-                              {/* <Update class="column"   /> */}
                             </td>
 
                             <td style={{ alignItems: "right", float: "left", border: "none" }}>
@@ -368,6 +372,51 @@ const Update = (props) => {
         </Modal.Footer>
 
       </Modal>
+    </>
+  )
+}
+
+const Delete = (props) => {
+  const [isshow, invokemodel] = useState(false);
+  const initmodel = () => {
+    return invokemodel(!isshow);
+  }
+  const deleteitem = async (id) => {
+    initmodel();
+    const data = { id: id };
+    const response = await cartser.deletecartitem(data);
+    console.log("deleteresponse", response);
+    if (response.data.success === true) {
+      alert("deleted successfully");
+      window.location.reload();
+
+    }
+    else {
+      alert("not deleted");
+    }
+  }
+  return (
+    <>
+
+      <i class="fa fa-trash" onClick={initmodel} style={{ cursor: "pointer" }}></i>
+      <Modal show={isshow}>
+        <Modal.Body>
+          Are You sure To Delete Service into Cart..?
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="danger" className="mx-3" onClick={initmodel}>
+            Cancel
+          </Button>
+          <Button variant="dark" className="mx-3" type='button' onClick={(event) => { deleteitem(props.id) }}>
+            Yes
+          </Button>
+        </Modal.Footer>
+
+      </Modal>
+
+
+
+
     </>
   )
 }

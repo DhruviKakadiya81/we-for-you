@@ -18,9 +18,11 @@ const addtocart = require("../controllers/bookservice");
 const bookser = require("../controllers/finalBooking");
 const contactuser = require("../controllers/contactuser");
 const contactsp = require("../controllers/contactsp");
+const dashboard = require("../controllers/adminDashboard");
 
 const path = require("path");
 var multer = require("multer");
+
 const router1 = express.Router();
 
 router1.use(express.static('../public/image'));
@@ -102,7 +104,7 @@ router1.post("/searchbysubaname", subser.searchbysubname);
 
 router1.post("/addtocart", addtocart.bookservice);
 router1.post("/showcart", addtocart.showcart);
-router1.delete("/deletecart", addtocart.deleteintocart);
+router1.post("/deletecart", addtocart.deleteintocart);
 
 
 router1.post("/cntuser", contactuser.adddetail);
@@ -110,6 +112,7 @@ router1.post("/cntsp", contactsp.adddetail);
 
 router1.post("/book", bookser.adddata);
 
+router1.get("/dashboard", dashboard.total);
 // router1.post("/getuser",logcontroller.getuserlogin);
 // router1.post("/getuser",logcontroller.getuserlogin);
 

@@ -6,11 +6,14 @@ import { useEffect } from 'react';
 import { Button } from 'bootstrap/dist/js/bootstrap.bundle';
 import { Ser_Pro_Navbar } from './Ser_Pro_Navbar';
 import { Navbar } from './Navbar';
+import deletecart from '../services/cartservics'
+import cartservics from '../services/cartservics';
 export const Booked_services = () => {
     const [data, setdata] = useState(JSON.parse(localStorage.getItem("BookingData")));
     const [mobileno, setmobileno] = useState();
     const [date, setdate] = useState();
     const [start_time, setstart_time] = useState();
+    const [address, setaddress] = useState();
 
     // const navigate = useNavigate();
 
@@ -25,27 +28,31 @@ export const Booked_services = () => {
     }
 
     const handlebook = async () => {
-        alert("hello");
-        // initmodel();
-        const [hour, minutes] = start_time.split(":");
-        alert(hour);
-        if (hour === undefined || minutes === undefined || date === undefined || data === undefined) {
 
-        }
-        const bookingdata = { spid: data.spid, userid: data.userid, serviceid: data.serviceid, hour, mobileno, minutes, date };
-        console.log("booking data...", bookingdata)
-        const response = await bookkingser.booking(bookingdata);
-
-        console.log("response of booking data", response);
-        if (response.data.success === true) {
-            alert(response.data.msg);
-
-            alert1()
+        if (start_time === undefined || date === undefined || data === null || mobileno === undefined || address === undefined) {
+            alert("enter all details properly")
         }
         else {
-            alert(response.data.msg);
-            alertmodel();
+            const [hour, minutes] = start_time.split(":");
+            alert(hour);
+            const bookingdata = { spid: data.spid, userid: data.userid, serviceid: data.serviceid, hour, mobileno, minutes, date };
+            console.log("booking data...", bookingdata)
+            const response = await bookkingser.booking(bookingdata);
+
+            console.log("response of booking data", response);
+            if (response.data.success === true) {
+                const deleteitem = await cartservics.deletecartitem({ id: data._id });
+                console.log("deleteitem==>", deleteitem);
+                alert(response.data.msg);
+
+
+            }
+            else {
+                alert(response.data.msg);
+
+            }
         }
+
 
 
 
@@ -119,7 +126,7 @@ export const Booked_services = () => {
                                         <div className="mb-3">
 
                                             <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"
-                                                placeholder="Write Your Current Address...."></textarea>
+                                                placeholder="Write Your Current Address...." onChange={(event) => { setaddress(event.target.value) }}></textarea>
                                         </div>
                                     </div>
 

@@ -229,7 +229,7 @@ export const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="row justify-content-center  reveal fade-In">
+            <div className="row justify-content-center  ">
               <div className="progress-img">
                 <img className="w-100 line_img" src="images/get-started.png" alt="progress" />
               </div>
@@ -254,7 +254,7 @@ export const Home = () => {
               <div className="col-lg-3 col-md-4 col-sm-10">
                 <div className="progress-card">
                   <div className="progress-card-body text-center" style={{ color: "white" }}>
-                    <img src="images/get_service_9.jpg" alt="funded" width="80px" style={{ borderRadius: "100%" }}/>
+                    <img src="images/get_service_9.jpg" alt="funded" width="80px" style={{ borderRadius: "100%" }} />
                     <h5 className="card-title mt-3 mb-3">Get Services</h5>
                     <p className="p mt-2">Get Services On Time</p>
                   </div>
