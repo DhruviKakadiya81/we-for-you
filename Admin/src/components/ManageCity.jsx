@@ -291,7 +291,7 @@ const Update = (props) => {
      <Button variant="contained" style={{backgroundColor:"rgb(50,50,50)",color:"white"}} onClick={initmodel}>
         Edit
       </Button>
-      <Modal show={isshow} style={{overflowX:"scroll",width:"80%"}} >
+      <Modal show={isshow} style={{overflowX:"scroll",width:"100%"}} >
         <Modal.Header closeButton onClick={initmodel}>
           <Modal.Title className='' > 
             Update City
@@ -300,8 +300,8 @@ const Update = (props) => {
       
           <Modal.Body>
        
-              <FormControl className='detail_container'  >
-              <InputLabel className=''>Enter cityName</InputLabel>
+              <FormControl className='mx-auto detail_container'  >
+              <InputLabel className=''>Enter Cityname</InputLabel>
               <Input variant="dark" type="text" name="name" value ={cityname} onChange={(event)=>setname(event.target.value)} className='mx-3 my-3' style={{color:"black"}} />
               </FormControl><br/>
   
