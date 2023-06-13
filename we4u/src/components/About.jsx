@@ -198,21 +198,21 @@ We4U has a rigorous vetting process for its service providers to ensure that the
 
         <div className="center_text">
           <div className="cen_text" >
-            <h2>45000+</h2>
+            <h2 className='number'>45000+</h2>
             <p>Trained Proffessor</p>
           </div>
         </div>
 
         <div className="center_text">
           <div className="cen_text">
-            <h2>45000+</h2>
+            <h2 className='number'>45000+</h2>
             <p>Trained Proffessor</p>
           </div>
         </div>
         <div className="center_text">
           <div className="cen_text">
 
-            <h2>45000+</h2>
+            <h2 className='number'>45000+</h2>
             <p>Trained Proffessor</p>
           </div>
         </div>
@@ -220,7 +220,7 @@ We4U has a rigorous vetting process for its service providers to ensure that the
         <div className="center_text">
           <div className="cen_text">
 
-            <h2>45000+</h2>
+            <h2 className='number'>45000+</h2>
             <p>Trained Proffessor</p>
           </div>
         </div>

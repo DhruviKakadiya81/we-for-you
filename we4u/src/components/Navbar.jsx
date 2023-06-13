@@ -18,7 +18,7 @@ export const Navbar = () => {
     const [msg1, setmsg1] = useState();
     const [isshow1, invokemodel1] = useState(false);
     const initmodel1 = () => {
-        return invokemodel1(!isshow);
+        return invokemodel1(!isshow1);
     }
   const handleNav = () => {
     setNavCollapse(!navCollapse);

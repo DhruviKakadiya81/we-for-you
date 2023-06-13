@@ -32,7 +32,7 @@ export const Login = () => {
          <Modal show={isshow}  >
                 <Modal.Header className='text-center'>
                     <Modal.Title className='' >
-                    Sub Service Added Details
+                    Login Details
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
