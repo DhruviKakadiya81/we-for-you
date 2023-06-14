@@ -98,14 +98,13 @@ export const Navbar = () => {
           <div className="mx-auto">
             <b>  {msg} </b>
           </div>
-
         </Modal.Body>
         <Modal.Footer>
           <Button variant="dark" className="mx-3" onClick={confirmlogout}>
-            OK
+            Yes
           </Button>
-          <Button variant="dark" className="mx-3" onClick={initmodel}>
-            Cancel
+          <Button variant="danger" className="mx-3" onClick={initmodel}>
+            No
           </Button>
         </Modal.Footer>
       </Modal>

@@ -212,7 +212,7 @@ export const Service2 = () => {
                 </div>
             </section>
 
-            <section className='mt-5 mb-5'>
+            <section className='mt-5' style={{ background: `url(Images/service_back_10_3.jpg)`, backgroundSize:"cover",backgroundRepeat:"no-repeat",height:"80vh",width:"auto"}}>
 
                 <p className='hire_header mb-5'>Hire your service provider</p>
 
@@ -246,14 +246,9 @@ export const Service2 = () => {
 
                                                             <div class="card-body">
                                                                 <p className='ser_2_head'>{sp.shopname}</p>
-                                                                <p className='ser_2_label' key={sp.serviceid._id}>{sp.firstname} {sp.lastname}</p>
-                                                                <p className='ser_2_label'><span>Mobile No : </span>{sp.mobileno}</p>
-                                                                <p className='ser_2_label'><span>Gender : </span>{sp.gender}</p>
-                                                                <p className='ser_2_label'><span>Address : </span>{sp.address}</p>
-                                                                <Collapsible trigger="View More Details" className='my-3 view_more_link px-2 text-center py-1 mx-auto'>
-                                                                    <p className='ser_2_label'><span>City : </span>{sp.cityid.cityname}</p>
-                                                                    <p className='ser_2_label'><span>Area : </span>{sp.areaid.areaname}</p>
-                                                                    <p className='ser_2_label'><span>Gmail : </span>{sp.pemail}</p>
+                                                                <p className='ser_2_label' key={sp.serviceid._id}><span>Name : </span>{sp.firstname} {sp.lastname}</p>                                                                      
+                                                                <p className='ser_2_label'><span>Gmail : </span>{sp.pemail}</p>
+                                                                {/* <p className='ser_2_label'><span>Mobile No : </span>{sp.mobileno}</p> */}
                                                                     {
                                                                         sp.subserid.map((key) => (
                                                                             <>
@@ -263,16 +258,16 @@ export const Service2 = () => {
                                                                                     <p></p>
                                                                                 }</p>
                                                                             </>
-
-
-
                                                                         ))
                                                                     }
-
-                                                                </Collapsible>
-                                                                <div style={{ textAlign: "center" }}>
-                                                                    <button type='button' onClick={(event) => { handlebookser(sp) }} className='ser_2_hire_btn px-3 py-2 mx-4'>Hire service provider</button>
-                                                                </div>
+                                                                    <div className='row text-center'>
+                                                                    <div class="col-sm-6">
+                                                                    <ViewMore shopname={sp.shopname} address={sp.address} gmail={sp.pemail} mobileno={sp.mobileno} city={sp.cityid.cityname} area={sp.areaid.areaname} gender={sp.gender} firstname={sp.firstname} lastname={sp.lastname}/>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                    <button type='button' onClick={(event) => { handlebookser(sp)}} className='ser_2_hire_btn px-3 py-2 my-2'>Hire</button>
+                                                                    </div>
+                                                                    </div>  
                                                             </div>
                                                         </div>
                                                     </div>
@@ -291,6 +286,47 @@ export const Service2 = () => {
                 }
             </section>
           <Footer/>
+        </>
+    )
+}
+
+const ViewMore = (props) => {
+    console.log(props);
+    const [isshow, invokemodel] = useState(false);
+    const initmodel = () => {
+        return invokemodel(!isshow);
+    }
+
+    return(
+      <>
+       <Button variant="" className='my-2 ser_2_hire_btn' onClick={initmodel}>
+         View More
+        </Button>
+        <Modal show={isshow} style={{overflowX:"scroll",width:"100%",marginTop:"px"}} >
+        <Modal.Header className='mx-auto'>
+                    <Modal.Title className='f-w-500'  style={{fontSize:"25px"}}>
+                        {props.shopname}
+                    </Modal.Title>
+                </Modal.Header>
+            <Modal.Body>
+            <div className='ps-2'>
+            <p className='modal_det_par'><span className='Modal_details'>Name : </span>{props.firstname} {props.lastname}</p>
+               <p><span className='Modal_details'>Address : </span>{props.address}</p>
+               <p><span className='Modal_details'>Email : </span>{props.gmail}</p>
+               <p><span className='Modal_details'>Mobile No : </span>{props.mobileno}</p>
+               <p><span className='Modal_details'>Gender : </span>{props.gender}</p> 
+               <p><span className='Modal_details'>City : </span>{props.city}</p>
+               <p><span className='Modal_details'>Area : </span>{props.area}</p>
+            </div>
+            </Modal.Body>
+            <Modal.Footer>
+            <Button variant="dark" className="mx-3" onClick={initmodel}>
+              CLOSE
+            </Button>
+                </Modal.Footer>
+
+            </Modal>
+
         </>
     )
 }

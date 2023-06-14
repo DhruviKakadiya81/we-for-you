@@ -4,7 +4,8 @@ import { useState } from 'react'
 import showservice from '../services/Subservice';
 import '../css/Subser.css';
 import '../css/Subservice.css';
-
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 import $ from 'jquery'
 import OwlCarousel from 'react-owl-carousel2';
 import 'react-owl-carousel2/lib/styles.css';
@@ -184,9 +185,9 @@ export const SubService = () => {
             </section>
 
             <hr style={{ color: "black", height: "3px", margin: "10px auto", width: "80%" }} />
-            <section className='mb-5'>
+            <section className='mb-5 mt-5'>
                 {/* <h1 className="text-left">Hire Your Service Provider</h1> */}
-                <h3 className="text-center pt-5 pb-0  mt-3 mb-0" style={{ color: "black", marginLeft: "98px", fontWeight: "600", fontSize: "30px" }}>Hire Your Service Provider</h3>
+                <h3 className="hire_header mb-5">Hire Your Service Provider</h3>
 
                 {
                     (spdetail === undefined || spdetail.length === 0) ?
@@ -202,44 +203,86 @@ export const SubService = () => {
                             </div>
                             :
                             <div className="sp">
-                                <div className='bg-danger'></div>
-                                {/* <div class="container"> */}
-                                <div class="row d-flex justify-content-center">
+                                <div class="container">
+                                <div class="row mx-auto justify-content-center">
                                     {
                                         spdetail.map((sp) => (
                                             <>
-                                                <div class="flip-card">
-                                                    <div class="flip-card-inner">
-                                                        <div className="flip-card-front text-left " style={{ textAlign: "left" }}>
-                                                            <h2 className='text-center mt-4'>    {sp.shopname}  </h2>
-                                                            <p className="mt-4 ps-5 " key={sp.serviceid._id} style={{ fontSize: "17px" }}> Service Provider :: {sp.firstname} {sp.lastname}</p>
+                                            <div className="col-lg-4">
+                                                <div className="card ser_2_main_card px-2 py-2 mx-auto my-4">
+                                                    <div className="card-body">
+                                                    <h2 className='ser_2_head mb-3'> {sp.shopname}  </h2>
+                                                            <p className="ser_2_label " key={sp.serviceid._id} style={{ fontSize: "17px" }}> Name : {sp.firstname} {sp.lastname}</p>
                                                             {/* <p>{sp.gender}</p> */}
-                                                            <p className=" ps-5 " style={{ fontSize: "17px" }}>  Address :: {sp.address}  <br /><br />  {sp.cityid ? <p className=" " style={{ fontSize: "17px" }} >City :: {sp.cityid.cityname} </p> : <br />}</p>
-                                                            <p className=" ps-5 " style={{ fontSize: "17px" }}> {sp.areaid ? <p style={{ fontSize: "17px" }}>Area:: {sp.areaid.areaname}</p> : <br />}</p>
-                                                            <p className=" ps-5 " style={{ fontSize: "17px" }}> Contact Us :: {sp.mobileno} </p>
-                                                            <p className=" ps-5 " style={{ fontSize: "17px" }}> Email Id :: {sp.pemail} </p>
-                                                        </div>
-                                                        <div class="flip-card-back">
-                                                            <h1 className='d-flex justify-content-center my-4'>My Services</h1>
+                                                            {/* <p className=" ps-5 " style={{ fontSize: "17px" }}>  Address :: {sp.address}  <br /><br />  {sp.cityid ? <p className=" " style={{ fontSize: "17px" }} >City :: {sp.cityid.cityname} </p> : <br />}</p> */}
+                                                            {/* <p className=" ps-5 " style={{ fontSize: "17px" }}> {sp.areaid ? <p style={{ fontSize: "17px" }}>Area:: {sp.areaid.areaname}</p> : <br />}</p> */}
+                                                            {/* <p className=" ps-5 " style={{ fontSize: "17px" }}> Mobile No : {sp.mobileno} </p> */}
+                                                            <p className="ser_2_label " style={{ fontSize: "17px" }}> Email : {sp.pemail} </p>
+                                                            {/* <h1 className='my-4'>My Services</h1> */}
                                                             <p>{sp.subserid.map((key) => (
                                                                 <>
-                                                                    <div className='text-center'>
-                                                                        <p> {key.subname.subname} : {key.prize} Rs</p>
+                                                                <div className='row'>
+                                                                    <div class="col-sm-8">
+                                                                    <p className='ser_2_label ser_all_ser_prize'> {key.subname.subname} : {key.prize} Rs.</p>
                                                                     </div>
+                                                                    <div class="col-sm-4">
+                                                                    <button className='px-2 py-1 my-1' style={{border:"none",borderRadius:"5px"}}>Book Now</button>
+                                                                    </div>
+                                                                    </div> 
                                                                 </>
                                                             ))}</p>
-                                                        </div>
+                                                       <ViewMore shopname={sp.shopname} firstname={sp.firstname} lastname={sp.lastname} address={sp.address} area={sp.areaid.areaname} mobileno={sp.mobileno} gmail={sp.pemail}/>
                                                     </div>
                                                 </div>
+                                            </div>
                                             </>
                                         ))
                                     }
                                 </div>
-                                {/* </div> */}
+                                </div>
                             </div>
                 }
             </section>
             <Footer/>
+        </>
+    )
+}
+
+const ViewMore = (props) => {
+    console.log(props);
+    const [isshow, invokemodel] = useState(false);
+    const initmodel = () => {
+        return invokemodel(!isshow);
+    }
+
+    return(
+      <>
+       <Button variant="" className='my-2 ser_2_hire_btn' onClick={initmodel}>
+         View More
+        </Button>
+        <Modal show={isshow} style={{overflowX:"scroll",width:"100%",marginTop:"px"}} >
+        <Modal.Header className='mx-auto'>
+                    <Modal.Title className='f-w-500'  style={{fontSize:"25px"}}>
+                        {props.shopname}
+                    </Modal.Title>
+                </Modal.Header>
+            <Modal.Body>
+            <div className='ps-2'>
+            <p className='modal_det_par'><span className='Modal_details'>Name : </span>{props.firstname} {props.lastname}</p>
+               <p><span className='Modal_details'>Address : </span>{props.address}</p>
+               <p><span className='Modal_details'>Email : </span>{props.gmail}</p>
+               <p><span className='Modal_details'>Mobile No : </span>{props.mobileno}</p>
+               <p><span className='Modal_details'>Area : </span>{props.area}</p>
+            </div>
+            </Modal.Body>
+            <Modal.Footer>
+            <Button variant="dark" className="mx-3" onClick={initmodel}>
+              CLOSE
+            </Button>
+                </Modal.Footer>
+
+            </Modal>
+
         </>
     )
 }

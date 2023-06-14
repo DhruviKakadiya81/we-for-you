@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import GetUser from "../services/GetUser";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import ReactStars from "react-rating-stars-component"
 
 export const Cust_Dashboard = () => {
     let counter = 1;
@@ -47,6 +48,10 @@ export const Cust_Dashboard = () => {
         setactive(response.data.data);
     }
 
+    const ratingchanged=(rating)=>{
+        alert(`You Have Given ${rating} star Rating for us.`)
+    }
+
     useEffect(() => {
         getuser();
     }, []);
@@ -66,11 +71,16 @@ export const Cust_Dashboard = () => {
     return (
         <>
             <Navbar />
-
-
             <Modal show={isshow}>
-                <Modal.Body>
-                    Give Ratting to us..!!
+               <Modal.Header>
+               <Modal.Title closeButton className='' >
+               Give Ratting to us..!!
+                </Modal.Title>
+                    </Modal.Header>
+                <Modal.Body className='m-auto start_body'>
+                <div>
+                <ReactStars size={50} count={5} isHalf={true} onChange={ratingchanged}/>
+                </div>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="danger" className="mx-3" onClick={initmodel}>
