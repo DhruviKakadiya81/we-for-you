@@ -29,7 +29,7 @@ const getdetail = async (req, res) => {
   try {
     const spid = req.body.spid;
     console.log("spid is==>", spid);
-    const data = await SPModel.findOne({ spid });
+    const data = await SPModel.findOne({ spid }).populate('spid').populate('cityid').populate('areaid');
     console.log("data is===>", data);
     if (data === null) {
       return res.send({ success: false, data: data });
@@ -64,7 +64,25 @@ const getalldata = async (req, res) => {
 }
 
 
+const updatespdetail = async (req, res) => {
+  try {
+    console.log("update==>", req.body);
+    const { firstname, lastname, mobileno, gender, shopname, address, pemail, description, cityid, areaid, spid } = req.body;
+    const data = await SPModel.updateOne({ spid }, { $set: { firstname, lastname, mobileno, gender, shopname, address, pemail, description, cityid, areaid } });
+    console.log("update ==> ,", data);
+    if (data.acknowledged === true) {
+      return res.send({ success: true, msg: "Your data is UPDATED" });
+    }
+    else {
+      return res.send({ success: false, msg: "your data is not updated" });
+    }
+  } catch (error) {
+    console.log("error", error);
+    return res.send({ success: false });
+  }
+}
 
 
 
-module.exports = { adddetail, getdetail, getalldata }
+
+module.exports = { adddetail, getdetail, getalldata, updatespdetail }

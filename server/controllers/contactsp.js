@@ -18,6 +18,21 @@ const adddetail = async (req, res) => {
         res.send({ success: false, data: error.message })
     }
 }
+const showspmsg = async (req, res) => {
+    try {
+        const data = await cntuser.find();
+        if (data.length >= 0) {
+            return res.send({ success: false, msg: "No Data is Found", data: data });
+        }
+        else {
+            return res.send({ success: true, msg: "Data", data: data });
+        }
+
+    } catch (error) {
+        res.send({ success: false, data: error.message })
+    }
+}
 module.exports = {
-    adddetail
+    adddetail,
+    showspmsg
 } 

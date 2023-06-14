@@ -24,5 +24,10 @@ class Post {
         const url = "http://localhost:4000/searchbysubaname";
         return axios.post(url, data);
     }
+
+    updatesp(data) {
+        const url = "http://localhost:4000/updatespdet";
+        return axios.post(url, data);
+    }
 }
 export default new Post();

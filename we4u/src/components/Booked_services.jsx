@@ -1,9 +1,11 @@
 import React from 'react'
 import Modal from 'react-bootstrap/Modal';
 import bookkingser from '../services/bookservice';
+import { Button } from 'react-bootstrap';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { Button } from 'bootstrap/dist/js/bootstrap.bundle';
+import { useNavigate } from 'react-router-dom';
+// import { Button } from 'bootstrap/dist/js/bootstrap.bundle';
 import { Ser_Pro_Navbar } from './Ser_Pro_Navbar';
 import { Navbar } from './Navbar';
 import deletecart from '../services/cartservics'
@@ -15,43 +17,54 @@ export const Booked_services = () => {
     const [date, setdate] = useState();
     const [start_time, setstart_time] = useState();
     const [address, setaddress] = useState();
-
+    const [msg, setmsg] = useState();
     // const navigate = useNavigate();
-
+    const navigate = useNavigate();
     const [isshow, invokemodel] = useState(false);
     const initmodel = () => {
         return invokemodel(!isshow);
     }
 
-    const [alert1, setalert] = useState(false);
-    const alertmodel = () => {
-        return setalert(!alert1);
-    }
 
     const handlebook = async () => {
-
+        let pattern = /^[0-9]{10}$/;
         if (start_time === undefined || date === undefined || data === null || mobileno === undefined || address === undefined) {
-            alert("enter all details properly")
+            setmsg("Enter all details Properly");
+            initmodel();
+            // alert("enter all details properly")
+        }
+        else if (!pattern.test(mobileno)) {
+            setmsg("Enter Valid Mobile no");
+            initmodel();
         }
         else {
             const [hour, minutes] = start_time.split(":");
-            alert(hour);
-            const bookingdata = { spid: data.spid, userid: data.userid, serviceid: data.serviceid, hour, mobileno, minutes, date, address };
-            console.log("booking data...", bookingdata)
-            const response = await bookkingser.booking(bookingdata);
 
-            console.log("response of booking data", response);
-            if (response.data.success === true) {
-                const deleteitem = await cartservics.deletecartitem({ id: data._id });
-                console.log("deleteitem==>", deleteitem);
-                alert(response.data.msg);
+            const currentDate = new Date();
+            // alert(currentDate + date)
+            if (new Date(date) >= currentDate) {
+                const bookingdata = { spid: data.spid, userid: data.userid, serviceid: data.serviceid, hour, mobileno, minutes, date, address };
+                console.log("booking data...", bookingdata)
+                const response = await bookkingser.booking(bookingdata);
 
+                console.log("response of booking data", response);
+                if (response.data.success === true) {
+                    const deleteitem = await cartservics.deletecartitem({ id: data._id });
+                    console.log("deleteitem==>", deleteitem);
+                    navigate("/custdash");
+                }
+                else {
+                    setmsg(response.data.msg);
+                    initmodel();
 
+                }
             }
             else {
-                alert(response.data.msg);
-
+                setmsg("Choose Right Date !!");
+                initmodel();
             }
+
+
         }
 
 
@@ -71,6 +84,20 @@ export const Booked_services = () => {
 
     return (
         <>
+            <Modal show={isshow}  >
+                <Modal.Body>
+                    <div className="">
+                        <b>
+                            {msg}
+                        </b>
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="dark" className="mx-3" type='submit' onClick={initmodel}>
+                        Ok
+                    </Button>
+                </Modal.Footer>
+            </Modal>
             <Navbar className="" />
             {(data !== null || data !== undefined) ?
                 <section className="contact-form-sec mx-auto pt-3 pb-3 mb-5" style={{ padding: "0px 0px", marginTop: "100px", backgroundColor: "rgba(5, 5, 5, 0.70)", borderRadius: "15px", width: "70%" }}>

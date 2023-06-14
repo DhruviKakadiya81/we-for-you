@@ -37,23 +37,9 @@ export const Navbar = () => {
   }
 
   const handlelogout = () => {
-    // var id = localStorage.getItem("token");
-    // if (id == null) {
-    //   initmodel();
-    //   // alert("Login first");
-    //   setmsg("Login First!!");
-
-    //   // nevigate("/login");
-    // }
-    // else {
-    //   setmsg1("Are You Sure Want To Logout??");
-    //   initmodel1();
-    //   localStorage.removeItem("token");
-    //   // alert("logged out");
-    //   nevigate("/login");
-    // }
-    initmodel();
     setmsg("Are You Sure Want To Logout??")
+    initmodel();
+
 
   }
   const confirmlogout = () => {
@@ -154,7 +140,7 @@ export const Navbar = () => {
                 <Link className="nav-link" to="/">Home</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/custdash">Dashboard</Link>
+                <Link className="nav-link" to="/custdash" style={{ display: login ? "block" : "none" }}>Dashboard</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/about">About</Link>

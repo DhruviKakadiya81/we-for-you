@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 
 export const Forget = (props) => {
     const [email, setEmail] = useState('');
-    const [state, setState] = useState(2);
+    const [state, setState] = useState(1);
     const [otp, setotp] = useState();
     const [wrong, setwrong] = useState(false)
     const [pwdError, setPwdError] = useState(false);

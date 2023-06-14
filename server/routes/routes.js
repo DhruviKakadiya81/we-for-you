@@ -84,6 +84,7 @@ router1.post("/addaspdet", spdetail.adddetail);
 router1.post("/getsp", auth, getuser.getsplogin);
 router1.post("/getspdetail", spdetail.getdetail);
 router1.get("/spdata", spdetail.getalldata);
+router1.post("/updatespdet", spdetail.updatespdetail);
 
 router1.post("/addsubser", subser.addservices);
 router1.post("/showsermain", subser.showservicebymain);
@@ -109,6 +110,8 @@ router1.post("/deletecart", addtocart.deleteintocart);
 
 router1.post("/cntuser", contactuser.adddetail);
 router1.post("/cntsp", contactsp.adddetail);
+router1.get("/showcntsp", contactsp.showspmsg);
+router1.get("/showcntuser", contactuser.showusermsg);
 
 router1.post("/book", bookser.adddata);
 
