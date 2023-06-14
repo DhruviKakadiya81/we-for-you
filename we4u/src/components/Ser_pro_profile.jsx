@@ -1,12 +1,14 @@
 import React from 'react'
 import { Ser_Pro_Navbar } from './Ser_Pro_Navbar'
 import "../css/Ser_pro_profile.css"
-import { FormControl, FormGroup, Input, InputLabel, FormLabel, RadioGroup, FormControlLabel, Radio } from '@mui/material';
+import { FormControl, FormGroup, Input, InputLabel, FormLabel, RadioGroup, FormControlLabel, Radio, Select, MenuItem } from '@mui/material';
 import { Button, Modal } from 'react-bootstrap';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { makeStyles, TextField } from '@material-ui/core';
+import spservice from '../services/spservice';
+import Services from '../services/Services';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -22,86 +24,128 @@ const useStyles = makeStyles((theme) => ({
 
 
 export const Ser_pro_profile = () => {
-  const classes=useStyles();
+  const classes = useStyles();
 
-  const [serid,setserid]=useState('');
+  const [serid, setserid] = useState('');
   const [firstname, setfirstname] = useState('');
   const [lastname, setlastname] = useState('');
-  const [pemail,setpemail]=useState('');
-  const [useremail,setuseremail]=useState('');
+  const [pemail, setpemail] = useState('');
+  const [useremail, setuseremail] = useState('');
   const [gender, setgender] = useState('');
-  const [city,setcity]=useState('');
-  const [area,setarea]=useState('');
-  const [serdata,setserdata]=useState();
+  const [city, setcity] = useState('');
+  const [area, setarea] = useState('');
+  const [serdata, setserdata] = useState();
+  const [spid, setspid] = useState('');
   const [msg, setmsg] = useState();
   const [isshow, invokemodel] = useState(false);
   const initmodel = () => {
-      return invokemodel(!isshow);
+    return invokemodel(!isshow);
   }
   const [isData, setIsData] = useState(true);
   const [isEdit, setisEdit] = useState(true);
   const navigate = useNavigate();
 
-  
+  const getdata = async () => {
+    try {
 
+      const response = await Services.getdetails({ spid });
+      console.log("response", response);
+      setserdata(response.data.data)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  const getspclient = async () => {
+    try {
+      const id = localStorage.getItem("sptoken");
+      const response = await Services.getspid({ id });
+      setspid(response.data.data._id);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    spid && getdata();
+  }, [spid]);
+  useEffect(() => {
+    getspclient();
+  }, [])
+
+  console.log("spid", spid)
   return (
     <>
-    <Ser_Pro_Navbar/>
-    <div className="page-content page-container" id="page-content">
-              <div className="padding">
-                <div className="row container d-flex justify-content-center">
-                  <div className="col-xl-7 col-md-12 mt-3">
-                    <div className="card1 user-card-full ser_user_full_card">
-                      <div className="row m-l-0 m-r-0">
-                        <div className="col-sm-4 user_profile">
+      <Ser_Pro_Navbar />
+      <Modal show={isshow}  >
+        <Modal.Body>
+          <div className="">
+            <b>
+              {msg}
+            </b>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="dark" className="mx-3" type='submit' onClick={initmodel}>
+            Ok
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      {
+        serdata ?
+          <div className="page-content page-container" id="page-content">
+            <div className="padding">
+              <div className="row container d-flex justify-content-center">
+                <div className="col-xl-7 col-md-12 mt-3">
+                  <div className="card1 user-card-full ser_user_full_card">
+                    <div className="row m-l-0 m-r-0">
+                      <div className="col-sm-4 user_profile">
                         <div className="sideline_pro mx-5">
 
                         </div>
-                        </div>
-                        <div className="col-sm-8 px-4">
-                          <div className="card-block ser_pro_all">
-                            <p className="m-b-20 p-b-5  f-w-800 ser_pro_head">Profile</p>
-                            <div className="row">
-                              <div className="col-sm-6">
-                                <p className="m-b-10 f-w-600">First Name</p>
-                                <h6 className="text-muted f-w-400">Dhruvi</h6>
-                              </div>
-                              <div className="col-sm-6">
-                                <p className="m-b-10 f-w-600">Last Name</p>
-                                <h6 className="text-muted f-w-400">Kakadiya</h6>
-                              </div>
-                              <div className="col-sm-6">
-                                <p className="m-b-10 f-w-600">Professional Email</p>
-                                <h6 className="text-muted f-w-400">kakadiya@gmail.com</h6>
-                              </div>
-                              <div className="col-sm-6">
-                                <p className="m-b-10 f-w-600">User Email</p>
-                                <h6 className="text-muted f-w-400">dhruvi@gmail.com</h6>
-                              </div>
+                      </div>
+                      <div className="col-sm-8 px-4">
+                        <div className="card-block ser_pro_all">
+                          <p className="m-b-20 p-b-5  f-w-800 ser_pro_head">Profile</p>
+                          <div className="row">
+                            <div className="col-sm-6">
+                              <p className="m-b-10 f-w-600">First Name</p>
+                              <h6 className="text-muted f-w-400">{serdata.firstname}</h6>
                             </div>
+                            <div className="col-sm-6">
+                              <p className="m-b-10 f-w-600">Last Name</p>
+                              <h6 className="text-muted f-w-400">{serdata.lastname}</h6>
+                            </div>
+                            <div className="col-sm-6">
+                              <p className="m-b-10 f-w-600">Professional Email</p>
+                              <h6 className="text-muted f-w-400">{serdata.pemail}</h6>
+                            </div>
+                            <div className="col-sm-6">
+                              <p className="m-b-10 f-w-600">User Email</p>
+                              <h6 className="text-muted f-w-400">{serdata.spid.email}</h6>
+                            </div>
+                          </div>
 
 
-                            <div className="row">
-                              <div className="col-sm-6">
-                                <p className="m-b-10 f-w-600">Gender</p>
-                                <h6 className="text-muted f-w-400">Female</h6>
-                              </div>
-                              <div className="col-sm-6">
-                                <p className="m-b-10 f-w-600">City</p>
-                                <h6 className="text-muted f-w-400">Surat</h6>
-                              </div>
-                              <div className="col-sm-6">
-                                <p className="m-b-10 f-w-600">Area</p>
-                                <h6 className="text-muted f-w-400">Varachha</h6>
-                              </div>
-                              <h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Edit Your Details</h6>
-                              <div className="col-sm-6">
-                                <ChangePass/>
+                          <div className="row">
+                            <div className="col-sm-6">
+                              <p className="m-b-10 f-w-600">Gender</p>
+                              <h6 className="text-muted f-w-400">{serdata.gender}</h6>
+                            </div>
+                            <div className="col-sm-6">
+                              <p className="m-b-10 f-w-600">City</p>
+                              <h6 className="text-muted f-w-400">{serdata.cityid.cityname ? serdata.cityid.cityname : "This city is not available"}</h6>
+                            </div>
+                            <div className="col-sm-6">
+                              <p className="m-b-10 f-w-600">Area</p>
+                              <h6 className="text-muted f-w-400">{serdata.areaid.areaname ? serdata.areaid.areaname : "This city is not available"}</h6>
+                            </div>
+                            <h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Edit Your Details</h6>
+                            <div className="col-sm-6">
+                              <ChangePass />
 
-                              </div>
-                              <div className="col-sm-6">
-                                <Update/>
-                              </div>
+                            </div>
+                            <div className="col-sm-6">
+                              <Update data={serdata} />
                             </div>
                           </div>
                         </div>
@@ -111,14 +155,27 @@ export const Ser_pro_profile = () => {
                 </div>
               </div>
             </div>
+          </div>
+          :
+          <div className="row d-flex justify-content-center pt-5">
+            <div className="spinner-border" style={{ position: "absolute", textAlign: "center", top: "50%", left: "50%" }}>
+
+            </div>
+
+
+          </div>
+
+
+      }
+
     </>
   )
 }
 
-const ChangePass = (props) =>{
+const ChangePass = (props) => {
   const [isshow, invokemodel] = useState(false);
   const [setpassword, setserPass] = useState("");
-  const [serid,setserid]=useState(props.serid);
+  const [serid, setserid] = useState(props.serid);
   const [oldpassword, setoldpassword] = useState('');
   const [newpassword, setnewpassword] = useState('');
   const [conpassword, setconpassword] = useState('');
@@ -130,15 +187,18 @@ const ChangePass = (props) =>{
     return invokemodel(!isshow);
   }
 
-  const handleSerPassword=async()=>{
-    if(conpassword===newpassword){
-      console.log("serid==>",serid);
-      const data={serid,oldpassword,newpassword};
-    }else{
-      setmsg("passwords are not matched!!");
+  const handleSerPassword = async () => {
+    if (conpassword === newpassword) {
+      console.log("serid==>", serid);
+      const data = { serid, oldpassword, newpassword };
+    } else {
+      setmsg("Passwords are not matched!!");
     }
   }
 
+<<<<<<< HEAD
+  useEffect(() => {
+=======
   const handletogglepass = async (event) => {
     //event.preventDefault();
     var x = document.getElementById("id_password");
@@ -176,9 +236,10 @@ const ChangePass = (props) =>{
   };
 
   useEffect(()=>{
+>>>>>>> 9d1ea7c10321cd85af065e403c925337d474ce09
     setserid(props.serid);
     setmsg('');
-  },[props])
+  }, [props])
 
 
   return (
@@ -246,41 +307,108 @@ const ChangePass = (props) =>{
   )
 }
 
-const Update = (props) =>{
+const Update = (props) => {
   const [isshow, invokemodel] = useState(false);
 
   const initmodel = () => {
     return invokemodel(!isshow);
   }
   const classes = useStyles();
-  const [serid,setserid]=useState(props.serid);
-  const [firstname, setfirstname] = useState(props.firstname);
-  const [lastname, setlastname] = useState(props.lastname);
-  const [pemail,setpemail]=useState(props.pemail);
-  const [useremail,setuseremail]=useState(props.useremail);
-  const [gender, setgender] = useState(props.gender);
-  const [city,setcity]=useState(props.city);
-  const [area,setarea]=useState(props.area);
+  // const [serid, setserid] = useState(props.serid);
+  const [firstname, setfirstname] = useState(props.data.firstname);
+  const [lastname, setlastname] = useState(props.data.lastname);
+  const [pemail, setpemail] = useState(props.data.pemail);
+  const [useremail, setuseremail] = useState(props.data.useremail);
+  const [gender, setgender] = useState(props.data.gender);
+  const [city, setcity] = useState([]);
+  const [area, setarea] = useState([]);
+  const [cityid, setcityid] = useState(props.data.cityid._id);
+  const [areaid, setareaid] = useState(props.data.areaid._id);
+  const [msg, setmsg] = useState();
+  const [spid, setspid] = useState(props.data.spid);
 
-  const handleSerUpdate=async(event)=>{
-    event.preventDefault();
-    const data={serid,firstname,lastname,pemail,useremail,gender,city,area};
-    
+  const [isshow1, invokemodel1] = useState(false);
+  const initmodel1 = () => {
+    return invokemodel(!isshow1);
   }
 
-  useEffect(()=>{
-    setfirstname(props.firstname);
-    setlastname(props.lastname);
-    setpemail(props.pemail);
-    setuseremail(props.useremail);
-    setgender(props.gender);
-    setcity(props.city);
-    setarea(props.area);
-    setserid(props.serid);
-  },[props])
+  const handleSerUpdate = async (event) => {
+    event.preventDefault();
 
+    const data = { spid, firstname, lastname, pemail, useremail, gender, cityid, areaid };
+    const response = await spservice.updatesp(data);
+    if (response.data.success === false) {
+      setmsg(response.data.msg);
+      initmodel1();
+    }
+    else {
+      initmodel();
+      setmsg(response.data.msg);
+      invokemodel1(!isshow1);
+
+    }
+
+  }
+
+  useEffect(() => {
+    setfirstname(props.data.firstname);
+    setlastname(props.data.lastname);
+    setpemail(props.data.pemail);
+    setuseremail(props.data.useremail);
+    setgender(props.data.gender);
+    setcityid(props.data.cityid._id);
+    setareaid(props.data.areaid._id);
+    // setserid(props.data.serid);
+    setspid(props.data.spid);
+  }, [props]);
+  const handlecity = async () => {
+    try {
+      const response = await Services.getcity();
+      setcity(response.data.data);
+      console.log("city --- ", response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  const handlearea = async () => {
+    try {
+
+      console.log("cityid", city)
+      const response = await Services.getarea({ cityid });
+      setarea(response.data.data);
+      console.log("area --- ", response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
+  useEffect(() => {
+    handlecity();
+    handlearea();
+  }, []);
+
+  useEffect(() => {
+    cityid && handlearea();
+  }, [cityid]);
+
+  console.log("city", cityid);
   return (
     <>
+      <Modal show={isshow1}  >
+        <Modal.Body>
+          <div className="">
+            <b>
+              {msg}
+            </b>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="dark" className="mx-3" type='submit' onClick={() => { window.location.reload(); }}>
+            Ok
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <button variant="contained" className='btn my-2' style={{ backgroundColor: "grey", color: "white" }} onClick={initmodel}>
         Update Your Detail
       </button>
@@ -313,12 +441,12 @@ const Update = (props) =>{
               </FormControl><br />
             </div>
 
-            <div className="text-center">
+            {/* <div className="text-center">
               <FormControl className='detail_container'>
                 <InputLabel className='' >User Email</InputLabel>
                 <Input type="text" name="name" className='my-3' defaultValue={useremail} onChange={(event) => { setuseremail(event.target.value) }} />
               </FormControl><br />
-            </div>
+            </div> */}
 
 
             <div className="text-center">
@@ -335,7 +463,41 @@ const Update = (props) =>{
               </FormControl><br />
             </div>
 
-            <div className="text-center">
+            <div className="text-left d-flex justify-content-center">
+              <FormControl variant="standard" sx={{ m: 1, minWidth: 180 }} className='detail_container'>
+                <InputLabel id="demo-simple-select-standard-label">Select City</InputLabel>
+                <Select
+                  labelId="demo-simple-select-standard-label"
+                  id="demo-simple-select-standard"
+                  name="cityid"
+                  defaultValue={cityid}
+                  onChange={(event) => { setcityid(event.target.value) }}
+                >
+                  {city.map(city => (
+                    <MenuItem value={city._id}>{city.cityname}</MenuItem>
+                  ))}
+
+                </Select>
+              </FormControl><br />
+            </div>
+
+            <div className="text-left d-flex justify-content-center">
+              <FormControl variant="standard" sx={{ m: 1, minWidth: 180 }} className='detail_container'>
+                <InputLabel id="demo-simple-select-standard-label">Select Area</InputLabel>
+                <Select
+                  labelId="demo-simple-select-standard-label"
+                  id="demo-simple-select-standard"
+                  name="areaid"
+                  defaultValue={areaid}
+                // onChange={handleChange}
+                >
+                  {area.map(city => (
+                    <MenuItem value={city._id}>{city.areaname}</MenuItem>
+                  ))}
+                </Select>
+              </FormControl><br />
+            </div>
+            {/* <div className="text-center">
               <FormControl className='detail_container'>
                 <InputLabel className='' >City</InputLabel>
                 <Input type="text" name="name" className='my-3' defaultValue={city} onChange={(event) => { setcity(event.target.value) }} />
@@ -347,7 +509,7 @@ const Update = (props) =>{
                 <InputLabel className='' >Area</InputLabel>
                 <Input type="text" name="name" className='my-3' defaultValue={area} onChange={(event) => { setarea(event.target.value) }} />
               </FormControl><br />
-            </div>
+            </div> */}
 
           </form>
         </Modal.Body>
@@ -355,7 +517,7 @@ const Update = (props) =>{
           <Button variant="danger" className="mx-3" onClick={initmodel}>
             CLOSE
           </Button>
-          <Button variant="dark" className="mx-3" type='submit'>
+          <Button variant="dark" className="mx-3" type='button' onClick={handleSerUpdate}>
             Update
           </Button>
         </Modal.Footer>
