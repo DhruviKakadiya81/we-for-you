@@ -272,12 +272,14 @@ export default Profile
 
 const ChangePass = (props) => {
   const [isshow, invokemodel] = useState(false);
-  const [eye, seteye] = useState("fa-sharp fa-solid fa-eye-slash");
   const [password, setPass] = useState("");
   const [userid, setuserid] = useState(props.userid);
   const [oldpassword, setoldpassword] = useState('');
   const [newpassword, setnewpassword] = useState('');
   const [conpassword, setconpassword] = useState('');
+  const [eye, seteye] = useState("fa-sharp fa-solid fa-eye-slash");
+  const [eye1, seteye1] = useState("fa-sharp fa-solid fa-eye-slash");
+  const [eye2, seteye2] = useState("fa-sharp fa-solid fa-eye-slash");
   const [msg, setmsg] = useState('');
   const initmodel = () => {
     return invokemodel(!isshow);
@@ -304,6 +306,43 @@ const ChangePass = (props) => {
   }
 
 
+  const handletogglepass = async (event) => {
+    //event.preventDefault();
+    var x = document.getElementById("id_password");
+    if (x.type === "password") {
+      x.type = "text";
+      seteye("fa-solid fa-eye");
+    } else {
+      x.type = "password";
+      seteye("fa-sharp fa-solid fa-eye-slash");
+    }
+  };
+
+  const handletogglepass1 = async (event) => {
+    //event.preventDefault();
+    var x = document.getElementById("id_password1");
+    if (x.type === "password") {
+      x.type = "text";
+      seteye1("fa-solid fa-eye");
+    } else {
+      x.type = "password";
+      seteye1("fa-sharp fa-solid fa-eye-slash");
+    }
+  };
+
+  const handletogglepass2 = async (event) => {
+    //event.preventDefault();
+    var x = document.getElementById("id_password2");
+    if (x.type === "password") {
+      x.type = "text";
+      seteye2("fa-solid fa-eye");
+    } else {
+      x.type = "password";
+      seteye2("fa-sharp fa-solid fa-eye-slash");
+    }
+  };
+
+
 
   useEffect(() => {
     setuserid(props.userid);
@@ -326,22 +365,38 @@ const ChangePass = (props) => {
         <Modal.Body>
           <div className="dlt d-grid justify-content-center">
             <FormControl className=''>
-              <InputLabel className='mx-3'>Old Password</InputLabel>
-              <Input type="text" name="name" className='my-3' onChange={(event) => { setoldpassword(event.target.value) }} />
-
-            </FormControl><br />
-
-            <FormControl className='r'>
-              <InputLabel className='mx-3' >New Password</InputLabel>
-              <Input type="text" name="name" id="id_password2" className='my-3' onChange={(event) => { setnewpassword(event.target.value) }} />
+              <InputLabel className='mx-auto'>Old Password</InputLabel>
+              <Input type="password" name="name" className='my-3'  id="id_password" onChange={(event) => { setoldpassword(event.target.value) }}/> 
+              <p><i
+                  className={eye}
+                  id="togglePassword"
+                  style={{ marginTop:"-43px", marginLeft: "150px", cursor: "pointer", position: "absolute", cursor: "pointer" }}
+                  onClick={handletogglepass}
+                ></i></p>
             </FormControl><br />
 
             <FormControl className=''>
-              <InputLabel className='mx-3' >Confirm New Password</InputLabel>
-              <Input type="text" name="name" id="id_password" className='my-3' onChange={(event) => { setconpassword(event.target.value) }} />
-
-
+              <InputLabel className='' >New Password</InputLabel>
+              <Input type="password" name="name" id="id_password1" className='my-3' onChange={(event) => { setnewpassword(event.target.value) }} />
+              <p><i
+                  className={eye1}
+                  id="togglePassword"
+                  style={{ marginTop:"-43px", marginLeft: "150px", cursor: "pointer", position: "absolute", cursor: "pointer" }}
+                  onClick={handletogglepass1}
+                ></i></p>
             </FormControl><br />
+
+            <FormControl className=''>
+              <InputLabel className='' >Confirm New Password</InputLabel>
+              <Input type="password" name="name" id="id_password2" className='my-3' onChange={(event) => { setconpassword(event.target.value) }} />
+              <p><i
+                  className={eye2}
+                  id="togglePassword"
+                  style={{ marginTop:"-43px", marginLeft: "200px", cursor: "pointer", position: "absolute", cursor: "pointer" }}
+                  onClick={handletogglepass2}
+                ></i></p>
+            </FormControl><br />
+            {/* <span>{msg}</span> */}
           </div>
         </Modal.Body>
         <Modal.Footer>

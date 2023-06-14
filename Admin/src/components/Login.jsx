@@ -10,6 +10,7 @@ export const Login = () => {
     const [admin, setadmin] = useState('');
     const [msg, setmsg] = useState();
     const [isshow, invokemodel] = useState(false);
+    const [eye, seteye] = useState("fa-sharp fa-solid fa-eye-slash");
     const initmodel = () => {
         return invokemodel(!isshow);
     }
@@ -27,6 +28,19 @@ export const Login = () => {
             initmodel();
         }
     }
+
+    const handletogglepass = async (event) => {
+        //event.preventDefault();
+        var x = document.getElementById("id_password");
+        if (x.type === "password") {
+          x.type = "text";
+          seteye("fa-solid fa-eye");
+        } else {
+          x.type = "password";
+          seteye("fa-sharp fa-solid fa-eye-slash");
+        }
+      };
+
     return (
         <>
          <Modal show={isshow}  >
@@ -55,7 +69,13 @@ export const Login = () => {
                             </div>
                             <div class="login__field">
                                 <i class="login__icon fas fa-lock"></i>
-                                <input type="password" class="login__input" placeholder="Enter Password" onChange={(e)=>{setpassword(e.target.value)}} />
+                                <input type="password" className="login__input" id="id_password" placeholder="Enter Password" onChange={(e)=>{setpassword(e.target.value)}} />
+                                <i
+                                className={eye}
+                                id="togglePassword"
+                                style={{ marginLeft: "-25px", cursor: "pointer", position: "relative", cursor: "pointer" }}
+                                onClick={handletogglepass}
+                                ></i>
                             </div>
                             <button type='button' class="button login__submit" onClick={handlelogin}>
                                 <span class="button__text" >Login</span>
