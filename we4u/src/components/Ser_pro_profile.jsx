@@ -5,10 +5,45 @@ import { FormControl, FormGroup, Input, InputLabel, FormLabel, RadioGroup, FormC
 import { Button, Modal } from 'react-bootstrap';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { makeStyles, TextField } from '@material-ui/core';
+
+const useStyles = makeStyles((theme) => ({
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    width: 200,
+  },
+}));
 
 
 export const Ser_pro_profile = () => {
+  const classes=useStyles();
+
+  const [serid,setserid]=useState('');
+  const [firstname, setfirstname] = useState('');
+  const [lastname, setlastname] = useState('');
+  const [pemail,setpemail]=useState('');
+  const [useremail,setuseremail]=useState('');
+  const [gender, setgender] = useState('');
+  const [city,setcity]=useState('');
+  const [area,setarea]=useState('');
+  const [serdata,setserdata]=useState();
+  const [msg, setmsg] = useState();
+  const [isshow, invokemodel] = useState(false);
+  const initmodel = () => {
+      return invokemodel(!isshow);
+  }
+  const [isData, setIsData] = useState(true);
+  const [isEdit, setisEdit] = useState(true);
+  const navigate = useNavigate();
+
+  
+
   return (
     <>
     <Ser_Pro_Navbar/>
@@ -82,14 +117,31 @@ export const Ser_pro_profile = () => {
 
 const ChangePass = (props) =>{
   const [isshow, invokemodel] = useState(false);
-
+  const [setpassword, setserPass] = useState("");
+  const [serid,setserid]=useState(props.serid);
   const [oldpassword, setoldpassword] = useState('');
   const [newpassword, setnewpassword] = useState('');
   const [conpassword, setconpassword] = useState('');
-
+  const [msg, setmsg] = useState('');
   const initmodel = () => {
     return invokemodel(!isshow);
   }
+
+  const handleSerPassword=async()=>{
+    if(conpassword===newpassword){
+      console.log("serid==>",serid);
+      const data={serid,oldpassword,newpassword};
+    }else{
+      setmsg("passwords are not matched!!");
+    }
+  }
+
+  useEffect(()=>{
+    setserid(props.serid);
+    setmsg('');
+  },[props])
+
+
   return (
     <>
       <button variant="contained" className='btn my-2' style={{ backgroundColor: "grey", color: "white" }} onClick={initmodel}>
@@ -146,7 +198,8 @@ const Update = (props) =>{
   const initmodel = () => {
     return invokemodel(!isshow);
   }
-
+  const classes = useStyles();
+  const [serid,setserid]=useState(props.serid);
   const [firstname, setfirstname] = useState(props.firstname);
   const [lastname, setlastname] = useState(props.lastname);
   const [pemail,setpemail]=useState(props.pemail);
@@ -154,6 +207,23 @@ const Update = (props) =>{
   const [gender, setgender] = useState(props.gender);
   const [city,setcity]=useState(props.city);
   const [area,setarea]=useState(props.area);
+
+  const handleSerUpdate=async(event)=>{
+    event.preventDefault();
+    const data={serid,firstname,lastname,pemail,useremail,gender,city,area};
+    
+  }
+
+  useEffect(()=>{
+    setfirstname(props.firstname);
+    setlastname(props.lastname);
+    setpemail(props.pemail);
+    setuseremail(props.useremail);
+    setgender(props.gender);
+    setcity(props.city);
+    setarea(props.area);
+    setserid(props.serid);
+  },[props])
 
   return (
     <>
