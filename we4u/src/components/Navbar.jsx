@@ -5,6 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import LoginData from "../services/LoginData";
 import { Button, Modal } from 'react-bootstrap';
+import { useEffect } from "react";
 // import { FormControl, FormGroup, Input, InputLabel, Typography } from '@mui/material';
 export const Navbar = () => {
   const location = useLocation();
@@ -12,6 +13,7 @@ export const Navbar = () => {
   const [navCollapse, setNavCollapse] = useState(true);
   const [msg, setmsg] = useState();
   const [isshow, invokemodel] = useState(false);
+  const [login, setlogin] = useState(false);
   const initmodel = () => {
     return invokemodel(!isshow);
   }
@@ -24,21 +26,41 @@ export const Navbar = () => {
     setNavCollapse(!navCollapse);
   }
 
-  const handlelogout = () => {
-    var id = localStorage.getItem("token");
-    if (id == null) {
-      // alert("Login first");
-      setmsg("Login First!!");
-      initmodel();
-      // nevigate("/login");
+  const handlelogin = () => {
+    const logincheck = localStorage.getItem("token");
+    if (logincheck) {
+      setlogin(true);
     }
     else {
-      setmsg1("Are You Sure Want To Logout??");
-      initmodel1();
-      localStorage.removeItem("token");
-      // alert("logged out");
-      nevigate("/login");
+      setlogin(false);
     }
+  }
+
+  const handlelogout = () => {
+    // var id = localStorage.getItem("token");
+    // if (id == null) {
+    //   initmodel();
+    //   // alert("Login first");
+    //   setmsg("Login First!!");
+
+    //   // nevigate("/login");
+    // }
+    // else {
+    //   setmsg1("Are You Sure Want To Logout??");
+    //   initmodel1();
+    //   localStorage.removeItem("token");
+    //   // alert("logged out");
+    //   nevigate("/login");
+    // }
+    initmodel();
+    setmsg("Are You Sure Want To Logout??")
+
+  }
+  const confirmlogout = () => {
+    localStorage.removeItem("token");
+    initmodel();
+    nevigate("/");
+    window.location.reload();
 
   }
 
@@ -78,20 +100,26 @@ export const Navbar = () => {
       const respo = await LoginData.sendauth(data);
     }
   }
+
+  useEffect(() => {
+    handlelogin();
+  }, [login])
+
   return (
     <>
       <Modal show={isshow}  >
-        <Modal.Header className='text-center'>
-          <Modal.Title className='' >
-            Login Details
-          </Modal.Title>
-        </Modal.Header>
         <Modal.Body>
-          {msg}
+          <div className="mx-auto">
+            <b>  {msg} </b>
+          </div>
+
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="dark" className="mx-3" onClick={initmodel}>
+          <Button variant="dark" className="mx-3" onClick={confirmlogout}>
             OK
+          </Button>
+          <Button variant="dark" className="mx-3" onClick={initmodel}>
+            Cancel
           </Button>
         </Modal.Footer>
       </Modal>
@@ -131,14 +159,14 @@ export const Navbar = () => {
               <li className="nav-item">
                 <Link className="nav-link" to="/about">About</Link>
               </li>
-              <li className="dropdown nav-item">
+              <li className="dropdown nav-item" style={{ display: login ? "none" : "block" }}>
                 <Link className="nav-link" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false"> Register </Link>
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{ zIndex: "0" }}>
                   <li><Link className="dropdown-item" to="/register">Register As Client</Link></li>
                   <li><Link className="dropdown-item" to="/regprof">Register As Professional</Link></li>
                 </ul>
               </li>
-              <li className="dropdown nav-item">
+              <li className="dropdown nav-item" style={{ display: login ? "none" : "block" }}>
                 <Link className="nav-link" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false">Login</Link>
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <li><Link className="dropdown-item" to="/login">Login As Client</Link></li>
@@ -150,10 +178,10 @@ export const Navbar = () => {
               </li>
             </ul>
 
-            <ul className="navbar-nav sm-icons">
+            <ul className="navbar-nav sm-icons" style={{ display: login ? "flex" : "none" }}>
               <li><Link className="nav-link" to="/cart" onClick={handlecart}><i className="fa-solid fa-cart-shopping fa-lg"></i></Link></li>
-              <li><Link className="nav-link" to="/profile"><i className="fa-solid fa-user-gear fa-lg" onClick={handleprofile}></i></Link></li>
-              <li><Link className="nav-link" to="/logout" onClick={handlelogout}><i className="fa-solid fa-right-from-bracket fa-lg"></i></Link></li>
+              <li><Link className="nav-link" to="/profile"><i className="fa-solid fa-user-gear fa-lg" onClick={handleprofile} ></i></Link></li>
+              <li><Link className="nav-link" to="" onClick={handlelogout}><i className="fa-solid fa-right-from-bracket fa-lg" ></i></Link></li>
             </ul>
           </div>
         </div>
