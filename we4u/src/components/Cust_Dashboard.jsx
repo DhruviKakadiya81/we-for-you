@@ -88,7 +88,7 @@ export const Cust_Dashboard = () => {
 
 
 
-            <div class="container  " style={{ marginTop: "100px" }}>
+            {/* <div class="container  " style={{ marginTop: "100px" }}>
                 <div class="row d-flex justify-content-center">
 
                     <div class="card  dashbord-card" style={{ border: "none", height: "170px", flexDirection: "row", width: "300px", marginLeft: "20px", marginTop: "20px", boxShadow: "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset" }}>
@@ -128,12 +128,12 @@ export const Cust_Dashboard = () => {
 
 
                 </div>
-            </div>
+            </div> */}
 
             {
                 (active === undefined) ?
 
-                    <div className="row d-flex justify-content-center pt-5">
+                    <div className="row d-flex justify-content-center pt-5 mt-5">
                         <div class="spinner-grow text-dark" role="status">
                             <span class="sr-only">Loading...</span>
                         </div>
@@ -145,7 +145,7 @@ export const Cust_Dashboard = () => {
 
                     //     </div>
                     :
-                    <div class="main-card mb-3 mt-5 mx-auto w-75 card overflow-x-hidden">
+                    <div class="main-card mb-3 mt-5 pt-5 mx-auto w-75 card overflow-x-hidden">
                         <div class="card-header text-center" style={{ backgroundColor: "lightgreen" }}>
                             <b>
                                 Active Services Details
@@ -230,7 +230,7 @@ export const Cust_Dashboard = () => {
                         </div>
                         :
                         <div class="main-card mb-3 mt-5 mx-auto w-75 card overflow-x-hidden">
-                            <div class="card-header text-center">Scheduled Services Details
+                            <div class="card-header text-center" style={{ backgroundColor: "lightgrey" }}><b>Scheduled Services Details</b>
 
                             </div>
                             <div class="table-responsive">

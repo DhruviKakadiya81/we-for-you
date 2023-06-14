@@ -13,57 +13,58 @@ export const Login = (props) => {
   const [message, setmessage] = useState("");
   const [spid, setspid] = useState();
   const [msg, setmsg] = useState();
-    const [isshow, invokemodel] = useState(false);
-    const initmodel = () => {
-        return invokemodel(!isshow);
-    }
   const [eye, seteye] = useState("fa-sharp fa-solid fa-eye-slash");
+
+  const [isshow, invokemodel] = useState(false);
+  const initmodel = () => {
+    return invokemodel(!isshow);
+  }
+
   const errors = {};
+
   const handleLogin = async (event) => {
-    if (errors.email === undefined && errors.password === undefined) {
-      let state = props.state;
-      const firmObj = { email, password, state };
-      const respo = await apiServices.getLoginData(firmObj);
-      alert(respo.data.msg);
-      setmsg("Login Successfull!!");
-      initmodel();
-      if (respo.data.success === true) {
-        setmessage(respo.data.msg);
-        if (props.state === 0) {
-          localStorage.setItem("sptoken", respo.data.token);
-          const id = localStorage.getItem("sptoken");
-          const response = await service.getspid({ id });
-          setspid(response.data.data._id);
-          const response2 = await service.getdetails({ spid });
-          console.log("response==>", response2);
-          if (response2.data.success === true) {
-            navigate("/sphome2");
-            localStorage.setItem("data", true);
-          }
-          else {
-            navigate("/sphome");
-          }
+
+
+    let state = props.state;
+    const firmObj = { email, password, state };
+    const respo = await apiServices.getLoginData(firmObj);
+    setmsg(respo.data.msg)
+    initmodel();
+    console.log(respo);
+
+    // setmsg(respo.data.msg);
+
+    if (respo.data.success === true) {
+      if (props.state === 0) {
+        localStorage.setItem("sptoken", respo.data.token);
+        const id = localStorage.getItem("sptoken");
+        const response = await service.getspid({ id });
+        setspid(response.data.data._id);
+        const response2 = await service.getdetails({ spid });
+        console.log("response==>", response2);
+        if (response2.data.success === true) {
+          navigate("/sphome2");
+          localStorage.setItem("data", true);
         }
         else {
-          localStorage.setItem("token", respo.data.token);
-          navigate("/");
+          navigate("/sphome");
         }
-
-      } else {
-        // alert("hello");
-        setmessage(respo.data.msg);
       }
+      else {
+        localStorage.setItem("token", respo.data.token);
+        initmodel();
+        navigate("/");
+      }
+
+    } else {
+
+      setmessage(respo.data.msg);
     }
-    else {
-      // alert("hello2");
-      setmessage(errors.email);
-      // console.log("errors", errors.email);
-    }
+
 
   };
 
   const handletogglepass = async (event) => {
-    //event.preventDefault();
     var x = document.getElementById("id_password");
     if (x.type === "password") {
       x.type = "text";
@@ -85,7 +86,6 @@ export const Login = (props) => {
     if (!values.password) {
       errors.password = 'Required';
     }
-
     return errors;
   };
 
@@ -104,21 +104,20 @@ export const Login = (props) => {
 
     return (
       <>
-       <Modal show={isshow}  >
-                <Modal.Header className='text-center'>
-                    <Modal.Title className='' >
-                    Login Details
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    {msg}
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="dark" className="mx-3" type='submit' onClick={initmodel}>
-                        Ok
-                    </Button>
-                </Modal.Footer>
-                </Modal>
+        <Modal show={isshow}  >
+          <Modal.Body>
+            <div className="">
+              <b>
+                {msg}
+              </b>
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="dark" className="mx-3" type='submit' onClick={initmodel}>
+              Ok
+            </Button>
+          </Modal.Footer>
+        </Modal>
         <section className="d-flex mb-5" id="header">
           <div className="container pt-5 pb-5 mb-5 pb-5 main_div1"  >
             <div className="row mx-lg-5 mx-md-2 mx-sm-2">
@@ -195,21 +194,20 @@ export const Login = (props) => {
   else if (props.state === 0) {
     return (
       <>
-      <Modal show={isshow}  >
-                <Modal.Header className='text-center'>
-                    <Modal.Title className='' >
-                    Login Details
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    {msg}
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="dark" className="mx-3" type='submit' onClick={initmodel}>
-                        Ok
-                    </Button>
-                </Modal.Footer>
-                </Modal>
+        <Modal show={isshow}  >
+          <Modal.Body>
+            <div>
+              <b>
+                {msg}
+              </b>
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="dark" className="mx-3" type='submit' onClick={initmodel}>
+              Ok
+            </Button>
+          </Modal.Footer>
+        </Modal>
         <section className="d-flex mb-5" id="header">
           <div className="container pt-5 pb-5 mb-5 pb-5 main_div1" >
             <div className="row mx-lg-5 mx-md-2 mx-sm-2">

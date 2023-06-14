@@ -631,9 +631,7 @@ legend {
   margin-top: 10px;
 }
 
-.card:hover {
-  transform: scale(1.05);
-}
+
 
 .ser {
   width: 100%;
@@ -739,6 +737,9 @@ legend {
   color: #ffffff;
 }
 
+Modal {
+  overflow: hidden;
+}
 
 
 @media (max-width:331px) {
