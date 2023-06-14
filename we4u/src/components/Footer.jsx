@@ -17,8 +17,7 @@ export const Footer = () => {
                     <div class="row ">
                         <div class="col-lg-3 col-md-6 mb-4 mb-md-3 ">
                             {/* <img src="./images/Logo.png" alt="" class="mb-5"/> */}
-                            <img src="/images/we4U.png" width="100" height="50" className="c_nav_image" />
-
+                            <img src="/images/we4U.png" width="100" height="80" className="c_nav_image mb-3" />
                             <p class="f_desc">Excellent care taken ! Will definitely book again</p>
                         </div>
 
@@ -35,15 +34,15 @@ export const Footer = () => {
                         <div class="col-lg-3 col-md-6 mb-4 mb-md-3 ">
                             <h5 class="text-uppercase mb-3 f_quick_title">quick links</h5>
                             <ul class="list-unstyled f_quick_desc">
-                                <li>
+                                <li className='f_link'>
 
                                     <Link className="nav-link" to="/">Home</Link>
 
                                 </li>
-                                <li>
+                                <li className='f_link'>
                                     <Link className="nav-link" to="/about">About</Link>
                                 </li>
-                                <li>
+                                <li className='f_link'>
                                     <Link className="nav-link" to="/contact">Contact Us</Link>
                                 </li>
                             </ul>
@@ -53,12 +52,12 @@ export const Footer = () => {
                             <h5 class="text-uppercase mb-3 f_open_title">open hours</h5>
 
                             <ul class="list-unstyled f_open_desc">
-                                <li>
+                                <li className='f_open_link'>
                                     Monday-Sunday
                                 </li>
                             
-                                <li class="mt-2">
-                                    Happy Hours: 24 * 7
+                                <li className="mt-2 f_open_link">
+                                    Happy Hours : 9 To 9
                                 </li>
                             </ul>
                         </div>
@@ -68,9 +67,9 @@ export const Footer = () => {
                 <div class="d-flex justify-content-between footerEnd">
                     <p class="text-muted"> 2023 © We4U </p>
                     <div>
-                        <i class="fa-brands fa-facebook-f mx-2"></i>
-                        <i class="fa-brands fa-twitter mx-2"></i>
-                        <i class="fa-brands fa-instagram mx-2"></i>
+                        <i class="fa-brands fa-facebook-f mx-2 f_soc_icon"></i>
+                        <i class="fa-brands fa-twitter mx-2 f_soc_icon"></i>
+                        <i class="fa-brands fa-instagram mx-2 f_soc_icon"></i>
                     </div>
                 </div>
             </footer>

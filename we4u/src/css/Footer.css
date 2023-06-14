@@ -7,24 +7,13 @@
 } */
 
 .footer-section {
-    /* margin-top: 70px; */
     background-color: rgb(50, 50, 50);
     color: white;
     position: sticky;
-    font-family: 'Montserrat';
-    font-style: normal;
     font-weight: 100;
     font-size: 18px;
-    line-height: 22px;
-    text-transform: capitalize;
-   
-  
 }
 
-.footer-section img {
-    height: 80px;
-    width: 100px;
-}
 
 .footer-section h5 {
     font-weight: bold;
@@ -49,57 +38,52 @@
 }
 
 .f_desc{
-    font-family: 'Montserrat';
-font-style: normal;
 font-weight: 400;
 font-size: 18px;
 line-height: 22px;
 text-transform: capitalize;
-
 color: #FFFFFF;
 }
 
+.f_desc:hover,
+.f_add_detail:hover,
+.f_link:hover,
+.f_open_link:hover,
+.f_soc_icon:hover{
+    color: burlywood;
+    font-size: 19px;
+   
+}
+
 .f_add_title{
-    font-family: 'Montserrat';
-font-style: normal;
 font-weight: 700;
 font-size: 20px;
-line-height: 24px;
-letter-spacing: 0.115em;
+/* line-height: 24px; */
+letter-spacing: 0.110em;
 text-transform: uppercase;
-
 color: #FFFFFF;
 }
 
 
 .f_add_detail{
-    font-family: 'Montserrat';
-    font-style: normal;
     font-weight: 400;
     font-size: 18px;
-    line-height: 22px;
-    text-transform: capitalize;
-    
     color: #FFFFFF;
     
 }
 
 
 .f_quick_title{
-    font-family: 'Montserrat';
 font-style: normal;
 font-weight: 700;
 font-size: 20px;
 line-height: 24px;
 letter-spacing: 0.115em;
 text-transform: uppercase;
-
 color: #FFFFFF;
 }
 
 .f_quick_desc{
-    font-family: 'Montserrat';
-font-style: normal;
 font-weight: 300;
 font-size: 18px;
 line-height: 22px;
@@ -109,8 +93,6 @@ color: #FFFFFF;
 }
 
 .f_open_title{
-    font-family: 'Montserrat';
-    font-style: normal;
     font-weight: 700;
     font-size: 20px;
     line-height: 24px;
@@ -120,8 +102,6 @@ color: #FFFFFF;
 }
 
 .f_open_desc{
-    font-family: 'Montserrat';
-    font-style: normal;
     font-weight: 100;
     font-size: 18px;
     line-height: 22px;

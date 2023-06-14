@@ -183,7 +183,7 @@ export const Login = (props) => {
                 <br />
                 <br />
                 <p><a href="/register" style={{ textDecoration: "none" }}>Don't have an Account??</a></p>
-                <span>{message}</span>
+                {/* <span>{message}</span> */}
               </form>
             </div>
           </div>
@@ -273,7 +273,7 @@ export const Login = (props) => {
                 <br />
                 <br />
                 <p><a href="/regprof" style={{ textDecoration: "none" }}>Don't have an Account??</a></p>
-                <span>{message}</span>
+                {/* <span>{message}</span> */}
               </form>
             </div>
           </div>
