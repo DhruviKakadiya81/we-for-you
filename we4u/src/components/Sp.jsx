@@ -2,8 +2,20 @@ import React from 'react'
 import { Ser_Pro_Navbar } from './Ser_Pro_Navbar'
 import { Footer } from './Footer';
 import "../css/sp.css"
+import dashboard from '../services/dashboard';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 export const Sp = () => {
+  const [data, setdata] = useState('');
+  const handledata = async () => {
+    const response = await dashboard.dashboard();
+    setdata(response.data.data);
+  }
+  useEffect(() => {
+    handledata();
+  }, [])
+  console.log(data);
   return (
     <>
       <Ser_Pro_Navbar />
@@ -47,22 +59,22 @@ export const Sp = () => {
             <div className="card mx-4 my-5" style={{ width: "16rem", background: `url(images/ser_home_back.jpg)`, backgroundSize: "cover" }}>
               {/* <img src="..." className="card-img-top" alt="..."/> */}
               <div className="card-body">
-                {/* <h5 className="card-title">Card title</h5> */}
-                <p className="card-text ser_home_card_content">4000+</p>
+                <h5 className="card-title">Total Users</h5>
+                <p className="card-text ser_home_card_content">{data.totaluser}+</p>
               </div>
             </div>
             <div className="card mx-4 my-5" style={{ width: "16rem", background: `url(Images/ser_home_back.jpg)`, backgroundSize: "cover" }}>
               {/* <img src="..." className="card-img-top" alt="..."/> */}
               <div className="card-body">
-                {/* <h5 className="card-title">Card title</h5> */}
-                <p className="card-text ser_home_card_content">4000+</p>
+                <h5 className="card-title">Total Provieder</h5>
+                <p className="card-text ser_home_card_content">{data.totalsp}+</p>
               </div>
             </div>
             <div className="card mx-4 my-5" style={{ width: "16rem", background: `url(Images/ser_home_back.jpg)`, backgroundSize: "cover" }}>
               {/* <img src="..." className="card-img-top" alt="..."/> */}
               <div className="card-body">
-                {/* <h5 className="card-title">Card title</h5> */}
-                <p className="card-text ser_home_card_content">4000+</p>
+                <h5 className="card-title">Total Services</h5>
+                <p className="card-text ser_home_card_content">{data.totalsub}+</p>
               </div>
             </div>
           </div>
