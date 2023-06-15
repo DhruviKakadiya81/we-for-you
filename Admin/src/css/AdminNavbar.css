@@ -66,6 +66,11 @@ main {
     font-size: 20px;
 }
 
+.sub_items:hover {
+    color: burlywood;
+    font-size: 19px;
+}
+
 .dropdownclose,.dropdown1close{
     margin-left: 140px;
     margin-top: -25px;
