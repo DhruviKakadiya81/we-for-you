@@ -33,7 +33,9 @@ export const ManageSubService = () => {
             setsubname("");
         }
         else {
-            alert("it is already there add another");
+            setmsg("There Are Some Isseue Or It Is Already Added!!");
+            initmodel();
+            // alert("it is already there add another");
         }
     }
 
@@ -100,12 +102,12 @@ export const ManageSubService = () => {
         <>
             <AdminNavbar>
             <Modal show={isshow}  >
-                <Modal.Header className='text-center'>
+                {/* <Modal.Header className='text-center'>
                     <Modal.Title className='' >
                     Sub Service Added Details
                     </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
+                </Modal.Header> */}
+                <Modal.Body style={{fontWeight:"bold"}}>
                     {msg}
                 </Modal.Body>
                 <Modal.Footer>
@@ -237,13 +239,13 @@ const Delete = (props) => {
                 Delete
             </Button>
             <Modal show={isshow} style={{ overflowX: "scroll", width: "100%", marginTop: "px" }} >
-                <Modal.Header closeButton onClick={initmodel}>
+                {/* <Modal.Header closeButton onClick={initmodel}>
                     <Modal.Title className='' style={{fontWeight:"bold"}}>
                         Delete Sub Service
                     </Modal.Title>
-                </Modal.Header>
+                </Modal.Header> */}
 
-                <Modal.Body>
+                <Modal.Body style={{fontWeight:"bold"}}>
                     <div className="dlt">
                         Are You Sure To Delete Sub Service?
                     </div>

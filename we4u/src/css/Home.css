@@ -764,3 +764,8 @@ Modal {
 .card-group.card-group-scroll>.card {
   flex-basis: 26%;
 }
+
+.home_view_more_btn{
+  background-color: rgb(50,50,50);
+  color: white;
+}

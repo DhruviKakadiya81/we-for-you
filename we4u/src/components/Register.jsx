@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import apiServices from "../services/RegisterData";
 import { useFormik } from 'formik';
-import { useNavigate } from "react-router-dom";
+import {Link, useNavigate } from "react-router-dom";
 import '../css/Register.css';
 
 export const Register = (props) => {
@@ -86,7 +86,10 @@ export const Register = (props) => {
       <>
 
         <section className="d-flex mb-5" id="header">
-          <div className="container pt-5 pb-5 mb-5 pb-5 r_main_div1">
+          <div className="container pt-4 pb-5 mb-5 pb-5 r_main_div1">
+          <div className="" style={{float:"right"}} >
+                <p><Link className="nav-link" to="/" ><i class="fa-solid fa-house fa-xl"></i></Link></p>
+              </div>
             <div className="row mx-lg-5 mx-md-2 mx-sm-2">
               <div className="col-md-6 pt-5 mx-auto pt-lg-0 order-1  d-flex justify-content-center order-lg-2 header-image" >
                 <img src="Images/login4.png" width={350} height={360} className="" alt="" />
@@ -162,7 +165,10 @@ export const Register = (props) => {
       <>
 
         <section className="d-flex mb-5" id="header">
-          <div className="container pt-5 pb-5 mb-5 pb-5 r_main_div1">
+          <div className="container pt-4 pb-5 mb-5 pb-5 r_main_div1">
+          <div className="" style={{float:"right"}} >
+                <p><Link className="nav-link" to="/" ><i class="fa-solid fa-house fa-xl"></i></Link></p>
+              </div>
             <div className="row mx-lg-5 mx-md-2 mx-sm-2">
               <div className="col-md-6 pt-5 mx-auto pt-lg-0 order-1  d-flex justify-content-center order-lg-2 header-image" >
                 <img src="Images/login4.png" width={270} height={300} className="" alt="" />

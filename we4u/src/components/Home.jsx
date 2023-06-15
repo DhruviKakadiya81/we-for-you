@@ -294,7 +294,7 @@ export const Home = () => {
           <div className="row mb-4 justify-content-center">
             <div className="col-lg-7 col-md-12 col-sm-12">
               <div className="process-heading text-center mb-5 ">
-                <span className="gradient-text feedback_title">Feedback</span>
+                {/* <span className="gradient-text feedback_title">Feedback</span> */}
                 <h2 className="mb-3 mt-3">Our Trending Services</h2>
               </div>
             </div>
@@ -305,34 +305,38 @@ export const Home = () => {
 
 
             <div className="card my-1 m-5">
-              <img src="Images/manicure.jpg" className="" alt="..." />
+              <img src="Images/manicure.jpg" className="mt-2" alt="..." />
               <div className="card-body">
-                <h5 className="card-title text-center">Manicure</h5>
+                <h5 className="card-title text-center" style={{fontWeight:"bold"}}>Manicure</h5>
                 <p className="card-text text-justify">A Manicure usually consists of filing and shaping the free edge of nails, pushing and clipping.</p>
-                <button className='btn' type='button' onClick={handlebeauty}>view more</button>
-
+                <div className="text-center">
+                <button className='btn home_view_more_btn' type='button' onClick={handlebeauty}>view more</button>
+                </div>
               </div>
 
 
             </div>
             <div className="card my-1 m-5">
-              <img src="Images/keratin.jpg" className="" alt="..." />
+              <img src="Images/Pre_bridal_grooming.png" className="mt-2" alt="..." />
               <div className="card-body">
-                <h5 className="card-title text-center">Keratin</h5>
-                <p className="card-text text-justify">A keratin treatment is a process that smooths and often straightens hair.</p>
-                <button className='btn' type='button' onClick={handlebeauty}>view more</button>
+                <h5 className="card-title text-center" style={{fontWeight:"bold"}}>Pre Bridal Grooming</h5>
+                <p className="card-text text-justify">Pre Bridal Grooming Is Include Facial Treatment, Manicure, Shaping Eye-Brows and Etc.</p>
+                <div className="text-center">
+                <button className='btn home_view_more_btn' type='button' onClick={handlebeauty}>view more</button>
+                </div>
               </div>
 
             </div>
 
             <div className="card my-1 m-5">
-              <img src="Images/hair_cutting.jpg" className="" alt="..." />
+              <img src="Images/hair_cutting.jpg" className="mt-2" alt="..." />
               <div className="card-body">
-                <h5 className="card-title text-center">Hair Cutting</h5>
+                <h5 className="card-title text-center" style={{fontWeight:"bold"}}>Hair Cutting</h5>
                 <p className="card-text text-justify">We Are Doing Many Types Of Hair Cutting like layered, one-length, Face-Look.</p>
-                <button className='btn' type='button' onClick={handlebeauty}>view more</button>
+                <div className="text-center">
+                <button className='btn home_view_more_btn' type='button' onClick={handlebeauty}>view more</button>
+                </div>
               </div>
-
             </div>
 
 
