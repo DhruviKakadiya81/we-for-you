@@ -111,16 +111,29 @@ export const Home = () => {
 
   const handleservice = async () => {
     try {
+
       const response = await service1.getservice();
       setgetser(response.data.data);
       getser.map((key) => {
         if (key.s_name === searchser) {
           setsearchid(key._id);
-
         }
       })
+
+
     } catch (error) {
       console.log(error);
+    }
+  }
+  const handle = () => {
+    if (localStorage.getItem("token")) {
+      event.preventDefault();
+      localStorage.setItem("serviceid", searchid);
+      navigate("/service")
+    }
+
+    else {
+      alert("login first")
     }
   }
 
@@ -164,7 +177,7 @@ export const Home = () => {
                 </div> */}
                 <div className="input-field third-wrap">
 
-                  <button className="btn-search" type="button" onClick={(event) => { event.preventDefault(); localStorage.setItem("serviceid", searchid); navigate("/service") }}>Search</button>
+                  <button className="btn-search" type="button" onClick={handle}>Search</button>
                 </div>
               </div>
             </form>

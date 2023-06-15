@@ -79,8 +79,8 @@ export const Service2 = () => {
     const get_user = async () => {
         const token = localStorage.getItem("token");
         if (!token) {
-            alert("you have to first login");
-            navigate("/login");
+            setmsg("Login First!!");
+            initmodel();
         }
         else {
             const data = { id: token }
@@ -127,6 +127,7 @@ export const Service2 = () => {
         // alert(serviceid);
 
         if (serviceid !== null || serviceid !== undefined) {
+            console.log("hello");
             const bookdata = { userid, serviceid, spid }
             const response = await cartservice.addtocart(bookdata);
             console.log("response of book service === >", response);
@@ -138,7 +139,8 @@ export const Service2 = () => {
                 navigate("/cart");
             }
         } else {
-            alert("try again");
+            setmsg("Try again letter !! ");
+            initmodel();
         }
 
     }
@@ -158,7 +160,7 @@ export const Service2 = () => {
         <>
             <Modal show={isshow}  >
                 <Modal.Header className='text-center'>
-                    <Modal.Title className='' style={{fontWeight:"bold"}}>
+                    <Modal.Title className='' style={{ fontWeight: "bold" }}>
                         Book Service
                     </Modal.Title>
                 </Modal.Header>
@@ -212,7 +214,7 @@ export const Service2 = () => {
                 </div>
             </section>
 
-            <section className='mt-5' style={{ background: `url(Images/service_back_10_3.jpg)`, backgroundSize:"cover",backgroundRepeat:"no-repeat",height:"80vh",width:"auto"}}>
+            <section className='mt-5' style={{ background: `url(Images/service_back_10_3.jpg)`, backgroundSize: "cover", backgroundRepeat: "no-repeat", height: "80vh", width: "auto" }}>
 
                 <p className='hire_header mb-5'>Hire your service provider</p>
 
@@ -246,28 +248,28 @@ export const Service2 = () => {
 
                                                             <div class="card-body">
                                                                 <p className='ser_2_head'>{sp.shopname}</p>
-                                                                <p className='ser_2_label' key={sp.serviceid._id}><span>Name : </span>{sp.firstname} {sp.lastname}</p>                                                                      
+                                                                <p className='ser_2_label' key={sp.serviceid._id}><span>Name : </span>{sp.firstname} {sp.lastname}</p>
                                                                 <p className='ser_2_label'><span>Gmail : </span>{sp.pemail}</p>
                                                                 {/* <p className='ser_2_label'><span>Mobile No : </span>{sp.mobileno}</p> */}
-                                                                    {
-                                                                        sp.subserid.map((key) => (
-                                                                            <>
-                                                                                <p>{key.subname.subname === service.subname.subname ?
-                                                                                    <p className='ser_2_label'><span>Prize : </span>{key.prize}</p>
-                                                                                    :
-                                                                                    <p></p>
-                                                                                }</p>
-                                                                            </>
-                                                                        ))
-                                                                    }
-                                                                    <div className='row text-center'>
+                                                                {
+                                                                    sp.subserid.map((key) => (
+                                                                        <>
+                                                                            <p>{key.subname.subname === service.subname.subname ?
+                                                                                <p className='ser_2_label'><span>Prize : </span>{key.prize}</p>
+                                                                                :
+                                                                                <p></p>
+                                                                            }</p>
+                                                                        </>
+                                                                    ))
+                                                                }
+                                                                <div className='row text-center'>
                                                                     <div class="col-sm-6">
-                                                                    <ViewMore shopname={sp.shopname} address={sp.address} gmail={sp.pemail} mobileno={sp.mobileno} city={sp.cityid.cityname} area={sp.areaid.areaname} gender={sp.gender} firstname={sp.firstname} lastname={sp.lastname} prize={sp.subserid}/>
+                                                                        <ViewMore shopname={sp.shopname} address={sp.address} gmail={sp.pemail} mobileno={sp.mobileno} city={sp.cityid.cityname} area={sp.areaid.areaname} gender={sp.gender} firstname={sp.firstname} lastname={sp.lastname} prize={sp.subserid} />
                                                                     </div>
                                                                     <div class="col-sm-6">
-                                                                    <button type='button' onClick={(event) => { handlebookser(sp)}} className='ser_2_hire_btn px-3 py-2 my-2'>Hire</button>
+                                                                        <button type='button' onClick={(event) => { handlebookser(sp) }} className='ser_2_hire_btn px-3 py-2 my-2'>Hire</button>
                                                                     </div>
-                                                                    </div>  
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -285,7 +287,7 @@ export const Service2 = () => {
                             </div>
                 }
             </section>
-          <Footer/>
+            <Footer />
         </>
     )
 }
@@ -297,32 +299,32 @@ const ViewMore = (props) => {
         return invokemodel(!isshow);
     }
 
-    return(
-      <>
-       <Button variant="" className='my-2 ser_2_hire_btn' onClick={initmodel}>
-         View More
-        </Button>
-        <Modal show={isshow} style={{overflowX:"scroll",width:"100%",marginTop:"px"}} >
-        <Modal.Header className='mx-auto'>
-                    <Modal.Title className='f-w-500' style={{fontWeight:"bold",fontSize:"25px"}}>
+    return (
+        <>
+            <Button variant="" className='my-2 ser_2_hire_btn' onClick={initmodel}>
+                View More
+            </Button>
+            <Modal show={isshow} style={{ overflowX: "scroll", width: "100%", marginTop: "px" }} >
+                <Modal.Header className='mx-auto'>
+                    <Modal.Title className='f-w-500' style={{ fontWeight: "bold", fontSize: "25px" }}>
                         {props.shopname}
                     </Modal.Title>
                 </Modal.Header>
-            <Modal.Body>
-            <div className='ps-2'>
-            <p className='modal_det_par'><span className='Modal_details'>Name : </span>{props.firstname} {props.lastname}</p>
-               <p><span className='Modal_details'>Address : </span>{props.address}</p>
-               <p><span className='Modal_details'>Email : </span>{props.gmail}</p>
-               <p><span className='Modal_details'>Mobile No : </span>{props.mobileno}</p>
-               <p><span className='Modal_details'>Gender : </span>{props.gender}</p> 
-               <p><span className='Modal_details'>City : </span>{props.city}</p>
-               <p><span className='Modal_details'>Area : </span>{props.area}</p>
-            </div>
-            </Modal.Body>
-            <Modal.Footer>
-            <Button variant="dark" className="mx-3" onClick={initmodel}>
-              CLOSE
-            </Button>
+                <Modal.Body>
+                    <div className='ps-2'>
+                        <p className='modal_det_par'><span className='Modal_details'>Name : </span>{props.firstname} {props.lastname}</p>
+                        <p><span className='Modal_details'>Address : </span>{props.address}</p>
+                        <p><span className='Modal_details'>Email : </span>{props.gmail}</p>
+                        <p><span className='Modal_details'>Mobile No : </span>{props.mobileno}</p>
+                        <p><span className='Modal_details'>Gender : </span>{props.gender}</p>
+                        <p><span className='Modal_details'>City : </span>{props.city}</p>
+                        <p><span className='Modal_details'>Area : </span>{props.area}</p>
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="dark" className="mx-3" onClick={initmodel}>
+                        CLOSE
+                    </Button>
                 </Modal.Footer>
 
             </Modal>

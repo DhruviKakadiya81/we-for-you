@@ -68,16 +68,15 @@ const AdminDashboard = () => {
     setuser(response3.data.data);
     const response4 = await dashboard.getallactive();
     setActive(response4.data.data);
-    const response5 = await dashboard.order();
-    setdata2(response5.data);
+    // const response5 = await dashboard.order();
+    // setdata2(response5.data);
     console.log(response);
   }
 
   useEffect(() => {
     handledetails();
   }, [])
-  console.log("1", data); console.log("2", spmsg); console.log("3", user); console.log("4", Active); console.log("5", data2);
-
+  console.log("1", data); console.log("2", spmsg); console.log("3", user); console.log("4", Active);
   return (
     <>
 
@@ -120,8 +119,8 @@ const AdminDashboard = () => {
                   <div class="card bg-c-pink order-card">
                     <div class="card-block">
                       <h6 class="m-b-20">Total Order</h6>
-                      <h2 class="text-right"><i class="fa fa-credit-card f-left"></i><span className='mx-3'>{data2.data2}</span></h2>
-                      <p class="m-b-0">Completed Orders<span class="f-right">{data2.data}</span></p>
+                      <h2 class="text-right"><i class="fa fa-credit-card f-left"></i><span className='mx-3'>{data.totalorder}</span></h2>
+                      <p class="m-b-0">Completed Orders<span class="f-right">{data.completed}</span></p>
                     </div>
                   </div>
                 </div>
@@ -173,7 +172,7 @@ const AdminDashboard = () => {
                           </div>
                           {/* <h6 class="text-muted  text-uppercase font-size-md opacity-5 font-weight-normal"></h6> */}
                           <div class="scroll-area-sm overflow-auto">
-                            <div class="scrollbar-container" style={{ height: "242px" }}>
+                            <div class="scrollbar-container" style={{ height: "500px" }}>
                               <ul class="rm-list-borders rm-list-borders-scroll list-group list-group-flush">
                                 {
                                   (user.length > 0) ?
@@ -273,7 +272,7 @@ const AdminDashboard = () => {
                           </div>
                           {/* <h6 class="text-muted  text-uppercase font-size-md opacity-5 font-weight-normal"></h6> */}
                           <div class="scroll-area-sm overflow-auto">
-                            <div class="scrollbar-container" style={{ height: "242px" }}>
+                            <div class="scrollbar-container" style={{ height: "500px" }}>
                               <ul class="rm-list-borders rm-list-borders-scroll list-group list-group-flush">
                                 {
                                   (spmsg.length > 0) ?
@@ -314,28 +313,28 @@ const AdminDashboard = () => {
 
               </div>
 
+              {(Active.length > 0) ?
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="main-card mb-3 card">
+                      <div class="card-header">
+                        Active Services
+                      </div>
+                      <div class="table-responsive">
+                        <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                          <thead>
+                            <tr>
+                              <th class="text-center">Index</th>
 
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="main-card mb-3 card">
-                    <div class="card-header">
-                      Active Services
-                    </div>
-                    <div class="table-responsive">
-                      <table class="align-middle mb-0 table table-borderless table-striped table-hover">
-                        <thead>
-                          <tr>
-                            <th class="text-center">Index</th>
+                              <th>Service Name</th>
+                              <th class="text-center">Service  Provider  Name</th>
+                              <th class="text-center">User Name</th>
+                              {/* <th class="text-center"></th> */}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
 
-                            <th>Service Name</th>
-                            <th class="text-center">Service  Provider  Name</th>
-                            <th class="text-center">User Name</th>
-                            {/* <th class="text-center"></th> */}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            {(Active.length > 0) ?
                               <>
 
                                 {
@@ -370,94 +369,23 @@ const AdminDashboard = () => {
                                 }
                               </>
 
-                              :
-                              <li></li>
-                            }
-                          </tr>
-                          {/* <tr>
-                            <td class="text-center text-muted">#347</td>
-                            <td>
-                              <div class="widget-content p-0">
-                                <div class="widget-content-wrapper">
-                                  <div class="widget-content-left mr-3">
-                                    <div class="widget-content-left">
-                                      <img width="40" class="rounded-circle" src="assets/images/avatars/3.jpg" alt="" />
-                                    </div>
-                                  </div>
-                                  <div class="widget-content-left flex2">
-                                    <div class="widget-heading">Ruben Tillman</div>
-                                    <div class="widget-subheading opacity-7">Etiam sit amet orci eget</div>
-                                  </div>
-                                </div>
-                              </div>
-                            </td>
-                            <td class="text-center">Berlin</td>
-                            <td class="text-center">
-                              <div class="badge badge-success bg-success">Completed</div>
-                            </td>
-                            <td class="text-center">
-                              <button type="button" id="PopoverCustomT-2" class="btn btn-primary btn-sm">Details</button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="text-center text-muted">#321</td>
-                            <td>
-                              <div class="widget-content p-0">
-                                <div class="widget-content-wrapper">
-                                  <div class="widget-content-left mr-3">
-                                    <div class="widget-content-left">
-                                      <img width="40" class="rounded-circle" src="assets/images/avatars/2.jpg" alt="" />
-                                    </div>
-                                  </div>
-                                  <div class="widget-content-left flex2">
-                                    <div class="widget-heading">Elliot Huber</div>
-                                    <div class="widget-subheading opacity-7">Lorem ipsum dolor sic</div>
-                                  </div>
-                                </div>
-                              </div>
-                            </td>
-                            <td class="text-center">London</td>
-                            <td class="text-center">
-                              <div class="badge badge-danger bg-danger">In Progress</div>
-                            </td>
-                            <td class="text-center">
-                              <button type="button" id="PopoverCustomT-3" class="btn btn-primary btn-sm">Details</button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="text-center text-muted">#55</td>
-                            <td>
-                              <div class="widget-content p-0">
-                                <div class="widget-content-wrapper">
-                                  <div class="widget-content-left mr-3">
-                                    <div class="widget-content-left">
-                                      <img width="40" class="rounded-circle" src="assets/images/avatars/1.jpg" alt="" /></div>
-                                  </div>
-                                  <div class="widget-content-left flex2">
-                                    <div class="widget-heading">Vinnie Wagstaff</div>
-                                    <div class="widget-subheading opacity-7">UI Designer</div>
-                                  </div>
-                                </div>
-                              </div>
-                            </td>
-                            <td class="text-center">Amsterdam</td>
-                            <td class="text-center">
-                              <div class="badge badge-info bg-info">On Hold</div>
-                            </td>
-                            <td class="text-center">
-                              <button type="button" id="PopoverCustomT-4" class="btn btn-primary btn-sm">Details</button>
-                            </td>
-                          </tr> */}
-                        </tbody>
-                      </table>
-                    </div>
-                    {/* <div class="d-block text-center card-footer">
+
+
+                            </tr>
+
+                          </tbody>
+                        </table>
+                      </div>
+                      {/* <div class="d-block text-center card-footer">
                       <button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger bg-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>
                       <button class="btn-wide btn btn-success">Save</button>
                     </div> */}
+                    </div>
                   </div>
                 </div>
-              </div>
+                :
+                <div></div>
+              }
             </div>
 
             :

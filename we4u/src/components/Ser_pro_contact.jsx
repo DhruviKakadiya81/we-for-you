@@ -57,7 +57,7 @@ export const Ser_pro_contact = () => {
                     </Button>
                 </Modal.Footer>
             </Modal>
-            <section class="chome d-xs-none d-sm-block d-md-block d-lg-block" style={{ marginTop: "-30px", zIndex: "-5" }}>
+            {/* <section class="chome d-xs-none d-sm-block d-md-block d-lg-block" style={{ marginTop: "-30px", zIndex: "-5" }}>
                 <div class="chome  d-xs-none d-sm-block d-md-block d-lg-block">
                     <svg viewBox="0 0 500 500"
                         preserveAspectRatio="xMinYMin meet"
@@ -102,12 +102,12 @@ export const Ser_pro_contact = () => {
                         </path>
                     </svg>
                 </div>
-            </section>
+            </section> */}
             <section class="contact-form-sec">
                 <div class="container" style={{ marginTop: "0px" }}>
                     <div class="row d-flex justify-content-lg-between justify-content-md-center">
                         <div class="mb-3 mt-2 text-center ">
-                            <h3 class="mt-0" >Get Best Services</h3>
+                            <h3 class="mt-0" ><b>Get Best Services</b></h3>
                             <p className="text-lg-light text-md-dark text-sm-dark">Call us, Email us or Submit your enquiry below.</p>
                         </div>
                         <div class="col-lg-5 col-md-10  col-sm-12 order-1 contact-info mt-5">

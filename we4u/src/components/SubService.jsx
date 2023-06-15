@@ -12,11 +12,15 @@ import 'react-owl-carousel2/lib/styles.css';
 import detail from '../services/spservice';
 import { useNavigate } from 'react-router-dom';
 import { Footer } from './Footer';
+import getuser from '../services/GetUser';
+import userdata from '../services/UserProfile';
+import cartservice from '../services/cartservics';
 
 export const SubService = () => {
     const [serviceid, setserviceid] = useState(localStorage.getItem("serviceid"));
     const [servicedata, setservicedata] = useState([]);
     const [city, setcity] = useState('');
+
     const [location, setLocation] = useState(null);
     const [spdetail, setspdetail] = useState([]);
     const navigate = useNavigate();
@@ -26,6 +30,7 @@ export const SubService = () => {
         setservicedata(response.data.data);
 
     }
+
 
     function handleLocationClick(event) {
 
@@ -204,22 +209,22 @@ export const SubService = () => {
                             :
                             <div className="sp">
                                 <div class="container">
-                                <div class="row mx-auto justify-content-center">
-                                    {
-                                        spdetail.map((sp) => (
-                                            <>
-                                            <div className="col-lg-4">
-                                                <div className="card ser_2_main_card px-2 py-2 mx-auto my-4">
-                                                    <div className="card-body">
-                                                    <h2 className='ser_2_head mb-3'> {sp.shopname}  </h2>
-                                                            <p className="ser_2_label " key={sp.serviceid._id}> Name : {sp.firstname} {sp.lastname}</p>
-                                                            {/* <p>{sp.gender}</p> */}
-                                                            {/* <p className=" ps-5 " style={{ fontSize: "17px" }}>  Address :: {sp.address}  <br /><br />  {sp.cityid ? <p className=" " style={{ fontSize: "17px" }} >City :: {sp.cityid.cityname} </p> : <br />}</p> */}
-                                                            {/* <p className=" ps-5 " style={{ fontSize: "17px" }}> {sp.areaid ? <p style={{ fontSize: "17px" }}>Area:: {sp.areaid.areaname}</p> : <br />}</p> */}
-                                                            <p className="ser_2_label"> Mobile No : {sp.mobileno} </p>
-                                                            <p className="ser_2_label "> Email : {sp.pemail} </p>
-                                                            {/* <h1 className='my-4'>My Services</h1> */}
-                                                            {/* <p>{sp.subserid.map((key) => (
+                                    <div class="row mx-auto justify-content-center">
+                                        {
+                                            spdetail.map((sp) => (
+                                                <>
+                                                    <div className="col-lg-4">
+                                                        <div className="card ser_2_main_card px-2 py-2 mx-auto my-4">
+                                                            <div className="card-body">
+                                                                <h2 className='ser_2_head mb-3'> {sp.shopname}  </h2>
+                                                                <p className="ser_2_label " key={sp.serviceid._id}> Name : {sp.firstname} {sp.lastname}</p>
+                                                                {/* <p>{sp.gender}</p> */}
+                                                                {/* <p className=" ps-5 " style={{ fontSize: "17px" }}>  Address :: {sp.address}  <br /><br />  {sp.cityid ? <p className=" " style={{ fontSize: "17px" }} >City :: {sp.cityid.cityname} </p> : <br />}</p> */}
+                                                                {/* <p className=" ps-5 " style={{ fontSize: "17px" }}> {sp.areaid ? <p style={{ fontSize: "17px" }}>Area:: {sp.areaid.areaname}</p> : <br />}</p> */}
+                                                                <p className="ser_2_label"> Mobile No : {sp.mobileno} </p>
+                                                                <p className="ser_2_label "> Email : {sp.pemail} </p>
+                                                                {/* <h1 className='my-4'>My Services</h1> */}
+                                                                {/* <p>{sp.subserid.map((key) => (
                                                                 <>
                                                                 <div className='row'>
                                                                     <div>
@@ -232,74 +237,151 @@ export const SubService = () => {
                                                                 </>
                                                             ))}</p> */}
 
-                                                            <div className='row text-center'>
+                                                                <div className='row text-center'>
                                                                     <div class="col-sm-6">
                                                                     </div>
                                                                     <div class="col-sm-6">
-                                                                   <ViewMore shopname={sp.shopname} firstname={sp.firstname} lastname={sp.lastname} address={sp.address} area={sp.areaid.areaname} mobileno={sp.mobileno} gmail={sp.pemail} prize={sp.subserid}/> 
+                                                                        <ViewMore shopname={sp.shopname} firstname={sp.firstname} lastname={sp.lastname} address={sp.address} area={sp.areaid.areaname} mobileno={sp.mobileno} gmail={sp.pemail} prize={sp.subserid} sp={sp} />
                                                                     </div>
-                                                            </div> 
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            </>
-                                        ))
-                                    }
-                                </div>
+                                                </>
+                                            ))
+                                        }
+                                    </div>
                                 </div>
                             </div>
                 }
             </section>
-            <Footer/>
+            <Footer />
         </>
     )
 }
 
 const ViewMore = (props) => {
-    console.log(props);
+
+    console.log("prop.sp", props.sp);
     console.log(props.prize)
     const [isshow, invokemodel] = useState(false);
+
+    const [data, setdata] = useState(props.sp);
+    const [msg, setmsg] = useState();
+    const navigate = useNavigate();
     const initmodel = () => {
         return invokemodel(!isshow);
     }
 
-    return(
-      <>
-       <Button variant="" className='my-1 ser_hire_btn justify-content-right' onClick={initmodel}>
-         View More
-        </Button>
-        <Modal show={isshow} style={{overflowX:"scroll",width:"100%",marginTop:"px"}} >
-        <Modal.Header className='mx-auto'>
-                    <Modal.Title className='' style={{fontWeight:"bold",fontSize:"25px"}}>
+    const [isshow1, invokemodel1] = useState(false);
+    const initmodel1 = () => {
+        return invokemodel(!isshow1);
+    }
+
+
+    const [userid, setuserid] = useState();
+    const get_user = async () => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            alert("you have to first login");
+            navigate("/login");
+        }
+        else {
+            const data = { id: token }
+            console.log(data);
+            const response = await getuser.sendauth(data);
+            console.log("response===>", response.data.data._id);
+
+            const response2 = await userdata.getdata({ userid: response.data.data._id })
+            console.log("userdata2==>", response2);
+            setuserid(response2.data.data._id);
+
+        }
+
+    }
+    useEffect(() => {
+        get_user()
+    }, []);
+    const handledata = async (spid, serviceid) => {
+        if (serviceid !== null || serviceid !== undefined) {
+            const bookdata = { userid, serviceid, spid }
+            const response = await cartservice.addtocart(bookdata);
+            console.log("response of book service === >", response);
+            if (response.data.success === false) {
+                setmsg("This Service is Added Already!! ");
+
+                initmodel1();
+            }
+            else if (response.data.success === true) {
+                navigate("/cart");
+            }
+        } else {
+            setmsg("This Service is Added Already!! ");
+            initmodel1();
+        }
+        //console.log(spid, serviceid, userid);
+        //const data = { spid, serviceid, userid };
+        // localStorage.setItem("BookingData", JSON.stringify(data));
+        // navigate("/book");
+
+    }
+
+    useEffect(() => {
+        setdata(props.sp);
+    }, [props])
+
+
+    return (
+        <>
+            <Modal show={isshow}  >
+                <Modal.Body>
+                    <div className="">
+                        <b>
+                            {msg}
+                        </b>
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="dark" className="mx-3" type='submit' onClick={initmodel1}>
+                        Ok
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+            <Button variant="" className='my-1 ser_hire_btn justify-content-right' onClick={initmodel1}>
+                View More
+            </Button>
+            <Modal show={isshow} style={{ overflowX: "scroll", width: "100%" }} >
+                <Modal.Header className='mx-auto'>
+                    <Modal.Title className='' style={{ fontWeight: "bold", fontSize: "25px" }}>
                         {props.shopname}
                     </Modal.Title>
                 </Modal.Header>
-            <Modal.Body>
-            <div className='ps-2'>
-            <p className='modal_det_par'><span className='Modal_details'>Name : </span>{props.firstname} {props.lastname}</p>
-               <p><span className='Modal_details'>Address : </span>{props.address}</p>
-               <p><span className='Modal_details'>Email : </span>{props.gmail}</p>
-               <p><span className='Modal_details'>Mobile No : </span>{props.mobileno}</p>
-               <p><span className='Modal_details'>Area : </span>{props.area}</p>
-    
-               <p>{props.prize.map((key) => (
-                                                                <>
-                                                                <div className='row'>
-                                                                    <div class="col-sm-8">
-                                                                      <p className='ser_2_label ser_all_ser_prize my-1'><span className='Modal_details'>{key.subname.subname} : </span>{key.prize}  Rs.</p>
-                                                                    </div>
-                                                                    <div class="col-sm-4">
-                                                                    <button className='px-2 py-1 my-1' style={{border:"none",borderRadius:"5px",backgroundColor:"rgb(50,50,50)",color:"white"}}>Book Now</button>
-                                                                    </div>
-                                                                    </div> 
-                                                                </>
-                                                            ))}</p>
-            </div>
-            </Modal.Body>
-            <Modal.Footer>
-            <Button variant="dark" className="mx-3" onClick={initmodel}>
-              CLOSE
-            </Button>
+                <Modal.Body>
+                    <div className='ps-2'>
+                        <p className='modal_det_par'><span className='Modal_details'>Name : </span>{props.firstname} {props.lastname}</p>
+                        <p className='modal_det_par'><span className='Modal_details'>Address : </span>{props.address}</p>
+                        <p className='modal_det_par'><span className='Modal_details'>Email : </span>{props.gmail}</p>
+                        <p className='modal_det_par'><span className='Modal_details'>Mobile No : </span>{props.mobileno}</p>
+                        <p className='modal_det_par'><span className='Modal_details'>Area : </span>{props.area}</p>
+
+                        <p>{props.prize.map((key) => (
+                            <>
+                                <div className='row'>
+                                    <div class="col">
+                                        <p className='ser_2_label ser_all_ser_prize my-1 py-2'><span className='Modal_details'>{key.subname.subname} : </span>{key.prize}  Rs.</p>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <button className='px-2 py-1 my-1' style={{ border: "none", borderRadius: "5px", backgroundColor: "rgb(50,50,50)", color: "white" }} onClick={(event) => { handledata(props.sp._id, key._id) }}>Book Now</button>
+                                    </div>
+                                </div>
+                            </>
+                        ))}</p>
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="dark" className="mx-3" onClick={initmodel}>
+                        CLOSE
+                    </Button>
                 </Modal.Footer>
 
             </Modal>
