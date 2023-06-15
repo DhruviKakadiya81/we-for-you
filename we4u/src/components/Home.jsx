@@ -111,7 +111,6 @@ export const Home = () => {
 
   const handleservice = async () => {
     try {
-
       const response = await service1.getservice();
       setgetser(response.data.data);
       getser.map((key) => {
@@ -119,22 +118,16 @@ export const Home = () => {
           setsearchid(key._id);
         }
       })
-
-
     } catch (error) {
       console.log(error);
     }
   }
   const handle = () => {
-    if (localStorage.getItem("token")) {
-      event.preventDefault();
-      localStorage.setItem("serviceid", searchid);
-      navigate("/service")
-    }
+    alert("hello")
+    // event.preventDefault();
+    localStorage.setItem("serviceid", searchid);
+    navigate("/service")
 
-    else {
-      alert("login first")
-    }
   }
 
 

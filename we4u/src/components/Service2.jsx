@@ -79,8 +79,8 @@ export const Service2 = () => {
     const get_user = async () => {
         const token = localStorage.getItem("token");
         if (!token) {
-            setmsg("Login First!!");
-            initmodel();
+            alert("you have to first login");
+            navigate("/login");
         }
         else {
             const data = { id: token }
@@ -127,7 +127,6 @@ export const Service2 = () => {
         // alert(serviceid);
 
         if (serviceid !== null || serviceid !== undefined) {
-            console.log("hello");
             const bookdata = { userid, serviceid, spid }
             const response = await cartservice.addtocart(bookdata);
             console.log("response of book service === >", response);
@@ -139,8 +138,7 @@ export const Service2 = () => {
                 navigate("/cart");
             }
         } else {
-            setmsg("Try again letter !! ");
-            initmodel();
+            alert("try again");
         }
 
     }

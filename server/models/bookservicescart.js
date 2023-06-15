@@ -9,6 +9,7 @@ const BookServiceShema = new mongoose.Schema({
     userid: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Profile',
+        required: true
 
     },
     serviceid: {

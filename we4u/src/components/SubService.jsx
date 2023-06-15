@@ -275,7 +275,7 @@ const ViewMore = (props) => {
 
     const [isshow1, invokemodel1] = useState(false);
     const initmodel1 = () => {
-        return invokemodel(!isshow1);
+        return invokemodel1(!isshow1);
     }
 
 
@@ -299,31 +299,52 @@ const ViewMore = (props) => {
         }
 
     }
-    useEffect(() => {
-        get_user()
-    }, []);
+    // useEffect(() => {
+    //     adddata()
+    // }, [userid]);
     const handledata = async (spid, serviceid) => {
-        if (serviceid !== null || serviceid !== undefined) {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            setmsg("Login First!! ");
+            initmodel1();
+        }
+        else {
+            const data = { id: token }
+            console.log(data);
+            const response = await getuser.sendauth(data);
+            console.log("response===>", response.data.data._id);
+
+            const response2 = await userdata.getdata({ userid: response.data.data._id })
+            console.log("userdata2==>", response2);
+            setuserid(response2.data.data._id);
+            adddata(spid, serviceid, response2.data.data._id);
+        }
+
+    }
+
+    const adddata = async (spid, serviceid, userid) => {
+
+        if (serviceid !== null || serviceid !== undefined || userid !== null || userid !== undefined) {
+            alert(userid);
             const bookdata = { userid, serviceid, spid }
             const response = await cartservice.addtocart(bookdata);
             console.log("response of book service === >", response);
-            if (response.data.success === false) {
-                setmsg("This Service is Added Already!! ");
-
-                initmodel1();
-            }
-            else if (response.data.success === true) {
+            if (response.data.success === true) {
                 navigate("/cart");
+
             }
+            else if (response.data.success === false) {
+                initmodel();
+                setmsg("This Service is Added Already!! ");
+                initmodel1();
+
+            }
+
         } else {
-            setmsg("This Service is Added Already!! ");
+            initmodel();
+            setmsg("some issue are there!! ");
             initmodel1();
         }
-        //console.log(spid, serviceid, userid);
-        //const data = { spid, serviceid, userid };
-        // localStorage.setItem("BookingData", JSON.stringify(data));
-        // navigate("/book");
-
     }
 
     useEffect(() => {
@@ -333,7 +354,7 @@ const ViewMore = (props) => {
 
     return (
         <>
-            <Modal show={isshow}  >
+            <Modal show={isshow1}  >
                 <Modal.Body>
                     <div className="">
                         <b>
@@ -347,7 +368,7 @@ const ViewMore = (props) => {
                     </Button>
                 </Modal.Footer>
             </Modal>
-            <Button variant="" className='my-1 ser_hire_btn justify-content-right' onClick={initmodel1}>
+            <Button variant="" className='my-1 ser_hire_btn justify-content-right' onClick={initmodel}>
                 View More
             </Button>
             <Modal show={isshow} style={{ overflowX: "scroll", width: "100%" }} >
