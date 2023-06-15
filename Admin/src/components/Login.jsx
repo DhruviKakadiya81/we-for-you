@@ -58,16 +58,31 @@ export const Login = () => {
                     </Button>
                 </Modal.Footer>
                 </Modal>
-            <div className='container d-flex justify-content-center align-items-center mx-5 me-0 mx-lg-0 mt-5' style={{ marginTop: "60px" }}>
-                <div class="screen">
-                    <div class="screen__content">
-                        <img src="/images/logo2.png" className="" alt="hello" style={{ height: "100px", width: "100px", position: "relative", left: "38%", top: "70px", borderRadius: "50%", border: "5px solid grey" }} />
-                        <form class="login  ">
-                            <div class="login__field">
+                <section className="d-flex mb-5" id="header">   
+          <div className="container pt-5 pb-5 mb-5 pb-5 main_div1"  >
+                  
+            <div className="row mx-lg-5 mx-md-2 mx-sm-2">
+            <div className="col-md-6 pt-5 mx-auto pt-lg-0 order-1  d-flex justify-content-center order-lg-2 header-image" >
+                <img src="/images/we4U_login.png" width={350} height={360} className="" alt="" />
+              </div>
+              <form className="col-lg-6 mt-5 col-md-6 pt-5 pt-lg-0 order-2 order-lg-1">
+                <h2 style={{ fontWeight: "700" }}>SIGN IN</h2>
+                <i class="fa-solid fa-envelope  fa-xm icon_mail" ></i>
+                <input
+                  className="pt-3 px-4 em_in"
+                  type="text"
+                  placeholder="Enter Your Email"
+                  name="admin"
+                  onChange={(e)=>{setadmin(e.target.value)}}
+                  
+                 
+                  required
+                />
+                            {/* <div class="login__field">
                                 <i class="login__icon fas fa-user"></i>
                                 <input type="text" class="login__input" placeholder="Enter Email" onChange={(e)=>{setadmin(e.target.value)}}/>
-                            </div>
-                            <div class="login__field">
+                            </div> */}
+                            {/* <div class="login__field">
                                 <i class="login__icon fas fa-lock"></i>
                                 <input type="password" className="login__input" id="id_password" placeholder="Enter Password" onChange={(e)=>{setpassword(e.target.value)}} />
                                 <i
@@ -76,28 +91,38 @@ export const Login = () => {
                                 style={{ marginLeft: "-25px", cursor: "pointer", position: "relative", cursor: "pointer" }}
                                 onClick={handletogglepass}
                                 ></i>
-                            </div>
-                            <button type='button' class="button login__submit" onClick={handlelogin}>
-                                <span class="button__text" >Login</span>
-                                <i class="button__icon fas fa-chevron-right"></i>
+                            </div> */}
+
+                            <i class="fa-solid fa-lock  fa-xm icon_pass" ></i>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Enter the password"
+                  onChange={(e)=>{setpassword(e.target.value)}}
+                  id="id_password"
+                  className="my-0 pt-3 mt-2 px-4 pass_in"
+                  required
+                />
+                <i
+                  className={eye}
+                  id="togglePassword"
+                  style={{ marginLeft: "-25px", cursor: "pointer", position: "relative", cursor: "pointer" }}
+                  onClick={handletogglepass}
+                ></i>
+
+                <br /><br /><br />
+                            <button type='button' className="p-2 btn_sub" onClick={handlelogin}>
+                                Login
+                                
                             </button>
+
+                            
                         </form>
-                        <div class="social-login">
-                            <div class="social-icons">
-                                <i href="https://instagram.com/isikabatay06" class="social-login__icon fab fa-instagram"></i>
-                                <i href="#" class="social-login__icon fab fa-facebook"></i>
-                                <i href="https://twitter.com/isikabatay06" class="social-login__icon fab fa-twitter"></i>
-                            </div>
-                        </div>
+                        
                     </div>
-                    <div class="screen__background">
-                        <span class="screen__background__shape screen__background__shape4"></span>
-                        <span class="screen__background__shape screen__background__shape3"></span>
-                        <span class="screen__background__shape screen__background__shape2"></span>
-                        <span class="screen__background__shape screen__background__shape1"></span>
-                    </div>
+                   
                 </div>
-            </div>
+            </section>
         </>
     )
 }

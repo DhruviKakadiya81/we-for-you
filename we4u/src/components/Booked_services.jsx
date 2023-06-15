@@ -100,7 +100,7 @@ export const Booked_services = () => {
             </Modal>
             <Navbar className="" />
             {(data !== null || data !== undefined) ?
-                <section className="contact-form-sec mx-auto pt-3 pb-3 mb-5" style={{ padding: "0px 0px", marginTop: "100px", backgroundColor: "rgba(5, 5, 5, 0.70)", borderRadius: "15px", width: "70%" }}>
+                <section className="contact-form-sec mx-auto pt-3 pb-3 mb-5" style={{ padding: "0px 0px", marginTop: "100px", backgroundColor: "rgb(50, 50, 50)", borderRadius: "15px", width: "70%" }}>
                     <h1 className="text-center mb-3" style={{ color: "white" }}>Booking Data</h1>
                     <div className="container" style={{ marginTop: "0px" }}>
                         <div className="row d-flex justify-content-lg-between justify-content-md-center">

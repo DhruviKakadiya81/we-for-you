@@ -123,7 +123,7 @@ export const Home = () => {
     }
   }
   const handle = () => {
-    alert("hello")
+    // alert("hello")
     // event.preventDefault();
     localStorage.setItem("serviceid", searchid);
     navigate("/service")

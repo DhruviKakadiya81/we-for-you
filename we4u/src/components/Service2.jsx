@@ -79,8 +79,8 @@ export const Service2 = () => {
     const get_user = async () => {
         const token = localStorage.getItem("token");
         if (!token) {
-            alert("you have to first login");
-            navigate("/login");
+            setmsg("Login First!!");
+            initmodel();
         }
         else {
             const data = { id: token }
@@ -157,12 +157,12 @@ export const Service2 = () => {
     return (
         <>
             <Modal show={isshow}  >
-                <Modal.Header className='text-center'>
+                {/* <Modal.Header className='text-center'>
                     <Modal.Title className='' style={{ fontWeight: "bold" }}>
                         Book Service
                     </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
+                </Modal.Header> */}
+                <Modal.Body style={{fontWeight:"bold"}}>
                     {msg}
                 </Modal.Body>
                 <Modal.Footer>
@@ -212,7 +212,7 @@ export const Service2 = () => {
                 </div>
             </section>
 
-            <section className='mt-5' style={{ background: `url(Images/service_back_10_3.jpg)`, backgroundSize: "cover", backgroundRepeat: "no-repeat", height: "80vh", width: "auto" }}>
+            <section className='mt-4 mb-5'>
 
                 <p className='hire_header mb-5'>Hire your service provider</p>
 

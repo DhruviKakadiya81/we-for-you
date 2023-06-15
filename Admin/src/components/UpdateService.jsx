@@ -12,6 +12,11 @@ export const UpdateService = (props) => {
   const initmodel = () => {
     return invokemodel(!isshow);
   }
+
+  const [isshow1, invokemodel1] = useState(false);
+  const initmodel1 = () => {
+    return invokemodel1(!isshow1);
+  }
     const [s_name, setsname] = useState(props.s_name);
     const [s_icon, sets_icon] = useState(props.s_icon);
     const [s_id, setid] = useState(props.s_id);
@@ -27,11 +32,17 @@ export const UpdateService = (props) => {
         if (respo.data.success == true) {
           // setmsg("Updated Succesfully!");
           initmodel();
+          setmsg("Updated Successfully")
+      initmodel1();
+
         //   window.location.reload();
           // alert("successful");
         }
         else {
-          alert("not successful");
+          initmodel();
+          setmsg("Not Updated!!")
+      initmodel1();
+          // alert("not successful");
         }
     
         // console.log(respo);
@@ -42,6 +53,20 @@ export const UpdateService = (props) => {
   return ( 
 
      <>
+     <Modal show={isshow1}  >
+        <Modal.Body>
+          <div className="">
+            <b>
+              {msg}
+            </b>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="dark" className="mx-3" type='submit' onClick={initmodel1}>
+            Ok
+          </Button>
+        </Modal.Footer>
+      </Modal>
      <Button variant="dark" style={{backgroundColor:"rgb(50,50,50)"}} onClick={initmodel}>
         Edit
       </Button>

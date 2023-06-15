@@ -106,10 +106,10 @@ export const Contact = () => {
                   Science & Technology
                 </p>
                 <p className="c_phone_continer">
-                  <span className="c_phone_head">Phone:</span><span className="c_phone_detail"> +91 90160 63452</span>
+                  <span className="c_phone_head">Phone :</span><span className="c_phone_detail"> +91 90160 63452</span>
                 </p>
                 <p className="c_email_container">
-                  <span className="c_email_head">Email:</span><span className="c_email_detail">we4uservices3@gmail.com</span>
+                  <span className="c_email_head">Email : </span><span className="c_email_detail">we4uservices3@gmail.com</span>
                 </p>
               </div>
             </div>
