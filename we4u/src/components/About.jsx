@@ -1,6 +1,8 @@
 import React from 'react'
 import { Navbar } from './Navbar'
 import { Footer } from './Footer'
+
+import { useEffect } from 'react';
 import '../css/About.css';
 // import '../css/exa.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,6 +11,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
+import dashboard from '../services/dashboard';
+import { useState } from 'react';
 // import '../../../TestiMonials/TestiMonials.css'
 const About = () => {
   function reveal() {
@@ -26,7 +30,15 @@ const About = () => {
       }
     }
   }
-
+  const [data, setdata] = useState('');
+  const handledata = async () => {
+    const response = await dashboard.dashboard();
+    setdata(response.data.data);
+  }
+  useEffect(() => {
+    handledata();
+  }, [])
+  console.log(data);
   window.addEventListener("scroll", reveal);
   const testiMonials = [
     {
@@ -99,7 +111,7 @@ const About = () => {
                       {} :
                       testiMonials.map(testiMonialDetail => {
                         return (
-                          <TestiMonialsDetails testiMonialDetail={testiMonialDetail} key={testiMonialDetail._key}/>
+                          <TestiMonialsDetails testiMonialDetail={testiMonialDetail} key={testiMonialDetail._key} />
                         )
                       })
                   }
@@ -118,30 +130,30 @@ const About = () => {
 
         <div className="center_text">
           <div className="cen_text" >
-            <h2 className='number'>45000+</h2>
-            <p>Trained Proffessor</p>
+            <h2 className='number'>{data.totalsp}+</h2>
+            <p>Total Service Provider</p>
           </div>
         </div>
 
         <div className="center_text">
           <div className="cen_text">
-            <h2 className='number'>45000+</h2>
-            <p>Trained Proffessor</p>
+            <h2 className='number'>{data.totaluser}+</h2>
+            <p>Total User</p>
           </div>
         </div>
         <div className="center_text">
           <div className="cen_text">
 
-            <h2 className='number'>45000+</h2>
-            <p>Trained Proffessor</p>
+            <h2 className='number'>{data.totalmain}+</h2>
+            <p>Total main Services</p>
           </div>
         </div>
 
         <div className="center_text">
           <div className="cen_text">
 
-            <h2 className='number'>45000+</h2>
-            <p>Trained Proffessor</p>
+            <h2 className='number'>{data.totalsub}+</h2>
+            <p>Other Services</p>
           </div>
         </div>
 
@@ -177,20 +189,20 @@ const TestiMonialsDetails = ({ testiMonialDetail }) => {
   const { name, address, description, img } = testiMonialDetail;
   console.log("testiMonialDetail" + testiMonialDetail)
   return (
-      <div className='d-flex justify-content-center flex-wrap'>
-          <div className="row">
-              <div class="item col" style={{ width: "400px" }}>
-                  <div class="shadow-effect">
-                      <img class="img-circle" src={img} />
-                      <p>{description}</p>
-                  </div>
-                  <div class="testimonial-name">
-                      <h5>{name}</h5>
-                      <small>{address}</small>
-                  </div>
-              </div>
+    <div className='d-flex justify-content-center flex-wrap'>
+      <div className="row">
+        <div class="item col" style={{ width: "400px" }}>
+          <div class="shadow-effect">
+            <img class="img-circle" src={img} />
+            <p>{description}</p>
           </div>
+          <div class="testimonial-name">
+            <h5>{name}</h5>
+            <small>{address}</small>
+          </div>
+        </div>
       </div>
+    </div>
 
   );
 };

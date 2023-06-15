@@ -120,6 +120,9 @@ router1.post("/schedulsp", bookser.getdatabySpid);
 router1.post("/activeser", bookser.updatedatabyUserid);
 router1.post("/activesp", bookser.getActivebySpid);
 router1.post("/activeuser", bookser.getactivebyUserid);
+router1.get("/getall", bookser.getalldata);
+router1.get("/order", bookser.counttotalorder);
+
 
 router1.get("/dashboard", dashboard.total);
 // router1.post("/getuser",logcontroller.getuserlogin);
