@@ -43,12 +43,12 @@ export const Ser_pro_contact = () => {
         <>
             <Ser_Pro_Navbar />
             <Modal show={isshow}  >
-                <Modal.Header className='text-center'>
+                {/* <Modal.Header className='text-center'>
                     <Modal.Title className='' >
                         Contact Details
                     </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
+                </Modal.Header> */}
+                <Modal.Body style={{fontWeight:"bold"}}>
                     {msg}
                 </Modal.Body>
                 <Modal.Footer>
@@ -57,52 +57,6 @@ export const Ser_pro_contact = () => {
                     </Button>
                 </Modal.Footer>
             </Modal>
-            {/* <section class="chome d-xs-none d-sm-block d-md-block d-lg-block" style={{ marginTop: "-30px", zIndex: "-5" }}>
-                <div class="chome  d-xs-none d-sm-block d-md-block d-lg-block">
-                    <svg viewBox="0 0 500 500"
-                        preserveAspectRatio="xMinYMin meet"
-                        style={{ zIndex: "-2" }}>
-
-                        <path d="M0, 100 C150, 200 350,
-                0 500, 100 L500, 00 L0, 0 Z"
-                            style={{
-                                stroke: "none",
-                                fill: 'rgba(80, 90, 80, 0.5)'
-                            }}>
-                        </path>
-                    </svg>
-                </div>
-
-                <div class="chome ">
-                    <svg viewBox="0 0 500 500"
-                        preserveAspectRatio="xMinYMin meet"
-                        style={{ zIndex: "-1" }}>
-
-                        <path d="M0, 80 C300, 0 400,
-                300 500, 50 L500, 00 L0, 0 Z"
-                            style={{
-                                stroke: "none",
-                                fill: 'rgb(90, 80, 80, 0.5)'
-                            }}>
-                        </path>
-                    </svg>
-                </div>
-
-                <div class="chome ">
-                    <svg viewBox="0 0 500 500"
-                        preserveAspectRatio="xMinYMin meet"
-                        style={{ zIndex: "-3" }}>
-
-                        <path d="M0, 100 C150, 300 350,
-                0 500, 100 L500, 00 L0, 0 Z"
-                            style={{
-                                stroke: "none",
-                                fill: 'rgba(120,120,120, 0.5)'
-                            }}>
-                        </path>
-                    </svg>
-                </div>
-            </section> */}
             <section class="contact-form-sec">
                 <div class="container" style={{ marginTop: "0px" }}>
                     <div class="row d-flex justify-content-lg-between justify-content-md-center">
@@ -117,23 +71,23 @@ export const Ser_pro_contact = () => {
                                 <div class="ms-3">
                                     <b>
                                         <h6><b>Address</b></h6>
-                                        <p>Office - Bhd. Shivalik Complex, Opp. Bharucha Hospital, Ellora Park,Gorwa - Subhanpura
-                                            Road,
-                                            Vadodara.</p></b>
+                                        <p>J P Dawer Institute Of Information
+
+Science & Technology</p></b>
                                 </div>
                             </div>
                             <div class="contact-info-div d-flex mb-4">
                                 <span><i class="fa-sharp fa-solid fa-phone bg-dark mt-1" style={{ color: "white" }}></i></span>
                                 <div class="ms-3">
                                     <h6><b>Phone</b></h6>
-                                    <p><b>7574003377, 9601277779</b></p>
+                                    <p><b>+91 90160 63452</b></p>
                                 </div>
                             </div>
                             <div class="contact-info-div d-flex mb-4">
                                 <span><i class="fa-regular fa-envelope bg-dark mt-1" style={{ color: "white" }}></i></span>
                                 <div class="ms-3">
                                     <h6><b>Email</b></h6>
-                                    <p><b>we4uservices3@gmail.com</b></p>
+                                    <p><b>we4uservices3@Gmail.Com</b></p>
                                 </div>
                             </div>
                         </div>

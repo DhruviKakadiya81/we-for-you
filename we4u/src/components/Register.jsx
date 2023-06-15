@@ -23,7 +23,7 @@ export const Register = (props) => {
     if (respo.data.success === true) {
       setmessage(respo.data.msg);
       localStorage.setItem("token", respo.data.token);
-      alert(localStorage.getItem("token"));
+      // alert(localStorage.getItem("token"));
       if (firmObj.state === 1) {
         navigate("/login");
       }

@@ -274,12 +274,17 @@ const Update = (props) => {
     const [serviceid, setserviceid] = useState(props.data.serviceid);
     const [getser, setgetser] = useState([]);
     // const navigate = useNavigate();
+  const [msg, setmsg] = useState();
+
     const [isshow, invokemodel] = useState(false);
     const initmodel = () => {
         return invokemodel(!isshow);
     }
 
-
+    const [isshow1, invokemodel1] = useState(false);
+    const initmodel1 = () => {
+      return invokemodel1(!isshow1);
+    }
 
 
     const handleservice = async () => {
@@ -300,9 +305,14 @@ const Update = (props) => {
         if (respo.data.success === true) {
             // alert("updated successfully")
             initmodel();
+            setmsg("Updated Successfully")
+            initmodel1();
         }
         else {
-            alert("not updated");
+            initmodel();
+            setmsg("Not Updated!!");
+            initmodel1();
+            // alert("not updated");
         }
 
     }
@@ -320,6 +330,20 @@ const Update = (props) => {
     return (
 
         <>
+        <Modal show={isshow1}  >
+        <Modal.Body>
+          <div className="">
+            <b>
+              {msg}
+            </b>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="dark" className="mx-3" type='submit' onClick={initmodel1}>
+            Ok
+          </Button>
+        </Modal.Footer>
+      </Modal>
             <Button variant="contained" style={{ backgroundColor: "rgb(50,50,50)", color: "white" }} onClick={initmodel}>
                 Edit
             </Button>

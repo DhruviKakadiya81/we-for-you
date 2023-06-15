@@ -325,7 +325,7 @@ const ViewMore = (props) => {
     const adddata = async (spid, serviceid, userid) => {
 
         if (serviceid !== null || serviceid !== undefined || userid !== null || userid !== undefined) {
-            alert(userid);
+            // alert(userid);
             const bookdata = { userid, serviceid, spid }
             const response = await cartservice.addtocart(bookdata);
             console.log("response of book service === >", response);
@@ -388,11 +388,11 @@ const ViewMore = (props) => {
                         <p>{props.prize.map((key) => (
                             <>
                                 <div className='row'>
-                                    <div class="col">
-                                        <p className='ser_2_label ser_all_ser_prize my-1 py-2'><span className='Modal_details'>{key.subname.subname} : </span>{key.prize}  Rs.</p>
+                                    <div class="col-sm-8">
+                                        <p className='modal_det_par my-1'><span className='Modal_details'>{key.subname.subname} : </span>{key.prize}  Rs.</p>
                                     </div>
                                     <div class="col-sm-4">
-                                        <button className='px-2 py-1 my-1' style={{ border: "none", borderRadius: "5px", backgroundColor: "rgb(50,50,50)", color: "white" }} onClick={(event) => { handledata(props.sp._id, key._id) }}>Book Now</button>
+                                        <button className='px-2 py-2 my-1' style={{ border: "none", borderRadius: "5px", backgroundColor: "rgb(50,50,50)", color: "white" }} onClick={(event) => { handledata(props.sp._id, key._id) }}>Book Now</button>
                                     </div>
                                 </div>
                             </>
