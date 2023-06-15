@@ -314,7 +314,7 @@ export const Home = () => {
                 <div className="card my-1">
                   <img src="Images/keratin.jpg" className="card-img-top" alt="..." />
                   <div className="card-body">
-                    <h5 className="card-title text-center">Keratin</h5>
+                    <h5 className="card-title text-center">Pre Bridal Grooming</h5>
                     <p className="card-text text-justify">A keratin treatment is a process that smooths and often straightens hair.</p>
                   </div>
                   <div className="star-rating text-center">

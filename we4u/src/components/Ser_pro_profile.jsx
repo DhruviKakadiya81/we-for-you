@@ -196,9 +196,7 @@ const ChangePass = (props) => {
     }
   }
 
-<<<<<<< HEAD
-  useEffect(() => {
-=======
+
   const handletogglepass = async (event) => {
     //event.preventDefault();
     var x = document.getElementById("id_password");
@@ -235,9 +233,7 @@ const ChangePass = (props) => {
     }
   };
 
-  useEffect(()=>{
->>>>>>> 9d1ea7c10321cd85af065e403c925337d474ce09
-    setserid(props.serid);
+  useEffect(() => {
     setmsg('');
   }, [props])
 
@@ -260,33 +256,33 @@ const ChangePass = (props) => {
               <InputLabel className=''>Old Password</InputLabel>
               <Input type="password" name="name" id="id_password" className='my-3' onChange={(event) => { setoldpassword(event.target.value) }} />
               <p><i
-                  className={eye}
-                  id="togglePassword"
-                  style={{ marginTop:"-43px", marginLeft: "150px", cursor: "pointer", position: "absolute", cursor: "pointer" }}
-                  onClick={handletogglepass}
-                ></i></p>
+                className={eye}
+                id="togglePassword"
+                style={{ marginTop: "-43px", marginLeft: "150px", cursor: "pointer", position: "absolute", cursor: "pointer" }}
+                onClick={handletogglepass}
+              ></i></p>
             </FormControl><br />
 
             <FormControl className='r'>
               <InputLabel className='' >New Password</InputLabel>
               <Input type="password" name="name" id="id_password1" className='my-3' onChange={(event) => { setnewpassword(event.target.value) }} />
               <p><i
-                  className={eye1}
-                  id="togglePassword"
-                  style={{ marginTop:"-43px", marginLeft: "150px", cursor: "pointer", position: "absolute", cursor: "pointer" }}
-                  onClick={handletogglepass1}
-                ></i></p>
+                className={eye1}
+                id="togglePassword"
+                style={{ marginTop: "-43px", marginLeft: "150px", cursor: "pointer", position: "absolute", cursor: "pointer" }}
+                onClick={handletogglepass1}
+              ></i></p>
             </FormControl><br />
 
             <FormControl className=''>
               <InputLabel className='' >Confirm New Password</InputLabel>
               <Input type="password" name="name" id="id_password2" className='my-3' onChange={(event) => { setconpassword(event.target.value) }} />
               <p><i
-                  className={eye2}
-                  id="togglePassword"
-                  style={{ marginTop:"-43px", marginLeft: "200px", cursor: "pointer", position: "absolute", cursor: "pointer" }}
-                  onClick={handletogglepass2}
-                ></i></p>
+                className={eye2}
+                id="togglePassword"
+                style={{ marginTop: "-43px", marginLeft: "200px", cursor: "pointer", position: "absolute", cursor: "pointer" }}
+                onClick={handletogglepass2}
+              ></i></p>
             </FormControl><br />
           </div>
         </Modal.Body>
