@@ -238,7 +238,7 @@ const Delete = (props) => {
             </Button>
             <Modal show={isshow} style={{ overflowX: "scroll", width: "100%", marginTop: "px" }} >
                 <Modal.Header closeButton onClick={initmodel}>
-                    <Modal.Title className='' >
+                    <Modal.Title className='' style={{fontWeight:"bold"}}>
                         Delete Sub Service
                     </Modal.Title>
                 </Modal.Header>
@@ -323,7 +323,7 @@ const Update = (props) => {
             </Button>
             <Modal className='mx-auto' show={isshow} style={{ overflowX: "", width: "" }} >
                 <Modal.Header closeButton onClick={initmodel}>
-                    <Modal.Title className='' >
+                    <Modal.Title className='' style={{fontWeight:"bold"}}>
                         Update Sub service
                     </Modal.Title>
                 </Modal.Header>
