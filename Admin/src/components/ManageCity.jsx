@@ -225,24 +225,24 @@ const Delete = (props) => {
         Delete
       </Button>
       <Modal show={isshow} style={{ overflowX: "scroll", width: "100%", marginTop: "px" }} >
-        {/* <Modal.Header closeButton onClick={initmodel}>
+        <Modal.Header closeButton onClick={initmodel}>
           <Modal.Title className='' style={{ fontWeight: "bold" }}>
             Delete City
           </Modal.Title>
-        </Modal.Header> */}
+        </Modal.Header>
 
-        <Modal.Body style={{fontWeight:"bold"}}>
+        <Modal.Body>
           <div className="dlt">
             Are You Sure To Delete City?
           </div>
 
         </Modal.Body>
         <Modal.Footer>
-        <Button variant="danger" className="mx-3" type='submit' onClick={(e) => handledelete(props.id, e)}>
-            Delete
-          </Button>
           <Button variant="dark" className="mx-3" onClick={initmodel}>
             CLOSE
+          </Button>
+          <Button variant="danger" className="mx-3" type='submit' onClick={(e) => handledelete(props.id, e)}>
+            Delete
           </Button>
         </Modal.Footer>
 
@@ -347,3 +347,7 @@ const Update = (props) => {
     </>
   )
 }
+
+
+
+

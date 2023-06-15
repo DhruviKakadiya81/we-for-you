@@ -63,10 +63,9 @@ const About = () => {
   ]
   //Owl Carousel Settings
   const options = {
-    loop: true,
-    center: true,
+    loop: false,
+    center: false,
     items: 3,
-    margin: 0,
     autoplay: true,
     dots: false,
     autoplayTimeout: 4000,

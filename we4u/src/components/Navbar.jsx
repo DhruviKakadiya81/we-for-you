@@ -139,6 +139,9 @@ export const Navbar = () => {
                 <Link className="nav-link" to="/">Home</Link>
               </li>
               <li className="nav-item">
+                <Link className="nav-link" to="/sphome2">Professional</Link>
+              </li>
+              <li className="nav-item">
                 <Link className="nav-link" to="/custdash" style={{ display: login ? "block" : "none" }}>Dashboard</Link>
               </li>
               <li className="nav-item">

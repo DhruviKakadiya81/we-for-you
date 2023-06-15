@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Navbar } from './Navbar'
 import getuser from '../services/GetUser'
-import {Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import cartser from '../services/cartservics'
 import userdata from '../services/UserProfile'
 import Modal from 'react-bootstrap/Modal';
@@ -118,7 +118,7 @@ export const Authpage = () => {
                               <th class="text-center">Book Service</th>
 
 
-                              <th class="text-center"><a class="btn btn-sm btn-outline-danger bg-danger text-white" href="#">Clear Cart</a></th>
+                              <th class="text-center">Clear Cart</th>
 
 
                             </tr>
@@ -179,7 +179,7 @@ export const Authpage = () => {
                           <tr className='pt-5' >
                             <td style={{ alignItems: "right", float: "right", border: "none" }}>
 
-                              <div class="column "><a class="btn btn-success " href="#">Book Now</a></div>
+                              {/* <div class="column "><a class="btn btn-success " href="#">Book Now</a></div> */}
                             </td>
 
                             <td style={{ alignItems: "right", float: "left", border: "none" }}>
@@ -397,7 +397,7 @@ const Delete = (props) => {
   return (
     <>
 
-      <i class="fa fa-trash" onClick={initmodel} style={{ cursor: "p" }}></i>
+      <i class="fa fa-trash" onClick={initmodel} style={{ cursor: "pointer" }}></i>
       <Modal show={isshow}>
         <Modal.Body>
           Are You sure To Delete Service into Cart..?

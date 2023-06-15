@@ -84,11 +84,9 @@ function App() {
           {/* <Route path="/about" element={<TestiMonials/>}></Route> */}
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/about" element={<About />}></Route>
-          {isLogin ? (
-            <Route path="/cart" element={<Authpage />}></Route>
-          ) : (
-            <Route path="/login" element={<Login />}></Route>
-          )}
+
+          <Route path="/cart" element={<Authpage />}></Route>
+
           {isLogin ? (
             <Route path="/profile" element={<Profile />}></Route>
           ) : (
