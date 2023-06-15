@@ -158,7 +158,7 @@ export const Service2 = () => {
         <>
             <Modal show={isshow}  >
                 <Modal.Header className='text-center'>
-                    <Modal.Title className='' >
+                    <Modal.Title className='' style={{fontWeight:"bold"}}>
                         Book Service
                     </Modal.Title>
                 </Modal.Header>
@@ -262,7 +262,7 @@ export const Service2 = () => {
                                                                     }
                                                                     <div className='row text-center'>
                                                                     <div class="col-sm-6">
-                                                                    <ViewMore shopname={sp.shopname} address={sp.address} gmail={sp.pemail} mobileno={sp.mobileno} city={sp.cityid.cityname} area={sp.areaid.areaname} gender={sp.gender} firstname={sp.firstname} lastname={sp.lastname}/>
+                                                                    <ViewMore shopname={sp.shopname} address={sp.address} gmail={sp.pemail} mobileno={sp.mobileno} city={sp.cityid.cityname} area={sp.areaid.areaname} gender={sp.gender} firstname={sp.firstname} lastname={sp.lastname} prize={sp.subserid}/>
                                                                     </div>
                                                                     <div class="col-sm-6">
                                                                     <button type='button' onClick={(event) => { handlebookser(sp)}} className='ser_2_hire_btn px-3 py-2 my-2'>Hire</button>
@@ -304,7 +304,7 @@ const ViewMore = (props) => {
         </Button>
         <Modal show={isshow} style={{overflowX:"scroll",width:"100%",marginTop:"px"}} >
         <Modal.Header className='mx-auto'>
-                    <Modal.Title className='f-w-500'  style={{fontSize:"25px"}}>
+                    <Modal.Title className='f-w-500' style={{fontWeight:"bold",fontSize:"25px"}}>
                         {props.shopname}
                     </Modal.Title>
                 </Modal.Header>

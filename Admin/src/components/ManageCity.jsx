@@ -226,7 +226,7 @@ const Delete = (props) => {
         </Button>
         <Modal show={isshow} style={{overflowX:"scroll",width:"100%",marginTop:"px"}} >
           <Modal.Header closeButton onClick={initmodel}>
-            <Modal.Title className='' > 
+            <Modal.Title className='' style={{fontWeight:"bold"}}> 
               Delete City
             </Modal.Title>
           </Modal.Header>
@@ -293,7 +293,7 @@ const Update = (props) => {
       </Button>
       <Modal show={isshow} style={{overflowX:"scroll",width:"100%"}} >
         <Modal.Header closeButton onClick={initmodel}>
-          <Modal.Title className='' > 
+          <Modal.Title className='' style={{fontWeight:"bold"}} > 
             Update City
           </Modal.Title>
         </Modal.Header>

@@ -1,11 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import { useFormik } from 'formik';
-import { useNavigate } from "react-router-dom";
+import { useNavigate , Link } from "react-router-dom";
 import apiServices from "../services/LoginData.js";
 import '../css/Login.css';
 import { Button, Modal } from 'react-bootstrap';
 import service from '../services/Services';
+
 export const Login = (props) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -119,12 +120,15 @@ export const Login = (props) => {
           </Modal.Footer>
         </Modal>
         <section className="d-flex mb-5" id="header">
-          <div className="container pt-5 pb-5 mb-5 pb-5 main_div1"  >
+          <div className="container pt-3 pb-5 mb-5 pb-5 main_div1"  >
+          <div className="" style={{float:"right"}} >
+                <p><Link className="nav-link" to="/" ><i class="fa-solid fa-house fa-xl"></i></Link></p>
+              </div>
             <div className="row mx-lg-5 mx-md-2 mx-sm-2">
               <div className="col-md-6 pt-5 mx-auto pt-lg-0 order-1  d-flex justify-content-center order-lg-2 header-image" >
                 <img src="Images/login2.png" width={350} height={360} className="" alt="" />
               </div>
-              <form className="col-lg-6 col-md-6 pt-5 pt-lg-0 order-2 order-lg-1">
+              <form className="col-lg-6  mt-5 col-md-6 pt-5 pt-lg-0 order-2 order-lg-1">
                 <h2 style={{ fontWeight: "700" }}>SIGN In</h2>
                 <i class="fa-solid fa-envelope  fa-xm icon_mail" ></i>
                 <input
@@ -209,12 +213,15 @@ export const Login = (props) => {
           </Modal.Footer>
         </Modal>
         <section className="d-flex mb-5" id="header">
-          <div className="container pt-5 pb-5 mb-5 pb-5 main_div1" >
+          <div className="container pt-3 pb-5 mb-5 pb-5 main_div1" >
+          <div className="" style={{float:"right"}} >
+                <p><Link className="nav-link" to="/" ><i class="fa-solid fa-house fa-xl"></i></Link></p>
+              </div>
             <div className="row mx-lg-5 mx-md-2 mx-sm-2">
               <div className="col-md-6 pt-5 mx-auto pt-lg-0 order-1  d-flex justify-content-center order-lg-2 header-image" >
                 <img src="Images/login2.png" width={350} height={360} className="" alt="" />
               </div>
-              <form className="col-lg-6 col-md-6 pt-5 pt-lg-0 order-2 order-lg-1">
+              <form className="col-lg-6 mt-5 col-md-6 pt-5 pt-lg-0 order-2 order-lg-1">
                 <h2 style={{ fontWeight: "700" }}>SIGN IN</h2>
                 <i class="fa-solid fa-envelope  fa-xm icon_mail" ></i>
                 <input

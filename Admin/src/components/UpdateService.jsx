@@ -47,7 +47,7 @@ export const UpdateService = (props) => {
       </Button>
       <Modal show={isshow} style={{overflowX:"scroll",width:"100%"}} >
         <Modal.Header closeButton onClick={initmodel}>
-          <Modal.Title className='' > 
+          <Modal.Title className='' style={{fontWeight:"bold"}}> 
             Update Service
           </Modal.Title>
         </Modal.Header>

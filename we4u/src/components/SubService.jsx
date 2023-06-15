@@ -212,17 +212,17 @@ export const SubService = () => {
                                                 <div className="card ser_2_main_card px-2 py-2 mx-auto my-4">
                                                     <div className="card-body">
                                                     <h2 className='ser_2_head mb-3'> {sp.shopname}  </h2>
-                                                            <p className="ser_2_label " key={sp.serviceid._id} style={{ fontSize: "17px" }}> Name : {sp.firstname} {sp.lastname}</p>
+                                                            <p className="ser_2_label " key={sp.serviceid._id}> Name : {sp.firstname} {sp.lastname}</p>
                                                             {/* <p>{sp.gender}</p> */}
                                                             {/* <p className=" ps-5 " style={{ fontSize: "17px" }}>  Address :: {sp.address}  <br /><br />  {sp.cityid ? <p className=" " style={{ fontSize: "17px" }} >City :: {sp.cityid.cityname} </p> : <br />}</p> */}
                                                             {/* <p className=" ps-5 " style={{ fontSize: "17px" }}> {sp.areaid ? <p style={{ fontSize: "17px" }}>Area:: {sp.areaid.areaname}</p> : <br />}</p> */}
-                                                            {/* <p className=" ps-5 " style={{ fontSize: "17px" }}> Mobile No : {sp.mobileno} </p> */}
-                                                            <p className="ser_2_label " style={{ fontSize: "17px" }}> Email : {sp.pemail} </p>
+                                                            <p className="ser_2_label"> Mobile No : {sp.mobileno} </p>
+                                                            <p className="ser_2_label "> Email : {sp.pemail} </p>
                                                             {/* <h1 className='my-4'>My Services</h1> */}
-                                                            <p>{sp.subserid.map((key) => (
+                                                            {/* <p>{sp.subserid.map((key) => (
                                                                 <>
                                                                 <div className='row'>
-                                                                    <div class="col-sm-8">
+                                                                    <div>
                                                                     <p className='ser_2_label ser_all_ser_prize'> {key.subname.subname} : {key.prize} Rs.</p>
                                                                     </div>
                                                                     <div class="col-sm-4">
@@ -230,8 +230,15 @@ export const SubService = () => {
                                                                     </div>
                                                                     </div> 
                                                                 </>
-                                                            ))}</p>
-                                                       <ViewMore shopname={sp.shopname} firstname={sp.firstname} lastname={sp.lastname} address={sp.address} area={sp.areaid.areaname} mobileno={sp.mobileno} gmail={sp.pemail}/>
+                                                            ))}</p> */}
+
+                                                            <div className='row text-center'>
+                                                                    <div class="col-sm-6">
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                   <ViewMore shopname={sp.shopname} firstname={sp.firstname} lastname={sp.lastname} address={sp.address} area={sp.areaid.areaname} mobileno={sp.mobileno} gmail={sp.pemail} prize={sp.subserid}/> 
+                                                                    </div>
+                                                            </div> 
                                                     </div>
                                                 </div>
                                             </div>
@@ -250,6 +257,7 @@ export const SubService = () => {
 
 const ViewMore = (props) => {
     console.log(props);
+    console.log(props.prize)
     const [isshow, invokemodel] = useState(false);
     const initmodel = () => {
         return invokemodel(!isshow);
@@ -257,12 +265,12 @@ const ViewMore = (props) => {
 
     return(
       <>
-       <Button variant="" className='my-2 ser_2_hire_btn' onClick={initmodel}>
+       <Button variant="" className='my-1 ser_hire_btn justify-content-right' onClick={initmodel}>
          View More
         </Button>
         <Modal show={isshow} style={{overflowX:"scroll",width:"100%",marginTop:"px"}} >
         <Modal.Header className='mx-auto'>
-                    <Modal.Title className='f-w-500'  style={{fontSize:"25px"}}>
+                    <Modal.Title className='' style={{fontWeight:"bold",fontSize:"25px"}}>
                         {props.shopname}
                     </Modal.Title>
                 </Modal.Header>
@@ -273,6 +281,19 @@ const ViewMore = (props) => {
                <p><span className='Modal_details'>Email : </span>{props.gmail}</p>
                <p><span className='Modal_details'>Mobile No : </span>{props.mobileno}</p>
                <p><span className='Modal_details'>Area : </span>{props.area}</p>
+    
+               <p>{props.prize.map((key) => (
+                                                                <>
+                                                                <div className='row'>
+                                                                    <div class="col-sm-8">
+                                                                      <p className='ser_2_label ser_all_ser_prize my-1'><span className='Modal_details'>{key.subname.subname} : </span>{key.prize}  Rs.</p>
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+                                                                    <button className='px-2 py-1 my-1' style={{border:"none",borderRadius:"5px",backgroundColor:"rgb(50,50,50)",color:"white"}}>Book Now</button>
+                                                                    </div>
+                                                                    </div> 
+                                                                </>
+                                                            ))}</p>
             </div>
             </Modal.Body>
             <Modal.Footer>
