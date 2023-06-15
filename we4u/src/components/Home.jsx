@@ -31,6 +31,12 @@ export const Home = () => {
     }
   }
 
+  const handlebeauty = () => {
+    // event.preventDefault();
+    localStorage.setItem("serviceid", "6479f8bc4fe5a1498d94527f");
+    navigate("/service")
+  }
+
   function success(position) {
 
     const latitude = position.coords.latitude;
@@ -153,9 +159,9 @@ export const Home = () => {
 
                   <input id="search" type="text" list="browsers" placeholder="What are you looking for?" onChange={(event) => { setsearchser(event.target.value) }} />
                 </div>
-                <div className="input-field second-wrap">
+                {/* <div className="input-field second-wrap">
                   <input id="location" type="button" placeholder="location" value={location ? location : "Location"} onClick={handleLocationClick} />
-                </div>
+                </div> */}
                 <div className="input-field third-wrap">
 
                   <button className="btn-search" type="button" onClick={(event) => { event.preventDefault(); localStorage.setItem("serviceid", searchid); navigate("/service") }}>Search</button>
@@ -166,7 +172,7 @@ export const Home = () => {
         </div>
       </section>
 
-      <section className="services1" style={{ minHeight: "300px" }}>
+      <section className="services1" style={{ minHeight: "300px", cursor: "pointer" }}>
 
         <h1 className='serviceh1 mt-5' style={{ fontWeight: "700" }}>  Our Services </h1>
 
@@ -283,73 +289,53 @@ export const Home = () => {
             <div className="col-lg-7 col-md-12 col-sm-12">
               <div className="process-heading text-center mb-5 ">
                 <span className="gradient-text feedback_title">Feedback</span>
-                <h2 className="mb-3 mt-3">What they’re talking about
-                  our company</h2>
+                <h2 className="mb-3 mt-3">Our Trending Services</h2>
               </div>
             </div>
           </div>
 
-          <div className="row d-flex justify-content-center" id="feedback-carousel">
+          <div className="row d-flex justify-content-center">
 
-            <OwlCarousel ref={owl} options={options}>
-              <div className="item d-flex justify-content-center">
-                <div className="card my-1">
-                  <img src="Images/manicure.jpg" className="card-img-top" alt="..." />
-                  <div className="card-body">
-                    <h5 className="card-title text-center">Manicure</h5>
-                    <p className="card-text text-justify">A Manicure usually consists of filing and shaping the free edge of nails, pushing and clipping.</p>
-                  </div>
-                  <div className="star-rating text-center">
-                    <span><i className="bi bi-star-fill" style={{ color: "#ffff00" }}></i></span>
-                    <span><i className="bi bi-star-fill" style={{ color: "#ffff00" }}></i></span>
-                    <span><i className="bi bi-star-fill" style={{ color: "#ffff00" }}></i></span>
-                    <span><i className="bi bi-star-fill" style={{ color: "#ffff00" }}></i></span>
-                    <span><i className="bi bi-star-fill" style={{ color: "#ffff00" }}></i></span>
-                    <span>5.0</span>
-                  </div>
-                </div>
+
+
+            <div className="card my-1 m-5">
+              <img src="Images/manicure.jpg" className="" alt="..." />
+              <div className="card-body">
+                <h5 className="card-title text-center">Manicure</h5>
+                <p className="card-text text-justify">A Manicure usually consists of filing and shaping the free edge of nails, pushing and clipping.</p>
+                <button className='btn' type='button' onClick={handlebeauty}>view more</button>
 
               </div>
-              <div className="item d-flex justify-content-center">
-                <div className="card my-1">
-                  <img src="Images/keratin.jpg" className="card-img-top" alt="..." />
-                  <div className="card-body">
-                    <h5 className="card-title text-center">Pre Bridal Grooming</h5>
-                    <p className="card-text text-justify">A keratin treatment is a process that smooths and often straightens hair.</p>
-                  </div>
-                  <div className="star-rating text-center">
-                    <span><i className="bi bi-star-fill" style={{ color: "#ffff00" }}></i></span>
-                    <span><i className="bi bi-star-fill" style={{ color: "#ffff00" }}></i></span>
-                    <span><i className="bi bi-star-fill" style={{ color: "#ffff00" }}></i></span>
-                    <span><i className="bi bi-star-fill" style={{ color: "#ffff00" }}></i></span>
-                    <span><i className="bi bi-star-fill" style={{ color: "#ffff00" }}></i></span>
-                    <div>5.0</div>
-                  </div>
-                </div>
+
+
+            </div>
+            <div className="card my-1 m-5">
+              <img src="Images/keratin.jpg" className="" alt="..." />
+              <div className="card-body">
+                <h5 className="card-title text-center">Keratin</h5>
+                <p className="card-text text-justify">A keratin treatment is a process that smooths and often straightens hair.</p>
+                <button className='btn' type='button' onClick={handlebeauty}>view more</button>
               </div>
-              <div className="item d-flex justify-content-center">
-                <div className="card my-1">
-                  <img src="Images/hair_cutting.jpg" className="card-img-top" alt="..." />
-                  <div className="card-body">
-                    <h5 className="card-title text-center">Hair Cutting</h5>
-                    <p className="card-text text-justify">We Are Doing Many Types Of Hair Cutting like layered, one-length, Face-Look.</p>
-                  </div>
-                  <div className="star-rating text-center">
-                    <span><i className="bi bi-star-fill" style={{ color: "#ffff00" }}></i></span>
-                    <span><i className="bi bi-star-fill" style={{ color: "#ffff00" }}></i></span>
-                    <span><i className="bi bi-star-fill" style={{ color: "#ffff00" }}></i></span>
-                    <span><i className="bi bi-star-fill" style={{ color: "#ffff00" }}></i></span>
-                    <span><i className="bi bi-star-fill" style={{ color: "#ffff00" }}></i></span>
-                    <span>5.0</span>
-                  </div>
-                </div>
+
+            </div>
+
+            <div className="card my-1 m-5">
+              <img src="Images/hair_cutting.jpg" className="" alt="..." />
+              <div className="card-body">
+                <h5 className="card-title text-center">Hair Cutting</h5>
+                <p className="card-text text-justify">We Are Doing Many Types Of Hair Cutting like layered, one-length, Face-Look.</p>
+                <button className='btn' type='button' onClick={handlebeauty}>view more</button>
               </div>
-            </OwlCarousel>
+
+            </div>
+
+
           </div>
-          <div className="owl-carousel__nav">
+          {/* <div className="owl-carousel__nav">
+            <button className="owl-carousel__prev" onClick={handlePrevClick}>previous</button>
             <button className="owl-carousel__next" onClick={handleNextClick}>Next</button>
-            <button className="owl-carousel__prev" onClick={handlePrevClick}>Prev</button>
-          </div>
+
+          </div> */}
         </div>
 
 

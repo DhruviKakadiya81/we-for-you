@@ -261,6 +261,47 @@ const getActivebySpid = async (req, res) => {
     }
 }
 
+const getalldata = async (req, res) => {
+    try {
+        const data = await finalbooking.find({ status: "Active" }).populate({
+            path: 'userid', populate: {
+                path: 'userid', model: 'User'
+            }
+        }).populate('spid').populate({
+            path: 'serviceid', populate: {
+                path: 'subname', model: 'SubServiceAdmin', populate: {
+                    path: 'serviceid', model: 'Service',
+                }
+            }
+        });
+        if (data.length <= 0) {
+            return res.send({ success: false, data: data, msg: "At This Time There is no active services" });
+        }
+        else {
+            return res.send({ success: true, data: data, msg: "At This Time There is active services" });
+        }
+    } catch (error) {
+
+        return res.send({ success: false, data: [], msg: "Internal SERVER error" });
+    }
+}
+
+const counttotalorder = async (req, res) => {
+    try {
+        const data = await finalbooking.find({ status: "Completed" }).count();
+        const data2 = await finalbooking.find().count();
+        if (!data || !data2) {
+            return res.send({ success: false, data: data, data2: data2, msg: "At This Time There is no active services" });
+        }
+        else {
+            return res.send({ success: true, data: data, data2: data2, msg: "At This Time There is active services" });
+        }
+    } catch (error) {
+
+        return res.send({ success: false, data: [], data2: [], msg: "Internal SERVER error" });
+    }
+}
+
 
 
 module.exports = {
@@ -269,5 +310,7 @@ module.exports = {
     getdatabySpid,
     updatedatabyUserid,
     getActivebySpid,
-    getactivebyUserid
+    getactivebyUserid,
+    getalldata,
+    counttotalorder
 }

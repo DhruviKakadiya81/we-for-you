@@ -11,6 +11,9 @@ const AdminDashboard = () => {
   const [data, setdata] = useState();
   const [spmsg, setspmsg] = useState([]);
   const [user, setuser] = useState([]);
+  const [Active, setActive] = useState([]);
+  const [data2, setdata2] = useState();
+  let index = 1;
   const [state, setstate] = useState({
     options: {
       chart: {
@@ -63,13 +66,17 @@ const AdminDashboard = () => {
     setspmsg(response2.data.data);
     const response3 = await dashboard.showusermsg();
     setuser(response3.data.data);
+    const response4 = await dashboard.getallactive();
+    setActive(response4.data.data);
+    const response5 = await dashboard.order();
+    setdata2(response5.data);
     console.log(response);
   }
 
   useEffect(() => {
     handledetails();
   }, [])
-  console.log("1", data); console.log("2", spmsg); console.log("3", user);
+  console.log("1", data); console.log("2", spmsg); console.log("3", user); console.log("4", Active); console.log("5", data2);
 
   return (
     <>
@@ -104,7 +111,7 @@ const AdminDashboard = () => {
                     <div class="card-block">
                       <h6 class="m-b-20">Total Sub Service</h6>
                       <h2 class="text-right"><i class="fa-solid fa-business-time"></i><span className='mx-3'>{data.totalsub}</span></h2>
-                      <p class="m-b-0">Total Main Service<span class="f-right" >{data.totalmains}</span></p>
+                      <p class="m-b-0">Total Main Service<span class="f-right" >{data.totalmain}</span></p>
                     </div>
                   </div>
                 </div>
@@ -112,9 +119,9 @@ const AdminDashboard = () => {
                 <div class="col-md-4 col-xl-3">
                   <div class="card bg-c-pink order-card">
                     <div class="card-block">
-                      <h6 class="m-b-20">Upcoming Order</h6>
-                      <h2 class="text-right"><i class="fa fa-credit-card f-left"></i><span className='mx-3'>486</span></h2>
-                      <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+                      <h6 class="m-b-20">Total Order</h6>
+                      <h2 class="text-right"><i class="fa fa-credit-card f-left"></i><span className='mx-3'>{data2.data2}</span></h2>
+                      <p class="m-b-0">Completed Orders<span class="f-right">{data2.data}</span></p>
                     </div>
                   </div>
                 </div>
@@ -134,18 +141,34 @@ const AdminDashboard = () => {
                         <div class="tab-pane fade show active" id="tabs-eg-77">
                           <div class="card mb-3 widget-chart widget-chart2 text-left w-100">
                             <div class="widget-chat-wrapper-outer">
-                              <div class="widget-chart-wrapper widget-chart-wrapper-lg opacity-10 m-0">
+                              {/* <div class="widget-chart-wrapper widget-chart-wrapper-lg opacity-10 m-0">
                                 <div className="row">
-                                  {/* <div className="mixed-chart" style={{ overflowX: "auto" }}>
+                                  <div className="mixed-chart" style={{ overflowX: "auto" }}>
                                     <Chart
                                       options={state.options}
                                       series={state.series}
                                       type="bar"
                                       width="500"
                                     />
-                                  </div> */}
+                                  </div>
                                 </div>
-                              </div>
+                              </div> */}
+                              {/* <div class="widget-chat-wrapper-outer">
+                                <div class="widget-chart-wrapper widget-chart-wrapper-lg opacity-10 m-0">
+                                  <div className="row">
+                                    <div className="mixed-chart mx-auto" style={{ overflowX: "auto" }}>
+                                      <Chart
+                                        options={state2.options}
+                                        series={state2.series}
+                                        type="donut"
+                                        width="460"
+                                        className="mx-auto"
+
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div> */}
                             </div>
                           </div>
                           {/* <h6 class="text-muted  text-uppercase font-size-md opacity-5 font-weight-normal"></h6> */}
@@ -201,19 +224,51 @@ const AdminDashboard = () => {
                       <div class="tab-content">
                         <div class="tab-pane fade show active" id="tabs-eg-77">
                           <div class="card mb-3 widget-chart widget-chart2 text-left w-100">
-                            <div class="widget-chat-wrapper-outer">
+                            {/* <div class="widget-chat-wrapper-outer">
                               <div class="widget-chart-wrapper widget-chart-wrapper-lg opacity-10 m-0">
                                 <div className="row">
-                                  {/* <div className="mixed-chart" style={{ overflowX: "auto" }}>
+                                  <div className="mixed-chart" style={{ overflowX: "auto" }}>
                                     <Chart
                                       options={state.options}
                                       series={state.series}
                                       type="bar"
                                       width="500"
                                     />
-                                  </div> */}
+                                  </div>
                                 </div>
                               </div>
+                            </div> */}
+                            <div class="widget-chat-wrapper-outer">
+                              {/* <div class="widget-chat-wrapper-outer">
+                                <div class="widget-chart-wrapper widget-chart-wrapper-lg opacity-10 m-0">
+                                  <div className="row">
+                                    <div className="mixed-chart mx-auto" style={{ overflowX: "auto" }}>
+                                      <Chart
+                                        options={state2.options}
+                                        series={state2.series}
+                                        type="donut"
+                                        width="460"
+                                        className="mx-auto"
+
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div> */}
+                              {/* <div class="widget-chart-wrapper widget-chart-wrapper-lg opacity-10 m-0">
+                                <div className="row">
+                                  <div className="mixed-chart mx-auto" style={{ overflowX: "auto" }}>
+                                    <Chart
+                                      options={state2.options}
+                                      series={state2.series}
+                                      type="donut"
+                                      width="460"
+                                      className="mx-auto"
+
+                                    />
+                                  </div>
+                                </div>
+                              </div> */}
                             </div>
                           </div>
                           {/* <h6 class="text-muted  text-uppercase font-size-md opacity-5 font-weight-normal"></h6> */}
@@ -263,52 +318,63 @@ const AdminDashboard = () => {
               <div class="row">
                 <div class="col-md-12">
                   <div class="main-card mb-3 card">
-                    <div class="card-header">Active Users
-                      <div class="btn-actions-pane-right">
-                        <div role="group" class="btn-group-sm btn-group">
-                          <button class="active btn btn-focus">Last Week</button>
-                          <button class="btn btn-focus">All Month</button>
-                        </div>
-                      </div>
+                    <div class="card-header">
+                      Active Services
                     </div>
                     <div class="table-responsive">
                       <table class="align-middle mb-0 table table-borderless table-striped table-hover">
                         <thead>
                           <tr>
-                            <th class="text-center">#</th>
-                            <th>Name</th>
-                            <th class="text-center">City</th>
-                            <th class="text-center">Status</th>
-                            <th class="text-center">Actions</th>
+                            <th class="text-center">Index</th>
+
+                            <th>Service Name</th>
+                            <th class="text-center">Service  Provider  Name</th>
+                            <th class="text-center">User Name</th>
+                            {/* <th class="text-center"></th> */}
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
-                            <td class="text-center text-muted">#345</td>
-                            <td>
-                              <div class="widget-content p-0">
-                                <div class="widget-content-wrapper">
-                                  <div class="widget-content-left mr-3">
-                                    <div class="widget-content-left">
-                                      <img width="40" class="rounded-circle" src="assets/images/avatars/4.jpg" alt="" />
-                                    </div>
-                                  </div>
-                                  <div class="widget-content-left flex2">
-                                    <div class="widget-heading">John Doe</div>
-                                    <div class="widget-subheading opacity-7">Web Developer</div>
-                                  </div>
-                                </div>
-                              </div>
-                            </td>
-                            <td class="text-center">Madrid</td>
-                            <td class="text-center">
-                              <div class="badge badge-warning bg-warning">Pending</div>
-                            </td>
-                            <td class="text-center">
-                              <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">Details</button>
-                            </td>
+                            {(Active.length > 0) ?
+                              <>
+
+                                {
+                                  Active.map((key) => (
+                                    <>
+                                      <td class="text-center text-muted">{index++}</td>
+                                      <td >
+                                        <div class="  p-0 ">
+                                          <div class="d-flex">
+                                            <div class=" mr-3">
+                                              <div class="">
+                                                <img width="60" height="60" class="rounded-circle" src={"http://localhost:4000/image/" + key.serviceid.subname.image} alt="" />
+                                              </div>
+                                            </div>
+                                            <div class="ms-5">
+                                              <div class="widget-heading"><b>{key.serviceid.subname.serviceid.s_name}</b></div>
+                                              <div class="widget-subheading opacity-7">{key.serviceid.subname.subname}</div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td class="text-center">{key.spid.firstname} {key.spid.lastname}</td>
+                                      <td class="text-center">
+                                        {key.userid.firstname} {key.userid.lastname}
+                                      </td>
+                                      {/* <td class="text-center">
+                                <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">Details</button>
+                              </td> */}
+                                    </>
+                                  ))
+
+                                }
+                              </>
+
+                              :
+                              <li></li>
+                            }
                           </tr>
-                          <tr>
+                          {/* <tr>
                             <td class="text-center text-muted">#347</td>
                             <td>
                               <div class="widget-content p-0">
@@ -381,14 +447,14 @@ const AdminDashboard = () => {
                             <td class="text-center">
                               <button type="button" id="PopoverCustomT-4" class="btn btn-primary btn-sm">Details</button>
                             </td>
-                          </tr>
+                          </tr> */}
                         </tbody>
                       </table>
                     </div>
                     {/* <div class="d-block text-center card-footer">
-                                        <button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger bg-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>
-                                        <button class="btn-wide btn btn-success">Save</button>
-                                    </div> */}
+                      <button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger bg-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>
+                      <button class="btn-wide btn btn-success">Save</button>
+                    </div> */}
                   </div>
                 </div>
               </div>
