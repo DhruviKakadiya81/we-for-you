@@ -180,8 +180,8 @@ const Update = (props) => {
                 Edit
             </Button>
             <Modal show={isshow} style={{ overflowX: "scroll"}} >
-                <Modal.Header closeButton onClick={initmodel} style={{ border: "none", outline: "none"}} >
-                    <Modal.Title className='' >
+                <Modal.Header onClick={initmodel}>
+                    <Modal.Title className='' style={{fontWeight:"bold"}}>
                         Update Your Service
                     </Modal.Title>
                 </Modal.Header>
@@ -226,9 +226,9 @@ const Update = (props) => {
 
                         </FormControl><br />
                         <label>Price</label><br />
-                        <input type="Number" className=" px-2 py-1 mb-3" name="Price" defaultValue={prize} onChange={(event) => { setprize(event.target.value) }} /><br />
+                        <input type="Number" className=" px-2 py-1 mb-3" name="Price" style={{border:"none",borderBottom:"1px solid black",width:"250px",outline:"none"}} defaultValue={prize} onChange={(event) => { setprize(event.target.value) }} /><br />
                         <label>Description</label><br />
-                        <textarea type="number" className=" px-2 py-1 mb-3" name="description" defaultValue={discription} onChange={(event) => { setdiscription(event.target.value) }} /><br />
+                        <textarea type="number" className=" px-2 py-1 mb-3" name="description" style={{border:"none",borderBottom:"1px solid black",width:"250px",outline:"none"}} defaultValue={discription} onChange={(event) => { setdiscription(event.target.value) }} /><br />
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
@@ -270,14 +270,14 @@ const Delete = (props) => {
                 Delete
             </Button>
             <Modal show={isshow} style={{ overflowX: "scroll", width: "100%", marginTop: "px" }} >
-                <Modal.Header closeButton onClick={initmodel}>
+                {/* <Modal.Header closeButton onClick={initmodel}>
                     <Modal.Title className='' >
                         Delete service
                     </Modal.Title>
-                </Modal.Header>
+                </Modal.Header> */}
 
                 <Modal.Body>
-                    <div className="dlt">
+                    <div className="dlt" style={{fontWeight:"bold"}}>
                         Are You Sure to Delete Service?
                     </div>
 

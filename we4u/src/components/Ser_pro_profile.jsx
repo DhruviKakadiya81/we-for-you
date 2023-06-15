@@ -251,36 +251,36 @@ const ChangePass = (props) => {
         </Modal.Header>
 
         <Modal.Body>
-          <div className="dlt d-grid justify-content-center">
-            <FormControl className=''>
+          <div className="dlt">
+            <FormControl className='' style={{width:"53%"}}>
               <InputLabel className=''>Old Password</InputLabel>
               <Input type="password" name="name" id="id_password" className='my-3' onChange={(event) => { setoldpassword(event.target.value) }} />
               <p><i
                 className={eye}
                 id="togglePassword"
-                style={{ marginTop: "-43px", marginLeft: "150px", cursor: "pointer", position: "absolute", cursor: "pointer" }}
+                style={{ marginTop: "-43px", marginLeft: "210px", cursor: "pointer", position: "absolute", cursor: "pointer" }}
                 onClick={handletogglepass}
               ></i></p>
             </FormControl><br />
 
-            <FormControl className='r'>
+            <FormControl className='' style={{width:"53%"}}>
               <InputLabel className='' >New Password</InputLabel>
               <Input type="password" name="name" id="id_password1" className='my-3' onChange={(event) => { setnewpassword(event.target.value) }} />
               <p><i
                 className={eye1}
                 id="togglePassword"
-                style={{ marginTop: "-43px", marginLeft: "150px", cursor: "pointer", position: "absolute", cursor: "pointer" }}
+                style={{ marginTop: "-43px", marginLeft: "210px", cursor: "pointer", position: "absolute", cursor: "pointer" }}
                 onClick={handletogglepass1}
               ></i></p>
             </FormControl><br />
 
-            <FormControl className=''>
+            <FormControl className='' style={{width:"53%"}}>
               <InputLabel className='' >Confirm New Password</InputLabel>
               <Input type="password" name="name" id="id_password2" className='my-3' onChange={(event) => { setconpassword(event.target.value) }} />
               <p><i
                 className={eye2}
                 id="togglePassword"
-                style={{ marginTop: "-43px", marginLeft: "200px", cursor: "pointer", position: "absolute", cursor: "pointer" }}
+                style={{ marginTop: "-43px", marginLeft: "210px", cursor: "pointer", position: "absolute", cursor: "pointer" }}
                 onClick={handletogglepass2}
               ></i></p>
             </FormControl><br />
@@ -410,7 +410,7 @@ const Update = (props) => {
       </button>
       <Modal show={isshow} style={{ overflowX: "scroll", width: "100%" }} >
         <Modal.Header onClick={initmodel}>
-          <Modal.Title className='' >
+          <Modal.Title className='' style={{fontWeight:"bold"}}>
             Update Your Details
           </Modal.Title>
         </Modal.Header>

@@ -28,7 +28,7 @@ export const UpdateService = (props) => {
           // setmsg("Updated Succesfully!");
           initmodel();
         //   window.location.reload();
-          //alert("successful");
+          // alert("successful");
         }
         else {
           alert("not successful");
