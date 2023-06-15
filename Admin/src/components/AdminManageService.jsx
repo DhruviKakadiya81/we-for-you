@@ -52,12 +52,12 @@ const AdminManageService = () => {
   return (
     <AdminNavbar>
     <Modal show={isshow}  >
-                <Modal.Header className='text-center'>
+                {/* <Modal.Header className='text-center'>
                     <Modal.Title className='' >
                     Service Added Details
                     </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
+                </Modal.Header> */}
+                <Modal.Body style={{fontWeight:"bold"}}>
                     {msg}
                 </Modal.Body>
                 <Modal.Footer>

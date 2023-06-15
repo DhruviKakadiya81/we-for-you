@@ -100,12 +100,12 @@ export const ManageArea = () => {
         <>
             <AdminNavbar>
             <Modal show={isshow}  >
-                <Modal.Header className='text-center'>
+                {/* <Modal.Header className='text-center'>
                     <Modal.Title className='' >
                         Area Added Details
                     </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
+                </Modal.Header> */}
+                <Modal.Body style={{fontWeight:"bold"}}>
                     {msg}
                 </Modal.Body>
                 <Modal.Footer>
@@ -223,25 +223,25 @@ const Delete = (props) => {
                 Delete
             </Button>
             <Modal show={isshow} style={{ overflowX: "scroll", width: "100%"}} >
-                <Modal.Header closeButton onClick={initmodel}>
+                {/* <Modal.Header closeButton onClick={initmodel}>
                     <Modal.Title className='' style={{fontWeight:"bold"}}>
                         Delete Area
                     </Modal.Title>
-                </Modal.Header>
+                </Modal.Header> */}
 
-                <Modal.Body>
+                <Modal.Body style={{fontWeight:"bold"}}>
                     <div className="dlt">
                         Are You Sure To Delete Area?
                     </div>
 
                 </Modal.Body>
-                <Modal.Footer>
-                <Button variant="dark" className="mx-3" onClick={initmodel}>
-              CLOSE
-            </Button>
+                <Modal.Footer>             
                     <Button variant="danger" className="mx-3" type='submit' onClick={(e) => handledelete(props.id, e)}>
                         Delete
                     </Button>
+                    <Button variant="dark" className="mx-3" onClick={initmodel}>
+              CLOSE
+            </Button>
                 </Modal.Footer>
 
             </Modal>
@@ -346,11 +346,11 @@ const Update = (props) => {
 
                             ))}
                         </DropdownButton>
-                        <FormControl className=''  >
+                        {/* <FormControl className=''  >
                             <InputLabel className=''>Selected City Name</InputLabel>
                             <Input variant="dark" type="text" name="name" value={cityname} onChange={(event) => setcityname(event.target.value)} className='mx-3 my-3' style={{ color: "black" }} readOnly />
                         </FormControl><br />
-                        <br />
+                        <br /> */}
 
                     </div>
                 </Modal.Body>

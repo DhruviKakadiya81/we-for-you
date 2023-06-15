@@ -19,7 +19,7 @@ const FlexColumnContainer = styled('div')`
   box-sizing: border-box;
 `;
 const StepContainer = styled('div')`
-  background-image: url(Images/homeimg9.jpg);
+  background-image: url(Images/cleaner_15.jpeg);
   background-size: cover;
   ${'' /* margin-top:150px; */}
   padding-top:150px;
@@ -89,7 +89,7 @@ export const Ser_add_Service = () => {
     }
     else {
       // alert("some problems are there add service again");
-      setmsg("This service is already there");
+      setmsg("This Service is Already There!!");
       initmodel();
     }
   }
@@ -136,12 +136,12 @@ export const Ser_add_Service = () => {
     <>
       <Ser_Pro_Navbar />
       <Modal show={isshow}  >
-        <Modal.Header className='text-center'>
+        {/* <Modal.Header className='text-center'>
           <Modal.Title className='' >
             Service Added Details
           </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
+        </Modal.Header> */}
+        <Modal.Body style={{fontWeight:"bold"}}>
           {msg}
         </Modal.Body>
         <Modal.Footer>
