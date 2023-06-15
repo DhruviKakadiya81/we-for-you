@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Navbar } from './Navbar'
 import getuser from '../services/GetUser'
-import { useNavigate } from 'react-router-dom'
+import {Link, useNavigate } from 'react-router-dom'
 import cartser from '../services/cartservics'
 import userdata from '../services/UserProfile'
 import Modal from 'react-bootstrap/Modal';
@@ -121,8 +121,8 @@ export const Authpage = () => {
                               <th class="text-center"><a class="btn btn-sm btn-outline-danger bg-danger text-white" href="#">Clear Cart</a></th>
 
 
-                            </tr >
-                          </thead >
+                            </tr>
+                          </thead>
 
 
 
@@ -146,8 +146,8 @@ export const Authpage = () => {
                                     </Button> </td>
 
                                     <td class="text-center"><Delete id={sp._id} /></td>
-                                  </tr >
-                                </tbody >
+                                  </tr>
+                                </tbody>
 
                               </>
 
@@ -158,7 +158,7 @@ export const Authpage = () => {
 
 
 
-                        </table >
+                        </table>
 
                         <table style={{ width: "100%", border: "none" }}>
 
@@ -183,8 +183,7 @@ export const Authpage = () => {
                             </td>
 
                             <td style={{ alignItems: "right", float: "left", border: "none" }}>
-                              <div class="column "><a style={{ backgroundColor: "rgb(100,100,100)" }} class="btn btn-outline-secondary w-100 text-white" href="#"><i class="icon-arrow-left"></i>&nbsp;Back to Shopping</a></div>
-
+                              <div class="column "><Link style={{ backgroundColor: "rgb(100,100,100)" }} class="btn btn-outline-secondary w-100 text-white" to="/service2"><i class="icon-arrow-left"></i>&nbsp;Back to Shopping</Link></div>
                             </td>
                           </tr>
 
@@ -192,19 +191,19 @@ export const Authpage = () => {
 
 
 
-                      </div >
+                      </div>
 
-                    </div >
+                    </div>
 
 
-                  </div >
+                  </div>
             }
 
-          </div >
-        </div >
+          </div>
+        </div>
 
 
-      </section >
+      </section>
 
     </>
 

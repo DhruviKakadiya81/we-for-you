@@ -69,3 +69,13 @@
 .ser_all_ser_prize{
   line-height: 10px;
 }
+
+.ser_hire_btn{
+  color: rgb(50,50,50);
+    background-color: white;
+    opacity: 0.9;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+}
