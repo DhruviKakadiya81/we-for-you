@@ -43,19 +43,19 @@ const About = () => {
   const testiMonials = [
     {
       name: 'Krupa',
-      description: 'Krupa Mavani leads Technology And Product Development At We4U. She Loved To Do Free Lancing Work And Play Guitar In Her Free Time. ',
+      description: 'Krupa Mavani leads Technology And Product Development At We4U.She done all the Backend work and API integration ',
       address: 'India',
       img: 'images/krupa_img.jpeg'
     },
     {
       name: 'Dhruvi',
-      description: 'Dhruvi Kakadiya is Responsible for Marketing And Product Growth At We4U. She Is Enjoying To Take Part In Different Different Activity. ',
+      description: 'Dhruvi Kakadiya is Responsible for Marketing And Product Growth At We4U.She Worked At the FrontEnd and Testing. ',
       address: 'India',
       img: 'images/dhruvi_img.jpg'
     },
     {
       name: 'Mansi',
-      description: 'Mansi Rathod is Responsible For Operations And Service Provider On-boarding At We4U. Before Build Of We4U, She Is Loved To Take Part In Sports Activity At State Level.',
+      description: 'Mansi Rathod is Responsible For Service Provider On-boarding At We4U.She Worked At the FrontEnd work and Documentation.',
       address: 'India',
       img: 'images/mansi_img.jpg'
     },
@@ -193,7 +193,8 @@ const TestiMonialsDetails = ({ testiMonialDetail }) => {
         <div class="item col" style={{ width: "400px" }}>
           <div class="shadow-effect">
             <img class="img-circle" src={img} />
-            <p>{description}</p>
+            <b className='mb-2'>WebSite Developer</b>
+            <p className='text-justify'>{description}</p>
           </div>
           <div class="testimonial-name">
             <h5>{name}</h5>

@@ -87,11 +87,9 @@ function App() {
 
           <Route path="/cart" element={<Authpage />}></Route>
 
-          {isLogin ? (
-            <Route path="/profile" element={<Profile />}></Route>
-          ) : (
-            <Route path="/login" element={<Login />}></Route>
-          )}
+
+          <Route path="/profile" element={<Profile />}></Route>
+
           <Route path="/sphome" element={<SpmainHome />}></Route>
           <Route path="/serdash" element={<Ser_dashboard />}></Route>
 

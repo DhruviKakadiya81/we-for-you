@@ -49,7 +49,7 @@ export const AdminNavbar = ({ children }) => {
       <div className="container-fluid">
         <div style={{ width: isOpen ? "235px" : "65px", height: "100vh" }} className={isOpen ? "sidebar active1" : "sidebar"}>
           <div className="top_section">
-            <img src='images/we4U.png' height="65px" width="100px" style={{ display: isOpen ? "block" : "none" }}/>
+            <img src='images/we4U.png' height="65px" width="100px" style={{ display: isOpen ? "block" : "none" }} />
             {/* <h1 className="logo">We4U</h1> */}
             <div style={{ marginLeft: isOpen ? "98px" : "7px" }} className="bars">
               <FaBars onClick={toggle} />
@@ -79,12 +79,12 @@ export const AdminNavbar = ({ children }) => {
               <FaCaretDown onClick={drop1} style={{ display: isDrop1 ? "block" : "none", cursor: "pointer" }} className='dropdown1close' />
               <FaCaretRight onClick={drop1} style={{ display: isDrop1 ? "none" : "block", cursor: "pointer" }} className='dropdown1' />
               <div className="sub_menu mt-3" style={{ display: isDrop1 ? "block" : "none" }}>
-                <div className="sub_list px-1 py-2"><NavLink to="/showservice" className="sub_items">Manage Services</NavLink></div>
-                <div className="sub_list px-1 py-2"><NavLink to="/adminmanagecustomer" className="sub_items">Manage Customers</NavLink></div>
-                <div className="sub_list px-1 py-2"><NavLink to="/managesp" className="sub_items">Manage ServiceProvider</NavLink></div>
-                <div className="sub_list px-1 py-2"><NavLink to="/managecity" className="sub_items">Manage City</NavLink></div>
-                <div className="sub_list px-1 py-2"><NavLink to="/managearea" className="sub_items">Manage Area</NavLink></div>
-                <div className="sub_list px-1 py-2"><NavLink to="/managesubser" className="sub_items">Manage Sub service</NavLink></div>
+                <div className="sub_list px-1 py-1"><NavLink to="/showservice" className="sub_items">Services</NavLink></div>
+                <div className="sub_list px-1 py-1"><NavLink to="/adminmanagecustomer" className="sub_items">Customers</NavLink></div>
+                <div className="sub_list px-1 py-1"><NavLink to="/managesp" className="sub_items">ServiceProvider</NavLink></div>
+                <div className="sub_list px-1 py-1"><NavLink to="/managecity" className="sub_items">City</NavLink></div>
+                <div className="sub_list px-1 py-1"><NavLink to="/managearea" className="sub_items">Area</NavLink></div>
+                <div className="sub_list px-1 py-1"><NavLink to="/managesubser" className="sub_items">Sub service</NavLink></div>
               </div>
             </div>
           </div>
