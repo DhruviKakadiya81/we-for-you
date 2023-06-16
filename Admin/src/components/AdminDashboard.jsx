@@ -12,7 +12,7 @@ const AdminDashboard = () => {
   const [spmsg, setspmsg] = useState([]);
   const [user, setuser] = useState([]);
   const [Active, setActive] = useState([]);
-  const [data2, setdata2] = useState();
+  // const [data2, setdata2] = useState();
   let index = 1;
   const [state, setstate] = useState({
     options: {
@@ -77,6 +77,7 @@ const AdminDashboard = () => {
     handledetails();
   }, [])
   console.log("1", data); console.log("2", spmsg); console.log("3", user); console.log("4", Active);
+
   return (
     <>
 
@@ -115,7 +116,7 @@ const AdminDashboard = () => {
                   </div>
                 </div>
 
-                <div class="col-md-4 col-xl-3">
+                {/* <div class="col-md-4 col-xl-3">
                   <div class="card bg-c-pink order-card">
                     <div class="card-block">
                       <h6 class="m-b-20">Total Order</h6>
@@ -123,7 +124,7 @@ const AdminDashboard = () => {
                       <p class="m-b-0">Completed Orders<span class="f-right">{data.completed}</span></p>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
               <div class="row">
                 <div class="col-md-12 col-lg-6">

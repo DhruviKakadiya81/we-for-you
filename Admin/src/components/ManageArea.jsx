@@ -100,12 +100,12 @@ export const ManageArea = () => {
         <>
             <AdminNavbar>
             <Modal show={isshow}  >
-                <Modal.Header className='text-center'>
+                {/* <Modal.Header className='text-center'>
                     <Modal.Title className='' >
                         Area Added Details
                     </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
+                </Modal.Header> */}
+                <Modal.Body style={{fontWeight:"bold"}}>
                     {msg}
                 </Modal.Body>
                 <Modal.Footer>
@@ -223,25 +223,25 @@ const Delete = (props) => {
                 Delete
             </Button>
             <Modal show={isshow} style={{ overflowX: "scroll", width: "100%"}} >
-                <Modal.Header closeButton onClick={initmodel}>
+                {/* <Modal.Header closeButton onClick={initmodel}>
                     <Modal.Title className='' style={{fontWeight:"bold"}}>
                         Delete Area
                     </Modal.Title>
-                </Modal.Header>
+                </Modal.Header> */}
 
-                <Modal.Body>
+                <Modal.Body style={{fontWeight:"bold"}}>
                     <div className="dlt">
                         Are You Sure To Delete Area?
                     </div>
 
                 </Modal.Body>
-                <Modal.Footer>
-                <Button variant="dark" className="mx-3" onClick={initmodel}>
+                <Modal.Footer>             
+                    <Button variant="danger" className="mx-3" type='submit' onClick={(e) => handledelete(props.id, e)}>
+                        DELETE
+                    </Button>
+                    <Button variant="dark" className="mx-3" onClick={initmodel}>
               CLOSE
             </Button>
-                    <Button variant="danger" className="mx-3" type='submit' onClick={(e) => handledelete(props.id, e)}>
-                        Delete
-                    </Button>
                 </Modal.Footer>
 
             </Modal>
@@ -254,10 +254,16 @@ const Update = (props) => {
     // const navigate = useNavigate();
     const [citydata, setcitydata] = useState([]);
     const [isshow, invokemodel] = useState(false);
+    const [msg, setmsg] = useState();
     const [areaname, setareaname] = useState(props.areaname);
     const [cityname, setcityname] = useState(props.cityname);
     const [cityid, setcityid] = useState(props.cityid);
     const [id, setid] = useState(props.id);
+
+    const [isshow1, invokemodel1] = useState(false);
+  const initmodel1 = () => {
+    return invokemodel1(!isshow1);
+  }
 
     const handleCityData = async () => {
 
@@ -287,10 +293,15 @@ const Update = (props) => {
         if (respo.data.success === true) {
             // alert("updated")
             initmodel();
+            setmsg("Updated Successfully")
+           initmodel1();
             //   window.location.reload();
             //alert("successful");
         }
         else {
+            initmodel();
+            setmsg("Enter Another Area!!")
+            initmodel1();
             // alert("enter another Area");
         }
 
@@ -317,6 +328,20 @@ const Update = (props) => {
     return (
 
         <>
+         <Modal show={isshow1}  >
+        <Modal.Body>
+          <div className="">
+            <b>
+              {msg}
+            </b>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="dark" className="mx-3" type='submit' onClick={initmodel1}>
+            Ok
+          </Button>
+        </Modal.Footer>
+      </Modal>
             <Button variant="contained" style={{ backgroundColor: "rgb(50,50,50)", color: "white" }} onClick={initmodel}>
                 Edit
             </Button>
@@ -329,7 +354,7 @@ const Update = (props) => {
 
                 <Modal.Body>
 
-                    <div className="mt-5 text-center">
+                    <div className="mt-2">
                         <FormControl className=''  >
                             <InputLabel className=''>Enter Area Name</InputLabel>
                             <Input variant="dark" type="text" value={areaname} name="name" onChange={(event) => setareaname(event.target.value)} className='mx-3 my-3' style={{ color: "black" }} />
@@ -346,11 +371,11 @@ const Update = (props) => {
 
                             ))}
                         </DropdownButton>
-                        <FormControl className=''  >
+                        {/* <FormControl className=''  >
                             <InputLabel className=''>Selected City Name</InputLabel>
                             <Input variant="dark" type="text" name="name" value={cityname} onChange={(event) => setcityname(event.target.value)} className='mx-3 my-3' style={{ color: "black" }} readOnly />
                         </FormControl><br />
-                        <br />
+                        <br /> */}
 
                     </div>
                 </Modal.Body>

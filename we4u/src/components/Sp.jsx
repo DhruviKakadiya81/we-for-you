@@ -54,26 +54,26 @@ export const Sp = () => {
 
       }}>
 
-        <section className='section2'>
+        <section className='section2 pt-4 pb-3'>
           <div className="d-flex  flex-wrap justify-content-center pt-5">
-            <div className="card mx-4 my-5" style={{ width: "16rem", background: `url(images/ser_home_back.jpg)`, backgroundSize: "cover" }}>
+            <div className="card mx-4 my-5" style={{ width: "16rem"}}>
               {/* <img src="..." className="card-img-top" alt="..."/> */}
               <div className="card-body">
-                <h5 className="card-title">Total Users</h5>
+                <h5 className="card-title" style={{fontWeight:"bold"}}>Total Users</h5>
                 <p className="card-text ser_home_card_content">{data.totaluser}+</p>
               </div>
             </div>
-            <div className="card mx-4 my-5" style={{ width: "16rem", background: `url(Images/ser_home_back.jpg)`, backgroundSize: "cover" }}>
+            <div className="card mx-4 my-5" style={{ width: "16rem"}}>
               {/* <img src="..." className="card-img-top" alt="..."/> */}
               <div className="card-body">
-                <h5 className="card-title">Total Provieder</h5>
+                <h5 className="card-title"  style={{fontWeight:"bold"}}>Total Provider</h5>
                 <p className="card-text ser_home_card_content">{data.totalsp}+</p>
               </div>
             </div>
-            <div className="card mx-4 my-5" style={{ width: "16rem", background: `url(Images/ser_home_back.jpg)`, backgroundSize: "cover" }}>
+            <div className="card mx-4 my-5" style={{ width: "16rem"}}>
               {/* <img src="..." className="card-img-top" alt="..."/> */}
               <div className="card-body">
-                <h5 className="card-title">Total Services</h5>
+                <h5 className="card-title"  style={{fontWeight:"bold"}}>Total Services</h5>
                 <p className="card-text ser_home_card_content">{data.totalsub}+</p>
               </div>
             </div>

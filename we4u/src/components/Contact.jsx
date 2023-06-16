@@ -68,7 +68,7 @@ export const Contact = () => {
                     </Button>
                 </Modal.Footer>
                 </Modal>
-      <div className="c_container2 hero-image" style={{ background: `url(Images/contact_backgroud_10.png)`, backgroundSize:"cover",backgroundRepeat:"no-repeat",height:"80vh"}}>
+      <div className="c_container2 hero-image" style={{ background: `url(Images/contact_back_15.jpg)`, backgroundSize:"cover",backgroundRepeat:"no-repeat",height:"80vh"}}>
         <div className="mt-5 pt-5 ms-lg-5 ps-lg-5 ps-md-5 ms-md-4 ps-sm-4 ps-5">
           <p className="pt-lg-5 mt-lg-5 pt-md-5 mt-md-5 pt-sm-5 mt-sm-4 pt-5 c_par1 ms-lg-5 ps-lg-5 ps-md-4 ms-md-4 ps-sm-3 ms-sm-3">Contact Us</p>
           <p className="c_par2 ms-lg-5 ps-lg-5 ps-md-4 ms-md-4 ps-sm-3 ms-sm-3">We're easy to get in touch with Us</p>
@@ -106,10 +106,10 @@ export const Contact = () => {
                   Science & Technology
                 </p>
                 <p className="c_phone_continer">
-                  <span className="c_phone_head">Phone:</span><span className="c_phone_detail"> +91 90160 63452</span>
+                  <span className="c_phone_head">Phone :</span><span className="c_phone_detail"> +91 90160 63452</span>
                 </p>
                 <p className="c_email_container">
-                  <span className="c_email_head">Email:</span><span className="c_email_detail">we4uservices3@gmail.com</span>
+                  <span className="c_email_head">Email : </span><span className="c_email_detail">we4uservices3@gmail.com</span>
                 </p>
               </div>
             </div>

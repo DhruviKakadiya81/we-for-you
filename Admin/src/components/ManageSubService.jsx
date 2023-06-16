@@ -33,7 +33,9 @@ export const ManageSubService = () => {
             setsubname("");
         }
         else {
-            alert("it is already there add another");
+            setmsg("There Are Some Isseue Or It Is Already Added!!");
+            initmodel();
+            // alert("it is already there add another");
         }
     }
 
@@ -100,12 +102,12 @@ export const ManageSubService = () => {
         <>
             <AdminNavbar>
             <Modal show={isshow}  >
-                <Modal.Header className='text-center'>
+                {/* <Modal.Header className='text-center'>
                     <Modal.Title className='' >
                     Sub Service Added Details
                     </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
+                </Modal.Header> */}
+                <Modal.Body style={{fontWeight:"bold"}}>
                     {msg}
                 </Modal.Body>
                 <Modal.Footer>
@@ -237,13 +239,13 @@ const Delete = (props) => {
                 Delete
             </Button>
             <Modal show={isshow} style={{ overflowX: "scroll", width: "100%", marginTop: "px" }} >
-                <Modal.Header closeButton onClick={initmodel}>
+                {/* <Modal.Header closeButton onClick={initmodel}>
                     <Modal.Title className='' style={{fontWeight:"bold"}}>
                         Delete Sub Service
                     </Modal.Title>
-                </Modal.Header>
+                </Modal.Header> */}
 
-                <Modal.Body>
+                <Modal.Body style={{fontWeight:"bold"}}>
                     <div className="dlt">
                         Are You Sure To Delete Sub Service?
                     </div>
@@ -272,12 +274,17 @@ const Update = (props) => {
     const [serviceid, setserviceid] = useState(props.data.serviceid);
     const [getser, setgetser] = useState([]);
     // const navigate = useNavigate();
+  const [msg, setmsg] = useState();
+
     const [isshow, invokemodel] = useState(false);
     const initmodel = () => {
         return invokemodel(!isshow);
     }
 
-
+    const [isshow1, invokemodel1] = useState(false);
+    const initmodel1 = () => {
+      return invokemodel1(!isshow1);
+    }
 
 
     const handleservice = async () => {
@@ -298,9 +305,14 @@ const Update = (props) => {
         if (respo.data.success === true) {
             // alert("updated successfully")
             initmodel();
+            setmsg("Updated Successfully")
+            initmodel1();
         }
         else {
-            alert("not updated");
+            initmodel();
+            setmsg("Not Updated!!");
+            initmodel1();
+            // alert("not updated");
         }
 
     }
@@ -318,6 +330,20 @@ const Update = (props) => {
     return (
 
         <>
+        <Modal show={isshow1}  >
+        <Modal.Body>
+          <div className="">
+            <b>
+              {msg}
+            </b>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="dark" className="mx-3" type='submit' onClick={initmodel1}>
+            Ok
+          </Button>
+        </Modal.Footer>
+      </Modal>
             <Button variant="contained" style={{ backgroundColor: "rgb(50,50,50)", color: "white" }} onClick={initmodel}>
                 Edit
             </Button>

@@ -24,18 +24,13 @@ html,body{
 }
 
 .c_par1{     
-    font-family: 'Crimson Text';
-    font-style: normal;
     font-weight: 700;
     font-size: 72px;
     line-height: 94px;
-    text-transform: capitalize;
     color: #FFFFFF;
 }
 
 .c_par2{
-    font-family: 'Montserrat';
-    font-style: normal;
     font-weight: 600;
     font-size: 28px;
     line-height: 34px;
@@ -54,12 +49,9 @@ html,body{
 }
 
 .c_details{
-    font-family: 'Montserrat';
-    font-style: normal;
     font-weight: 600;
     font-size: 18px;
     line-height: 22px;
-    text-transform: capitalize;
     color: black;
 }
 
@@ -78,8 +70,6 @@ hr{
 }
 
 .main_head{
-    font-family: 'Crimson Text';
-    font-style: normal;
     font-weight: 600;
     font-size: 40px;
     line-height: 52px;
@@ -131,8 +121,6 @@ margin-top: -20px;
     color: white !important;
     border-radius: 5px;
     border: none;
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
@@ -166,8 +154,6 @@ height: 48px;
 left: 825px;
 top: 1080px;
 border: none;
-font-family: 'Montserrat';
-font-style: normal;
 font-weight: 700;
 font-size: 16px;
 line-height: 132.4%;
@@ -221,8 +207,6 @@ font-size: 18px;
 .c_loc_outer{
     flex-wrap: wrap;
     margin-top: 50px;
-    font-family: 'Montserrat';
-font-style: normal;
 line-height: 24px;
 text-align: center;
 text-transform: capitalize;
@@ -230,8 +214,6 @@ color: #FFFFFF;
 }
 
 .c_second_heading{
-    font-family: 'Crimson Text';
-font-style: normal;
 font-weight: 600;
 font-size: 30px;
 line-height: 39px;
@@ -243,8 +225,6 @@ margin-top: 30px;
 
 .c_sec_loc_outer{
     flex-wrap: wrap;
-    font-family: 'Montserrat';
-font-style: normal;
 text-align: center;
     text-transform: capitalize;
     color: #FFFFFF;

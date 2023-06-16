@@ -280,11 +280,14 @@ const Update = (props) => {
     props.handleIsEdit();
     if (respo.data.success === true) {
       initmodel();
-      setmsg("Updated Successfully")
+      setmsg("Updated Successfully!!")
       initmodel1();
     }
     else {
-      alert("enter another city");
+      initmodel();
+      setmsg("Enter Another City!!")
+      initmodel1();
+      // alert("enter another city");
     }
 
     // console.log(respo);
