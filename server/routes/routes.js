@@ -22,6 +22,7 @@ const dashboard = require("../controllers/adminDashboard");
 
 const path = require("path");
 var multer = require("multer");
+const spModel = require("../models/serviceprovider");
 
 const router1 = express.Router();
 
@@ -98,7 +99,9 @@ router1.get("/showsub", subserad.showservice);
 router1.delete("/deletesubser", subserad.deletesubser);
 router1.put("/updatesubser", upload.single('image'), subserad.updatesubser);
 router1.get("/spdetail", subser.showdallservicepr);
+router1.get("/spdetail", subser.showdallservicepr);
 router1.post("/spdetailbycity", subser.getdetailbycity);
+router1.put("/chngpasssp", spdetail.changepassword);
 router1.post("/spdetailbysubser", subser.getdetailbysubserandcity);
 router1.post("/searchbysubaname", subser.searchbysubname);
 
@@ -122,7 +125,7 @@ router1.post("/activesp", bookser.getActivebySpid);
 router1.post("/activeuser", bookser.getactivebyUserid);
 router1.get("/getall", bookser.getalldata);
 router1.get("/order", bookser.counttotalorder);
-
+router1.post("/rating", subser.addrating);
 
 router1.get("/dashboard", dashboard.total);
 // router1.post("/getuser",logcontroller.getuserlogin);

@@ -36,6 +36,7 @@ import { Service2 } from "./components/Service2";
 import { Booked_services } from "./components/Booked_services";
 import { Ser_pro_profile } from "./components/Ser_pro_profile";
 import { Cust_Dashboard } from "./components/Cust_Dashboard";
+import { Verify } from "./components/Verify";
 
 
 
@@ -72,6 +73,8 @@ function App() {
           <Route path="/loginasp" element={<Login state={0} />}></Route>
           <Route path="/forget" element={<Forget state={1} />}></Route>
           <Route path="/forgetasp" element={<Forget state={0} />}></Route>
+          <Route path="/verify" element={<Verify state={1} />}></Route>
+          <Route path="/verifyasp" element={<Verify state={0} />}></Route>
           {/* <Route path="/about" element={<about/>}></Route>  */}
           <Route path="/logout" element={<Home />}></Route>
           <Route path="/ser_contact" element={<Ser_pro_contact />}></Route>

@@ -2,6 +2,7 @@ const subser = require('../models/subservice');
 const SPModel = require("../models/spDetails");
 const sub = require('../models/subserviceadmin');
 const spModel = require('../models/serviceprovider');
+const activeser = require("../models/activeservices");
 const addservices = async (req, res) => {
 
     console.log("data :== ", req.body);
@@ -45,6 +46,25 @@ const addservices = async (req, res) => {
 
             res.send({ success: false, msg: "not service" });
         });
+
+}
+
+const addrating = async (req, res) => {
+
+    console.log("data :== ", req.body);
+    const { rate, userid, spid } = req.body
+    try {
+
+        const data = new activeser({
+            rate, userid, spid
+        });
+        const data2 = data.save();
+        res.send({ success: true, data: data2, msg: "rate is added successfully" })
+    } catch (error) {
+        res.send({ success: true, data: {} })
+    }
+
+
 
 }
 
@@ -104,7 +124,10 @@ const deletesubser = async (req, res) => {
         console.log("data :== ", req.body);
         const { id } = req.body;
         const subserdata = await subser.findByIdAndDelete({ _id: id });
-        console.log(subserdata)
+        console.log(subserdata);
+        if (subserdata) {
+
+        }
         if (subserdata) {
             res.send({ success: true, msg: "deleted", data: subserdata });
         }
@@ -254,4 +277,4 @@ const searchbysubname = async (req, res) => {
 }
 
 
-module.exports = { addservices, showservicebymain, showservicebyspid, updatesubser, deletesubser, showdallservicepr, getdetailbycity, getdetailbysubserandcity, searchbysubname }
+module.exports = { addservices, showservicebymain, showservicebyspid, updatesubser, deletesubser, showdallservicepr, getdetailbycity, getdetailbysubserandcity, searchbysubname, addrating }

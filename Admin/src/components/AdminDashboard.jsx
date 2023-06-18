@@ -116,7 +116,7 @@ const AdminDashboard = () => {
                   </div>
                 </div>
 
-                {/* <div class="col-md-4 col-xl-3">
+                <div class="col-md-4 col-xl-3">
                   <div class="card bg-c-pink order-card">
                     <div class="card-block">
                       <h6 class="m-b-20">Total Order</h6>
@@ -124,7 +124,7 @@ const AdminDashboard = () => {
                       <p class="m-b-0">Completed Orders<span class="f-right">{data.completed}</span></p>
                     </div>
                   </div>
-                </div> */}
+                </div>
               </div>
               <div class="row">
                 <div class="col-md-12 col-lg-6">
@@ -334,13 +334,14 @@ const AdminDashboard = () => {
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
 
-                              <>
 
-                                {
-                                  Active.map((key) => (
-                                    <>
+                            <>
+
+                              {
+                                Active.map((key) => (
+                                  <>
+                                    <tr>
                                       <td class="text-center text-muted">{index++}</td>
                                       <td >
                                         <div class="  p-0 ">
@@ -361,18 +362,20 @@ const AdminDashboard = () => {
                                       <td class="text-center">
                                         {key.userid.firstname} {key.userid.lastname}
                                       </td>
+                                      <br />
                                       {/* <td class="text-center">
                                 <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">Details</button>
                               </td> */}
-                                    </>
-                                  ))
+                                    </tr>
+                                  </>
+                                ))
 
-                                }
-                              </>
+                              }
+                            </>
 
 
 
-                            </tr>
+
 
                           </tbody>
                         </table>

@@ -1,36 +1,36 @@
 import axios from "axios";
 
-class Post{
-    getservice(){
-    
+class Post {
+    getservice() {
+
         const url = "http://localhost:4000/getser";
         return axios.get(url);
     }
-    getcity(){
+    getcity() {
         const url = "http://localhost:4000/getcity";
         return axios.get(url);
     }
 
-    getarea(cityid){
+    getarea(cityid) {
         const url = "http://localhost:4000/areabycity";
-        return axios.post(url,cityid);
+        return axios.post(url, cityid);
     }
-    
-    getspid(data){
+
+    getspid(data) {
         const url = "http://localhost:4000/getsp";
-        return axios.post(url,data);
+        return axios.post(url, data);
     }
 
-    adddata(data){
+    adddata(data) {
         const url = "http://localhost:4000/addaspdet";
-        return axios.post(url,data);
+        return axios.post(url, data);
     }
 
-    getdetails(data){
-        console.log("clg-->",data);
+    getdetails(data) {
+
         const url = "http://localhost:4000/getspdetail";
-        return axios.post(url,data);
+        return axios.post(url, data);
     }
-   
+
 }
 export default new Post();

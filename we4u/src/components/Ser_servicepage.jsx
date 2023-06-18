@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { FormControl, FormGroup, Input, InputLabel, Typography, Select, MenuItem } from '@mui/material'
+import { Footer } from './Footer';
 
 
 
@@ -44,7 +45,7 @@ export const Ser_servicepage = () => {
     return (
         <>
             <Ser_Pro_Navbar />
-            <section className='mt-5 pt-5'>
+            <section className='mt-5 pt-5 mb-5'>
                 <div className="container">
                     {
                         (!spid || !serdata) ?
@@ -107,6 +108,7 @@ export const Ser_servicepage = () => {
                     }
                 </div>
             </section>
+            <Footer />
 
         </>
     )
@@ -179,9 +181,9 @@ const Update = (props) => {
             <Button variant="contained" style={{ backgroundColor: "rgb(50,50,50)", color: "white" }} onClick={initmodel} className='mx-2'>
                 Edit
             </Button>
-            <Modal show={isshow} style={{ overflowX: "scroll"}} >
+            <Modal show={isshow} style={{ overflowX: "scroll" }} >
                 <Modal.Header onClick={initmodel}>
-                    <Modal.Title className='' style={{fontWeight:"bold"}}>
+                    <Modal.Title className='' style={{ fontWeight: "bold" }}>
                         Update Your Service
                     </Modal.Title>
                 </Modal.Header>
@@ -206,7 +208,7 @@ const Update = (props) => {
                             </Select>
                         </FormControl><br />
                         <FormControl variant="standard" sx={{ minWidth: 260 }} className='mb-4 area_detail_container'>
-                        <InputLabel id="demo-simple-select-standard-label">Select Sub Service</InputLabel>
+                            <InputLabel id="demo-simple-select-standard-label">Select Sub Service</InputLabel>
                             <Select
                                 labelId="demo-simple-select-standard-label"
                                 id="demo-simple-select-standard"
@@ -226,9 +228,9 @@ const Update = (props) => {
 
                         </FormControl><br />
                         <label>Price</label><br />
-                        <input type="Number" className=" px-2 py-1 mb-3" name="Price" style={{border:"none",borderBottom:"1px solid black",width:"250px",outline:"none"}} defaultValue={prize} onChange={(event) => { setprize(event.target.value) }} /><br />
+                        <input type="Number" className=" px-2 py-1 mb-3" name="Price" style={{ border: "none", borderBottom: "1px solid black", width: "250px", outline: "none" }} defaultValue={prize} onChange={(event) => { setprize(event.target.value) }} /><br />
                         <label>Description</label><br />
-                        <textarea type="number" className=" px-2 py-1 mb-3" name="description" style={{border:"none",borderBottom:"1px solid black",width:"250px",outline:"none"}} defaultValue={discription} onChange={(event) => { setdiscription(event.target.value) }} /><br />
+                        <textarea type="number" className=" px-2 py-1 mb-3" name="description" style={{ border: "none", borderBottom: "1px solid black", width: "250px", outline: "none" }} defaultValue={discription} onChange={(event) => { setdiscription(event.target.value) }} /><br />
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
@@ -277,7 +279,7 @@ const Delete = (props) => {
                 </Modal.Header> */}
 
                 <Modal.Body>
-                    <div className="dlt" style={{fontWeight:"bold"}}>
+                    <div className="dlt" style={{ fontWeight: "bold" }}>
                         Are You Sure to Delete Service?
                     </div>
 

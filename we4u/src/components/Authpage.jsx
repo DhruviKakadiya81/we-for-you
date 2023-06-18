@@ -11,6 +11,7 @@ import "../css/Auth.css";
 
 
 import { FormControl, FormGroup, Input, InputLabel, Typography } from '@mui/material';
+import { Footer } from './Footer'
 export const Authpage = () => {
   const [userid, setuserid] = useState();
   const [cartdata, setcartdata] = useState();
@@ -204,6 +205,7 @@ export const Authpage = () => {
 
 
       </section>
+      {/* <Footer /> */}
 
     </>
 
@@ -386,7 +388,6 @@ const Delete = (props) => {
     const response = await cartser.deletecartitem(data);
     console.log("deleteresponse", response);
     if (response.data.success === true) {
-      alert("deleted successfully");
       window.location.reload();
 
     }

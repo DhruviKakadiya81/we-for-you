@@ -307,10 +307,10 @@ export const Home = () => {
             <div className="card my-1 m-5">
               <img src="Images/manicure.jpg" className="mt-2" alt="..." />
               <div className="card-body">
-                <h5 className="card-title text-center" style={{fontWeight:"bold"}}>Manicure</h5>
+                <h5 className="card-title text-center" style={{ fontWeight: "bold" }}>Manicure</h5>
                 <p className="card-text text-justify">A Manicure usually consists of filing and shaping the free edge of nails, pushing and clipping.</p>
                 <div className="text-center">
-                <button className='btn home_view_more_btn' type='button' onClick={handlebeauty}>view more</button>
+                  <button className='btn home_view_more_btn' type='button' onClick={handlebeauty}>view more</button>
                 </div>
               </div>
 
@@ -319,10 +319,10 @@ export const Home = () => {
             <div className="card my-1 m-5">
               <img src="Images/Pre_bridal_grooming.png" className="mt-2" alt="..." />
               <div className="card-body">
-                <h5 className="card-title text-center" style={{fontWeight:"bold"}}>Pre Bridal Grooming</h5>
+                <h5 className="card-title text-center" style={{ fontWeight: "bold" }}>Pre Bridal Grooming</h5>
                 <p className="card-text text-justify">Pre Bridal Grooming Is Include Facial Treatment, Manicure, Shaping Eye-Brows and Etc.</p>
                 <div className="text-center">
-                <button className='btn home_view_more_btn' type='button' onClick={handlebeauty}>view more</button>
+                  <button className='btn home_view_more_btn' type='button' onClick={handlebeauty}>view more</button>
                 </div>
               </div>
 
@@ -331,10 +331,10 @@ export const Home = () => {
             <div className="card my-1 m-5">
               <img src="Images/hair_cutting.jpg" className="mt-2" alt="..." />
               <div className="card-body">
-                <h5 className="card-title text-center" style={{fontWeight:"bold"}}>Hair Cutting</h5>
+                <h5 className="card-title text-center" style={{ fontWeight: "bold" }}>Hair Cutting</h5>
                 <p className="card-text text-justify">We Are Doing Many Types Of Hair Cutting like layered, one-length, Face-Look.</p>
                 <div className="text-center">
-                <button className='btn home_view_more_btn' type='button' onClick={handlebeauty}>view more</button>
+                  <button className='btn home_view_more_btn' type='button' onClick={handlebeauty}>view more</button>
                 </div>
               </div>
             </div>
