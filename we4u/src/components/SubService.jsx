@@ -316,8 +316,18 @@ const ViewMore = (props) => {
 
             const response2 = await userdata.getdata({ userid: response.data.data._id })
             console.log("userdata2==>", response2);
-            setuserid(response2.data.data._id);
-            adddata(spid, serviceid, response2.data.data._id);
+            setuserid(response2);
+            // console.log("useeid===>", response2.data.data._id);
+            if (response2.data.data === null) {
+                setmsg("Make Profile First!! ");
+                initmodel1();
+                initmodel();
+            }
+            else {
+                setuserid(response2.data.data._id);
+                adddata(spid, serviceid, response2.data.data._id);
+            }
+
         }
 
     }
