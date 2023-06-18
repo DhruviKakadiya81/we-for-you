@@ -24,6 +24,11 @@ class Post {
         return axios.get(url);
     }
 
+    rating(data) {
+        const url = "http://localhost:4000/rating";
+        return axios.post(url, data);
+    }
+
 
 }
 export default new Post();

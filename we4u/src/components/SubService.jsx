@@ -26,7 +26,7 @@ export const SubService = () => {
     const navigate = useNavigate();
     const getsubservice = async () => {
         const response = await showservice.getsubserbymain({ serviceid });
-        console.log(response);
+        console.log("response", response);
         setservicedata(response.data.data);
 
     }
@@ -80,7 +80,7 @@ export const SubService = () => {
         // alert("hello");
         const data = { city, serviceid }
         const response = await detail.getdetailbycity(data);
-        console.log(response.data.data);
+        console.log("clg--->", response.data.data);
         setspdetail(response.data.data);
     }
 

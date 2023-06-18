@@ -1,4 +1,6 @@
 const SPModel = require("../models/spDetails");
+const spdetail = require("../models/serviceprovider");
+const bcrypt = require("bcryptjs");
 
 const adddetail = async (req, res) => {
   try {
@@ -82,7 +84,38 @@ const updatespdetail = async (req, res) => {
   }
 }
 
+const changepassword = async (req, res) => {
+  try {
+
+    const { spid, oldpassword, newpassword } = req.body;
+    console.log("req.body", req.body);
+    const finduser = await spdetail.findOne({ _id: spid });
+    if (finduser === null) {
+      return res.status(200).send({ success: false, msg: 'user not found' });
+    }
+    else {
+      console.log("oldpass", oldpassword);
+      console.log("newpas", finduser.password);
+
+      const compare = await bcrypt.compare(oldpassword, finduser.password);
+      console.log(compare);
+      if (compare) {
+        const salt = await bcrypt.genSalt(10);
+        const hashPass = await bcrypt.hash(newpassword, salt);
+        const updatepass = await spdetail.updateOne({ _id: spid }, { $set: { password: hashPass } });
+        return res.status(200).send({ success: true, msg: 'password is updated', data: updatepass });
+      }
+      else {
+        return res.status(200).send({ success: false, msg: 'your old password is wrong' });
+      }
+    }
+  } catch (error) {
+    console.log(error)
+    res.status(400).send({ success: false, msg: 'not updated' });
+  }
+}
 
 
 
-module.exports = { adddetail, getdetail, getalldata, updatespdetail }
+
+module.exports = { adddetail, getdetail, getalldata, updatespdetail, changepassword }

@@ -47,10 +47,9 @@ export const Ser_pro_profile = () => {
 
   const getdata = async () => {
     try {
-
       const response = await Services.getdetails({ spid });
-      console.log("response", response);
       setserdata(response.data.data)
+
     } catch (error) {
       console.log(error);
     }
@@ -68,11 +67,12 @@ export const Ser_pro_profile = () => {
   useEffect(() => {
     spid && getdata();
   }, [spid]);
+
   useEffect(() => {
     getspclient();
   }, [])
 
-  console.log("spid", spid)
+
   return (
     <>
       <Ser_Pro_Navbar />
@@ -91,7 +91,7 @@ export const Ser_pro_profile = () => {
         </Modal.Footer>
       </Modal>
       {
-        serdata ?
+        (serdata !== undefined) ?
           <div className="page-content page-container" id="page-content">
             <div className="padding">
               <div className="row container d-flex justify-content-center">
@@ -100,7 +100,6 @@ export const Ser_pro_profile = () => {
                     <div className="row m-l-0 m-r-0">
                       <div className="col-sm-4 user_profile">
                         <div className="sideline_pro mx-5">
-
                         </div>
                       </div>
                       <div className="col-sm-8 px-4">
@@ -141,7 +140,7 @@ export const Ser_pro_profile = () => {
                             </div>
                             <h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Edit Your Details</h6>
                             <div className="col-sm-6">
-                              <ChangePass />
+                              <ChangePass spid={serdata.spid} />
 
                             </div>
                             <div className="col-sm-6">
@@ -175,7 +174,7 @@ export const Ser_pro_profile = () => {
 const ChangePass = (props) => {
   const [isshow, invokemodel] = useState(false);
   const [setpassword, setserPass] = useState("");
-  const [serid, setserid] = useState(props.serid);
+  const [serid, setserid] = useState(props.spid);
   const [oldpassword, setoldpassword] = useState('');
   const [newpassword, setnewpassword] = useState('');
   const [conpassword, setconpassword] = useState('');
@@ -186,19 +185,36 @@ const ChangePass = (props) => {
   const initmodel = () => {
     return invokemodel(!isshow);
   }
+  const [isshow1, invokemodel1] = useState(false);
+  const initmodel1 = () => {
+    return invokemodel1(!isshow1);
+  }
+
 
   const handleSerPassword = async () => {
     if (conpassword === newpassword) {
-      console.log("serid==>", serid);
-      const data = { serid, oldpassword, newpassword };
+      const data = { spid: serid, oldpassword, newpassword };
+      const response = await spservice.changepasss(data);
+      console.log(response);
+      if (response.data.success === true) {
+        initmodel();
+        setmsg("your password is updated");
+        initmodel1();
+      }
+      else {
+        initmodel();
+        setmsg("your password is not updated");
+        initmodel1();
+      }
+
     } else {
       setmsg("Passwords are not matched!!");
+      initmodel1();
     }
   }
 
 
   const handletogglepass = async (event) => {
-    //event.preventDefault();
     var x = document.getElementById("id_password");
     if (x.type === "password") {
       x.type = "text";
@@ -233,13 +249,29 @@ const ChangePass = (props) => {
     }
   };
 
+
   useEffect(() => {
+    setserid(props.spid)
     setmsg('');
   }, [props])
 
 
   return (
     <>
+      <Modal show={isshow1}  >
+        <Modal.Body>
+          <div className="">
+            <b>
+              {msg}
+            </b>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="dark" className="mx-3" type='submit' onClick={initmodel1}>
+            Ok
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <button variant="contained" className='btn my-2' style={{ backgroundColor: "grey", color: "white" }} onClick={initmodel}>
         Change Password??
       </button>
@@ -252,7 +284,7 @@ const ChangePass = (props) => {
 
         <Modal.Body>
           <div className="dlt">
-            <FormControl className='' style={{width:"53%"}}>
+            <FormControl className='' style={{ width: "53%" }}>
               <InputLabel className=''>Old Password</InputLabel>
               <Input type="password" name="name" id="id_password" className='my-3' onChange={(event) => { setoldpassword(event.target.value) }} />
               <p><i
@@ -263,7 +295,7 @@ const ChangePass = (props) => {
               ></i></p>
             </FormControl><br />
 
-            <FormControl className='' style={{width:"53%"}}>
+            <FormControl className='' style={{ width: "53%" }}>
               <InputLabel className='' >New Password</InputLabel>
               <Input type="password" name="name" id="id_password1" className='my-3' onChange={(event) => { setnewpassword(event.target.value) }} />
               <p><i
@@ -274,7 +306,7 @@ const ChangePass = (props) => {
               ></i></p>
             </FormControl><br />
 
-            <FormControl className='' style={{width:"53%"}}>
+            <FormControl className='' style={{ width: "53%" }}>
               <InputLabel className='' >Confirm New Password</InputLabel>
               <Input type="password" name="name" id="id_password2" className='my-3' onChange={(event) => { setconpassword(event.target.value) }} />
               <p><i
@@ -290,7 +322,7 @@ const ChangePass = (props) => {
           <Button variant="danger" className="mx-3" onClick={initmodel}>
             CLOSE
           </Button>
-          <Button variant="dark" className="mx-3" type='submit'>
+          <Button variant="dark" className="mx-3" type='submit' onClick={handleSerPassword}>
             Change
           </Button>
         </Modal.Footer>
@@ -354,25 +386,20 @@ const Update = (props) => {
     setgender(props.data.gender);
     setcityid(props.data.cityid._id);
     setareaid(props.data.areaid._id);
-    // setserid(props.data.serid);
     setspid(props.data.spid);
   }, [props]);
   const handlecity = async () => {
     try {
       const response = await Services.getcity();
       setcity(response.data.data);
-      console.log("city --- ", response);
     } catch (error) {
       console.log(error);
     }
   }
   const handlearea = async () => {
     try {
-
-      console.log("cityid", city)
       const response = await Services.getarea({ cityid });
       setarea(response.data.data);
-      console.log("area --- ", response);
     } catch (error) {
       console.log(error);
     }
@@ -388,7 +415,6 @@ const Update = (props) => {
     cityid && handlearea();
   }, [cityid]);
 
-  console.log("city", cityid);
   return (
     <>
       <Modal show={isshow1}  >
@@ -410,7 +436,7 @@ const Update = (props) => {
       </button>
       <Modal show={isshow} style={{ overflowX: "scroll", width: "100%" }} >
         <Modal.Header onClick={initmodel}>
-          <Modal.Title className='' style={{fontWeight:"bold"}}>
+          <Modal.Title className='' style={{ fontWeight: "bold" }}>
             Update Your Details
           </Modal.Title>
         </Modal.Header>
@@ -493,19 +519,6 @@ const Update = (props) => {
                 </Select>
               </FormControl><br />
             </div>
-            {/* <div className="text-center">
-              <FormControl className='detail_container'>
-                <InputLabel className='' >City</InputLabel>
-                <Input type="text" name="name" className='my-3' defaultValue={city} onChange={(event) => { setcity(event.target.value) }} />
-              </FormControl><br />
-            </div>
-
-            <div className="text-center">
-              <FormControl className='detail_container'>
-                <InputLabel className='' >Area</InputLabel>
-                <Input type="text" name="name" className='my-3' defaultValue={area} onChange={(event) => { setarea(event.target.value) }} />
-              </FormControl><br />
-            </div> */}
 
           </form>
         </Modal.Body>

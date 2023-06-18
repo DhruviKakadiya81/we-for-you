@@ -29,5 +29,10 @@ class Post {
         const url = "http://localhost:4000/updatespdet";
         return axios.post(url, data);
     }
+
+    changepasss(data) {
+        const url = "http://localhost:4000/chngpasssp";
+        return axios.put(url, data);
+    }
 }
 export default new Post();

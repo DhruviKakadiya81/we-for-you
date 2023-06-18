@@ -9,6 +9,7 @@ import GetUser from "../services/GetUser";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import ReactStars from "react-rating-stars-component"
+import dashboard from '../services/dashboard';
 
 export const Cust_Dashboard = () => {
     let counter = 1;
@@ -16,6 +17,7 @@ export const Cust_Dashboard = () => {
     const [active, setactive] = useState([]);
     const [Edit, setEdit] = useState();
     const [userid, setuserid] = useState();
+    const [spid, setspid] = useState();
     const [isshow, invokemodel] = useState(false);
     const initmodel = () => {
         return invokemodel(!isshow);
@@ -31,12 +33,18 @@ export const Cust_Dashboard = () => {
     const handleUpdate = async (id) => {
         const data = { id: id, status: "Completed" }
         const response = await bookservice.active(data);
+        setspid(response.data.spid);
         setEdit(true);
         console.log(response);
         initmodel();
 
     }
+    const handlerate = async () => {
+        const data = { spid, userid, rate: rating };
+        const response = await dashboard.rating(data);
+        console.log("response", response);
 
+    }
     const handleschedule = async () => {
         const response = await bookservice.shduled({ id: userid });
         setschedule(response.data.data)
@@ -46,8 +54,13 @@ export const Cust_Dashboard = () => {
         const response = await bookservice.getactiveseruser({ id: userid });
         console.log(response);
         setactive(response.data.data);
+        initmodel();
     }
+    const [rating, setRating] = useState(0);
 
+    const handleRatingChange = (newRating) => {
+        setRating(newRating);
+    };
     // const ratingchanged=(rating)=>{
     //     alert(`You Have Given ${rating} star Rating for us.`)
     // }
@@ -79,14 +92,14 @@ export const Cust_Dashboard = () => {
                 </Modal.Header>
                 <Modal.Body className='m-auto start_body'>
                     <div>
-                        <ReactStars size={50} count={5} isHalf={true} />
+                        <ReactStars size={50} count={5} value={rating} onChange={handleRatingChange} />
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="danger" className="mx-3" onClick={initmodel}>
                         Cancel
                     </Button>
-                    <Button variant="dark" className="mx-3" type='button' onClick={initmodel} >
+                    <Button variant="dark" className="mx-3" type='button' onClick={handlerate} >
                         Yes
                     </Button>
                 </Modal.Footer>
@@ -239,7 +252,7 @@ export const Cust_Dashboard = () => {
 
                         </div>
                         :
-                        <div class="main-card mb-3 mt-5 pt-5 mx-auto w-75 card overflow-x-hidden">
+                        <div class="main-card mb-3 mt-5 pt-5    mx-auto w-75 card overflow-x-hidden">
                             <div class="card-header text-center" style={{ backgroundColor: "lightgrey" }}><b>Scheduled Services Details</b>
 
                             </div>

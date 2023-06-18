@@ -136,7 +136,7 @@ export const Ser_dashboard = () => {
 
                         </div>
                         :
-                        <div class="main-card mb-3 mt-5 mx-auto pt-5 w-75 card overflow-x-hidden">
+                        <div class="main-card mb-3  mx-auto  w-75 card overflow-x-hidden" style={{ marginTop: "100px" }}>
                             <div class="card-header text-center" style={{ backgroundColor: "lightgreen" }}>Active Services Details
                             </div>
                             <div class="table-responsive">
@@ -215,8 +215,8 @@ export const Ser_dashboard = () => {
 
                         </div>
                         :
-                        <div class="main-card mb-3 mt-5 mx-auto w-75 card overflow-x-hidden">
-                            <div class="card-header text-center">Scheduled Services Details
+                        <div class="main-card mb-3 mx-auto w-75 card overflow-x-hidden" style={{ marginTop: "100px" }}>
+                            <div class="card-header text-center" style={{ backgroundColor: "lightgrey" }}>Scheduled Services Details
 
                             </div>
                             <div class="table-responsive">

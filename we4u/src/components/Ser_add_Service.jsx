@@ -9,6 +9,7 @@ import subser from '../services/Subservice'
 import { useFormik } from "formik"
 import { useNavigate } from 'react-router-dom'
 import { Button, Modal } from 'react-bootstrap';
+import { Footer } from './Footer'
 const FlexColumnContainer = styled('div')`
   padding: 10px;
   display: flex;
@@ -141,7 +142,7 @@ export const Ser_add_Service = () => {
             Service Added Details
           </Modal.Title>
         </Modal.Header> */}
-        <Modal.Body style={{fontWeight:"bold"}}>
+        <Modal.Body style={{ fontWeight: "bold" }}>
           {msg}
         </Modal.Body>
         <Modal.Footer>
@@ -224,6 +225,8 @@ export const Ser_add_Service = () => {
           </div>
         </div>
       </StepContainer>
+
+      <Footer />
 
     </>
   )
