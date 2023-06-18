@@ -35,7 +35,6 @@ export const Cust_Dashboard = () => {
         const response = await bookservice.active(data);
         setspid(response.data.spid);
         setEdit(true);
-        console.log(response);
         initmodel();
 
     }
@@ -43,6 +42,7 @@ export const Cust_Dashboard = () => {
         const data = { spid, userid, rate: rating };
         const response = await dashboard.rating(data);
         console.log("response", response);
+        initmodel()
 
     }
     const handleschedule = async () => {
@@ -54,7 +54,7 @@ export const Cust_Dashboard = () => {
         const response = await bookservice.getactiveseruser({ id: userid });
         console.log(response);
         setactive(response.data.data);
-        initmodel();
+        // initmodel();
     }
     const [rating, setRating] = useState(0);
 
@@ -77,7 +77,7 @@ export const Cust_Dashboard = () => {
     useEffect(() => {
         userid && handleschedule();
         userid && handleactive();
-    }, [Edit]);
+    }, [active]);
 
 
     console.log(active);
