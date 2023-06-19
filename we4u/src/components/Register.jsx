@@ -28,13 +28,15 @@ export const Register = (props) => {
   const handleRegister = async (event) => {
     event.preventDefault();
 
-    console.log(formik.errors.email);
+    console.log("hello", formik.errors.email);
     if (formik.errors.email === undefined && formik.errors.password === undefined) {
-
+      // alert("hello");
       const firmObj = { email, password, state };
       console.log("object----" + password);
       const respo = await apiServices.create(firmObj);
+      console.log(respo);
       if (respo.data.success === true) {
+        console.log("hello");
         setmessage(respo.data.msg);
         // localStorage.setItem("token", respo.data.token);
         // alert(localStorage.getItem("token"));
@@ -45,10 +47,11 @@ export const Register = (props) => {
           navigate("/loginasp");
         }
       } else {
+        console.log("hello");
         // event.preventDefault();
         setmsg(respo.data.msg)
         initmodel();
-        setmessage(respo.data.msg);
+        // setmessage(respo.data.msg);
       }
     }
     else {
@@ -203,7 +206,20 @@ export const Register = (props) => {
   if (props.state === 0) {
     return (
       <>
-
+        <Modal show={isshow}  >
+          <Modal.Body>
+            <div className="">
+              <b>
+                {msg}
+              </b>
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="dark" className="mx-3" type='submit' onClick={initmodel}>
+              Ok
+            </Button>
+          </Modal.Footer>
+        </Modal>
         <section className="d-flex mb-5" id="header">
           <div className="container pt-4 pb-5 mb-5 pb-5 r_main_div1">
             <div className="" style={{ float: "right" }} >
@@ -259,7 +275,7 @@ export const Register = (props) => {
                 )}
                 <br />
                 <button
-                  type="submit"
+                  type="button"
                   className="p-2 my-4 r_btn_sub"
                   value="register"
                   onClick={handleRegister}
