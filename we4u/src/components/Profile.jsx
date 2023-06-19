@@ -375,7 +375,7 @@ const ChangePass = (props) => {
           </Button>
         </Modal.Footer>
       </Modal>
-      <button variant="contained" className='btn' style={{ backgroundColor: "grey", color: "white" }} onClick={initmodel1}>
+      <button variant="contained" className='btn' style={{ backgroundColor: "grey", color: "white" }} onClick={initmodel}>
         Change Password??
       </button>
       <Modal show={isshow} style={{ overflowX: "scroll", width: "100%" }} >

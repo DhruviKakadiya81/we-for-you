@@ -42,12 +42,8 @@ export const Verify = (props) => {
             initmodel();
         }
         else {
-
-
             setmsg(respo.data.msg + "Kindly Login with This Information");
             invokemodel(!isshow);
-
-
         }
 
 
@@ -187,7 +183,7 @@ export const Verify = (props) => {
                             <button type="submit" value="register" className='my-2 mx-4 p-2 verify_btn'>
                                 Verify
                             </button>
-                            <p className='my-2 mx-2 verify_login'>Goto Login Page?<a href="/login">Login Page</a></p>
+                            <p className='my-2 mx-2 verify_login'>Goto Login Page?<a href="/loginasp">Login Page</a></p>
                             <span></span>
                         </form>
                     </div>
