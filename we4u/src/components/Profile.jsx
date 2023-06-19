@@ -36,7 +36,7 @@ const Profile = () => {
   const [msg, setmsg] = useState();
   const [isshow, invokemodel] = useState(false);
   const initmodel = () => {
-      return invokemodel(!isshow);
+    return invokemodel(!isshow);
   }
   const [isData, setIsData] = useState(true);
   const [isEdit, setisEdit] = useState(true);
@@ -105,20 +105,20 @@ const Profile = () => {
 
         <Navbar />
         <Modal show={isshow}  >
-                <Modal.Header className='text-center'>
-                    <Modal.Title className='' >
-                        Profile Status
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    {msg}
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="dark" className="mx-3" onClick={initmodel}>
-                       OK
-                    </Button>
-                </Modal.Footer>
-                </Modal>
+          <Modal.Header className='text-center'>
+            <Modal.Title className='' >
+              Profile Status
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            {msg}
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="dark" className="mx-3" onClick={initmodel}>
+              OK
+            </Button>
+          </Modal.Footer>
+        </Modal>
         <div className='profile_main_container mt-5'>
           <div className="profile_full_form">
             <div className="image_container order-2 order-lg-1">
@@ -284,6 +284,12 @@ const ChangePass = (props) => {
   const initmodel = () => {
     return invokemodel(!isshow);
   }
+  const [isshow1, invokemodel1] = useState(false);
+  const initmodel1 = () => {
+    return invokemodel1(!isshow1);
+  }
+
+
   console.log(props)
   const handlepassword = async () => {
     if (conpassword === newpassword) {
@@ -293,15 +299,18 @@ const ChangePass = (props) => {
       console.log("response===>", response);
       if (response.data.success === true) {
         initmodel();
-        alert("password updated successfully");
+        setmsg("password is upadated successfully");
+        initmodel1();
       }
       else {
 
-        alert(response.data.msg);
+        setmsg("password is  not upadated successfully");
+        initmodel1();
       }
     }
     else {
       setmsg("your confirm password and new password is not matched");
+      initmodel1();
     }
   }
 
@@ -352,7 +361,21 @@ const ChangePass = (props) => {
 
   return (
     <>
-      <button variant="contained" className='btn' style={{ backgroundColor: "grey", color: "white" }} onClick={initmodel}>
+      <Modal show={isshow1}  >
+        <Modal.Body>
+          <div className="">
+            <b>
+              {msg}
+            </b>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="dark" className="mx-3" type='submit' onClick={initmodel1}>
+            Ok
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <button variant="contained" className='btn' style={{ backgroundColor: "grey", color: "white" }} onClick={initmodel1}>
         Change Password??
       </button>
       <Modal show={isshow} style={{ overflowX: "scroll", width: "100%" }} >
@@ -366,35 +389,35 @@ const ChangePass = (props) => {
           <div className="dlt d-grid justify-content-center">
             <FormControl className=''>
               <InputLabel className='mx-auto'>Old Password</InputLabel>
-              <Input type="password" name="name" className='my-3'  id="id_password" onChange={(event) => { setoldpassword(event.target.value) }}/> 
+              <Input type="password" name="name" className='my-3' id="id_password" onChange={(event) => { setoldpassword(event.target.value) }} />
               <p><i
-                  className={eye}
-                  id="togglePassword"
-                  style={{ marginTop:"-43px", marginLeft: "150px", cursor: "pointer", position: "absolute", cursor: "pointer" }}
-                  onClick={handletogglepass}
-                ></i></p>
+                className={eye}
+                id="togglePassword"
+                style={{ marginTop: "-43px", marginLeft: "150px", cursor: "pointer", position: "absolute", cursor: "pointer" }}
+                onClick={handletogglepass}
+              ></i></p>
             </FormControl><br />
 
             <FormControl className=''>
               <InputLabel className='' >New Password</InputLabel>
               <Input type="password" name="name" id="id_password1" className='my-3' onChange={(event) => { setnewpassword(event.target.value) }} />
               <p><i
-                  className={eye1}
-                  id="togglePassword"
-                  style={{ marginTop:"-43px", marginLeft: "150px", cursor: "pointer", position: "absolute", cursor: "pointer" }}
-                  onClick={handletogglepass1}
-                ></i></p>
+                className={eye1}
+                id="togglePassword"
+                style={{ marginTop: "-43px", marginLeft: "150px", cursor: "pointer", position: "absolute", cursor: "pointer" }}
+                onClick={handletogglepass1}
+              ></i></p>
             </FormControl><br />
 
             <FormControl className=''>
               <InputLabel className='' >Confirm New Password</InputLabel>
               <Input type="password" name="name" id="id_password2" className='my-3' onChange={(event) => { setconpassword(event.target.value) }} />
               <p><i
-                  className={eye2}
-                  id="togglePassword"
-                  style={{ marginTop:"-43px", marginLeft: "200px", cursor: "pointer", position: "absolute", cursor: "pointer" }}
-                  onClick={handletogglepass2}
-                ></i></p>
+                className={eye2}
+                id="togglePassword"
+                style={{ marginTop: "-43px", marginLeft: "200px", cursor: "pointer", position: "absolute", cursor: "pointer" }}
+                onClick={handletogglepass2}
+              ></i></p>
             </FormControl><br />
             {/* <span>{msg}</span> */}
           </div>
